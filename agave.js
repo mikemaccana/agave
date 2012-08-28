@@ -61,6 +61,7 @@ define(function () {
   Object.defineProperty( Array.prototype, "hasItem", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "hasSubstring", {value: contains, enumerable: false});
   
-  // NodeLists don't have .forEach() standard but the one from Array works fine
+  // nodelists and strings don't have .forEach() standard but the one from Array works fine
   NodeList.prototype.forEach = Array.prototype.forEach
+  String.prototype.forEach = Array.prototype.forEach
 });
