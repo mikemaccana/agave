@@ -52,10 +52,15 @@ define(function () {
     return ( this.indexOf(item) !== -1);
   }; 
   
+  
+  
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
   Object.defineProperty( Array.prototype, "hasItem", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "hasSubstring", {value: contains, enumerable: false});
+  
+  // NodeLists don't have .forEach() standard but the one from Array works fine
+  NodeList.prototype.forEach = Array.prototype.forEach
 });
