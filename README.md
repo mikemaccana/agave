@@ -6,9 +6,7 @@ For modern browsers (Chrome, Firefox, IE9 and newer) and for node.js
 
  - Only adds things you use every day. See 'What does Agave provide?' below
  - Is tiny. Around 2K unminified.
- - Built for ES5:
-   - Leverages ES5’s native methods
-   - Doesn’t try and re-implement anything already in ES5. 
+ - Built for ES5, leveraging ES5’s fast native methods and avoiding polyfill code for ancient browsers.
  - Is an AMD module, easily loadable by requirejs in both the browser and node.
 
 ## What does Agave provide?
@@ -79,8 +77,8 @@ Agave will make your code shorter and more readable.
 
 ## How Does Agave Compare to Sugar.js?
 
-Sugar.js is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
- - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and .hankaku(). Agave won’t ever have those. 
+[Sugar.js](http://sugarjs.com/) is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
+ - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those. 
  - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
 
@@ -93,7 +91,7 @@ Sugar.js is an excellent project and was the inspiration for Agave. Like Sugar, 
 
 Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. I.e., if a developer you wanted objects to have .myMethod(), and thus created Object.prototype.myMethod(), things like ‘for (var key in someobject)’ would include ‘myMethod’ as one of the keys.
 
-**ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10 use - specifically allows for the creation of non-enumerable properties via Object.defineProperty()**
+**ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the creation of non-enumerable properties via Object.defineProperty()**
 
 So if you’re OK with not supporting IE8, you can use Agave.
 
@@ -102,7 +100,7 @@ Another concern may be naming or implementation conflicts - ie, some other code 
  - If your project already has a String.prototype.hasSubstring(), and it does something other than tell you whether a string has a substring, you should consider many things, the least of which is whether you should use this library.
  - If however, like most people, your code is filled with things like: 
 
-    if ( mystring.indexof(substring) !== −1 ) { ... }
+        if ( mystring.indexof(substring) !== −1 ) { ... }
 
 Then your code will be improved by using Agave.
 
@@ -110,7 +108,7 @@ Then your code will be improved by using Agave.
 
 ## Using Agave
 
-Agave is currently provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/)
+Agave is currently provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/):
 
     requirejs(['agave'], function () {  
       // Your code here
@@ -127,7 +125,7 @@ Inside the folder you downloaded Agave to.
 
 ## License
 
-[MIT license](MIT_LICENSE.md).
+[MIT license](MIT-LICENSE.md).
 
 ## Author
 
