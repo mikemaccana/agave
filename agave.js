@@ -6,7 +6,7 @@ define(function () {
     return Object.keys(this);
   };
 
-  // object.getSize() return the numberof properties in the obj
+  // object.getSize() returns the number of properties in the object
   var getSize = function() {
     return Object.keys(this).length;
   };
@@ -52,7 +52,13 @@ define(function () {
     return ( this.indexOf(item) !== -1);
   }; 
   
+  // Strings don't have .forEach() standard but the one from Array works fine
+  String.prototype.forEach = Array.prototype.forEach
   
+  // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
+  if ( this.hasOwnProperty('NodeList') ) {
+    Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
+  }
   
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
@@ -60,8 +66,4 @@ define(function () {
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
   Object.defineProperty( Array.prototype, "hasItem", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "hasSubstring", {value: contains, enumerable: false});
-  
-  // nodelists and strings don't have .forEach() standard but the one from Array works fine
-  NodeList.prototype.forEach = Array.prototype.forEach
-  String.prototype.forEach = Array.prototype.forEach
 });
