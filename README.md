@@ -2,16 +2,16 @@
 
 A lightweight library for cleaner, simpler Javascript.
 
-For modern browsers (Chrome, Firefox, IE9 and newer) and for node.js
+For modern browsers (Chrome, Firefox, IE9 and newer) and node.js.
 
- - Only adds things you use every day. See 'What does Agave provide?' below
+ - Only adds things you use every day. See 'What does Agave provide?' below.
  - Is tiny. Around 2K unminified.
  - Built for ES5, leveraging ES5’s fast native methods and avoiding polyfill code for ancient browsers.
- - Is an AMD module, easily loadable by requirejs in both the browser and node.
+ - Is an AMD module, easily loadable by [RequireJS](http://requirejs.org/) in both the browser and node.
 
 ## What does Agave provide?
 
-### Object
+### Object methods
 
 #### .getKeys() 
 Returns an array of the object’s keys.
@@ -43,7 +43,7 @@ will return:
     
 Keys, of course, could be strings, array indices, or anything else.
 
-### Array
+### Array methods
 
 #### .hasItem(_item_) 
 returns true if the array has the item.
@@ -51,7 +51,7 @@ returns true if the array has the item.
 #### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-### String
+### String methods
 
 #### .hasSubstring(_substring_) 
 returns true if a string contains a substring
@@ -59,7 +59,7 @@ returns true if a string contains a substring
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
-### NodeList
+### NodeList methods
 
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
@@ -125,7 +125,7 @@ Inside the folder you downloaded Agave to.
 
 ## License
 
-[MIT license](MIT-LICENSE.md).
+[MIT license](https://github.com/mikemaccana/agave/blob/master/MIT-LICENSE.md).
 
 ## Author
 
