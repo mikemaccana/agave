@@ -45,8 +45,8 @@ Keys, of course, could be strings, array indices, or anything else.
 
 ### Array methods
 
-#### .hasItem(_item_) 
-returns true if the array has the item.
+#### .contains(_item_) 
+returns true if the array contains the item.
 
 #### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.

@@ -56,9 +56,9 @@ define(function () {
     return this.slice(0, prefix.length) === prefix;
   };
   
-  // array.hasItem(item) returns true if an array has an item
-  // string.contains(substring) returns true if a string has a substring
-  var has = function(item){
+  // array.contains(item) returns true if an array contains an item
+  // string.contains(substring) returns true if a string contains a substring
+  var contains = function(item){
     return ( this.indexOf(item) !== -1);
   }; 
   
@@ -82,8 +82,8 @@ define(function () {
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
-  Object.defineProperty( Array.prototype, "hasItem", {value: has, enumerable: false});
-  Object.defineProperty( String.prototype, "contains", {value: has, enumerable: false});
+  Object.defineProperty( Array.prototype, "contains", {value: contains, enumerable: false});
+  Object.defineProperty( String.prototype, "contains", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
   Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
   Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});

@@ -7,12 +7,12 @@ var requirejs = require('requirejs');
 requirejs.config({ nodeRequire: require, baseUrl: "lib" });
 requirejs(['assert', './agave.js'], function (assert) {  
   
-  describe('Array.hasItem', function(){
+  describe('Array.contains', function(){
     it('fetches the item accurately', function(){
-      assert(['one','two','three'].hasItem('two') )
+      assert(['one','two','three'].contains('two') )
     })
     it('handles missing items accurately', function(){
-      assert( ! ['one','two','three'].hasItem('notthere') )
+      assert( ! ['one','two','three'].contains('notthere') )
     })  
   })
   
