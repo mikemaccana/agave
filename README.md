@@ -51,6 +51,9 @@ returns true if the array has the item.
 #### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
+#### .extend(_newarray_) 
+Adds the items from _newarray_ to the end of this array.
+
 ### String methods
 
 #### .hasSubstring(_substring_) 
@@ -86,6 +89,7 @@ Agave will make your code shorter and more readable.
 
  - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation. 
  - Agave doesn’t require a separate string library.
+ - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
 
 ## But Adding Methods to Inbuilt Objects is Bad!
 

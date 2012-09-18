@@ -60,7 +60,14 @@ define(function () {
     Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
   }
   
+  // Extend an array with another array
+  var extend = function(new_array) {
+    Array.prototype.push.apply(this, new_array);
+    return this;
+  }
+  
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
+  Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});

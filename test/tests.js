@@ -14,7 +14,13 @@ requirejs(['assert', './agave.js'], function (assert) {
     it('handles missing items accurately', function(){
       assert.ok( ! ['one','two','three'].hasItem('notthere') )
     })  
-  })  
+  })
+  
+  describe('Array.extend', function(){
+    it('extends the array accurately', function(){
+      assert.deepEqual([1,2,3].extend([4,5]), [1,2,3,4,5] )
+    })
+  })
   
   describe('String.hasSubstring', function(){
     it('fetches the substring accurately', function(){
