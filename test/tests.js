@@ -9,10 +9,10 @@ requirejs(['assert', './agave.js'], function (assert) {
   
   describe('Array.hasItem', function(){
     it('fetches the item accurately', function(){
-      assert.ok(['one','two','three'].hasItem('two') )
+      assert(['one','two','three'].hasItem('two') )
     })
     it('handles missing items accurately', function(){
-      assert.ok( ! ['one','two','three'].hasItem('notthere') )
+      assert( ! ['one','two','three'].hasItem('notthere') )
     })  
   })
   
@@ -24,12 +24,27 @@ requirejs(['assert', './agave.js'], function (assert) {
   
   describe('String.hasSubstring', function(){
     it('fetches the substring accurately', function(){
-      assert.ok('elephantine'.hasSubstring('tin') )
+      assert('elephantine'.hasSubstring('tin') )
     })  
     it('handles missing substrings accurately', function(){
-      assert.ok( ! 'elephantine'.hasSubstring('zam') )
+      assert( ! 'elephantine'.hasSubstring('zam') )
     })  
+  })
+  
+  describe('String.endsWith', function(){
+    it('works if the string actually ends with the suffix', function(){
+      assert('Hello world'.endsWith('world'))
+    })
+    it('handles trying to check if something ends in something larger than itself', function(){
+      assert.equal('world'.endsWith('Hello world'), false)
+    })
   })  
+  
+  describe('String.startsWith', function(){
+    it('works if the string actually starts with the prefix', function(){
+      assert('Hello world'.startsWith('Hello'))
+    })
+  })
   
   var mockObject = {
     foo: 'bar',

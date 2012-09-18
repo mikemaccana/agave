@@ -57,7 +57,13 @@ Adds the items from _newarray_ to the end of this array.
 ### String methods
 
 #### .hasSubstring(_substring_) 
-returns true if a string contains a substring
+returns true if a string contains the substring
+
+#### .startsWith(_substring_) 
+returns true if a string starts with the substring
+
+#### .endsWith(_substring_) 
+returns true if a string ends with the substring
 
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().

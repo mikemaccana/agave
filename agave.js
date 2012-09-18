@@ -46,21 +46,24 @@ define(function () {
     }
   };
   
+  // string.endsWith() returns true if string ends with the suffix
+  var endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+  };
+  
+  // string.endsWith() returns true if string ends with the prefix
+  var startsWith = function(prefix){
+    return this.slice(0, prefix.length) === prefix;
+  };
+  
   // array.hasItem() returns true if an array has an item
-  // string.hasSubstring() returns true if a string contains a substring
-  var contains = function(item){
+  // string.hasSubstring() returns true if a string has a substring
+  var has = function(item){
     return ( this.indexOf(item) !== -1);
   }; 
   
-  // Strings don't have .forEach() standard but the one from Array works fine
-  String.prototype.forEach = Array.prototype.forEach
-  
-  // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
-  if ( this.hasOwnProperty('NodeList') ) {
-    Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
-  }
-  
-  // Extend an array with another array
+  // Extend an array with another array. 
+  // Cleverness alert: since .apply() accepts an array of args, we use the new_array as all the args to push()
   var extend = function(new_array) {
     Array.prototype.push.apply(this, new_array);
     return this;
@@ -71,6 +74,16 @@ define(function () {
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
-  Object.defineProperty( Array.prototype, "hasItem", {value: contains, enumerable: false});
-  Object.defineProperty( String.prototype, "hasSubstring", {value: contains, enumerable: false});
+  Object.defineProperty( Array.prototype, "hasItem", {value: has, enumerable: false});
+  Object.defineProperty( String.prototype, "hasSubstring", {value: has, enumerable: false});
+  Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
+  Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
+  
+  // Strings don't have .forEach() standard but the one from Array works fine
+  String.prototype.forEach = Array.prototype.forEach
+  
+  // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
+  if ( this.hasOwnProperty('NodeList') ) {
+    Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
+  }
 });
