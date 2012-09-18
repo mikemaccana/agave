@@ -1,13 +1,13 @@
 # Agave.JS
 
-A lightweight library for cleaner, simpler Javascript.
+## Cleaner, simpler Javascript for ES5 environments
 
-For modern browsers (Chrome, Firefox, IE9 and newer) and node.js.
+Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
 
- - Only adds things you use every day. See 'What does Agave provide?' below.
+ - Adds things you use every day. See 'What does Agave provide?' below.
+ - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9/10 and node.js. Agave always leverages ES5’s fast native methods, and ES5 specific features allow us to safely extend inbuilt objects. Unlike other libraries, Agave is free of code to create semi-featured ES5 implementations in ES3 browsers like IE8.
  - Is tiny. Around 2K unminified.
- - Built for ES5, leveraging ES5’s fast native methods and avoiding polyfill code for ancient browsers.
- - Is an AMD module, easily loadable by [RequireJS](http://requirejs.org/) in both the browser and node.
+ - Is an AMD module, easily loadable by requirejs in both the browser and node.
 
 ## What does Agave provide?
 
@@ -93,22 +93,26 @@ Agave will make your code shorter and more readable.
 
 ## But Adding Methods to Inbuilt Objects is Bad!
 
-Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. I.e., if a developer you wanted objects to have .myMethod(), and thus created Object.prototype.myMethod(), things like ‘for (var key in someobject)’ would include ‘myMethod’ as one of the keys.
+Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
-**ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the creation of non-enumerable properties via Object.defineProperty()**
+For example, Javascript objects have always had an inbuilt non-enumerable .toString() method. If you run ‘for (var key in someobject)’, ‘toString’ won’t show up as one of the keys because it was non-enumerable. However if a developer using ES3 wanted objects to have a new method - say .myMethod(), and thus created Object.prototype.myMethod(), then myMethod would be enumerable, and things like ‘for (var key in someobject)’ would include ‘myMethod’ as one of the keys. This would break things and was indeed bad.
 
-So if you’re OK with not supporting IE8, you can use Agave.
+**ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the addition of new non-enumerable properties via Object.defineProperty()**
 
-Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very clear method naming. 
+And that’s exactly what Agave uses.  As a result, Agave’s methods will never show up in for loops. 
+
+So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
+
+Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
 
  - If your project already has a String.prototype.hasSubstring(), and it does something other than tell you whether a string has a substring, you should consider many things, the least of which is whether you should use this library.
  - If however, like most people, your code is filled with things like: 
 
-        if ( mystring.indexof(substring) !== −1 ) { ... }
+        if ( myarray.indexof(myitem) !== −1 ) { ... }
 
 Then your code will be improved by using Agave.
 
-    if ( mystring.hasSubstring(substring) ) { ... }  
+        if ( myarray.hasItem(myitem) ) { ... }  
 
 ## Using Agave
 
@@ -126,6 +130,10 @@ Install [node.js](http://nodejs.org/), and run:
     mocha
 
 Inside the folder you downloaded Agave to.
+
+## What About IE8 and Firefox 3 support?
+
+Sorry, but this isn’t possible. ES3 browsers don’t support Object.defineProperty() and it cannot be emulated via shims.
 
 ## License
 
