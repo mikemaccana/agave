@@ -69,6 +69,14 @@ define(function () {
     return this;
   }
   
+  // Repeat a string 'times' times. Borrowed from ES6 shim at https://github.com/paulmillr/es6-shim
+  var repeat = function(times) {
+    if (times < 1) return '';
+    if (times % 2) return this.repeat(times - 1) + this;
+    var half = this.repeat(times / 2);
+    return half + half;
+  }
+  
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
   Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
@@ -78,6 +86,7 @@ define(function () {
   Object.defineProperty( String.prototype, "hasSubstring", {value: has, enumerable: false});
   Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
   Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
+  Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
   
   // Strings don't have .forEach() standard but the one from Array works fine
   String.prototype.forEach = Array.prototype.forEach

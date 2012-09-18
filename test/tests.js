@@ -46,6 +46,12 @@ requirejs(['assert', './agave.js'], function (assert) {
     })
   })
   
+  describe('String.repeat', function(){
+    it('repeats strings accurately', function(){
+      assert.equal('Hello world'.repeat(3), 'Hello worldHello worldHello world')
+    })
+  })
+  
   var mockObject = {
     foo: 'bar',
     baz: {
