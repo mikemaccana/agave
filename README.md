@@ -11,7 +11,7 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
 
 ## What does Agave provide?
 
-### Object
+### Object methods
 
 #### .getKeys() 
 Returns an array of the object’s keys.
@@ -43,7 +43,7 @@ will return:
     
 Keys, of course, could be strings, array indices, or anything else.
 
-### Array
+### Array methods
 
 #### .hasItem(_item_) 
 returns true if the array has the item.
@@ -51,7 +51,7 @@ returns true if the array has the item.
 #### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-### String
+### String methods
 
 #### .hasSubstring(_substring_) 
 returns true if a string contains a substring
@@ -59,7 +59,7 @@ returns true if a string contains a substring
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
-### NodeList
+### NodeList methods
 
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
@@ -133,7 +133,7 @@ Sorry, but this isn’t possible. ES3 browsers don’t support Object.defineProp
 
 ## License
 
-[MIT license](MIT-LICENSE.md).
+[MIT license](https://github.com/mikemaccana/agave/blob/master/MIT-LICENSE.md).
 
 ## Author
 
