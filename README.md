@@ -56,7 +56,7 @@ Adds the items from _newarray_ to the end of this array.
 
 ### String methods
 
-#### .hasSubstring(_substring_) 
+#### .contains(_substring_) 
 returns true if a string contains the substring
 
 #### .startsWith(_substring_) 
@@ -67,6 +67,9 @@ returns true if a string ends with the substring
 
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
+
+#### .repeat(_times_)
+Repeat the string _times_ times.
 
 ### NodeList methods
 
@@ -111,7 +114,7 @@ So if you’re OK with Agave’s requirements - ie, you support only ES5 environ
 
 Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
 
- - If your project already has a String.prototype.hasSubstring(), and it does something other than tell you whether a string has a substring, you should consider many things, the least of which is whether you should use this library.
+ - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
  - If however, like most people, your code is filled with things like: 
 
         if ( myarray.indexof(myitem) !== −1 ) { ... }

@@ -22,12 +22,12 @@ requirejs(['assert', './agave.js'], function (assert) {
     })
   })
   
-  describe('String.hasSubstring', function(){
-    it('fetches the substring accurately', function(){
-      assert('elephantine'.hasSubstring('tin') )
+  describe('String.contains', function(){
+    it('checks for the substring accurately', function(){
+      assert('elephantine'.contains('tin') )
     })  
     it('handles missing substrings accurately', function(){
-      assert( ! 'elephantine'.hasSubstring('zam') )
+      assert( ! 'elephantine'.contains('zam') )
     })  
   })
   

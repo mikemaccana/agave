@@ -46,18 +46,18 @@ define(function () {
     }
   };
   
-  // string.endsWith() returns true if string ends with the suffix
+  // string.endsWith(suffix) returns true if string ends with the suffix
   var endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
   };
   
-  // string.endsWith() returns true if string ends with the prefix
+  // string.endsWith(prefix) returns true if string ends with the prefix
   var startsWith = function(prefix){
     return this.slice(0, prefix.length) === prefix;
   };
   
-  // array.hasItem() returns true if an array has an item
-  // string.hasSubstring() returns true if a string has a substring
+  // array.hasItem(item) returns true if an array has an item
+  // string.contains(substring) returns true if a string has a substring
   var has = function(item){
     return ( this.indexOf(item) !== -1);
   }; 
@@ -69,7 +69,7 @@ define(function () {
     return this;
   }
   
-  // Repeat a string 'times' times. Borrowed from ES6 shim at https://github.com/paulmillr/es6-shim
+  // string.repeat() repeat a string 'times' times. Borrowed from ES6 shim at https://github.com/paulmillr/es6-shim
   var repeat = function(times) {
     if (times < 1) return '';
     if (times % 2) return this.repeat(times - 1) + this;
@@ -83,7 +83,7 @@ define(function () {
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
   Object.defineProperty( Array.prototype, "hasItem", {value: has, enumerable: false});
-  Object.defineProperty( String.prototype, "hasSubstring", {value: has, enumerable: false});
+  Object.defineProperty( String.prototype, "contains", {value: has, enumerable: false});
   Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
   Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
   Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
