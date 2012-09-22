@@ -9,17 +9,17 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
  - Is tiny. Around 2K unminified.
  - Is an AMD module, easily loadable by requirejs in both the browser and node.
 
-## What does Agave provide?
+### What does Agave provide?
 
-### Object methods
+#### Object methods
 
-#### .getKeys() 
+##### .getKeys() 
 Returns an array of the object’s keys.
 
-#### .getSize() 
+##### .getSize() 
 Returns the number of properties in the object.
 
-#### .getPath([_array_,_of_,_keys_]) 
+##### .getPath([_array_,_of_,_keys_]) 
 Provided an array of keys, get the value of the nested keys in the object. 
 If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, given:
 
@@ -35,7 +35,7 @@ If any of the keys are missing, return undefined. This is very useful for useful
 
 The following code:
     
-    mockObject.getPath(['baz','zar','zog']    
+    mockObject.getPath(['baz','zar','zog'])
 
 will return:
 
@@ -43,37 +43,37 @@ will return:
     
 Keys, of course, could be strings, array indices, or anything else.
 
-### Array methods
+#### Array methods
 
-#### .contains(_item_) 
+##### .contains(_item_) 
 returns true if the array contains the item.
 
-#### .findItem(_testfunction_) 
+##### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-#### .extend(_newarray_) 
+##### .extend(_newarray_) 
 Adds the items from _newarray_ to the end of this array.
 
-### String methods
+#### String methods
 
-#### .contains(_substring_) 
+##### .contains(_substring_) 
 returns true if a string contains the substring
 
-#### .startsWith(_substring_) 
+##### .startsWith(_substring_) 
 returns true if a string starts with the substring
 
-#### .endsWith(_substring_) 
+##### .endsWith(_substring_) 
 returns true if a string ends with the substring
 
-#### .forEach(_iterationfunction_)
+##### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
-#### .repeat(_times_)
+##### .repeat(_times_)
 Repeat the string _times_ times.
 
-### NodeList methods
+#### NodeList methods
 
-#### .forEach(_iterationfunction_)
+##### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
 
 Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).
@@ -83,37 +83,69 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
       paragraph.innerHTML = 'Hello.';
     })
 
-## Why would I want to use Agave?
+### Why would I want to use Agave?
 
 Agave will make your code shorter and more readable.
 
-## How Does Agave Compare to Sugar.js?
+### How Does Agave Compare to Sugar.js?
 
 [Sugar.js](http://sugarjs.com/) is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
  - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those. 
  - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
 
-## How Does Agave Compare to Underscore.js and Lodash?
+### How Does Agave Compare to Underscore.js and Lodash?
 
  - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation. 
  - Agave doesn’t require a separate string library.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
 
-## But Adding Methods to Inbuilt Objects is Bad!
+### But Adding Methods to Inbuilt Objects is Bad!
 
 Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
-For example, Javascript objects have always had an inbuilt non-enumerable .toString() method. If you run ‘for (var key in someobject)’, ‘toString’ won’t show up as one of the keys because it was non-enumerable. However if a developer using ES3 wanted objects to have a new method - say .myMethod(), and thus created Object.prototype.myMethod(), then myMethod would be enumerable, and things like ‘for (var key in someobject)’ would include ‘myMethod’ as one of the keys. This would break things and was indeed bad.
+Let's look at the problem: open your console and add a method, the traditional way:
 
-**ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the addition of new non-enumerable properties via Object.defineProperty()**
+    Object.prototype.oldStyleMethod = function oldStyleMethod (){}  
 
-And that’s exactly what Agave uses.  As a result, Agave’s methods will never show up in for loops. 
+And make an object:
+
+    var myobject = {};
+
+Watch what happens when we iterate over the object:
+
+    for (var key in myobject) { console.log(key) };
+
+You can see the problem: 'old_style_method' shows up as one of myobject's keys. This will break things and is indeed bad.
+
+But wait a sec: Objects already have some methods out of the box. Like toString():
+
+    console.log(Object.prototype.toString)
+    function toString() { [native code] }
+
+    console.log(Object.prototype.oldStyleMethod)
+    function oldStyleMethod(){}
+
+Why are only our add-on methods showing up as keys? Why don't the native, inbuilt methods appear in our ‘for’ loop?
+
+The answer is that inbuilt methods in Javascript have always been non-enumerable. But in ES3, you never had the ability to make your own non-enumerable methods.
+
+ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the [addition of new non-enumerable properties via Object.defineProperty()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty).
+
+So let’s try again, ES5-style:
+
+    Object.defineProperty( Object.prototype, "newStyleMethod", {value: function newStyleMethod(){}, enumerable: false});
+
+    for (var key in myobject) { console.log(key) };
+
+Hrm, it seems newStyleMethod(), just like toString(), doesn’t interfere with our loops. 
+
+This is exactly what Agave uses.  As a result, Agave’s methods will **never** show up in for loops. 
 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
 
 Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
-
+ 
  - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
  - If however, like most people, your code is filled with things like: 
 
@@ -121,17 +153,21 @@ Another concern may be naming or implementation conflicts - ie, some other code 
 
 Then your code will be improved by using Agave.
 
-        if ( myarray.hasItem(myitem) ) { ... }  
+        if ( myarray.contains(myitem) ) { ... }  
 
-## Using Agave
+### Using Agave
 
-Agave is currently provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/):
+Agave is provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/):
 
     requirejs(['agave'], function () {  
       // Your code here
     })
 
-## Tests
+### I’ve got stuff to add!
+
+Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request. 
+
+### Tests
 
 Install [node.js](http://nodejs.org/), and run:
 
@@ -140,14 +176,14 @@ Install [node.js](http://nodejs.org/), and run:
 
 Inside the folder you downloaded Agave to.
 
-## What About IE8 and Firefox 3 support?
+### What About IE8 and Firefox 3 support?
 
 Sorry, but this isn’t possible. ES3 browsers don’t support Object.defineProperty() and it cannot be emulated via shims.
 
-## License
+### License
 
 [MIT license](https://github.com/mikemaccana/agave/blob/master/MIT-LICENSE.md).
 
-## Author
+### Author
 
 Mike MacCana (mike.maccana@gmail.com)
