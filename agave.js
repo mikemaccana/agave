@@ -77,22 +77,41 @@ define(function () {
     return half + half;
   }
   
-  Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
-  Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
-  Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
-  Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
-  Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
-  Object.defineProperty( Array.prototype, "contains", {value: contains, enumerable: false});
-  Object.defineProperty( String.prototype, "contains", {value: contains, enumerable: false});
-  Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
-  Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
-  Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
-  
-  // Strings don't have .forEach() standard but the one from Array works fine
-  String.prototype.forEach = Array.prototype.forEach
-  
-  // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
-  if ( this.hasOwnProperty('NodeList') ) {
-    Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
+  // All our new methods, what they'll be called and their functions
+  var types = {
+    Array:{
+      findItem:findItem,
+      extend:extend,
+      contains:contains,
+    },
+    Object:{
+      getKeys:getKeys,
+      getSize:getSize,
+      getPath:getPath,
+    },
+    String:{
+      contains:contains,
+      startsWith:startsWith, 
+      endsWith:endsWith,
+      repeat:repeat, 
+      forEach:Array.prototype.forEach // Strings don't have .forEach() standard but the one from Array works fine
+    },
+    NodeList:{
+      forEach:Array.prototype.forEach // Ditto Nodelists
+    }
   }
+    
+  var addMethods = function(global) {
+    for ( var type in types ) {
+      // Not all types exist - specifically NodeLists don't exist in the node global.
+      if ( global.hasOwnProperty(type) ) {
+        for ( var method in types[type] ) {
+          Object.defineProperty( global[type].prototype, method, {value: types[type][method], enumerable: false});                                
+        }
+      }
+    }
+  }
+  
+  addMethods(this)
+
 });
