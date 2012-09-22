@@ -101,5 +101,13 @@ requirejs(['assert', './agave.js'], function (assert) {
       assert.equal(result, 'ahoy')
     })
   })
+  
+  describe('Agave really doesn\'t affect for loops', function(){
+    it ('doesn\'t. really', function(){
+      for ( var key in mockObject ) {
+        assert( ! ['getKeys','getSize','getPath'].contains(key) ) 
+      }
+    })
+  })
 
 })
