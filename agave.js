@@ -77,17 +77,20 @@ define(function () {
     return half + half;
   }
   
+  var arrayClone = function(){return this.slice()}
+
   // All our new methods, what they'll be called and their functions
   var types = {
     Array:{
       findItem:findItem,
       extend:extend,
       contains:contains,
+      clone:arrayClone    
     },
     Object:{
       getKeys:getKeys,
       getSize:getSize,
-      getPath:getPath,
+      getPath:getPath
     },
     String:{
       contains:contains,
