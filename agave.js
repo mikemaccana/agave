@@ -76,12 +76,26 @@ define(function () {
     var half = this.repeat(times / 2);
     return half + half;
   };
+
+  // Clone an object recursively
+  var clone = function() {
+    var newObj = (this instanceof Array) ? [] : {};
+    for (var key in this) {
+      if (this[key] && typeof this[key] == "object") {
+        newObj[key] = this[key].clone();
+      } else {
+        newObj[key] = this[key];
+      }
+    }
+    return newObj;
+  };
   
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
   Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
   Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
   Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
   Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
+  Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: false});
   Object.defineProperty( Array.prototype, "contains", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "contains", {value: contains, enumerable: false});
   Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
