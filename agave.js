@@ -27,7 +27,7 @@ define(function () {
         }
         obj = obj[pathItem];
       }      
-    })
+    });
     return result;
   };
   
@@ -67,7 +67,7 @@ define(function () {
   var extend = function(new_array) {
     Array.prototype.push.apply(this, new_array);
     return this;
-  }
+  };
   
   // string.repeat() repeat a string 'times' times. Borrowed from ES6 shim at https://github.com/paulmillr/es6-shim
   var repeat = function(times) {
@@ -75,7 +75,7 @@ define(function () {
     if (times % 2) return this.repeat(times - 1) + this;
     var half = this.repeat(times / 2);
     return half + half;
-  }
+  };
   
   Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
   Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
@@ -89,10 +89,10 @@ define(function () {
   Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
   
   // Strings don't have .forEach() standard but the one from Array works fine
-  String.prototype.forEach = Array.prototype.forEach
+  String.prototype.forEach = Array.prototype.forEach;
   
   // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
   if ( this.hasOwnProperty('NodeList') ) {
-    Object.defineProperty( this['NodeList'].prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
+    Object.defineProperty( this.NodeList.prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
   }
 });
