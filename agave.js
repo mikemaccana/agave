@@ -122,27 +122,32 @@ define(function () {
     return newObj;
   };
   
-  Object.defineProperty( Array.prototype, "findItem", {value: findItem, enumerable: false});
-  Object.defineProperty( Array.prototype, "extend", {value: extend, enumerable: false});
-  Object.defineProperty( Object.prototype, "getKeys", {value: getKeys, enumerable: false});
-  Object.defineProperty( Object.prototype, "getSize", {value: getSize, enumerable: false});
-  Object.defineProperty( Object.prototype, "getPath", {value: getPath, enumerable: false});
-  Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: false});
-  Object.defineProperty( Array.prototype, "contains", {value: contains, enumerable: false});
-  Object.defineProperty( String.prototype, "contains", {value: contains, enumerable: false});
-  Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
-  Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
-  Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
-  Object.defineProperty( String.prototype, "reverse", {value: reverse, enumerable: false});
-  Object.defineProperty( String.prototype, "leftStrip", {value: leftStrip, enumerable: false});
-  Object.defineProperty( String.prototype, "rightStrip", {value: rightStrip, enumerable: false});
-  Object.defineProperty( String.prototype, "strip", {value: strip, enumerable: false});
-  
+  // Add method as a non-enumerable property on proto with the name methodName
+  var addMethod = function( prot, methodName, method) {
+    Object.defineProperty( prot.prototype, methodName, {value: method, enumerable: false});
+  }
+
+  addMethod(Array,"findItem",findItem);
+  addMethod(Array,"extend",extend);
+  addMethod(Array,"contains",contains);
+  addMethod(Object,"getKeys",getKeys);
+  addMethod(Object,"findItem",findItem);
+  addMethod(Object,"getSize",getSize);
+  addMethod(Object,"getPath",getPath);
+  addMethod(Object,"contains",contains);
+  addMethod(String,"endsWith",endsWith);
+  addMethod(String,"startsWith",startsWith);
+  addMethod(String,"repeat",repeat);
+  addMethod(String,"reverse",reverse);
+  addMethod(String,"leftStrip",leftStrip);
+  addMethod(String,"rightStrip",rightStrip);
+  addMethod(String,"strip",strip);
+
   // Strings don't have .forEach() standard but the one from Array works fine
   String.prototype.forEach = Array.prototype.forEach;
   
   // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
   if ( this.hasOwnProperty('NodeList') ) {
-    Object.defineProperty( this.NodeList.prototype, "forEach", {value: Array.prototype.forEach, enumerable: false});            
+    addMethod(this.NodeList.prototype,"forEach",Array.prototype.forEach);          
   }
 });
