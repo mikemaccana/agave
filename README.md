@@ -35,13 +35,20 @@ If any of the keys are missing, return undefined. This is very useful for useful
 
 The following code:
     
-    mockObject.getPath(['baz','zar','zog']    
+    mockObject.getPath(['baz','zar','zog']
+
+or, alternatively:
+
+    mockObject.getPath('/baz/zar/zog')
 
 will return:
 
     'something useful'
     
 Keys, of course, could be strings, array indices, or anything else.
+
+#### .clone() 
+Returns a shallow clone of the object.
 
 ### Array methods
 
@@ -65,11 +72,23 @@ returns true if a string starts with the substring
 #### .endsWith(_substring_) 
 returns true if a string ends with the substring
 
+#### .strip(_chars_) 
+returns the string, with the specified chars removed from the beginning and end.
+
+#### .leftStrip(_chars_) 
+returns the string, with the specified chars removed from the beginning.
+
+#### .rightStrip(_chars_) 
+returns the string, with the specified chars removed from the end.
+
 #### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
 #### .repeat(_times_)
 Repeat the string _times_ times.
+
+#### .reverse()
+Returns a reversed version of the string.
 
 ### NodeList methods
 

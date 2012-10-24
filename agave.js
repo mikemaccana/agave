@@ -10,13 +10,45 @@ define(function () {
   var getSize = function() {
     return Object.keys(this).length;
   };
-  
+
+  // string.reverse()
+  var reverse = function() {
+    return this.split("").reverse().join("");
+  };
+
+  // string.leftStrip(stripChars) returns the string with the leading chars removed
+  var leftStrip = function(stripChars) {
+    var result = this;
+    while ( true ) {
+      if ( ! stripChars.contains(result.charAt(0)) ) {
+        return result;
+      } else {
+        result = result.slice(1);
+      }
+    }
+  };
+
+  // string.rightStrip(stripChars) returns the string with the trailing chars removed
+  var rightStrip = function(stripChars) {
+    return this.reverse().leftStrip(stripChars).reverse();
+  }
+
+  // string.strip(stripChars) returns the string with the leading and trailing chars removed
+  var strip = function(stripChars) {
+    return this.leftStrip(stripChars).rightStrip(stripChars);
+  }
+ 
   // object.getPath - get the value of the nested keys provided in the object. 
   // If any are missing, return undefined. Used for checking JSON results.  
   var getPath = function(pathItems) {
     var obj = this;
+    var delim = '/';
     var result;
     var still_checking = true;
+    // Handle Unix style paths
+    if ( typeof(pathItems) === 'string' ) {
+      pathItems = pathItems.strip(delim).split(delim);
+    }
     pathItems.forEach( function(pathItem) {
       if ( still_checking ) {
         if ( ! obj.hasOwnProperty(pathItem) ) {
@@ -101,6 +133,10 @@ define(function () {
   Object.defineProperty( String.prototype, "endsWith", {value: endsWith, enumerable: false});
   Object.defineProperty( String.prototype, "startsWith", {value: startsWith, enumerable: false});
   Object.defineProperty( String.prototype, "repeat", {value: repeat, enumerable: false});
+  Object.defineProperty( String.prototype, "reverse", {value: reverse, enumerable: false});
+  Object.defineProperty( String.prototype, "leftStrip", {value: leftStrip, enumerable: false});
+  Object.defineProperty( String.prototype, "rightStrip", {value: rightStrip, enumerable: false});
+  Object.defineProperty( String.prototype, "strip", {value: strip, enumerable: false});
   
   // Strings don't have .forEach() standard but the one from Array works fine
   String.prototype.forEach = Array.prototype.forEach;
