@@ -123,16 +123,22 @@ define(function () {
   };
 
   // Return array of an elements parent elements from closest to farthest
-  var getParents = function() {
+  var getParents = function(selector) {
     var parents = [];
     var parent = this.parentNode;
-    while (parent !== null) {
-      var o = parent;        
-      parents.push(o);
-      parent = o.parentNode;
+    // Parent will eventually be a HTMLDocument which has no .matches()
+    while ( parent && parent.constructor.toString().contains('Element') ) {
+      if ( selector ) {
+        if ( parent.matches(selector) ) {
+          parents.push(parent);
+        } 
+      } else {
+        parents.push(parent);        
+      } 
+      parent = parent.parentNode;
     }
     return parents;
-  };
+  }
 
   // Polyfill if Element.prototype.matches doesn't exist.
   var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
