@@ -121,33 +121,45 @@ define(function () {
     }
     return newObj;
   };
+
+  // Return array of an elements parent elements from closest to farthest
+  var getParents = function() {
+    var parents = [];
+    var parent = this.parentNode;
+    while (parent !== null) {
+        var o = parent;        
+        parents.push(o);
+        parent = o.parentNode;
+    }
+    return parents;
+  }
   
   // Add method as a non-enumerable property on proto with the name methodName
-  var addMethod = function( prot, methodName, method) {
-    Object.defineProperty( prot.prototype, methodName, {value: method, enumerable: false});
+  var addMethod = function( obj, methodName, method) {
+    // Eg, NodeLists and Elements don't always exist on all JS implementations
+    if ( obj ) {
+      Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
+    }  
   }
 
-  addMethod(Array,"findItem",findItem);
-  addMethod(Array,"extend",extend);
-  addMethod(Array,"contains",contains);
-  addMethod(Object,"getKeys",getKeys);
-  addMethod(Object,"findItem",findItem);
-  addMethod(Object,"getSize",getSize);
-  addMethod(Object,"getPath",getPath);
-  addMethod(Object,"contains",contains);
-  addMethod(String,"endsWith",endsWith);
-  addMethod(String,"startsWith",startsWith);
-  addMethod(String,"repeat",repeat);
-  addMethod(String,"reverse",reverse);
-  addMethod(String,"leftStrip",leftStrip);
-  addMethod(String,"rightStrip",rightStrip);
-  addMethod(String,"strip",strip);
+  addMethod(this.Array,"findItem",findItem);
+  addMethod(this.Array,"extend",extend);
+  addMethod(this.Array,"contains",contains);
+  addMethod(this.Object,"getKeys",getKeys);
+  addMethod(this.Object,"findItem",findItem);
+  addMethod(this.Object,"getSize",getSize);
+  addMethod(this.Object,"getPath",getPath);
+  addMethod(this.Object,"contains",contains);
+  addMethod(this.String,"endsWith",endsWith);
+  addMethod(this.String,"startsWith",startsWith);
+  addMethod(this.String,"repeat",repeat);
+  addMethod(this.String,"reverse",reverse);
+  addMethod(this.String,"leftStrip",leftStrip);
+  addMethod(this.String,"rightStrip",rightStrip);
+  addMethod(this.String,"strip",strip);
+  addMethod(this.Element,"getParents",getParents);
 
-  // Strings don't have .forEach() standard but the one from Array works fine
-  String.prototype.forEach = Array.prototype.forEach;
-  
-  // The existing array.forEach() works fine for NodeLists too (if our JS environment has NodeLists)
-  if ( this.hasOwnProperty('NodeList') ) {
-    addMethod(this.NodeList.prototype,"forEach",Array.prototype.forEach);          
-  }
+  // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
+  addMethod(this.String,"forEach",Array.prototype.forEach);
+  addMethod(this.NodeList,"forEach",Array.prototype.forEach);    
 });
