@@ -134,6 +134,37 @@ define(function () {
     return parents;
   }
   
+  var newMethods = {
+    'Array':{
+      'findItem':findItem,
+      'extend':extend,
+      'contains':contains
+    },
+    'Object':{
+      'getKeys':getKeys,
+      'findItem':findItem,
+      'getSize':getSize,
+      'getPath':getPath,
+      'contains':contains,
+    },
+    'String':{
+      'endsWith':endsWith,
+      'startsWith':startsWith,
+      'repeat':repeat,
+      'reverse':reverse,
+      'leftStrip':leftStrip,
+      'rightStrip':rightStrip,
+      'strip':strip,
+      'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
+    },
+    'Element':{
+      'getParents':getParents
+    },
+    'NodeList':{
+      'forEach':Array.prototype.forEach
+    },
+  }
+
   // Add method as a non-enumerable property on proto with the name methodName
   var addMethod = function( obj, methodName, method) {
     // Eg, NodeLists and Elements don't always exist on all JS implementations
@@ -142,24 +173,11 @@ define(function () {
     }  
   }
 
-  addMethod(this.Array,"findItem",findItem);
-  addMethod(this.Array,"extend",extend);
-  addMethod(this.Array,"contains",contains);
-  addMethod(this.Object,"getKeys",getKeys);
-  addMethod(this.Object,"findItem",findItem);
-  addMethod(this.Object,"getSize",getSize);
-  addMethod(this.Object,"getPath",getPath);
-  addMethod(this.Object,"contains",contains);
-  addMethod(this.String,"endsWith",endsWith);
-  addMethod(this.String,"startsWith",startsWith);
-  addMethod(this.String,"repeat",repeat);
-  addMethod(this.String,"reverse",reverse);
-  addMethod(this.String,"leftStrip",leftStrip);
-  addMethod(this.String,"rightStrip",rightStrip);
-  addMethod(this.String,"strip",strip);
-  addMethod(this.Element,"getParents",getParents);
+  for ( var obj in newMethods ) {
+    for ( var method in newMethods[obj] ) {
+      // console.log(obj, method, newMethods[obj][method])
+      addMethod(this[obj], method, newMethods[obj][method]);
+    } 
+  }
 
-  // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
-  addMethod(this.String,"forEach",Array.prototype.forEach);
-  addMethod(this.NodeList,"forEach",Array.prototype.forEach);    
 });
