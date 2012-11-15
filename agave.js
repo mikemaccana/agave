@@ -134,7 +134,7 @@ define(function () {
     return parents;
   };
 
-  // Polyfill if Element.prototype.Matches doesn't exist.
+  // Polyfill if Element.prototype.matches doesn't exist.
   var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
   var newMethods = {
@@ -158,6 +158,7 @@ define(function () {
       'leftStrip':leftStrip,
       'rightStrip':rightStrip,
       'strip':strip,
+      'contains':contains,
       'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
     },
     'Element':{
