@@ -31,12 +31,12 @@ define(function () {
   // string.rightStrip(stripChars) returns the string with the trailing chars removed
   var rightStrip = function(stripChars) {
     return this.reverse().leftStrip(stripChars).reverse();
-  }
+  };
 
   // string.strip(stripChars) returns the string with the leading and trailing chars removed
   var strip = function(stripChars) {
     return this.leftStrip(stripChars).rightStrip(stripChars);
-  }
+  };
  
   // object.getPath - get the value of the nested keys provided in the object. 
   // If any are missing, return undefined. Used for checking JSON results.  
@@ -132,8 +132,8 @@ define(function () {
       parent = o.parentNode;
     }
     return parents;
-  }
-  
+  };
+
   var newMethods = {
     'Array':{
       'findItem':findItem,
@@ -145,7 +145,7 @@ define(function () {
       'findItem':findItem,
       'getSize':getSize,
       'getPath':getPath,
-      'contains':contains,
+      'contains':contains
     },
     'String':{
       'endsWith':endsWith,
@@ -162,8 +162,8 @@ define(function () {
     },
     'NodeList':{
       'forEach':Array.prototype.forEach
-    },
-  }
+    }
+  };
 
   // Add method as a non-enumerable property on obj with the name methodName
   var addMethod = function( obj, methodName, method) {
@@ -171,11 +171,11 @@ define(function () {
     if ( obj ) {
       Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
     }  
-  }
+  };
 
   for ( var obj in newMethods ) {
     for ( var method in newMethods[obj] ) {
-      addMethod(this[obj], method, newMethods[obj][method]);
+      addMethod(this[obj], method, newMethods[obj][method]);      
     } 
   }
 
