@@ -104,9 +104,13 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
 
 ### Element methods
 
-### .getParents()
+### .matches(_selector_)
 
-Returns a list of an element’s parents, from closest to farthest ancestor.
+Returns true if the element matches the selector provided.
+
+### .getParents(_selector_)
+
+Returns a list of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
 
 ## Why would I want to use Agave?
 
@@ -153,9 +157,9 @@ Another concern may be naming or implementation conflicts - ie, another library 
 
 ## Using Agave
 
-Agave is currently provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/):
+Agave is currently provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
-    requirejs(['agave'], function () {  
+    define('yourmodulename', ['agave'], function () {  
       // Your code here
     })
 
