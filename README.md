@@ -102,6 +102,12 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
       paragraph.innerHTML = 'Hello.';
     })
 
+### Element methods
+
+### .getParents()
+
+Returns a list of an element’s parents, from closest to farthest ancestor.
+
 ## Why would I want to use Agave?
 
 Agave will make your code shorter and more readable.
@@ -121,6 +127,12 @@ Agave will make your code shorter and more readable.
 
 ## But Adding Methods to Inbuilt Objects is Bad!
 
+There are two common concerns raised around this issue. Let’s look at them both:
+
+### Adding methods to objects is bad because they’ll show up when iterating over the object
+
+This was the traditional and most common objectation to adding methods in ES3 days.
+
 Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
 For example, Javascript objects have always had an inbuilt non-enumerable .toString() method. If you run ‘for (var key in someobject)’, ‘toString’ won’t show up as one of the keys because it was non-enumerable. However if a developer using ES3 wanted objects to have a new method - say .myMethod(), and thus created Object.prototype.myMethod(), then myMethod would be enumerable, and things like ‘for (var key in someobject)’ would include ‘myMethod’ as one of the keys. This would break things and was indeed bad.
@@ -131,16 +143,13 @@ And that’s exactly what Agave uses.  As a result, Agave’s methods will never
 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
 
-Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
+### But what about future compatibility?
+
+Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
 
  - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
- - If however, like most people, your code is filled with things like: 
-
-        if ( myarray.indexof(myitem) !== −1 ) { ... }
-
-Then your code will be improved by using Agave.
-
-        if ( myarray.hasItem(myitem) ) { ... }  
+ - We track ES6 updates. 
+ - The small chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is a better price to pay than ugly, long code and with punctuation littered everywhere. 
 
 ## Using Agave
 

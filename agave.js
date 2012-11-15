@@ -127,9 +127,9 @@ define(function () {
     var parents = [];
     var parent = this.parentNode;
     while (parent !== null) {
-        var o = parent;        
-        parents.push(o);
-        parent = o.parentNode;
+      var o = parent;        
+      parents.push(o);
+      parent = o.parentNode;
     }
     return parents;
   }
@@ -165,9 +165,9 @@ define(function () {
     },
   }
 
-  // Add method as a non-enumerable property on proto with the name methodName
+  // Add method as a non-enumerable property on obj with the name methodName
   var addMethod = function( obj, methodName, method) {
-    // Eg, NodeLists and Elements don't always exist on all JS implementations
+    // Check - NodeLists and Elements don't always exist on all JS implementations
     if ( obj ) {
       Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
     }  
