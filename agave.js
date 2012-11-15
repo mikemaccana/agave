@@ -134,6 +134,9 @@ define(function () {
     return parents;
   };
 
+  // Polyfill if Element.prototype.Matches doesn't exist.
+  var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
+
   var newMethods = {
     'Array':{
       'findItem':findItem,
@@ -158,7 +161,8 @@ define(function () {
       'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
     },
     'Element':{
-      'getParents':getParents
+      'getParents':getParents,
+      'matches':prefixedMatchesMethod
     },
     'NodeList':{
       'forEach':Array.prototype.forEach
@@ -169,7 +173,10 @@ define(function () {
   var addMethod = function( obj, methodName, method) {
     // Check - NodeLists and Elements don't always exist on all JS implementations
     if ( obj ) {
-      Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
+      // Don't add if the method already exists
+      if ( ! obj.method ) {
+        Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
+      }  
     }  
   };
 
