@@ -138,7 +138,7 @@ define(function () {
       parent = parent.parentNode;
     }
     return parents;
-  }
+  };
 
   // Polyfill if Element.prototype.matches doesn't exist.
   var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
