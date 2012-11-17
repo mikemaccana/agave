@@ -6,7 +6,7 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
 
  - Adds things you use every day. See 'What does Agave provide?' below.
  - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9/10 and node.js. Agave always leverages ES5’s fast native methods, and ES5 specific features allow us to safely extend inbuilt objects. Unlike other libraries, Agave is free of code to create semi-featured ES5 implementations in ES3 browsers like IE8.
- - Is tiny. Around 2K unminified.
+ - Is tiny. Around 1.5K unminified.
  - Is an AMD module, easily loadable by requirejs in both the browser and node.
 
 ### What does Agave provide?
@@ -37,6 +37,10 @@ The following code:
     
     mockObject.getPath(['baz','zar','zog'])
 
+or, alternatively:
+
+    mockObject.getPath('/baz/zar/zog')
+
 will return:
 
     'something useful'
@@ -44,6 +48,9 @@ will return:
 Keys, of course, could be strings, array indices, or anything else.
 
 #### Array methods
+
+##### .clone() 
+Returns a shallow clone of the object.
 
 ##### .contains(_item_) 
 returns true if the array contains the item.
@@ -65,6 +72,15 @@ returns true if a string starts with the substring
 ##### .endsWith(_substring_) 
 returns true if a string ends with the substring
 
+##### .strip(_chars_) 
+returns the string, with the specified chars removed from the beginning and end.
+
+##### .leftStrip(_chars_) 
+returns the string, with the specified chars removed from the beginning.
+
+##### .rightStrip(_chars_) 
+returns the string, with the specified chars removed from the end.
+
 ##### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
@@ -72,6 +88,8 @@ Runs _iterationfunction_ over each character in the String. Just like ES5’s in
 Repeat the string _times_ times.
 
 #### NodeList methods
+##### .reverse()
+Returns a reversed version of the string.
 
 ##### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
@@ -83,7 +101,17 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
       paragraph.innerHTML = 'Hello.';
     })
 
-### Why would I want to use Agave?
+#### Element methods
+
+##### .matches(_selector_)
+
+Returns true if the element matches the selector provided.
+
+##### .getParents(_selector_)
+
+Returns a list of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
+
+## Why would I want to use Agave?
 
 Agave will make your code shorter and more readable.
 
@@ -101,6 +129,12 @@ Agave will make your code shorter and more readable.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
 
 ### But Adding Methods to Inbuilt Objects is Bad!
+
+There are two common concerns raised around this issue. Let’s look at them both:
+
+### Adding methods to objects is bad because they’ll show up when iterating over the object
+
+This was the traditional and most common objectation to adding methods in ES3 days.
 
 Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
@@ -144,22 +178,19 @@ This is exactly what Agave uses.  As a result, Agave’s methods will **never** 
 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
 
-Another concern may be naming or implementation conflicts - ie, some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
- 
+### But what about future compatibility?
+
+Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
+
  - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
- - If however, like most people, your code is filled with things like: 
-
-        if ( myarray.indexof(myitem) !== −1 ) { ... }
-
-Then your code will be improved by using Agave.
-
-        if ( myarray.contains(myitem) ) { ... }  
+ - We track ES6 updates. 
+ - The small chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is a better price to pay than ugly, long code and with punctuation littered everywhere. 
 
 ### Using Agave
 
-Agave is provided as an AMD module. You’d normally load it (either in the browser or on node.js) using [RequireJS](http://requirejs.org/):
+Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
-    requirejs(['agave'], function () {  
+    define('yourmodulename', ['agave'], function () {  
       // Your code here
     })
 

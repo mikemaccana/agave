@@ -52,6 +52,30 @@ requirejs(['assert', './agave.js'], function (assert) {
     })
   })
   
+  describe('String.reverse', function(){
+    it('reverses strings accurately', function(){
+      assert.equal('Hello world'.reverse(), 'dlrow olleH')
+    })
+  })
+
+  describe('String.leftStrip', function(){
+    it('strips from the left accurately', function(){
+      assert.equal('Hello world'.leftStrip('Hle'), 'o world')
+    })
+  })
+
+  describe('String.rightStrip', function(){
+    it('strips from the right accurately', function(){
+      assert.equal('Hello world'.rightStrip('ldr'), 'Hello wo')
+    })
+  })
+
+  describe('String.strip', function(){
+    it('strips from the both sides accurately', function(){
+      assert.equal('Hello world'.strip('Hld'), 'ello wor')
+    })
+  })
+
   var mockObject = {
     foo: 'bar',
     baz: {
@@ -70,7 +94,7 @@ requirejs(['assert', './agave.js'], function (assert) {
   describe('Object.getKeys', function(){
     it('fetches keys accurately', function(){
       assert.deepEqual(mockObject.getKeys(), ["foo","baz","null"] )
-    })  
+    })
   })
   
   describe('Object.getSize', function(){
@@ -89,16 +113,16 @@ requirejs(['assert', './agave.js'], function (assert) {
   
   describe('Object.getPath', function(){
     it('returns undefined when a value is missing', function(){
-      var result = mockObject.getPath(['foo','pineapple']);
-      assert.equal(result, undefined);       
+      assert.equal(mockObject.getPath(['foo','pineapple']), undefined);       
     })    
     it('returns the value when the provided keys exist', function(){
-      var result = mockObject.getPath(['baz','zar','zog']);
-      assert.equal(result, 'victory')
+      assert.equal(mockObject.getPath(['baz','zar','zog']), 'victory');
     })
     it('returns the value when the provided keys exist, even if null is on the path', function(){
-      var result = mockObject.getPath([null,'yarr','parrot']);
-      assert.equal(result, 'ahoy')
+      assert.equal(mockObject.getPath([null,'yarr','parrot']), 'ahoy');
+    })
+    it('works using Unix-style paths', function(){
+      assert.equal(mockObject.getPath('/baz/zar/zog'), 'victory');
     })
   })
   
