@@ -5,7 +5,7 @@
 Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
 
  - Adds things you use every day. See 'What does Agave provide?' below.
- - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9/10 and node.js. Agave always leverages ES5’s fast native methods, and ES5 specific features allow us to safely extend inbuilt objects. Unlike other libraries, Agave is free of code to create semi-featured ES5 implementations in ES3 browsers like IE8.
+ - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave always leverages ES5’s fast native methods, and ES5 specific features allow us to safely extend inbuilt objects. Unlike other libraries, Agave is free of code to create semi-featured ES5 implementations in ES3 browsers like IE8.
  - Is tiny. Around 1.5K unminified.
  - Is an AMD module, easily loadable by requirejs in both the browser and node.
 
@@ -180,19 +180,33 @@ So if you’re OK with Agave’s requirements - ie, you support only ES5 environ
 
 ### But what about future compatibility?
 
-Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some other code that uses the same method name but does something different. Agave, like ES5 itself, uses very specific method naming. 
+Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some other code that uses the same method name but does something different. That said:
 
+ - __Agave allows you to prefix every method it provides__. Just start it with:
+
+    agave.enable(this, ‘av’);
+
+or the prefix of your choice to have all the methods prefixed with whatever string you like.
+    
  - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
  - We track ES6 updates. 
- - The small chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is a better price to pay than ugly, long code and with punctuation littered everywhere. 
+ - The small chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is better than definitely ugly, long code now. 
+
+
 
 ### Using Agave
 
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
-    define('yourmodulename', ['agave'], function () {  
-      // Your code here
+    define('yourmodulename', ['agave'], function () { 
+      // Start Agave, tell it where our global is. Optionally you can also provide a prefix or your choice.
+      agave.start(this); 
+      
+      // Your code here...
+      
     })
+
+All the methods above are now avaiable.
 
 ### I’ve got stuff to add!
 

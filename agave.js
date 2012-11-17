@@ -1,6 +1,9 @@
 // Agave.JS
 
 define(function () {
+
+  // Set this to a string - we like 'av' - to prefix all method names. 
+  var PREFIX = null; // 'av'; 
   // object.getKeys() returns an array of keys
   var getKeys = function(){
     return Object.keys(this);
@@ -122,7 +125,7 @@ define(function () {
     return newObj;
   };
 
-  var arrayClone = function(){return this.slice()};
+  var arrayClone = function(){return this.slice();};
 
   // Return array of an elements parent elements from closest to farthest
   var getParents = function(selector) {
@@ -145,40 +148,6 @@ define(function () {
   // Polyfill if Element.prototype.matches doesn't exist.
   var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
-  var newMethods = {
-    'Array':{
-      'findItem':findItem,
-      'extend':extend,
-      'contains':contains,
-      'clone':arrayClone
-    },
-    'Object':{
-      'getKeys':getKeys,
-      'findItem':findItem,
-      'getSize':getSize,
-      'getPath':getPath,
-      'contains':contains
-    },
-    'String':{
-      'endsWith':endsWith,
-      'startsWith':startsWith,
-      'repeat':repeat,
-      'reverse':reverse,
-      'leftStrip':leftStrip,
-      'rightStrip':rightStrip,
-      'strip':strip,
-      'contains':contains,
-      'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
-    },
-    'Element':{
-      'getParents':getParents,
-      'matches':prefixedMatchesMethod
-    },
-    'NodeList':{
-      'forEach':Array.prototype.forEach
-    }
-  };
-
   // Add method as a non-enumerable property on obj with the name methodName
   var addMethod = function( obj, methodName, method) {
     // Check - NodeLists and Elements don't always exist on all JS implementations
@@ -190,10 +159,55 @@ define(function () {
     }  
   };
 
-  for ( var obj in newMethods ) {
-    for ( var method in newMethods[obj] ) {
-      addMethod(this[obj], method, newMethods[obj][method]);      
-    } 
-  }
+  // Extend objects with Agave methods, using 
+  var enable = function(global, prefix){
+    var newMethods = {
+      'Array':{
+        'findItem':findItem,
+        'extend':extend,
+        'contains':contains,
+        'clone':arrayClone
+      },
+      'Object':{
+        'getKeys':getKeys,
+        'findItem':findItem,
+        'getSize':getSize,
+        'getPath':getPath,
+        'contains':contains
+      },
+      'String':{
+        'endsWith':endsWith,
+        'startsWith':startsWith,
+        'repeat':repeat,
+        'reverse':reverse,
+        'leftStrip':leftStrip,
+        'rightStrip':rightStrip,
+        'strip':strip,
+        'contains':contains,
+        'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
+      },
+      'Element':{
+        'getParents':getParents,
+        'matches':prefixedMatchesMethod
+      },
+      'NodeList':{
+        'forEach':Array.prototype.forEach
+      }
+    };
+    for ( var obj in newMethods ) {
+      for ( var method in newMethods[obj] ) {
+        if ( prefix ) { 
+          methodName = prefix+method;
+        } else {
+          methodName = method;
+        }
+        addMethod(global[obj], methodName, newMethods[obj][method]);      
+      } 
+    }
+  };
 
+  return {
+    enable:enable
+  };
+  
 });
