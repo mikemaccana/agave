@@ -88,8 +88,9 @@ Runs _iterationfunction_ over each character in the String. Just like ES5’s in
 Repeat the string _times_ times.
 
 #### NodeList methods
+
 ##### .reverse()
-Returns a reversed version of the string.
+Returns a reversed version of the nodeList.
 
 ##### .forEach(_iterationfunction_)
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
@@ -103,9 +104,17 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
 
 #### Element methods
 
+##### .createChild(name, attributes, innerText)
+
+Make a new child element, with the tag name, any attributes, and inner text specified.
+
 ##### .matches(_selector_)
 
 Returns true if the element matches the selector provided.
+
+##### .applyStyles(_styles_)
+
+Apply the styles mentioned to the element.
 
 ##### .getParents(_selector_)
 

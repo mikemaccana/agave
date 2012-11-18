@@ -127,6 +127,28 @@ define(function () {
 
   var arrayClone = function(){return this.slice();};
 
+  // Add a new element as a child of this element
+  var createChild = function(name, attributes, innerText) {
+    var newElement = document.createElement(name);
+    if ( attributes ) {
+      for (var attribute in attributes) {
+        newElement.setAttribute(attribute, attributes[attribute])
+      }  
+    }
+    if ( innerText ) {
+      newElement.innerText = innerText;
+    }
+    return this.appendChild(newElement);
+  } 
+
+  // Apply the CSS styles
+  var applyStyles = function(styles) {
+    for ( var style in styles ) {
+      this.style[style] = styles[style]
+    }
+    return this
+  } 
+
   // Return array of an elements parent elements from closest to farthest
   var getParents = function(selector) {
     var parents = [];
@@ -187,11 +209,14 @@ define(function () {
         'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
       },
       'Element':{
+        'createChild':createChild,
         'getParents':getParents,
-        'matches':prefixedMatchesMethod
+        'matches':prefixedMatchesMethod,
+        'applyStyles':applyStyles
       },
       'NodeList':{
-        'forEach':Array.prototype.forEach
+        'forEach':Array.prototype.forEach,
+        'reverse':Array.prototype.reverse
       }
     };
     for ( var obj in newMethods ) {
