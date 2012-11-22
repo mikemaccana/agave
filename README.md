@@ -135,17 +135,16 @@ Agave will make your code shorter and more readable.
 
  - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation. 
  - Agave doesn’t require a separate string library.
- - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
+ - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3->ES5 shims.
 
-### But Adding Methods to Inbuilt Objects is Bad!
+### I read that adding methods to prototypes is bad
 
-There are two common concerns raised around this issue. Let’s look at them both:
+Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. [Andrew Dupont’s talk at JSConf 2011](http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542) provides an excellent overview on how the JS community has approached this topic over time.
 
-### Adding methods to objects is bad because they’ll show up when iterating over the object
+### Q. Will Agave methods will show up when iterating over objects?
+### A. Methods won’t show up when iterating over objects.
 
-This was the traditional and most common objectation to adding methods in ES3 days.
-
-Adding methods to inbuilt objects _was_ bad, back in ES3 days, on browsers like IE8 and Firefox 3. There wasn’t a way for developers to add their own non-enumerable properties to inbuilt objects. 
+Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
 Let's look at the problem: open your console and add a method, the traditional way:
 
@@ -187,21 +186,28 @@ This is exactly what Agave uses.  As a result, Agave’s methods will **never** 
 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
 
-### But what about future compatibility?
+### Q. Future ES versions or other libraries might use the same method names to do different stuff
+### A. That’s why we let you prefix all method names
 
-Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some other code that uses the same method name but does something different. That said:
+Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why  __Agave allows you to prefix every method it provides__. Just start it with:
 
- - __Agave allows you to prefix every method it provides__. Just start it with:
-
-    agave.enable(this, ‘av’);
+    agave.enable(‘av’);
 
 or the prefix of your choice to have all the methods prefixed with whatever string you like.
-    
- - If your project already has a String.prototype.contains(), and it does something other than tell you whether a string contains a substring, you should consider many things, the least of which is whether you should use this library.
- - We track ES6 updates. 
- - The small chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is better than definitely ugly, long code now. 
 
+Using a prefix is the preferred mechanism for libraries that depend on Agave,
 
+You may still prefer unprefixed, for the following reasons:
+ - We track ES6 updates and specifically try to avoid conflicts with what’s proposed.
+ - The chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is better than longer code now. 
+
+### Everything’s an Object in JS
+
+Everything’s an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there’s a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects. 
+
+When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it’s expected behavior.
+
+You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() or it’s equivalent.
 
 ### Using Agave
 
