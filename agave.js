@@ -182,7 +182,8 @@ define(function () {
   };
 
   // Extend objects with Agave methods, using 
-  var enable = function(global, prefix){
+  var enable = function(prefix){
+    var global = this;
     var newMethods = {
       'Array':{
         'findItem':findItem,
@@ -229,7 +230,7 @@ define(function () {
         addMethod(global[obj], methodName, newMethods[obj][method]);      
       } 
     }
-  };
+  }.bind();
 
   return {
     enable:enable

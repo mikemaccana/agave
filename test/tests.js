@@ -7,7 +7,7 @@ var requirejs = require('requirejs');
 requirejs.config({ nodeRequire: require, baseUrl: "lib" });
 requirejs(['assert', './agave.js'], function (assert, agave) { 
 
-  agave.enable(this);
+  agave.enable();
 
   describe('Array.contains', function(){
     it('fetches the item accurately', function(){
@@ -137,7 +137,7 @@ requirejs(['assert', './agave.js'], function (assert, agave) {
   })
 
   describe('Prefixing', function(){
-    agave.enable(this, 'av');
+    agave.enable('av');
     it('allows methods to be found under the prefix', function(){
       assert('hamparty'.avcontains('art') )
     });
