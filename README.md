@@ -201,7 +201,8 @@ You may still prefer unprefixed, for the following reasons:
  - We track ES6 updates and specifically try to avoid conflicts with what’s proposed.
  - The chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is better than longer code now. 
 
-### Everything’s an Object in JS
+### Q. There are new methods on my window object!
+### A. Yes, window is an object. This is how JS works.
 
 Everything’s an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there’s a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects. 
 
