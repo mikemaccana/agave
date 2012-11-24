@@ -1,3 +1,4 @@
+/*jshint multistr:true */
 // Tests. Mocha/assert style. See 
 // http://visionmedia.github.com/mocha/ 
 // http://nodejs.org/docs/latest/api/assert.html
@@ -5,8 +6,43 @@
 // RequireJS setup
 var requirejs = require('requirejs');
 requirejs.config({ nodeRequire: require, baseUrl: "lib" });
-requirejs(['assert', './agave.js'], function (assert, agave) { 
+requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  { 
 
+  // Set up a global.document with a DOM in the same way a browser has
+  var setupDOM = function(documentText) {
+    var document = jsdom.jsdom(documentText, null, {
+      features: {
+        QuerySelector: true
+      }
+    }),
+    window = document.createWindow();
+    ['Element','NodeList','document'].forEach(function(obj){
+      global[obj] = window[obj]
+    })
+  }
+
+  var mockHTML = ' \
+  <html> \
+  <head> \
+  </head> \
+  <body> \
+    <article> \
+      <heading></heading> \
+      <author></author> \
+      <p> \
+        Carles portland banh mi lomo twee, salvia mlkshk iphone williamsburg leggings. Swag kale chips carles viral, messenger bag put a bird on it seitan fingerstache.  \
+      </p> \
+      <p>Narwhal bicycle rights keffiyeh beard.</p> \
+      <p>Pork belly beard pop-up kale chips.</p> \
+      <p>Authentic PBR skateboard carles four loko</p> \
+      <p>Thundercats organic four loko +1, portland cred ethical next level quinoa DIY narwhal</p> \
+    </article> \
+  </body> \
+  </html> \
+  ' 
+  
+  setupDOM(mockHTML);
+   
   agave.enable();
 
   describe('Array.contains', function(){
@@ -143,4 +179,16 @@ requirejs(['assert', './agave.js'], function (assert, agave) {
     });
   });
 
+  describe('Element.createChild', function(){
+    var sillyText = 'ethical messenger bag'
+    var article = document.querySelector('article')
+    article.createChild('p',{'id':'testpara'},sillyText)
+    it('creates children with the specified attributes', function(){
+      var paraCount = document.querySelector('#testpara')
+      assert(paraCount)
+    })
+    it('creates children with the specified text', function(){
+      assert(document.querySelector('#testpara').innerText === sillyText )
+    })
+  })
 })
