@@ -1,9 +1,22 @@
-// Agave.JS
+// I'm a UMD module (works in RequireJS and CommonJS-like environments)
+// See https://github.com/umdjs
+(function (root, factory) {
+  if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like enviroments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(factory);
+  } else {
+    // Browser globals (root is window)
+    root.returnExports = factory();
+  }
+}(this, function () {
 
-define(function () {
+  // Agave.JS
 
-  // Set this to a string - we like 'av' - to prefix all method names. 
-  var PREFIX = null; // 'av'; 
   // object.getKeys() returns an array of keys
   var getKeys = function(){
     return Object.keys(this);
@@ -132,22 +145,22 @@ define(function () {
     var newElement = document.createElement(name);
     if ( attributes ) {
       for (var attribute in attributes) {
-        newElement.setAttribute(attribute, attributes[attribute])
+        newElement.setAttribute(attribute, attributes[attribute]);
       }  
     }
     if ( text ) {
       newElement.textContent = text;
     }
     return this.appendChild(newElement);
-  } 
+  };
 
   // Apply the CSS styles
   var applyStyles = function(styles) {
     for ( var style in styles ) {
-      this.style[style] = styles[style]
+      this.style[style] = styles[style];
     }
-    return this
-  } 
+    return this;
+  };
 
   // Return array of an elements parent elements from closest to farthest
   var getParents = function(selector) {
@@ -233,8 +246,10 @@ define(function () {
     }
   }.bind();
 
+  // Just return a value to define the module export.
+  // This example returns an object, but the module
+  // can return a function as the exported value.
   return {
     enable:enable
   };
-  
-});
+}));

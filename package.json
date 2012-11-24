@@ -1,0 +1,27 @@
+{
+  "name": "agave",
+  "version": "0.1.1",
+  "author": "Mike MacCana <mike.maccana@gmail.com>",
+  "description": "Safely extends native JS objects with helpful, intuitive methods.",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikemaccana/agave.git"
+  },
+  "keywords": [
+    "agave",
+    "methods",
+    "native"
+  ],
+  "dependencies" : {},
+  "devDependencies": {
+    "jsdom":"0.2.19"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8"
+  }
+}
+
