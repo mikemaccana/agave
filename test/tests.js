@@ -214,4 +214,12 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
       assert.deepEqual(results, correctResults);
     });
   });
+
+  describe('Element.applyStyles', function(){
+    it('styles elements', function(){
+      var heading = document.querySelector('heading');
+      heading.applyStyles({'font-size':'18em'})
+      assert.equal(heading.style['font-size'], '18em');
+    });
+  });
 });
