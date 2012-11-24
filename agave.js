@@ -153,8 +153,9 @@ define(function () {
   var getParents = function(selector) {
     var parents = [];
     var parent = this.parentNode;
-    // Parent will eventually be a HTMLDocument which has no .matches()
-    while ( parent && parent.constructor.toString().contains('Element') ) {
+    // While parents are 'element' type nodes
+    // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
+    while ( parent && parent.nodeType && parent.nodeType === 1 ) {
       if ( selector ) {
         if ( parent.matches(selector) ) {
           parents.push(parent);

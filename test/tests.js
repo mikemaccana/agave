@@ -23,17 +23,15 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
 
   var mockHTML = ' \
   <html> \
-  <head> \
-  </head> \
-  <body> \
-    <article> \
-      <heading></heading> \
-      <author></author> \
-      <p>Carles portland banh mi lomo twee.</p> \
-      <p>Narwhal bicycle rights keffiyeh beard.</p> \
-      <p>Pork belly beard pop-up kale chips.</p> \
-    </article> \
-  </body> \
+    <body> \
+      <article> \
+        <heading>Sample document</heading> \
+        <author></author> \
+        <p>Carles portland banh mi lomo twee.</p> \
+        <p>Narwhal bicycle rights keffiyeh beard.</p> \
+        <p>Pork belly beard pop-up kale chips.</p> \
+      </article> \
+    </body> \
   </html> \
   ';
   
@@ -202,6 +200,18 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
     });
     it('creates children with the specified text', function(){
       assert(document.querySelector('#testpara').textContent === sillyText );
+    });
+  });
+
+  describe('Element.getParents', function(){
+    it('returns all parent nodes', function(){
+      var ancestors = document.querySelector('heading').getParents();
+      var results = [];
+      ancestors.forEach(function(ancestor){
+        results.push(ancestor.tagName)
+      })
+      var correctResults = ["ARTICLE","BODY","HTML"];
+      assert.deepEqual(results, correctResults);
     });
   });
 });
