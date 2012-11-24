@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Safely extends native JS objects with helpful, intuitive methods.",
   "scripts": {
@@ -17,7 +17,8 @@
   ],
   "dependencies" : {},
   "devDependencies": {
-    "jsdom":"0.2.19"
+    "jsdom":"0.2.19",
+    "requirejs":"2.0.6"
   },
   "license": "MIT",
   "engines": {

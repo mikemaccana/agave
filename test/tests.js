@@ -6,7 +6,7 @@
 // RequireJS setup
 var requirejs = require('requirejs');
 requirejs.config({ nodeRequire: require, baseUrl: "lib" });
-requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  { 
+requirejs(['assert', 'jsdom', './index.js'], function (assert, jsdom, agave )  { 
 
   // Set up a global.document with a DOM in the same way a browser has
   var setupDOM = function(documentText) {
