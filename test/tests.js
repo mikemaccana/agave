@@ -29,13 +29,9 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
     <article> \
       <heading></heading> \
       <author></author> \
-      <p> \
-        Carles portland banh mi lomo twee, salvia mlkshk iphone williamsburg leggings. Swag kale chips carles viral, messenger bag put a bird on it seitan fingerstache.  \
-      </p> \
+      <p>Carles portland banh mi lomo twee.</p> \
       <p>Narwhal bicycle rights keffiyeh beard.</p> \
       <p>Pork belly beard pop-up kale chips.</p> \
-      <p>Authentic PBR skateboard carles four loko</p> \
-      <p>Thundercats organic four loko +1, portland cred ethical next level quinoa DIY narwhal</p> \
     </article> \
   </body> \
   </html> \
@@ -179,6 +175,23 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
     });
   });
 
+  describe('NodeList.forEach', function(){
+    it('iterates over nodes properly', function(){
+      var results = [];
+      var paras = document.querySelectorAll('p');
+      paras.forEach(function(para){
+        results.push(para.textContent)
+      })
+      var correctResults = [ 
+        'Carles portland banh mi lomo twee.',
+        'Narwhal bicycle rights keffiyeh beard.',
+        'Pork belly beard pop-up kale chips.'
+      ]
+      // Just check the first 3 results as other tests may add paragraphs
+      assert.deepEqual(results.slice(0,3),correctResults);
+    });
+  });
+
   describe('Element.createChild', function(){
     var sillyText = 'ethical messenger bag';
     var article = document.querySelector('article');
@@ -188,7 +201,7 @@ requirejs(['assert', 'jsdom', './agave.js'], function (assert, jsdom, agave )  {
       assert(paraCount);
     });
     it('creates children with the specified text', function(){
-      assert(document.querySelector('#testpara').innerText === sillyText );
+      assert(document.querySelector('#testpara').textContent === sillyText );
     });
   });
 });

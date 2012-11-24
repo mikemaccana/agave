@@ -128,15 +128,15 @@ define(function () {
   var arrayClone = function(){return this.slice();};
 
   // Add a new element as a child of this element
-  var createChild = function(name, attributes, innerText) {
+  var createChild = function(name, attributes, text) {
     var newElement = document.createElement(name);
     if ( attributes ) {
       for (var attribute in attributes) {
         newElement.setAttribute(attribute, attributes[attribute])
       }  
     }
-    if ( innerText ) {
-      newElement.innerText = innerText;
+    if ( text ) {
+      newElement.textContent = text;
     }
     return this.appendChild(newElement);
   } 
