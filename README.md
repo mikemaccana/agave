@@ -13,16 +13,6 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
 
 #### Object methods
 
-##### .getKeys() 
-Returns an array of the object’s keys.
-
-##### .getSize() 
-Returns the number of properties in the object.
-
-##### .getPath([_array_,_of_,_keys_]) 
-Provided an array of keys, get the value of the nested keys in the object. 
-If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, given:
-
     var mockObject = {
       foo: 'bar',
       baz: {
@@ -32,6 +22,22 @@ If any of the keys are missing, return undefined. This is very useful for useful
         }
       }
     }
+
+##### .getKeys() 
+Returns an array of the object’s keys.
+
+   mockObject.getKeys()
+   
+Returns:
+
+   [‘foo’,’bar’]
+   
+##### .getSize() 
+Returns the number of properties in the object.
+
+##### .getPath([_array_,_of_,_keys_]) 
+Provided an array of keys, get the value of the nested keys in the object. 
+If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, given:
 
 The following code:
     
@@ -216,7 +222,7 @@ Agave is provided as an AMD module. You’d normally load it as a dependency for
 
     define('yourmodulename', ['agave'], function () { 
       // Start Agave, tell it where our global is. Optionally you can also provide a prefix or your choice.
-      agave.start(this); 
+      agave.enable(_optionalprefix_); 
       
       // Your code here...
       
