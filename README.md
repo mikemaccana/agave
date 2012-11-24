@@ -26,11 +26,11 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
 ##### .getKeys() 
 Returns an array of the object’s keys.
 
-   mockObject.getKeys()
+    mockObject.getKeys()
    
 Returns:
 
-   [‘foo’,’bar’]
+    [‘foo’,’bar’]
    
 ##### .getSize() 
 Returns the number of properties in the object.
@@ -40,12 +40,12 @@ Provided an array of keys, get the value of the nested keys in the object.
 If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, given:
 
 The following code:
-    
-    mockObject.getPath(['baz','zar','zog'])
+
+    mockObject.getPath('/baz/zar/zog')    
 
 or, alternatively:
 
-    mockObject.getPath('/baz/zar/zog')
+    mockObject.getPath(['baz','zar','zog'])
 
 will return:
 
