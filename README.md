@@ -5,9 +5,9 @@
 Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
 
  - Adds things you use every day. See 'What does Agave provide?' below.
- - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave always leverages ES5’s fast native methods, and ES5 specific features allow us to safely extend inbuilt objects. Unlike other libraries, Agave is free of code to create semi-featured ES5 implementations in ES3 browsers like IE8.
- - Is tiny. Around 1.5K unminified.
- - Is an AMD module, easily loadable by requirejs in both the browser and node.
+ - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features allow us to safely extend inbuilt objects and to stay small. 
+ - Is tiny. <300 lines of code.
+ - Is loadable both as a regular node module and via RequireJS as an AMD module.
 
 ### What does Agave provide?
 
