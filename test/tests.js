@@ -7,6 +7,21 @@ var assert = require('assert');
 var jsdom = require('jsdom');
 var agave = require('../index.js');
 
+var mockObject = {
+  foo: 'bar',
+  baz: {
+    bam:'boo',
+    zar:{
+      zog:'victory'
+    }
+  },
+  null:{
+    'yarr':{
+      'parrot':'ahoy'
+    }
+  }
+}; 
+
 // Set up a global.document with a DOM in the same way a browser has
 var setupDOM = function(documentText) {
   var document = jsdom.jsdom(documentText, null, {
@@ -106,21 +121,6 @@ describe('String.strip', function(){
     assert.equal('Hello world'.strip('Hld'), 'ello wor');
   });
 });
-
-var mockObject = {
-  foo: 'bar',
-  baz: {
-    bam:'boo',
-    zar:{
-      zog:'victory'
-    }
-  },
-  null:{
-    'yarr':{
-      'parrot':'ahoy'
-    }
-  }
-}; 
 
 describe('Object.getKeys', function(){
   it('fetches keys accurately', function(){

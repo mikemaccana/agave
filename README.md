@@ -35,11 +35,16 @@ Returns:
 ##### .getSize() 
 Returns the number of properties in the object.
 
-##### .getPath([_array_,_of_,_keys_]) 
-Provided an array of keys, get the value of the nested keys in the object. 
-If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, given:
+    mockObject.getSize()
 
-The following code:
+Returns:
+
+    2
+
+##### .getPath(path) 
+
+Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object. 
+If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:
 
     mockObject.getPath('/baz/zar/zog')    
 
@@ -59,7 +64,14 @@ Keys, of course, could be strings, array indices, or anything else.
 Returns a shallow clone of the object.
 
 ##### .contains(_item_) 
+
 returns true if the array contains the item.
+
+    ['one','two','three'].contains('two')
+
+Returns:
+
+    true
 
 ##### .findItem(_testfunction_) 
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
@@ -72,14 +84,32 @@ Adds the items from _newarray_ to the end of this array.
 ##### .contains(_substring_) 
 returns true if a string contains the substring
 
+    'elephantine'.contains('tin')
+
+Returns: 
+
+    true
+
 ##### .startsWith(_substring_) 
 returns true if a string starts with the substring
 
 ##### .endsWith(_substring_) 
 returns true if a string ends with the substring
 
+    'Hello world'.endsWith('world'))
+
+Returns: 
+
+    true
+
 ##### .strip(_chars_) 
 returns the string, with the specified chars removed from the beginning and end.
+
+    'Hello world'.strip('Hld')
+
+Returns: 
+
+    'ello wor'
 
 ##### .leftStrip(_chars_) 
 returns the string, with the specified chars removed from the beginning.
@@ -95,6 +125,26 @@ Repeat the string _times_ times.
 
 #### NodeList methods
 
+NodeLists are what's returned when you use the document.querySelectorAll, or   
+
+    <html>
+      <body>
+        <article>
+          <heading>Sample document</heading>
+          <author></author>
+          <p>Carles portland banh mi lomo twee.</p>
+          <p>Narwhal bicycle rights keffiyeh beard.</p>
+          <p>Pork belly beard pop-up kale chips.</p>
+        </article>
+      </body>
+    </html>
+
+For example, to fetch a list of all paragraphs:
+
+    var paragraphs = document.getElementsByTagName('p');
+
+Agave adds a number of useful methods that you can use both server-side and client side.
+
 ##### .reverse()
 Returns a reversed version of the nodeList.
 
@@ -102,17 +152,25 @@ Returns a reversed version of the nodeList.
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
 
 Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).
-
-    var paragraphs = document.getElementsByTagName('p');
+    
     paragraphs.forEach(function(paragraph){
-      paragraph.innerHTML = 'Hello.';
+      paragraph.innerText = 'Hello.';
     })
 
 #### Element methods
 
+Elements
+
+    var heading = document.querySelector('heading');
+
 ##### .createChild(name, attributes, innerText)
 
 Make a new child element, with the tag name, any attributes, and inner text specified.
+
+    var article = document.querySelector('article');
+    article.createChild('p',{'id':'testpara'},'hey there');
+
+Would create a new <p id="testpara">hey there</p> element beneath article.
 
 ##### .matches(_selector_)
 
@@ -134,8 +192,8 @@ Agave will make your code shorter and more readable.
 
 [Sugar.js](http://sugarjs.com/) is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
  - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those. 
- - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
+ - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
 
 ### How Does Agave Compare to Underscore.js and Lodash?
 
@@ -152,7 +210,7 @@ Agave addresses a number of concerns people have raised over the years since Pro
 
 Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
-Let's look at the problem: open your console and add a method, the traditional way:
+Let's see the problem: open your browser console right now and add a method, the traditional way:
 
     Object.prototype.oldStyleMethod = function oldStyleMethod (){}  
 
@@ -218,10 +276,22 @@ You may find this useful - for example, if you wanted to find out whether some d
 
 ### Using Agave
 
+## On the server (node.js)
+
+Just run:
+
+    npm install agave
+
+Then in your code:
+
+    var agave = require('agave');
+
+## In the browser, on the server usign RequireJS, or shared between the browser and server.
+
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
-    define('yourmodulename', ['agave'], function () { 
-      // Start Agave, tell it where our global is. Optionally you can also provide a prefix or your choice.
+    define('yourmodulename', ['agave'], function (agave) { 
+      // Start Agave, optionally you can also provide a prefix or your choice.
       agave.enable(_optionalprefix_); 
       
       // Your code here...
@@ -238,7 +308,7 @@ Awesome. Fork the repo, add your code, add your tests to tests.js and send me a 
 
 Install [node.js](http://nodejs.org/), and run:
 
-    npm install mocha requirejs
+    npm install .
     mocha
 
 Inside the folder you downloaded Agave to.
