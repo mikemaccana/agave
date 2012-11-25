@@ -170,7 +170,11 @@ Make a new child element, with the tag name, any attributes, and inner text spec
     var article = document.querySelector('article');
     article.createChild('p',{'id':'testpara'},'hey there');
 
-Would create a new <p id="testpara">hey there</p> element beneath article.
+Would create a new 
+
+    <p id="testpara">hey there</p> 
+
+element beneath article.
 
 ##### .matches(_selector_)
 
@@ -276,7 +280,7 @@ You may find this useful - for example, if you wanted to find out whether some d
 
 ### Using Agave
 
-## On the server (node.js)
+#### On the server (node.js)
 
 Just run:
 
@@ -286,7 +290,7 @@ Then in your code:
 
     var agave = require('agave');
 
-## In the browser, on the server usign RequireJS, or shared between the browser and server.
+#### In the browser, on the server using RequireJS, or shared between the browser and server.
 
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
@@ -298,7 +302,7 @@ Agave is provided as an AMD module. You’d normally load it as a dependency for
       
     })
 
-All the methods above are now avaiable.
+All the methods above are now available.
 
 ### I’ve got stuff to add!
 
