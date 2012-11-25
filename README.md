@@ -1,4 +1,4 @@
-# Agave.JS [![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
+# Agave.JS
 
 ## Cleaner, simpler Javascript for ES5 environments
 
