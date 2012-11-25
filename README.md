@@ -263,11 +263,12 @@ Another concern may be naming or implementation conflicts - ie, another library 
 
 or the prefix of your choice to have all the methods prefixed with whatever string you like.
 
-Using a prefix is the preferred mechanism for libraries that depend on Agave,
+Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.
 
 You may still prefer unprefixed, for the following reasons:
- - We track ES6 updates and specifically try to avoid conflicts with what’s proposed.
- - The chance of a possible future change in implementation - fixable with a very short amount of work in this library in future, is better than longer code now. 
+
+ - You may find the benefits of shorter code ourweigh the rish of a possible future conflict. 
+ - Agave's developers track ES6 updates and specifically try to avoid conflicts with what’s proposed.
 
 ### Q. There are new methods on my window object!
 ### A. Yes, window is an object. This is how JS works.
@@ -295,7 +296,7 @@ Then in your code:
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
     define('yourmodulename', ['agave'], function (agave) { 
-      // Start Agave, optionally you can also provide a prefix or your choice.
+      // Start Agave, optionally you can also provide a prefix of your choice.
       agave.enable(_optionalprefix_); 
       
       // Your code here...
