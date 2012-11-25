@@ -5,8 +5,8 @@
 Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
 
  - Adds things you use every day. See 'What does Agave provide?' below.
- - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features allow us to safely extend inbuilt objects and to stay small. 
- - Is tiny. <300 lines of code.
+ - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects. 
+ - Is tiny. <300 lines of code. Agave also uses ES5 to stay small. 
  - Is loadable both as a regular node module and via RequireJS as an AMD module.
 
 ### What does Agave provide?
@@ -159,9 +159,7 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
 
 #### Element methods
 
-Elements
-
-    var heading = document.querySelector('heading');
+Agave also provides useful methods for Elements.
 
 ##### .createChild(name, attributes, innerText)
 
@@ -174,7 +172,9 @@ Would create a new
 
     <p id="testpara">hey there</p> 
 
-element beneath article.
+element beneath
+
+     <article>
 
 ##### .matches(_selector_)
 
@@ -209,10 +209,10 @@ Agave will make your code shorter and more readable.
 
 Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. [Andrew Dupont’s talk at JSConf 2011](http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542) provides an excellent overview on how the JS community has approached this topic over time.
 
-### Q. Will Agave methods will show up when iterating over objects?
-### A. Methods won’t show up when iterating over objects.
+### Q. Will Agave methods appear when iterating over objects?
+### A. No. Methods will never appear when iterating over objects.
 
-Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects. 
+Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects. 
 
 Let's see the problem: open your browser console right now and add a method, the traditional way:
 
@@ -238,11 +238,11 @@ But wait a sec: Objects already have some methods out of the box. Like toString(
 
 Why are only our add-on methods showing up as keys? Why don't the native, inbuilt methods appear in our ‘for’ loop?
 
-The answer is that inbuilt methods in Javascript have always been non-enumerable. But in ES3, you never had the ability to make your own non-enumerable methods.
+The answer is that inbuilt methods in Javascript have always been non-enumerable. But __in ES3, you never had the ability to make your own non-enumerable methods__.
 
 ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the [addition of new non-enumerable properties via Object.defineProperty()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty).
 
-So let’s try again, ES5-style:
+So open a new tab. Let’s try again, ES5-style:
 
     Object.defineProperty( Object.prototype, "newStyleMethod", {value: function newStyleMethod(){}, enumerable: false});
 
