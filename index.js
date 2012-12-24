@@ -53,9 +53,9 @@
   var strip = function(stripChars) {
     return this.leftStrip(stripChars).rightStrip(stripChars);
   };
- 
-  // object.getPath - get the value of the nested keys provided in the object. 
-  // If any are missing, return undefined. Used for checking JSON results.  
+
+  // object.getPath - get the value of the nested keys provided in the object.
+  // If any are missing, return undefined. Used for checking JSON results.
   var getPath = function(pathItems) {
     var obj = this;
     var delim = '/';
@@ -74,11 +74,11 @@
           result = obj[pathItem];
         }
         obj = obj[pathItem];
-      }      
+      }
     });
     return result;
   };
-  
+
   // array.findItem(test_function) returns the first item that matches the test_function
   var findItem = function(test_function){
     var arr = this;
@@ -93,30 +93,30 @@
       return null;
     }
   };
-  
+
   // string.endsWith(suffix) returns true if string ends with the suffix
   var endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
   };
-  
+
   // string.endsWith(prefix) returns true if string ends with the prefix
   var startsWith = function(prefix){
     return this.slice(0, prefix.length) === prefix;
   };
-  
+
   // array.contains(item) returns true if an array contains an item
   // string.contains(substring) returns true if a string contains a substring
   var contains = function(item){
     return ( this.indexOf(item) !== -1);
-  }; 
-  
-  // Extend an array with another array. 
+  };
+
+  // Extend an array with another array.
   // Cleverness alert: since .apply() accepts an array of args, we use the new_array as all the args to push()
   var extend = function(new_array) {
     Array.prototype.push.apply(this, new_array);
     return this;
   };
-  
+
   // string.repeat() repeat a string 'times' times. Borrowed from ES6 shim at https://github.com/paulmillr/es6-shim
   var repeat = function(times) {
     if (times < 1) return '';
@@ -146,7 +146,7 @@
     if ( attributes ) {
       for (var attribute in attributes) {
         newElement.setAttribute(attribute, attributes[attribute]);
-      }  
+      }
     }
     if ( text ) {
       newElement.textContent = text;
@@ -172,10 +172,10 @@
       if ( selector ) {
         if ( parent.matches(selector) ) {
           parents.push(parent);
-        } 
+        }
       } else {
-        parents.push(parent);        
-      } 
+        parents.push(parent);
+      }
       parent = parent.parentNode;
     }
     return parents;
@@ -191,11 +191,11 @@
       // Don't add if the method already exists
       if ( ! obj.method ) {
         Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
-      }  
-    }  
+      }
+    }
   };
 
-  // Extend objects with Agave methods, using 
+  // Extend objects with Agave methods, using
   var enable = function(prefix){
     var global = this;
     var newMethods = {
@@ -236,13 +236,13 @@
     };
     for ( var obj in newMethods ) {
       for ( var method in newMethods[obj] ) {
-        if ( prefix ) { 
+        if ( prefix ) {
           methodName = prefix+method;
         } else {
           methodName = method;
         }
-        addMethod(global[obj], methodName, newMethods[obj][method]);      
-      } 
+        addMethod(global[obj], methodName, newMethods[obj][method]);
+      }
     }
   }.bind();
 

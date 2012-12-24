@@ -5,8 +5,8 @@
 Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
 
  - Adds things you use every day. See 'What does Agave provide?' below.
- - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects. 
- - Is tiny. <300 lines of code. Agave also uses ES5 to stay small. 
+ - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects.
+ - Is tiny. <300 lines of code. Agave also uses ES5 to stay small.
  - Is loadable both as a regular node module and via RequireJS as an AMD module.
 
 ### What does Agave provide?
@@ -23,16 +23,16 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
       }
     }
 
-##### .getKeys() 
+##### .getKeys()
 Returns an array of the object’s keys.
 
     mockObject.getKeys()
-   
+
 Returns:
 
     [‘foo’,’bar’]
-   
-##### .getSize() 
+
+##### .getSize()
 Returns the number of properties in the object.
 
     mockObject.getSize()
@@ -41,12 +41,12 @@ Returns:
 
     2
 
-##### .getPath(path) 
+##### .getPath(path)
 
-Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object. 
+Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
 If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:
 
-    mockObject.getPath('/baz/zar/zog')    
+    mockObject.getPath('/baz/zar/zog')
 
 or, alternatively:
 
@@ -55,15 +55,15 @@ or, alternatively:
 will return:
 
     'something useful'
-    
+
 Keys, of course, could be strings, array indices, or anything else.
 
 #### Array methods
 
-##### .clone() 
+##### .clone()
 Returns a shallow clone of the object.
 
-##### .contains(_item_) 
+##### .contains(_item_)
 
 returns true if the array contains the item.
 
@@ -73,48 +73,48 @@ Returns:
 
     true
 
-##### .findItem(_testfunction_) 
+##### .findItem(_testfunction_)
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-##### .extend(_newarray_) 
+##### .extend(_newarray_)
 Adds the items from _newarray_ to the end of this array.
 
 #### String methods
 
-##### .contains(_substring_) 
+##### .contains(_substring_)
 returns true if a string contains the substring
 
     'elephantine'.contains('tin')
 
-Returns: 
+Returns:
 
     true
 
-##### .startsWith(_substring_) 
+##### .startsWith(_substring_)
 returns true if a string starts with the substring
 
-##### .endsWith(_substring_) 
+##### .endsWith(_substring_)
 returns true if a string ends with the substring
 
     'Hello world'.endsWith('world'))
 
-Returns: 
+Returns:
 
     true
 
-##### .strip(_chars_) 
+##### .strip(_chars_)
 returns the string, with the specified chars removed from the beginning and end.
 
     'Hello world'.strip('Hld')
 
-Returns: 
+Returns:
 
     'ello wor'
 
-##### .leftStrip(_chars_) 
+##### .leftStrip(_chars_)
 returns the string, with the specified chars removed from the beginning.
 
-##### .rightStrip(_chars_) 
+##### .rightStrip(_chars_)
 returns the string, with the specified chars removed from the end.
 
 ##### .forEach(_iterationfunction_)
@@ -125,7 +125,7 @@ Repeat the string _times_ times.
 
 #### NodeList methods
 
-NodeLists are what's returned when you use the document.querySelectorAll, or   
+NodeLists are what's returned when you use the document.querySelectorAll, or
 
     <html>
       <body>
@@ -152,7 +152,7 @@ Returns a reversed version of the nodeList.
 Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
 
 Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).
-    
+
     paragraphs.forEach(function(paragraph){
       paragraph.innerText = 'Hello.';
     })
@@ -168,9 +168,9 @@ Make a new child element, with the tag name, any attributes, and inner text spec
     var article = document.querySelector('article');
     article.createChild('p',{'id':'testpara'},'hey there');
 
-Would create a new 
+Would create a new
 
-    <p id="testpara">hey there</p> 
+    <p id="testpara">hey there</p>
 
 element beneath
 
@@ -195,13 +195,13 @@ Agave will make your code shorter and more readable.
 ### How Does Agave Compare to Sugar.js?
 
 [Sugar.js](http://sugarjs.com/) is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
- - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those. 
+ - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
  - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
 
 ### How Does Agave Compare to Underscore.js and Lodash?
 
- - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation. 
+ - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.
  - Agave doesn’t require a separate string library.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3->ES5 shims.
 
@@ -212,11 +212,11 @@ Agave addresses a number of concerns people have raised over the years since Pro
 ### Q. Will Agave methods appear when iterating over objects?
 ### A. No. Methods will never appear when iterating over objects.
 
-Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects. 
+Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects.
 
 Let's see the problem: open your browser console right now and add a method, the traditional way:
 
-    Object.prototype.oldStyleMethod = function oldStyleMethod (){}  
+    Object.prototype.oldStyleMethod = function oldStyleMethod (){}
 
 And make an object:
 
@@ -248,11 +248,11 @@ So open a new tab. Let’s try again, ES5-style:
 
     for (var key in myobject) { console.log(key) };
 
-Hrm, it seems newStyleMethod(), just like toString(), doesn’t interfere with our loops. 
+Hrm, it seems newStyleMethod(), just like toString(), doesn’t interfere with our loops.
 
-This is exactly what Agave uses.  As a result, Agave’s methods will **never** show up in for loops. 
+This is exactly what Agave uses.  As a result, Agave’s methods will **never** show up in for loops.
 
-So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave. 
+So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.
 
 ### Q. Future ES versions or other libraries might use the same method names to do different stuff
 ### A. That’s why we let you prefix all method names
@@ -267,13 +267,13 @@ Using a prefix is the preferred mechanism for publicly distributed libraries tha
 
 You may still prefer unprefixed, for the following reasons:
 
- - You may find the benefits of shorter code ourweigh the rish of a possible future conflict. 
+ - You may find the benefits of shorter code ourweigh the rish of a possible future conflict.
  - Agave's developers track ES6 updates and specifically try to avoid conflicts with what’s proposed.
 
 ### Q. There are new methods on my window object!
 ### A. Yes, window is an object. This is how JS works.
 
-Everything’s an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there’s a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects. 
+Everything’s an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there’s a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.
 
 When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it’s expected behavior.
 
@@ -295,19 +295,19 @@ Then in your code:
 
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
-    define('yourmodulename', ['agave'], function (agave) { 
+    define('yourmodulename', ['agave'], function (agave) {
       // Start Agave, optionally you can also provide a prefix of your choice.
-      agave.enable(_optionalprefix_); 
-      
+      agave.enable(_optionalprefix_);
+
       // Your code here...
-      
+
     })
 
 All the methods above are now available.
 
 ### I’ve got stuff to add!
 
-Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request. 
+Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.
 
 ### Tests
 

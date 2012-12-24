@@ -1,9 +1,9 @@
 /*jshint multistr:true */
-// Tests. Mocha/assert style. See 
-// http://visionmedia.github.com/mocha/ 
+// Tests. Mocha/assert style. See
+// http://visionmedia.github.com/mocha/
 // http://nodejs.org/docs/latest/api/assert.html
 
-var assert = require('assert'); 
+var assert = require('assert');
 var jsdom = require('jsdom');
 var agave = require('../index.js');
 
@@ -20,7 +20,7 @@ var mockObject = {
       'parrot':'ahoy'
     }
   }
-}; 
+};
 
 // Set up a global.document with a DOM in the same way a browser has
 var setupDOM = function(documentText) {
@@ -50,7 +50,7 @@ var mockHTML = ' \
 ';
 
 setupDOM(mockHTML);
- 
+
 agave.enable();
 
 describe('Array.contains', function(){
@@ -59,7 +59,7 @@ describe('Array.contains', function(){
   });
   it('handles missing items accurately', function(){
     assert( ! ['one','two','three'].contains('notthere') );
-  });  
+  });
 });
 
 describe('Array.extend', function(){
@@ -71,10 +71,10 @@ describe('Array.extend', function(){
 describe('String.contains', function(){
   it('checks for the substring accurately', function(){
     assert('elephantine'.contains('tin') );
-  });  
+  });
   it('handles missing substrings accurately', function(){
     assert( ! 'elephantine'.contains('zam') );
-  });  
+  });
 });
 
 describe('String.endsWith', function(){
@@ -84,7 +84,7 @@ describe('String.endsWith', function(){
   it('handles trying to check if something ends in something larger than itself', function(){
     assert.equal('world'.endsWith('Hello world'), false);
   });
-});  
+});
 
 describe('String.startsWith', function(){
   it('works if the string actually starts with the prefix', function(){
@@ -131,7 +131,7 @@ describe('Object.getKeys', function(){
 describe('Object.getSize', function(){
   it('counts keys accurately', function(){
     assert.equal(mockObject.getSize(), 3);
-  });   
+  });
 });
 
 describe('Array.findItem', function(){
@@ -139,13 +139,13 @@ describe('Array.findItem', function(){
     assert.equal(['one','two','three'].findItem(function(item){
       return (item === 'three');
     }), 'three');
-  });   
+  });
 });
 
 describe('Object.getPath', function(){
   it('returns undefined when a value is missing', function(){
-    assert.equal(mockObject.getPath(['foo','pineapple']), undefined);       
-  });    
+    assert.equal(mockObject.getPath(['foo','pineapple']), undefined);
+  });
   it('returns the value when the provided keys exist', function(){
     assert.equal(mockObject.getPath(['baz','zar','zog']), 'victory');
   });
@@ -179,7 +179,7 @@ describe('NodeList.forEach', function(){
     paras.forEach(function(para){
       results.push(para.textContent)
     })
-    var correctResults = [ 
+    var correctResults = [
       'Carles portland banh mi lomo twee.',
       'Narwhal bicycle rights keffiyeh beard.',
       'Pork belly beard pop-up kale chips.'
