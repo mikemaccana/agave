@@ -116,6 +116,12 @@ describe('String.rightStrip', function(){
   });
 });
 
+describe('String.rightStrip', function(){
+  it('strips from the left accurately with a single character', function(){
+    assert.equal('a'.leftStrip('a'), '');
+  });
+});
+
 describe('String.strip', function(){
   it('strips from the both sides accurately', function(){
     assert.equal('Hello world'.strip('Hld'), 'ello wor');

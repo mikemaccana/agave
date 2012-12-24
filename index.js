@@ -36,7 +36,8 @@
   var leftStrip = function(stripChars) {
     var result = this;
     while ( true ) {
-      if ( ! stripChars.contains(result.charAt(0)) ) {
+      // Note result could be zero characters
+      if ( ! stripChars.contains(result.charAt(0)) || ! result) {
         return result;
       } else {
         result = result.slice(1);
