@@ -186,11 +186,12 @@
   var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
   // Add method as a non-enumerable property on obj with the name methodName
-  var addMethod = function( obj, methodName, method) {
+  var addMethod = function( obj, prefix, methodName, method) {
+    methodName = prefix ? prefix+methodName: methodName;
     // Check - NodeLists and Elements don't always exist on all JS implementations
     if ( obj ) {
       // Don't add if the method already exists
-      if ( ! obj.method ) {
+      if ( ! obj.methodName ) {
         Object.defineProperty( obj.prototype, methodName, {value: method, enumerable: false});
       }
     }
@@ -237,12 +238,7 @@
     };
     for ( var obj in newMethods ) {
       for ( var method in newMethods[obj] ) {
-        if ( prefix ) {
-          methodName = prefix+method;
-        } else {
-          methodName = method;
-        }
-        addMethod(global[obj], methodName, newMethods[obj][method]);
+        addMethod(global[obj], prefix, method, newMethods[obj][method]);
       }
     }
   }.bind();
