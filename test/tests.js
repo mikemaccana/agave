@@ -178,24 +178,6 @@ describe('Prefixing', function(){
   });
 });
 
-describe('NodeList.forEach', function(){
-  it('iterates over nodes properly', function(){
-    var results = [];
-    var paras = document.querySelectorAll('p');
-
-    paras.avforEach(function(para){
-      results.push(para.textContent)
-    })
-    var correctResults = [
-      'Carles portland banh mi lomo twee.',
-      'Narwhal bicycle rights keffiyeh beard.',
-      'Pork belly beard pop-up kale chips.'
-    ]
-    // Just check the first 3 results as other tests may add paragraphs
-    assert.deepEqual(results.slice(0,3),correctResults);
-  });
-});
-
 describe('Element.createChild', function(){
   var sillyText = 'ethical messenger bag';
   var article = document.querySelector('article');
@@ -206,18 +188,6 @@ describe('Element.createChild', function(){
   });
   it('creates children with the specified text', function(){
     assert(document.querySelector('#testpara').textContent === sillyText );
-  });
-});
-
-describe('Element.getParents', function(){
-  it('returns all parent nodes', function(){
-    var ancestors = document.querySelector('heading').avgetParents();
-    var results = [];
-    ancestors.avforEach(function(ancestor){
-      results.push(ancestor.tagName)
-    })
-    var correctResults = ["ARTICLE","BODY","HTML"];
-    assert.deepEqual(results, correctResults);
   });
 });
 
