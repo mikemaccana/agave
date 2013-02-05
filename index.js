@@ -149,9 +149,9 @@
       var fragment = document.createDocumentFragment();
       this.forEach(function(item){
         fragment.appendChild(item);
-      })
+      });
       return fragment.childNodes;
-    }
+    };
 
     // Add a new element as a child of this element
     var createChild = function(name, attributes, text) {
@@ -199,13 +199,17 @@
     var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
     // Add method as a non-enumerable property on obj with the name methodName
-    var addMethod = function( objectToExtend, prefix, methodName, method) {
+    var addMethod = function( global, objectName, prefix, methodName, method) {
+      var objectToExtend = global[objectName];
       methodName = prefix ? prefix+methodName: methodName;
       // Check - NodeLists and Elements don't always exist on all JS implementations
       if ( objectToExtend ) {
         // Don't add if the method already exists
-        if ( ! objectToExtend.methodName ) {
-          Object.defineProperty( objectToExtend.prototype, methodName, {value: method, enumerable: false});
+        if ( ! objectToExtend.prototype.hasOwnProperty(methodName) ) {
+          Object.defineProperty( objectToExtend.prototype, methodName, {
+            value: method,
+            enumerable: false
+          });
         }
       }
     };
@@ -249,7 +253,7 @@
     };
     for ( var objectName in newMethods ) {
       for ( var methodName in newMethods[objectName] ) {
-        addMethod(global[objectName], prefix, methodName, newMethods[objectName][methodName]);
+        addMethod(global, objectName, prefix, methodName, newMethods[objectName][methodName]);
       }
     }
   }.bind();
