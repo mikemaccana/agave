@@ -227,7 +227,8 @@
         'findItem':findItem,
         'getSize':getSize,
         'getPath':getPath,
-        'contains':contains
+        'contains':contains,
+        'clone':clone
       },
       'String':{
         'endsWith':endsWith,

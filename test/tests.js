@@ -163,6 +163,15 @@ describe('Object.getPath', function(){
   });
 });
 
+describe('Object.clone', function(){
+  var copyObject = mockObject.avclone()
+  it('clones objects so that modification to the new object will not affect the original', function(){
+    copyObject.baz.bam = 'newvalue'
+    assert.equal(copyObject.avgetPath(['baz','bam']), 'newvalue');
+    assert.equal(mockObject.avgetPath(['baz','bam']), 'boo');
+  });
+});
+
 describe('Agave really doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {
