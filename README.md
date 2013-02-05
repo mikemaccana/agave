@@ -123,9 +123,14 @@ Runs _iterationfunction_ over each character in the String. Just like ES5’s in
 ##### .repeat(_times_)
 Repeat the string _times_ times.
 
+##### .toNodeList()
+Turns an array of Elements into a NodeList.
+
 #### NodeList methods
 
-NodeLists are what's returned when you use the document.querySelectorAll, or
+NodeLists are what's returned when you use the document.querySelectorAll(), or similar methods.
+
+For example, given the following document:
 
     <html>
       <body>
@@ -139,7 +144,7 @@ NodeLists are what's returned when you use the document.querySelectorAll, or
       </body>
     </html>
 
-For example, to fetch a list of all paragraphs:
+We can fetch a list of all paragraphs:
 
     var paragraphs = document.getElementsByTagName('p');
 
@@ -184,9 +189,9 @@ Returns true if the element matches the selector provided.
 
 Apply the styles mentioned to the element.
 
-##### .getParents(_selector_)
+##### .ancestorNodes(_selector_)
 
-Returns a list of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
+Returns a NodeList of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
 
 ## Why would I want to use Agave?
 
