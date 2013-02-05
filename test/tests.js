@@ -51,98 +51,98 @@ var mockHTML = ' \
 
 setupDOM(mockHTML);
 
-agave.enable('agv');
+agave.enable('av');
 
 describe('Array.contains', function(){
   it('fetches the item accurately', function(){
-    assert(['one','two','three'].agvcontains('two') );
+    assert(['one','two','three'].avcontains('two') );
   });
   it('handles missing items accurately', function(){
-    assert( ! ['one','two','three'].agvcontains('notthere') );
+    assert( ! ['one','two','three'].avcontains('notthere') );
   });
 });
 
 describe('Array.extend', function(){
   it('extends the array accurately', function(){
-    assert.deepEqual([1,2,3].agvextend([4,5]), [1,2,3,4,5] );
+    assert.deepEqual([1,2,3].avextend([4,5]), [1,2,3,4,5] );
   });
 });
 
 describe('String.contains', function(){
   it('checks for the substring accurately', function(){
-    assert('elephantine'.agvcontains('tin') );
+    assert('elephantine'.avcontains('tin') );
   });
   it('handles missing substrings accurately', function(){
-    assert( ! 'elephantine'.agvcontains('zam') );
+    assert( ! 'elephantine'.avcontains('zam') );
   });
 });
 
 describe('String.endsWith', function(){
   it('works if the string actually ends with the suffix', function(){
-    assert('Hello world'.agvendsWith('world'));
+    assert('Hello world'.avendsWith('world'));
   });
   it('handles trying to check if something ends in something larger than itself', function(){
-    assert.equal('world'.agvendsWith('Hello world'), false);
+    assert.equal('world'.avendsWith('Hello world'), false);
   });
 });
 
 describe('String.startsWith', function(){
   it('works if the string actually starts with the prefix', function(){
-    assert('Hello world'.agvstartsWith('Hello'));
+    assert('Hello world'.avstartsWith('Hello'));
   });
 });
 
 describe('String.repeat', function(){
   it('repeats strings accurately', function(){
-    assert.equal('Hello world'.agvrepeat(3), 'Hello worldHello worldHello world');
+    assert.equal('Hello world'.avrepeat(3), 'Hello worldHello worldHello world');
   });
 });
 
 describe('String.reverse', function(){
   it('reverses strings accurately', function(){
-    assert.equal('Hello world'.agvreverse(), 'dlrow olleH');
+    assert.equal('Hello world'.avreverse(), 'dlrow olleH');
   });
 });
 
 describe('String.leftStrip', function(){
   it('strips from the left accurately', function(){
-    assert.equal('Hello world'.agvleftStrip('Hle'), 'o world');
+    assert.equal('Hello world'.avleftStrip('Hle'), 'o world');
   });
 });
 
 describe('String.rightStrip', function(){
   it('strips from the right accurately', function(){
-    assert.equal('Hello world'.agvrightStrip('ldr'), 'Hello wo');
+    assert.equal('Hello world'.avrightStrip('ldr'), 'Hello wo');
   });
 });
 
 describe('String.rightStrip', function(){
   it('strips from the left accurately with a single character', function(){
-    assert.equal('a'.agvleftStrip('a'), '');
+    assert.equal('a'.avleftStrip('a'), '');
   });
 });
 
 describe('String.strip', function(){
   it('strips from the both sides accurately', function(){
-    assert.equal('Hello world'.agvstrip('Hld'), 'ello wor');
+    assert.equal('Hello world'.avstrip('Hld'), 'ello wor');
   });
 });
 
 describe('Object.getKeys', function(){
   it('fetches keys accurately', function(){
-    assert.deepEqual(mockObject.agvgetKeys(), ["foo","baz","null"] );
+    assert.deepEqual(mockObject.avgetKeys(), ["foo","baz","null"] );
   });
 });
 
 describe('Object.getSize', function(){
   it('counts keys accurately', function(){
-    assert.equal(mockObject.agvgetSize(), 3);
+    assert.equal(mockObject.avgetSize(), 3);
   });
 });
 
 describe('Array.findItem', function(){
   it('correctly finds items that match the function', function(){
-    assert.equal(['one','two','three'].agvfindItem(function(item){
+    assert.equal(['one','two','three'].avfindItem(function(item){
       return (item === 'three');
     }), 'three');
   });
@@ -150,38 +150,31 @@ describe('Array.findItem', function(){
 
 describe('Object.getPath', function(){
   it('returns undefined when a value is missing', function(){
-    assert.equal(mockObject.agvgetPath(['foo','pineapple']), undefined);
+    assert.equal(mockObject.avgetPath(['foo','pineapple']), undefined);
   });
   it('returns the value when the provided keys exist', function(){
-    assert.equal(mockObject.agvgetPath(['baz','zar','zog']), 'victory');
+    assert.equal(mockObject.avgetPath(['baz','zar','zog']), 'victory');
   });
   it('returns the value when the provided keys exist, even if null is on the path', function(){
-    assert.equal(mockObject.agvgetPath([null,'yarr','parrot']), 'ahoy');
+    assert.equal(mockObject.avgetPath([null,'yarr','parrot']), 'ahoy');
   });
   it('works using Unix-style paths', function(){
-    assert.equal(mockObject.agvgetPath('/baz/zar/zog'), 'victory');
+    assert.equal(mockObject.avgetPath('/baz/zar/zog'), 'victory');
   });
 });
 
 describe('Agave really doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {
-      assert( ! ['getKeys','getSize','getPath'].agvcontains(key) );
+      assert( ! ['avgetKeys','avgetSize','avgetPath'].avcontains(key) );
     }
-  });
-});
-
-describe('Prefixing', function(){
-  agave.enable('av');
-  it('allows methods to be found under the prefix', function(){
-    assert('hamparty'.avcontains('art') );
   });
 });
 
 describe('Element.createChild', function(){
   var sillyText = 'ethical messenger bag';
   var article = document.querySelector('article');
-  article.agvcreateChild('p',{'id':'testpara'},sillyText);
+  article.avcreateChild('p',{'id':'testpara'},sillyText);
   it('creates children with the specified attributes', function(){
     var paraCount = document.querySelector('#testpara');
     assert(paraCount);
@@ -194,7 +187,7 @@ describe('Element.createChild', function(){
 describe('Element.applyStyles', function(){
   it('styles elements', function(){
     var heading = document.querySelector('heading');
-    heading.agvapplyStyles({'font-size':'18em'})
+    heading.avapplyStyles({'font-size':'18em'})
     assert.equal(heading.style['font-size'], '18em');
   });
 });
