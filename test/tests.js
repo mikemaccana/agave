@@ -178,11 +178,16 @@ describe('Number.days', function(){
   });
 });
 
-describe('Number.weeks.before', function(){
+describe('Number.weeks.before and .after', function(){
   it('correctly converts a number to a period in weeks before a set date', function(){
     var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)')
     var timezoneOffset = someDate.getTimezoneOffset()
     assert.equal((3).avweeks().avbefore(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, May 16, 2013');
+  });
+  it('correctly converts a number to a period in weeks after a set date', function(){
+    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)')
+    var timezoneOffset = someDate.getTimezoneOffset()
+    assert.equal((3).avweeks().avafter(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, June 27, 2013');
   });
 });
 

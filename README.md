@@ -146,16 +146,20 @@ Since 5 days is 432000000 milliseconds.
 
 Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before() or the future (using .after()). You'd typically combine this with .seconds, .hours(), .days(), and .weeks() to  For example:
 
-    (2).days().ago()
+    (2).days().before()
 
-Returns a Date object, eg:
+Returns a Date for 2 days ago, eg:
 
     Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
 
 Whereas:
 
     var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
-    (2).weeks().before(joinedCompanyDate)
+    (3).weeks().after(joinedCompanyDate)
+    
+Returns a Date for 3 weeks after that date, eg: 
+
+    Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
 
 #### NodeList methods
 
