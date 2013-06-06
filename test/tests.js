@@ -180,8 +180,9 @@ describe('Number.days', function(){
 
 describe('Number.weeks.before', function(){
   it('correctly converts a number to a period in weeks before a set date', function(){
-    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (BST)')
-    assert.equal((3).avweeks().avbefore(someDate).toString(), 'Thu May 16 2013 22:44:05 GMT+0100 (BST)');
+    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)')
+    var timezoneOffset = someDate.getTimezoneOffset()
+    assert.equal((3).avweeks().avbefore(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, May 16, 2013');
   });
 });
 
