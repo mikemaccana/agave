@@ -79,6 +79,9 @@ When provided with a function to test each item against, returns the first item 
 ##### .extend(_newarray_)
 Adds the items from _newarray_ to the end of this array.
 
+##### .toNodeList()
+Turns an array of Elements into a NodeList.
+
 #### String methods
 
 ##### .contains(_substring_)
@@ -123,8 +126,36 @@ Runs _iterationfunction_ over each character in the String. Just like ES5’s in
 ##### .repeat(_times_)
 Repeat the string _times_ times.
 
-##### .toNodeList()
-Turns an array of Elements into a NodeList.
+#### Number methods
+
+Note numbers in Javascript have to be wrapped in brackets to use methods on them, otherwise the '.' is interpreted as the decimal point in a Float.
+
+##### .seconds, .hours(), .days(), and .weeks()
+
+Converts a number into the amount of milliseconds for a timespan. For example:
+
+    (5).days()
+
+Returns:
+
+    432000000
+
+Since 5 days is 432000000 milliseconds.
+
+##### .before(), .after()
+
+Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before() or the future (using .after()). You'd typically combine this with .seconds, .hours(), .days(), and .weeks() to  For example:
+
+    (2).days().ago()
+
+Returns a Date object, eg:
+
+    Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
+
+Whereas:
+
+    var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
+    (2).weeks().before(joinedCompanyDate)
 
 #### NodeList methods
 
@@ -209,6 +240,7 @@ Agave will make your code shorter and more readable.
  - Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.
  - Agave doesn’t require a separate string library.
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3->ES5 shims.
+ - Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn’t make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.
 
 ### I read that adding methods to prototypes is bad
 

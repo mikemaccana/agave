@@ -29,7 +29,7 @@ var setupDOM = function(documentText) {
       QuerySelector: true
     }
   });
-  window = document.createWindow();
+  var window = document.createWindow();
   ['Element','NodeList','document'].forEach(function(obj){
     global[obj] = window[obj];
   });
@@ -169,6 +169,19 @@ describe('Object.clone', function(){
     copyObject.baz.bam = 'newvalue'
     assert.equal(copyObject.avgetPath(['baz','bam']), 'newvalue');
     assert.equal(mockObject.avgetPath(['baz','bam']), 'boo');
+  });
+});
+
+describe('Number.days', function(){
+  it('correctly converts a number to days in seconds', function(){
+    assert.equal((5).avdays(), 432000000);
+  });
+});
+
+describe('Number.weeks.before', function(){
+  it('correctly converts a number to a period in weeks before a set date', function(){
+    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (BST)')
+    assert.equal((3).avweeks().avbefore(someDate).toString(), 'Thu May 16 2013 22:44:05 GMT+0100 (BST)');
   });
 });
 

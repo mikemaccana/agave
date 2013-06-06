@@ -20,6 +20,12 @@
   var enable = function(prefix){
     var global = this;
 
+    var SECONDS = 1000;
+    var MINUTES = 60 * SECONDS;
+    var HOURS = 60 * MINUTES;
+    var DAYS = 24 * HOURS;
+    var WEEKS = 7 * DAYS;
+
     // object.getKeys() returns an array of keys
     var getKeys = function(){
       return Object.keys(this);
@@ -153,6 +159,40 @@
       return fragment.childNodes;
     };
 
+    // Convert Number to (function name). +ensures type returned is still Number
+    var seconds = function() {
+      return +this * SECONDS;
+    };
+    var minutes = function() {
+      return +this * MINUTES;
+    };
+    var hours = function() {
+      return +this * HOURS;
+    };
+    var days = function() {
+      return +this * DAYS;
+    };
+    var weeks = function() {
+      return +this * WEEKS;
+    };
+
+    // Helper function for before() and after()
+    var getTimeOrNow = function(date) {
+      return (date || new Date()).getTime()
+    }
+
+    // Return Number of seconds to time delta from date (or now if not specified)
+    var before = function(date) {
+      var time = getTimeOrNow(date);
+      return new Date(time-(+this));
+    }
+
+    // Return Number of seconds to time delta after date (or now if not specified)
+    var after = function(date) {
+      var time = getTimeOrNow(date);
+      return new Date(time+(+this));
+    }
+
     // Add a new element as a child of this element
     var createChild = function(name, attributes, text) {
       var newElement = document.createElement(name);
@@ -240,6 +280,15 @@
         'strip':strip,
         'contains':contains,
         'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
+      },
+      'Number':{
+        'seconds':seconds,
+        'minutes':minutes,
+        'hours':hours,
+        'days':days,
+        'weeks':weeks,
+        'before':before,
+        'after':after
       },
       'Element':{
         'createChild':createChild,

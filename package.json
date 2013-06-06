@@ -12,18 +12,19 @@
   },
   "keywords": [
     "agave",
+    "agavejs",
     "methods",
     "native"
   ],
   "dependencies" : {},
   "devDependencies": {
-    "jsdom":"0.2.19",
-    "requirejs":"2.0.6",
-    "mocha":"1.7.1"
+    "jsdom":"0.6.5",
+    "requirejs":"2.1.6",
+    "mocha":"1.10.0"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
   }
 }
 
