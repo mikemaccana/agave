@@ -1,8 +1,8 @@
 # Agave.JS [![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
 
-## Cleaner, simpler Javascript for ES5 environments
+## Cleaner, simpler JavaScript for ES5 environments
 
-Agave.js safely extends native Javascript objects with helpful, intuitive methods that make your code shorter and more readable.
+Agave.js safely extends native JavaScript objects with helpful, intuitive methods that make your code shorter and more readable.
 
  - Adds things you use every day. See 'What does Agave provide?' below.
  - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects.
@@ -12,6 +12,8 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
 ### What does Agave provide?
 
 #### Object methods
+
+The following examples are based on this sample object:
 
     var mockObject = {
       foo: 'bar',
@@ -24,6 +26,7 @@ Agave.js safely extends native Javascript objects with helpful, intuitive method
     }
 
 ##### .getKeys()
+
 Returns an array of the object’s keys.
 
     mockObject.getKeys()
@@ -33,6 +36,7 @@ Returns:
     [‘foo’,’bar’]
 
 ##### .getSize()
+
 Returns the number of properties in the object.
 
     mockObject.getSize()
@@ -41,10 +45,10 @@ Returns:
 
     2
 
-##### .getPath(path)
+##### .getPath(*path*)
 
 Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
-If any of the keys are missing, return undefined. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:
+If any of the keys are missing, return *undefined*. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:
 
     mockObject.getPath('/baz/zar/zog')
 
@@ -63,7 +67,7 @@ Keys, of course, could be strings, array indices, or anything else.
 ##### .clone()
 Returns a shallow clone of the object.
 
-##### .contains(_item_)
+##### .contains(*item*)
 
 returns true if the array contains the item.
 
@@ -73,18 +77,18 @@ Returns:
 
     true
 
-##### .findItem(_testfunction_)
+##### .findItem(*testfunction*)
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-##### .extend(_newarray_)
-Adds the items from _newarray_ to the end of this array.
+##### .extend(*newarray*)
+Adds the items from *newarray* to the end of this array.
 
 ##### .toNodeList()
 Turns an array of Elements into a NodeList.
 
 #### String methods
 
-##### .contains(_substring_)
+##### .contains(*substring*)
 returns true if a string contains the substring
 
     'elephantine'.contains('tin')
@@ -93,10 +97,10 @@ Returns:
 
     true
 
-##### .startsWith(_substring_)
+##### .startsWith(*substring*)
 returns true if a string starts with the substring
 
-##### .endsWith(_substring_)
+##### .endsWith(*substring*)
 returns true if a string ends with the substring
 
     'Hello world'.endsWith('world'))
@@ -105,7 +109,7 @@ Returns:
 
     true
 
-##### .strip(_chars_)
+##### .strip(*chars*)
 returns the string, with the specified chars removed from the beginning and end.
 
     'Hello world'.strip('Hld')
@@ -114,21 +118,25 @@ Returns:
 
     'ello wor'
 
-##### .leftStrip(_chars_)
+##### .leftStrip(*chars*)
+
 returns the string, with the specified chars removed from the beginning.
 
-##### .rightStrip(_chars_)
+##### .rightStrip(*chars*)
+
 returns the string, with the specified chars removed from the end.
 
-##### .forEach(_iterationfunction_)
-Runs _iterationfunction_ over each character in the String. Just like ES5’s inbuilt Array.forEach().
+##### .forEach(*iterationfunction*)
 
-##### .repeat(_times_)
-Repeat the string _times_ times.
+Runs *iterationfunction* over each character in the String. Just like ES5’s inbuilt Array.forEach().
+
+##### .repeat(*times*)
+
+Repeat the string *times* times.
 
 #### Number methods
 
-Note numbers in Javascript have to be wrapped in brackets to use methods on them, otherwise the '.' is interpreted as the decimal point in a Float.
+**Note:** numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the '.' is interpreted as the decimal point in a Float.
 
 ##### .seconds, .hours(), .days(), and .weeks()
 
@@ -188,8 +196,8 @@ Agave adds a number of useful methods that you can use both server-side and clie
 ##### .reverse()
 Returns a reversed version of the nodeList.
 
-##### .forEach(_iterationfunction_)
-Runs _iterationfunction_ over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
+##### .forEach(*iterationfunction*)
+Runs *iterationfunction* over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
 
 Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).
 
@@ -216,15 +224,15 @@ element beneath
 
      <article>
 
-##### .matches(_selector_)
+##### .matches(*selector*)
 
 Returns true if the element matches the selector provided.
 
-##### .applyStyles(_styles_)
+##### .applyStyles(*styles*)
 
 Apply the styles mentioned to the element.
 
-##### .ancestorNodes(_selector_)
+##### .ancestorNodes(*selector*)
 
 Returns a NodeList of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
 
@@ -279,9 +287,9 @@ But wait a sec: Objects already have some methods out of the box. Like toString(
 
 Why are only our add-on methods showing up as keys? Why don't the native, inbuilt methods appear in our ‘for’ loop?
 
-The answer is that inbuilt methods in Javascript have always been non-enumerable. But __in ES3, you never had the ability to make your own non-enumerable methods__.
+The answer is that inbuilt methods in JavaScript have always been non-enumerable. But __in ES3, you never had the ability to make your own non-enumerable methods__.
 
-ES5 - the current version of Javascript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the [addition of new non-enumerable properties via Object.defineProperty()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty).
+ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the [addition of new non-enumerable properties via Object.defineProperty()](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty).
 
 So open a new tab. Let’s try again, ES5-style:
 
@@ -318,7 +326,9 @@ Everything’s an object in JS, so eveerything has has object methods. We mentio
 
 When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it’s expected behavior.
 
-You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() or it’s equivalent.
+You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.
+
+It would make things *nicer* if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods. 
 
 ### Using Agave
 
@@ -338,7 +348,7 @@ Agave is provided as an AMD module. You’d normally load it as a dependency for
 
     define('yourmodulename', ['agave'], function (agave) {
       // Start Agave, optionally you can also provide a prefix of your choice.
-      agave.enable(_optionalprefix_);
+      agave.enable(*optionalprefix*);
 
       // Your code here...
 
@@ -361,7 +371,7 @@ Inside the folder you downloaded Agave to.
 
 ### What About IE8 and Firefox 3 support?
 
-Sorry, but this isn’t possible. ES3 browsers don’t support Object.defineProperty() and it cannot be emulated via shims.
+Sorry, but this isn’t possible. ES3 browsers like IE8 and Firefox 3 don’t support Object.defineProperty() and it cannot be emulated via shims.
 
 ### License
 
