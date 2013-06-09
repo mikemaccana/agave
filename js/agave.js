@@ -215,6 +215,16 @@
       return this;
     };
 
+    // Toggle a class
+    var toggleClass = function(style) {
+      if ( this.classList.contains(style) ) {
+        this.classList.remove(style);
+      } else {
+        this.classList.add(style);
+      }
+      return this;
+    };
+
     // Return nodeList of an elements parent elements from closest to farthest
     var ancestorNodes = function(selector) {
       var ancestors = [];
@@ -294,7 +304,8 @@
         'createChild':createChild,
         'ancestorNodes':ancestorNodes,
         'matches':prefixedMatchesMethod,
-        'applyStyles':applyStyles
+        'applyStyles':applyStyles,
+        'toggleClass':toggleClass
       },
       'NodeList':{
         'forEach':Array.prototype.forEach,

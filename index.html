@@ -515,26 +515,5 @@ mocha
 
     <!-- end generated from README.md -->
   </div>
-
-  <script>
-    // prettyPrint();
-    var $ = function(selector) {
-      return document.querySelector(selector);
-    }
-    var nav = $('nav')
-    var navLink = $('.nav-link')
-    var body = $('body')
-
-    navLink.addEventListener('click', function (event) {
-      console.log('woo')
-      event.preventDefault();
-      [body, nav].forEach(function(element){
-        if ( element.classList.contains('active') ) {
-          element.classList.remove('active');
-        } else {
-          element.classList.add('active');
-        }
-      });
-    });
-  </script>
+  <script data-main="js/index" src="js/require.js"></script>
 <body>
