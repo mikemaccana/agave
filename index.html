@@ -1,461 +1,536 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="css/normalize.css"></link>
-<link rel="stylesheet" href="css/style_new.css"></link>
-<link rel="stylesheet" href="prettify/prettify.css"></link>
+<html>
+<head>
+  <link rel="stylesheet" href="css/normalize.css"></link>
+  <link rel="stylesheet" href="css/style.css"></link>
+</head>
 
 <body>
 
+  <a href="#menu" class="nav-link">
+    <img src="./images/navicon-png2x.png" width="20" alt="Menu toggle">
+  </a>
+
+  <nav>
+    <ul>
+      <li class="listheader">Agave.JS</li>
+      <li class="object"><a href="#objects">Object</a></li>
+        <ul>
+          <li class="method">getKeys</li>
+          <li class="method">getSize</li>
+          <li class="method">getPath</li>
+        </ul>
+      <li class="object"><a href="#arrays">Array</a></li>
+        <ul>
+          <li class="method">clone</li>
+          <li class="method">contains</li>
+          <li class="method">findItem</li>
+          <li class="method">extend</li>
+          <li class="method">toNodeList</li>
+        </ul>
+      <li class="object"><a href="#strings">String</a></li>
+        <ul>
+          <li class="method">contains</li>
+          <li class="method">startsWith</li>
+          <li class="method">endsWith</li>
+          <li class="method">strip</li>
+          <li class="method">leftStrip</li>
+          <li class="method">rightStrip</li>
+          <li class="method">forEach</li>
+          <li class="method">repeat</li>
+        </ul>
+      <li class="object"><a href="#numbers">Number</a></li>
+        <ul>
+          <li class="method">seconds</li>
+          <li class="method">hours</li>
+          <li class="method">days</li>
+          <li class="method">weeks</li>
+          <li class="method">before</li>
+          <li class="method">after</li>
+        </ul>
+      <li class="object"><a href="#nodelists">NodeList</a></li>
+        <ul>
+          <li class="method">reverse</li>
+          <li class="method">forEach</li>
+        </ul>
+      <li class="object"><a href="#elements">Element</a></li>
+        <ul>
+          <li class="method">createChild</li>
+          <li class="method">matches</li>
+          <li class="method">applyStyles</li>
+          <li class="method">ancestorNodes</li>
+        </ul>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <h1><img src="./images/agave.png" alt="agave.js"/></h1>
+    <h2>Cleaner, simpler JavaScript for ES5</h2>
+    <a href="https://travis-ci.org/mikemaccana/agave"><img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" /></a>
+
+    <p>Agave.js <strong>safely</strong> extends native JavaScript objects with helpful, intuitive methods that make your <strong>code shorter and more readable</strong>.</p>
+
+    <ul>
+    <li>Adds things you use every day.</li>
+    <li>Uses ES5 specific features to safely extend inbuilt objects.</li>
+    <li>Is less than 320 lines of code. Agave doesn't bother including things that are already included in ES5, so it stays small.</li>
+    <li>Works on current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js. Doesn't work on IE8 or Firefox 3.</li>
+    <li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
+    </ul>
 
 
-  <h1><img src="./images/agave.png" alt="agave.js"/></h1>
-  <h2>Cleaner, simpler JavaScript for ES5 environments</h2>
-  <a href="https://travis-ci.org/mikemaccana/agave"><img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" /></a>
+    <div id="downloads">
+        <a href="https://github.com/mikemaccana/agave/raw/master/index.js" download="agave.js">
+          <button class="download">Download</button>
+        </a>
+    </div>
 
-  <p>Agave.js safely extends native JavaScript objects with helpful, intuitive methods that make your code shorter and more readable.</p>
+    <h3>What does Agave provide?</h3>
 
-  <ul>
-  <li>Adds things you use every day. See &#8216;What does Agave provide?&#8217; below.</li>
-  <li>Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects.</li>
-  <li>Is tiny. &lt;320 lines of code. Agave doesn't bother including things that are already included in ES5, so it stays small.</li>
-  <li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
-  </ul>
+    <h4 id="objects">Object methods</h4>
 
+    <p>The following examples are based on this sample object:</p>
 
-  <div id="downloads">
-      <a href="https://github.com/mikemaccana/agave/raw/master/agave.min.js">
-        <button class="download">Download</button>
-      </a>
-      <a href="https://github.com/mikemaccana/agave/raw/master/agave.js">Unminified version</a>
-  </div>
-
-  <h3>What does Agave provide?</h3>
-
-  <h4>Object methods</h4>
-
-  <p>The following examples are based on this sample object:</p>
-
-  <pre><code>var mockObject = {
-    foo: 'bar',
-    baz: {
-      bam:'boo',
-      zar:{
-        zog:'something useful'
+    <pre><code>var mockObject = {
+      foo: 'bar',
+      baz: {
+        bam:'boo',
+        zar:{
+          zog:'something useful'
+        }
       }
     }
-  }
-  </code></pre>
+    </code></pre>
 
-  <h5>.getKeys()</h5>
+    <h5>.getKeys()</h5>
 
-  <p>Returns an array of the object's keys.</p>
+    <p>Returns an array of the object's keys.</p>
 
-  <pre><code>mockObject.getKeys()
-  </code></pre>
+    <pre><code>mockObject.getKeys()
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>[‘foo','bar']
-  </code></pre>
+    <pre><code>['foo','bar']
+    </code></pre>
 
-  <h5>.getSize()</h5>
+    <h5>.getSize()</h5>
 
-  <p>Returns the number of properties in the object.</p>
+    <p>Returns the number of properties in the object.</p>
 
-  <pre><code>mockObject.getSize()
-  </code></pre>
+    <pre><code>mockObject.getSize()
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>2
-  </code></pre>
+    <pre><code>2
+    </code></pre>
 
-  <h5>.getPath(<em>path</em>)</h5>
+    <h5>.getPath(<em>path</em>)</h5>
 
-  <p>Provided with either a &#8216;/&#8217; separated path, or an array of keys, get the value of the nested keys in the object.
-  If any of the keys are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:</p>
+    <p>Provided with either a &#8216;/&#8217; separated path, or an array of keys, get the value of the nested keys in the object.
+    If any of the keys are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:</p>
 
-  <pre><code>mockObject.getPath('/baz/zar/zog')
-  </code></pre>
+    <pre><code>mockObject.getPath('/baz/zar/zog')
+    </code></pre>
 
-  <p>or, alternatively:</p>
+    <p>or, alternatively:</p>
 
-  <pre><code>mockObject.getPath(['baz','zar','zog'])
-  </code></pre>
+    <pre><code>mockObject.getPath(['baz','zar','zog'])
+    </code></pre>
 
-  <p>will return:</p>
+    <p>will return:</p>
 
-  <pre><code>'something useful'
-  </code></pre>
+    <pre><code>'something useful'
+    </code></pre>
 
-  <p>Keys, of course, could be strings, array indices, or anything else.</p>
+    <p>Keys, of course, could be strings, array indices, or anything else.</p>
 
-  <h4>Array methods</h4>
+    <h4 id="arrays">Array methods</h4>
 
-  <h5>.clone()</h5>
+    <h5>.clone()</h5>
 
-  <p>Returns a shallow clone of the object.</p>
+    <p>Returns a shallow clone of the object.</p>
 
-  <h5>.contains(<em>item</em>)</h5>
+    <h5>.contains(<em>item</em>)</h5>
 
-  <p>returns true if the array contains the item.</p>
+    <p>returns true if the array contains the item.</p>
 
-  <pre><code>['one','two','three'].contains('two')
-  </code></pre>
+    <pre><code>['one','two','three'].contains('two')
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>true
-  </code></pre>
+    <pre><code>true
+    </code></pre>
 
-  <h5>.findItem(<em>testfunction</em>)</h5>
+    <h5>.findItem(<em>testfunction</em>)</h5>
 
-  <p>When provided with a function to test each item against, returns the first item that where testfunction returns true.</p>
+    <p>When provided with a function to test each item against, returns the first item that where testfunction returns true.</p>
 
-  <h5>.extend(<em>newarray</em>)</h5>
+    <h5>.extend(<em>newarray</em>)</h5>
 
-  <p>Adds the items from <em>newarray</em> to the end of this array.</p>
+    <p>Adds the items from <em>newarray</em> to the end of this array.</p>
 
-  <h5>.toNodeList()</h5>
+    <h5>.toNodeList()</h5>
 
-  <p>Turns an array of Elements into a NodeList.</p>
+    <p>Turns an array of Elements into a NodeList.</p>
 
-  <h4>String methods</h4>
+    <h4 id="strings">String methods</h4>
 
-  <h5>.contains(<em>substring</em>)</h5>
+    <h5>.contains(<em>substring</em>)</h5>
 
-  <p>returns true if a string contains the substring</p>
+    <p>returns true if a string contains the substring</p>
 
-  <pre><code>'elephantine'.contains('tin')
-  </code></pre>
+    <pre><code>'elephantine'.contains('tin')
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>true
-  </code></pre>
+    <pre><code>true
+    </code></pre>
 
-  <h5>.startsWith(<em>substring</em>)</h5>
+    <h5>.startsWith(<em>substring</em>)</h5>
 
-  <p>returns true if a string starts with the substring</p>
+    <p>returns true if a string starts with the substring</p>
 
-  <h5>.endsWith(<em>substring</em>)</h5>
+    <h5>.endsWith(<em>substring</em>)</h5>
 
-  <p>returns true if a string ends with the substring</p>
+    <p>returns true if a string ends with the substring</p>
 
-  <pre><code>'Hello world'.endsWith('world'))
-  </code></pre>
+    <pre><code>'Hello world'.endsWith('world'))
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>true
-  </code></pre>
+    <pre><code>true
+    </code></pre>
 
-  <h5>.strip(<em>chars</em>)</h5>
+    <h5>.strip(<em>chars</em>)</h5>
 
-  <p>returns the string, with the specified chars removed from the beginning and end.</p>
+    <p>returns the string, with the specified chars removed from the beginning and end.</p>
 
-  <pre><code>'Hello world'.strip('Hld')
-  </code></pre>
+    <pre><code>'Hello world'.strip('Hld')
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>'ello wor'
-  </code></pre>
+    <pre><code>'ello wor'
+    </code></pre>
 
-  <h5>.leftStrip(<em>chars</em>)</h5>
+    <h5>.leftStrip(<em>chars</em>)</h5>
 
-  <p>returns the string, with the specified chars removed from the beginning.</p>
+    <p>returns the string, with the specified chars removed from the beginning.</p>
 
-  <h5>.rightStrip(<em>chars</em>)</h5>
+    <h5>.rightStrip(<em>chars</em>)</h5>
 
-  <p>returns the string, with the specified chars removed from the end.</p>
+    <p>returns the string, with the specified chars removed from the end.</p>
 
-  <h5>.forEach(<em>iterationfunction</em>)</h5>
+    <h5>.forEach(<em>iterationfunction</em>)</h5>
 
-  <p>Runs <em>iterationfunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
+    <p>Runs <em>iterationfunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
 
-  <h5>.repeat(<em>times</em>)</h5>
+    <h5>.repeat(<em>times</em>)</h5>
 
-  <p>Repeat the string <em>times</em> times.</p>
+    <p>Repeat the string <em>times</em> times.</p>
 
-  <h4>Number methods</h4>
+    <h4 id="numbers">Number methods</h4>
 
-  <p><strong>Note:</strong> numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the &#8216;.&#8217; is interpreted as the decimal point in a Float.</p>
+    <p><strong>Note:</strong> numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the &#8216;.&#8217; is interpreted as the decimal point in a Float.</p>
 
-  <h5>.seconds, .hours(), .days(), and .weeks()</h5>
+    <h5>.seconds, .hours(), .days(), and .weeks()</h5>
 
-  <p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
+    <p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
 
-  <pre><code>(5).days()
-  </code></pre>
+    <pre><code>(5).days()
+    </code></pre>
 
-  <p>Returns:</p>
+    <p>Returns:</p>
 
-  <pre><code>432000000
-  </code></pre>
+    <pre><code>432000000
+    </code></pre>
 
-  <p>Since 5 days is 432000000 milliseconds.</p>
+    <p>Since 5 days is 432000000 milliseconds.</p>
 
-  <h5>.before(), .after()</h5>
+    <h5>.before(), .after()</h5>
 
-  <p>Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before() or the future (using .after()). You&#8217;d typically combine this with .seconds, .hours(), .days(), and .weeks() to For example:</p>
+    <p>Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before() or the future (using .after()). You&#8217;d typically combine this with .seconds, .hours(), .days(), and .weeks() to For example:</p>
 
-  <pre><code>(2).days().before()
-  </code></pre>
+    <pre><code>(2).days().before()
+    </code></pre>
 
-  <p>Returns a Date for 2 days ago, eg:</p>
+    <p>Returns a Date for 2 days ago, eg:</p>
 
-  <pre><code>Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
-  </code></pre>
+    <pre><code>Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
+    </code></pre>
 
-  <p>Whereas:</p>
+    <p>Whereas:</p>
 
-  <pre><code>var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
-  (3).weeks().after(joinedCompanyDate)
-  </code></pre>
+    <pre><code>var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
+    (3).weeks().after(joinedCompanyDate)
+    </code></pre>
 
-  <p>Returns a Date for 3 weeks after that date, eg: </p>
+    <p>Returns a Date for 3 weeks after that date, eg: </p>
 
-  <pre><code>Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
-  </code></pre>
+    <pre><code>Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
+    </code></pre>
 
-  <h4>NodeList methods</h4>
+    <h4 id="nodelists">NodeList methods</h4>
 
-  <p>NodeLists are what&#8217;s returned when you use the document.querySelectorAll(), or similar methods.</p>
+    <p>NodeLists are what&#8217;s returned when you use the document.querySelectorAll(), or similar methods.</p>
 
-  <p>For example, given the following document:</p>
+    <p>For example, given the following document:</p>
 
-  <pre><code>&lt;html&gt;
-    &lt;body&gt;
-      &lt;article&gt;
-        &lt;heading&gt;Sample document&lt;/heading&gt;
-        &lt;author&gt;&lt;/author&gt;
-        &lt;p&gt;Carles portland banh mi lomo twee.&lt;/p&gt;
-        &lt;p&gt;Narwhal bicycle rights keffiyeh beard.&lt;/p&gt;
-        &lt;p&gt;Pork belly beard pop-up kale chips.&lt;/p&gt;
-      &lt;/article&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;
-  </code></pre>
+    <pre><code>&lt;html&gt;
+      &lt;body&gt;
+        &lt;article&gt;
+          &lt;heading&gt;Sample document&lt;/heading&gt;
+          &lt;author&gt;&lt;/author&gt;
+          &lt;p&gt;Carles portland banh mi lomo twee.&lt;/p&gt;
+          &lt;p&gt;Narwhal bicycle rights keffiyeh beard.&lt;/p&gt;
+          &lt;p&gt;Pork belly beard pop-up kale chips.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
 
-  <p>We can fetch a list of all paragraphs:</p>
+    <p>We can fetch a list of all paragraphs:</p>
 
-  <pre><code>var paragraphs = document.getElementsByTagName('p');
-  </code></pre>
+    <pre><code>var paragraphs = document.getElementsByTagName('p');
+    </code></pre>
 
-  <p>Agave adds a number of useful methods that you can use both server-side and client side.</p>
+    <p>Agave adds a number of useful methods that you can use both server-side and client side.</p>
 
-  <h5>.reverse()</h5>
+    <h5>.reverse()</h5>
 
-  <p>Returns a reversed version of the nodeList.</p>
+    <p>Returns a reversed version of the nodeList.</p>
 
-  <h5>.forEach(<em>iterationfunction</em>)</h5>
+    <h5>.forEach(<em>iterationfunction</em>)</h5>
 
-  <p>Runs <em>iterationfunction</em> over each node in the NodeList. Just like ES5's inbuilt Array.forEach().</p>
+    <p>Runs <em>iterationfunction</em> over each node in the NodeList. Just like ES5's inbuilt Array.forEach().</p>
 
-  <p>Here's an example of changing every paragraph in a document to say ‘Hello' (look ma, No JQuery!).</p>
+    <p>Here's an example of changing every paragraph in a document to say 'Hello' (look ma, No JQuery!).</p>
 
-  <pre><code>paragraphs.forEach(function(paragraph){
-    paragraph.innerText = 'Hello.';
-  })
-  </code></pre>
+    <pre><code>paragraphs.forEach(function(paragraph){
+      paragraph.innerText = 'Hello.';
+    })
+    </code></pre>
 
-  <h4>Element methods</h4>
+    <h4 id="elements">Element methods</h4>
 
-  <p>Agave also provides useful methods for Elements.</p>
+    <p>Agave also provides useful methods for Elements.</p>
 
-  <h5>.createChild(name, attributes, innerText)</h5>
+    <h5>.createChild(name, attributes, innerText)</h5>
 
-  <p>Make a new child element, with the tag name, any attributes, and inner text specified.</p>
+    <p>Make a new child element, with the tag name, any attributes, and inner text specified.</p>
 
-  <pre><code>var article = document.querySelector('article');
-  article.createChild('p',{'id':'testpara'},'hey there');
-  </code></pre>
+    <pre><code>var article = document.querySelector('article');
+    article.createChild('p',{'id':'testpara'},'hey there');
+    </code></pre>
 
-  <p>Would create a new</p>
+    <p>Would create a new</p>
 
-  <pre><code>&lt;p id=&quot;testpara&quot;&gt;hey there&lt;/p&gt;
-  </code></pre>
+    <pre><code>&lt;p id=&quot;testpara&quot;&gt;hey there&lt;/p&gt;
+    </code></pre>
 
-  <p>element beneath</p>
+    <p>element beneath</p>
 
-  <pre><code> &lt;article&gt;
-  </code></pre>
+    <pre><code> &lt;article&gt;
+    </code></pre>
 
-  <h5>.matches(<em>selector</em>)</h5>
+    <h5>.matches(<em>selector</em>)</h5>
 
-  <p>Returns true if the element matches the selector provided.</p>
+    <p>Returns true if the element matches the selector provided.</p>
 
-  <h5>.applyStyles(<em>styles</em>)</h5>
+    <h5>.applyStyles(<em>styles</em>)</h5>
 
-  <p>Apply the styles mentioned to the element.</p>
+    <p>Apply the styles mentioned to the element.</p>
 
-  <h5>.ancestorNodes(<em>selector</em>)</h5>
+    <h5>.ancestorNodes(<em>selector</em>)</h5>
 
-  <p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
+    <p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
 
-  <h2>Why would I want to use Agave?</h2>
+    <h2>Why would I want to use Agave?</h2>
 
-  <p>Agave will make your code shorter and more readable.</p>
+    <p>Agave will make your code shorter and more readable.</p>
 
-  <h3>How Does Agave Compare to Sugar.js?</h3>
+    <h3>How Does Agave Compare to Sugar.js?</h3>
 
-  <p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
-   - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.
-   - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
-   - Agave has a more explicit method naming style that's consistent with the ES5 specification.</p>
+    <p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
+     - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.
+     - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
+     - Agave has a more explicit method naming style that's consistent with the ES5 specification.</p>
 
-  <h3>How Does Agave Compare to Underscore.js and Lodash?</h3>
+    <h3>How Does Agave Compare to Underscore.js and Lodash?</h3>
 
-  <ul>
-  <li>Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.</li>
-  <li>Agave doesn't require a separate string library.</li>
-  <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3-&gt;ES5 shims.</li>
-  <li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
-  </ul>
+    <ul>
+    <li>Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.</li>
+    <li>Agave doesn't require a separate string library.</li>
+    <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3-&gt;ES5 shims.</li>
+    <li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
+    </ul>
 
-  <h3>I read that adding methods to prototypes is bad</h3>
+    <h3>I read that adding methods to prototypes is bad</h3>
 
-  <p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
+    <p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
 
-  <h3>Q. Will Agave methods appear when iterating over objects?</h3>
+    <h3>Q. Will Agave methods appear when iterating over objects?</h3>
 
-  <h3>A. No. Methods will never appear when iterating over objects.</h3>
+    <h3>A. No. Methods will never appear when iterating over objects.</h3>
 
-  <p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
+    <p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
 
-  <p>Let&#8217;s see the problem: open your browser console right now and add a method, the traditional way:</p>
+    <p>Let&#8217;s see the problem: open your browser console right now and add a method, the traditional way:</p>
 
-  <pre><code>Object.prototype.oldStyleMethod = function oldStyleMethod (){}
-  </code></pre>
+    <pre><code>Object.prototype.oldStyleMethod = function oldStyleMethod (){}
+    </code></pre>
 
-  <p>And make an object:</p>
+    <p>And make an object:</p>
 
-  <pre><code>var myobject = {};
-  </code></pre>
+    <pre><code>var myobject = {};
+    </code></pre>
 
-  <p>Watch what happens when we iterate over the object:</p>
+    <p>Watch what happens when we iterate over the object:</p>
 
-  <pre><code>for (var key in myobject) { console.log(key) };
-  </code></pre>
+    <pre><code>for (var key in myobject) { console.log(key) };
+    </code></pre>
 
-  <p>You can see the problem: &#8216;old_style_method&#8217; shows up as one of myobject&#8217;s keys. This will break things and is indeed bad.</p>
+    <p>You can see the problem: &#8216;old_style_method&#8217; shows up as one of myobject&#8217;s keys. This will break things and is indeed bad.</p>
 
-  <p>But wait a sec: Objects already have some methods out of the box. Like toString():</p>
+    <p>But wait a sec: Objects already have some methods out of the box. Like toString():</p>
 
-  <pre><code>console.log(Object.prototype.toString)
-  function toString() { [native code] }
+    <pre><code>console.log(Object.prototype.toString)
+    function toString() { [native code] }
 
-  console.log(Object.prototype.oldStyleMethod)
-  function oldStyleMethod(){}
-  </code></pre>
+    console.log(Object.prototype.oldStyleMethod)
+    function oldStyleMethod(){}
+    </code></pre>
 
-  <p>Why are only our add-on methods showing up as keys? Why don&#8217;t the native, inbuilt methods appear in our ‘for' loop?</p>
+    <p>Why are only our add-on methods showing up as keys? Why don&#8217;t the native, inbuilt methods appear in our 'for' loop?</p>
 
-  <p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
+    <p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
 
-  <p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
+    <p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
 
-  <p>So open a new tab. Let's try again, ES5-style:</p>
+    <p>So open a new tab. Let's try again, ES5-style:</p>
 
-  <pre><code>Object.defineProperty( Object.prototype, &quot;newStyleMethod&quot;, {value: function newStyleMethod(){}, enumerable: false});
+    <pre><code>Object.defineProperty( Object.prototype, &quot;newStyleMethod&quot;, {value: function newStyleMethod(){}, enumerable: false});
 
-  for (var key in myobject) { console.log(key) };
-  </code></pre>
+    for (var key in myobject) { console.log(key) };
+    </code></pre>
 
-  <p>Hrm, it seems newStyleMethod(), just like toString(), doesn't interfere with our loops.</p>
+    <p>Hrm, it seems newStyleMethod(), just like toString(), doesn't interfere with our loops.</p>
 
-  <p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
+    <p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
 
-  <p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
+    <p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
 
-  <h3>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
+    <h3>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
 
-  <h3>A. That's why we let you prefix all method names</h3>
+    <h3>A. That's why we let you prefix all method names</h3>
 
-  <p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave allows you to prefix every method it provides</strong>. Just start it with:</p>
+    <p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave allows you to prefix every method it provides</strong>. Just start it with:</p>
 
-  <pre><code>agave.enable(‘av');
-  </code></pre>
+    <pre><code>agave.enable('av');
+    </code></pre>
 
-  <p>or the prefix of your choice to have all the methods prefixed with whatever string you like.</p>
+    <p>or the prefix of your choice to have all the methods prefixed with whatever string you like.</p>
 
-  <p>Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.</p>
+    <p>Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.</p>
 
-  <p>You may still prefer unprefixed, for the following reasons:</p>
+    <p>You may still prefer unprefixed, for the following reasons:</p>
 
-  <ul>
-  <li>You may find the benefits of shorter code ourweigh the rish of a possible future conflict.</li>
-  <li>Agave&#8217;s developers track ES6 updates and specifically try to avoid conflicts with what's proposed.</li>
-  </ul>
+    <ul>
+    <li>You may find the benefits of shorter code ourweigh the rish of a possible future conflict.</li>
+    <li>Agave&#8217;s developers track ES6 updates and specifically try to avoid conflicts with what's proposed.</li>
+    </ul>
 
-  <h3>Q. There are new methods on my window object!</h3>
+    <h3>Q. There are new methods on my window object!</h3>
 
-  <h3>A. Yes, window is an object. This is how JS works.</h3>
+    <h3>A. Yes, window is an object. This is how JS works.</h3>
 
-  <p>Everything's an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there's a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
+    <p>Everything's an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there's a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
 
-  <p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
+    <p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
 
-  <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.</p>
+    <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.</p>
 
-  <p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods. </p>
+    <p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods. </p>
 
-  <h3>Using Agave</h3>
+    <h3>Using Agave</h3>
 
-  <h4>On the server (node.js)</h4>
+    <h4>On the server (node.js)</h4>
 
-  <p>Just run:</p>
+    <p>Just run:</p>
 
-  <pre><code>npm install agave
-  </code></pre>
+    <pre><code>npm install agave
+    </code></pre>
 
-  <p>Then in your code:</p>
+    <p>Then in your code:</p>
 
-  <pre><code>var agave = require('agave');
-  </code></pre>
+    <pre><code>var agave = require('agave');
+    </code></pre>
 
-  <h4>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
+    <h4>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
 
-  <p>Agave is provided as an AMD module. You'd normally load it as a dependency for your own module, either in the browser or on node.js, using <a href="http://requirejs.org/">RequireJS</a>:</p>
+    <p>Agave is provided as an AMD module. You'd normally load it as a dependency for your own module, either in the browser or on node.js, using <a href="http://requirejs.org/">RequireJS</a>:</p>
 
-  <pre><code>define('yourmodulename', ['agave'], function (agave) {
-    // Start Agave, optionally you can also provide a prefix of your choice.
-    agave.enable(*optionalprefix*);
+    <pre><code>define('yourmodulename', ['agave'], function (agave) {
+      // Start Agave, optionally you can also provide a prefix of your choice.
+      agave.enable(*optionalprefix*);
 
-    // Your code here...
+      // Your code here...
 
-  })
-  </code></pre>
+    })
+    </code></pre>
 
-  <p>All the methods above are now available.</p>
+    <p>All the methods above are now available.</p>
 
-  <h3>I've got stuff to add!</h3>
+    <h3>I've got stuff to add!</h3>
 
-  <p>Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.</p>
+    <p>Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.</p>
 
-  <h3>Tests</h3>
+    <h3>Tests</h3>
 
-  <p>Install <a href="http://nodejs.org/">node.js</a>, and run:</p>
+    <p>Install <a href="http://nodejs.org/">node.js</a>, and run:</p>
 
-  <pre><code>npm install .
-  mocha
-  </code></pre>
+    <pre><code>npm install .
+    mocha
+    </code></pre>
 
-  <p>Inside the folder you downloaded Agave to.</p>
+    <p>Inside the folder you downloaded Agave to.</p>
 
-  <h3>What About IE8 and Firefox 3 support?</h3>
+    <h3>What About IE8 and Firefox 3 support?</h3>
 
-  <p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
+    <p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
 
-  <h3>License</h3>
+    <h3>License</h3>
 
-  <p><a href="https://github.com/mikemaccana/agave/blob/master/MIT-LICENSE.md">MIT license</a>.</p>
+    <p><a href="https://github.com/mikemaccana/agave/blob/master/MIT-LICENSE.md">MIT license</a>.</p>
 
-  <h3>Author</h3>
+    <h3>Author</h3>
 
-  <p>Mike MacCana (mike.maccana@gmail.com)</p>
-<script src="prettify/prettify.js"></script>
-<script>
-    prettyPrint();
-</script>
+    <p>Mike MacCana (mike.maccana@gmail.com)</p>
+  </div>
+
+  <script>
+    // prettyPrint();
+    var $ = function(selector) {
+      return document.querySelector(selector);
+    }
+    var nav = $('nav')
+    var navLink = $('.nav-link')
+    var body = $('body')
+
+    navLink.addEventListener('click', function (event) {
+      console.log('woo')
+      event.preventDefault();
+      [body, nav].forEach(function(element){
+        if ( element.classList.contains('active') ) {
+          element.classList.remove('active');
+        } else {
+          element.classList.add('active');
+        }
+      });
+    });
+  </script>
 <body>

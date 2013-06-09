@@ -1,11 +1,11 @@
 # Agave.JS [![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
 
-## Cleaner, simpler JavaScript for ES5 environments
+## Cleaner, simpler JavaScript for ES5
 
 Agave.js safely extends native JavaScript objects with helpful, intuitive methods that make your code shorter and more readable.
 
- - Adds things you use every day. See 'What does Agave provide?' below.
- - Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects.
+ - Adds things you use every day.
+ - Uses ES5 specific features to safely extend inbuilt objects. These are included in current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js. Doesn't work on IE8 or Firefox 3.
  - Is tiny. <320 lines of code. Agave doesn’t bother including things that are already included in ES5, so it stays small.
  - Is loadable both as a regular node module and via RequireJS as an AMD module.
 
@@ -164,8 +164,8 @@ Whereas:
 
     var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
     (3).weeks().after(joinedCompanyDate)
-    
-Returns a Date for 3 weeks after that date, eg: 
+
+Returns a Date for 3 weeks after that date, eg:
 
     Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
 
@@ -328,7 +328,7 @@ When running agave, the additional methods added to Object.prototype will appear
 
 You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.
 
-It would make things *nicer* if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods. 
+It would make things *nicer* if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods.
 
 ### Using Agave
 

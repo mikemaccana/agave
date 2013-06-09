@@ -1,0 +1,198 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'InconsolataMedium';
+    src: url('../fonts/Inconsolata-webfont.eot');
+    src: url('../fonts/Inconsolata-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Inconsolata-webfont.woff') format('woff'),
+         url('../fonts/Inconsolata-webfont.ttf') format('truetype'),
+         url('../fonts/Inconsolata-webfont.svg#InconsolataMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* ☰ button */
+.nav-link {
+  display: none;
+  top: 0;
+  left: 150px;
+  background: rgba(0,0,0,0.7);
+  padding: 0.75em 1em;
+}
+
+@media (max-width: 770px) {
+  .nav-link {
+    position: fixed;
+    left: 0;
+    display: block;
+  }
+}
+
+body.active {
+  position: relative;
+  left: 150px;
+}
+
+body.active .nav-link {
+  left: 150px;
+}
+
+nav.active {
+  left: 150px;
+  width: 150px;
+}
+
+nav {
+  margin-left: -150px;
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 150px;
+  bottom: 0;
+  z-index: 1000;
+  background: #191818;
+  overflow-y: auto;
+  color: whitesmoke;
+}
+
+nav ul, nav li {
+  list-style: none;
+}
+
+nav a, nav a:hover, nav a:active, nav a:visited {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+@media (max-width: 770px) {
+  nav {
+    left: 0;
+  }
+}
+
+nav ul {
+  padding-left: 10px;
+}
+
+li.object {
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 20px 0 5px 0;
+}
+
+li.method {
+  font-size: 14px;
+  margin: 5px;
+}
+
+.listheader {
+  font-size: 20px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: white;
+}
+
+
+
+body {
+  padding-left: 150px;
+  left: 0;
+  background-image:url("../images/lil_fiber.png");
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  color: #222;
+}
+
+@media (max-width: 770px) {
+  body {
+    padding-left: 0;
+  }
+}
+
+.content {
+  padding: 20px;
+}
+
+h1 img {
+    display: block;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 100;
+    font-size: 21pt;
+}
+
+
+h3 {
+    text-align: center;
+    font-weight: 100;
+    font-size: 16pt;
+}
+
+h4 {
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+pre {
+  border-left: 4px solid #4DBF9F;
+  padding-left: 5px;
+}
+
+code {
+    font: 14px/18px 'InconsolataMedium', Arial, sans-serif;
+}
+
+li {
+  margin: 20px 0;
+}
+
+h5 {
+    font-size: 14pt;
+    margin: 20px 0 10px 0;
+    font-weight: 100;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 22px;
+}
+
+#downloads {
+    text-align: center;
+    max-width: 160px;
+    margin: 0px auto;
+}
+
+#downloads a {
+    font-size: 10px;
+}
+
+button.download:active {
+    border: 1px solid #5B992B;
+    border-bottom: 1px solid #538C27;
+}
+
+button.download:hover {
+    background-color: #4DC5A3;
+    cursor: pointer;
+}
+
+button.download {
+  font-weight: lighter;
+  font-size: 20px;
+  padding: 15px;
+  border: 0;
+  background-color: #4DBF9F;
+  text-align: center;
+  color: white;
+}
