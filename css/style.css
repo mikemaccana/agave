@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+a, a:hover, a:active, a:visited {
+  color: #4DBF9F;
+  text-decoration: none;
+}
+
 @font-face {
     font-family: 'InconsolataMedium';
     src: url('../fonts/Inconsolata-webfont.eot');
@@ -67,6 +72,10 @@ nav a, nav a:hover, nav a:active, nav a:visited {
   text-decoration: none;
 }
 
+nav li.object:hover {
+  background-color: #4DBF9F;
+}
+
 @media (max-width: 770px) {
   nav {
     left: 0;
@@ -102,7 +111,7 @@ body {
   left: 0;
   background-image:url("../images/lil_fiber.png");
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Segoe UI","Fuse-Segoe-UI","Open Sans", sans-serif;
   font-weight: 100;
   color: #222;
 }
@@ -126,6 +135,7 @@ h2 {
     text-align: center;
     font-weight: 100;
     font-size: 21pt;
+    color: #4DBF9F;
 }
 
 

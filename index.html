@@ -64,19 +64,19 @@
 
   <div class="content">
     <h1><img src="./images/agave.png" alt="agave.js"/></h1>
-    <h2>Cleaner, simpler JavaScript for ES5</h2>
+    <h2>Cleaner, simpler JavaScript for ES5.</h2>
     <a href="https://travis-ci.org/mikemaccana/agave"><img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" /></a>
 
     <p>Agave.js <strong>safely</strong> extends native JavaScript objects with helpful, intuitive methods that make your <strong>code shorter and more readable</strong>.</p>
 
     <ul>
-    <li>Adds things you use every day.</li>
-    <li>Uses ES5 specific features to safely extend inbuilt objects.</li>
-    <li>Is less than 320 lines of code. Agave doesn't bother including things that are already included in ES5, so it stays small.</li>
-    <li>Works on current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js. Doesn't work on IE8 or Firefox 3.</li>
-    <li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
+      <li>Adds useful things you'll use every day</li>
+      <li>Is less than 320 lines of code. Agave doesn't bother including things that are already included in ES5, so it stays small.</li>
+      <li>Uses prefixing and ES5 defineProperty() to safely extend inbuilt objects.</li>
+      <li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
     </ul>
 
+    <p>Agave works on <a href="#oldbrowsers">current versions</a> of Chrome, Firefox, Safari, IE9, IE10 and node.js.</p>
 
     <div id="downloads">
         <a href="https://github.com/mikemaccana/agave/raw/master/index.js" download="agave.js">
@@ -499,7 +499,7 @@
 
     <p>Inside the folder you downloaded Agave to.</p>
 
-    <h3>What About IE8 and Firefox 3 support?</h3>
+    <h3 id="oldbrowsers">What About IE8 and Firefox 3 support?</h3>
 
     <p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
 
