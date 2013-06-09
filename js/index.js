@@ -5,18 +5,15 @@ requirejs.config({
 
 requirejs(["agave"], function(agave) {
   agave.enable('av');
-  var $ = function(selector) {
-    return document.querySelector(selector);
-  }
-  var nav = $('nav')
-  var navLink = $('.nav-link')
-  var body = $('body')
+  var $ = function(selector) { return document.querySelector(selector) };
+  var $all = function(selector) { return document.querySelectorAll(selector) };
 
-  navLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    [body, nav].forEach(function(element){
+  // Clicking ☰ button displays nav
+  $('.nav-link').addEventListener('click', function (event) {
+    $all('nav, body').avforEach(function(element){
       element.avtoggleClass('active');
     });
+    event.preventDefault();
   });
 })
 
