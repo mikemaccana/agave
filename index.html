@@ -86,11 +86,11 @@
 <li>Adds useful things you&#8217;ll use every day.</li>
 <li>Actual methods, ie, on the objects you expect them to be on. No underscores or other punctuation.</li>
 <li>Is less than 320 lines of code. Agave doesn&#8217;t include things that are already in ES5, so it stays small.</li>
-<li>Uses prefixing and ES5 defineProperty() to safely extend inbuilt objects.</li>
+<li>Uses <a href="#prefixing">prefixing</a> and ES5 <a href="#defineProperty">defineProperty()</a> to safely extend inbuilt objects.</li>
 <li>Available both as a regular node module and via RequireJS as an AMD module.</li>
 </ul>
 
-<p>Agave works on current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js.</p>
+<p>Agave works on <a href="#support">current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js</a>.</p>
 
 <h3>What does Agave provide?</h3>
 
@@ -111,14 +111,14 @@
 
 <h5><a name="objectgetKeys"></a>.getKeys()</h5>
 
-<p>Returns an array of the object’s keys.</p>
+<p>Returns an array of the object's keys.</p>
 
 <pre><code>mockObject.getKeys()
 </code></pre>
 
 <p>Returns:</p>
 
-<pre><code>[‘foo’,’bar’]
+<pre><code>['foo','bar']
 </code></pre>
 
 <h5><a name="objectgetSize"></a>.getSize()</h5>
@@ -235,7 +235,7 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <h5><a name="stringforEach"></a>.forEach(<em>iterationfunction</em>)</h5>
 
-<p>Runs <em>iterationfunction</em> over each character in the String. Just like ES5’s inbuilt Array.forEach().</p>
+<p>Runs <em>iterationfunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
 
 <h5><a name="stringrepeat"></a>.repeat(<em>times</em>)</h5>
 
@@ -314,9 +314,9 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <h5><a name="nodelistforEach"></a>.forEach(<em>iterationfunction</em>)</h5>
 
-<p>Runs <em>iterationfunction</em> over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().</p>
+<p>Runs <em>iterationfunction</em> over each node in the NodeList. Just like ES5's inbuilt Array.forEach().</p>
 
-<p>Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).</p>
+<p>Here's an example of changing every paragraph in a document to say 'Hello' (look ma, No JQuery!).</p>
 
 <pre><code>paragraphs.forEach(function(paragraph){
   paragraph.innerText = 'Hello.';
@@ -355,7 +355,7 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
 <h5><a name="elementancestorNodes"></a>.ancestorNodes(<em>selector</em>)</h5>
 
-<p>Returns a NodeList of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
+<p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
 
 <h2>Why would I want to use Agave?</h2>
 
@@ -368,28 +368,28 @@ article.createChild('p',{'id':'testpara'},'hey there');
 <ul>
 <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
 <li>Sugar extends String, Array etc but avoids extending Object specifically. Agave extends all prototypes using a user-specified prefix to avoid collisions.</li>
-<li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those.</li>
-<li>Agave has a more explicit method naming style that’s consistent with the ES5 specification.</li>
+<li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.</li>
+<li>Agave has a more explicit method naming style that's consistent with the ES5 specification.</li>
 </ul>
 
 <h3>How Does Agave Compare to Underscore.js and Lodash?</h3>
 
 <ul>
 <li>Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.</li>
-<li>Agave doesn’t require a separate string library.</li>
+<li>Agave doesn't require a separate string library.</li>
 <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3-&gt;ES5 shims.</li>
-<li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn’t make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
+<li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
 </ul>
 
 <h3>I read that adding methods to prototypes is bad</h3>
 
-<p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont’s talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
+<p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
 
-<h3>Q. Will Agave methods appear when iterating over objects?</h3>
+<h3><a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?</h3>
 
 <h3>A. No. Methods will never appear when iterating over objects.</h3>
 
-<p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
+<p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
 
 <p>Let&#8217;s see the problem: open your browser console right now and add a method, the traditional way:</p>
 
@@ -417,28 +417,28 @@ console.log(Object.prototype.oldStyleMethod)
 function oldStyleMethod(){}
 </code></pre>
 
-<p>Why are only our add-on methods showing up as keys? Why don&#8217;t the native, inbuilt methods appear in our ‘for’ loop?</p>
+<p>Why are only our add-on methods showing up as keys? Why don&#8217;t the native, inbuilt methods appear in our 'for' loop?</p>
 
 <p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
 
 <p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9/10, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
 
-<p>So open a new tab. Let’s try again, ES5-style:</p>
+<p>So open a new tab. Let's try again, ES5-style:</p>
 
 <pre><code>Object.defineProperty( Object.prototype, &quot;newStyleMethod&quot;, {value: function newStyleMethod(){}, enumerable: false});
 
 for (var key in myobject) { console.log(key) };
 </code></pre>
 
-<p>Hrm, it seems newStyleMethod(), just like toString(), doesn’t interfere with our loops.</p>
+<p>Hrm, it seems newStyleMethod(), just like toString(), doesn't interfere with our loops.</p>
 
-<p>This is exactly what Agave uses. As a result, Agave’s methods will <strong>never</strong> show up in for loops.</p>
+<p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
 
-<p>So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
+<p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
 
-<h3>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
+<h3><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
 
-<h3>A. That’s why Agave makes you prefix all method names</h3>
+<h3>A. That's why Agave makes you prefix all method names</h3>
 
 <p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave makes you to prefix every method it provides</strong>. Just start it with:</p>
 
@@ -455,13 +455,13 @@ for (var key in myobject) { console.log(key) };
 
 <h3>A. Yes, window is an object. This is how JS works.</h3>
 
-<p>Everything’s an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there’s a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
+<p>Everything's an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there's a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
 
-<p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it’s expected behavior.</p>
+<p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
 
 <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.</p>
 
-<p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods.</p>
+<p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods.</p>
 
 <h3>Using Agave</h3>
 
@@ -479,7 +479,7 @@ for (var key in myobject) { console.log(key) };
 
 <h4><a name="browser"></a>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
 
-<p>Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using <a href="http://requirejs.org/">RequireJS</a>:</p>
+<p>Agave is provided as an AMD module. You'd normally load it as a dependency for your own module, either in the browser or on node.js, using <a href="http://requirejs.org/">RequireJS</a>:</p>
 
 <pre><code>define('yourmodulename', ['agave'], function (agave) {
   // Start Agave, optionally you can also provide a prefix of your choice.
@@ -492,7 +492,7 @@ for (var key in myobject) { console.log(key) };
 
 <p>All the methods above are now available.</p>
 
-<h3>I’ve got stuff to add!</h3>
+<h3>I've got stuff to add!</h3>
 
 <p>Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.</p>
 
@@ -506,9 +506,13 @@ mocha
 
 <p>Inside the folder you downloaded Agave to.</p>
 
-<h3>What About IE8 and Firefox 3 support?</h3>
+<h3><a name="support"></a>What browsers does Agave support?</h3>
 
-<p>Sorry, but this isn’t possible. ES3 browsers like IE8 and Firefox 3 don’t support Object.defineProperty() and it cannot be emulated via shims.</p>
+<p>Any ES5 compatible environment. This includes current Chrome, current Firefox, current Safari, IE9/10 and node.js.</p>
+
+<h4>What about IE8 and Firefox 3 support?</h4>
+
+<p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
 
 <h3>License</h3>
 
