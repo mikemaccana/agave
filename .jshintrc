@@ -1,0 +1,8 @@
+{
+  // Various things most of my projects use
+  "predef": [
+    "define",
+    "require"
+  ],
+  "asi" : true // Tolerate missing semicolons.
+}
