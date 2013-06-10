@@ -306,20 +306,17 @@ This is exactly what Agave uses.  As a result, Agave’s methods will **never** 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.
 
 ### Q. Future ES versions or other libraries might use the same method names to do different stuff
-### A. That’s why we let you prefix all method names
+### A. That’s why Agave makes you prefix all method names
 
-Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why  __Agave allows you to prefix every method it provides__. Just start it with:
+Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why  __Agave makes you to prefix every method it provides__. Just start it with:
 
-    agave.enable(‘av’);
+    agave.enable('av');
 
 or the prefix of your choice to have all the methods prefixed with whatever string you like.
 
 Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.
 
-You may still prefer unprefixed, for the following reasons:
-
- - You may find the benefits of shorter code ourweigh the rish of a possible future conflict.
- - Agave's developers track ES6 updates and specifically try to avoid conflicts with what’s proposed.
+The prefix can be as short or as long as you like. PeIn my oen experience I've found two letters has been enough to avoid conflicts in the last year I've been using Agave, prior to its public release. If you're think this might not be enough to satisfy the need for uniqueness, use a longer prefix. If you're feeling adventurous (and you strongly control the libraries used in your projects) you can use no prefix at all.
 
 ### Q. There are new methods on my window object!
 ### A. Yes, window is an object. This is how JS works.
