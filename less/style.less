@@ -26,20 +26,6 @@ a, a:hover, a:active, a:visited {
   }
 }
 
-body.active {
-  position: relative;
-  left: @sidebar-width;
-}
-
-body.active .nav-link {
-  left: @sidebar-width;
-}
-
-nav.active {
-  left: @sidebar-width;
-  width: @sidebar-width;
-}
-
 nav {
   margin-left: -@sidebar-width;
   width: @sidebar-width;
@@ -48,11 +34,21 @@ nav {
   left: @sidebar-width;
   bottom: 0;
   z-index: 1000;
-  background: #191818;
+  background: #222;
   overflow-y: auto;
   color: whitesmoke;
+  &.active {
+    left: @sidebar-width;
+    width: @sidebar-width;
+  }
+  @media (max-width: 770px) {
+    left: 0;
+  }
   ul, li {
     list-style: none;
+  }
+  ul {
+    padding-left: 10px;
   }
   a, a:hover, a:active, a:visited {
     color: whitesmoke;
@@ -61,31 +57,16 @@ nav {
   li.object:hover {
     background-color: @teal;
   }
-  @media (max-width: 770px) {
-    left: 0;
+  li.object {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 20px 0 5px 0;
   }
-}
 
-nav ul {
-  padding-left: 10px;
-}
-
-li.object {
-  text-transform: uppercase;
-  font-size: 12px;
-  margin: 20px 0 5px 0;
-}
-
-li.method {
-  font-size: 14px;
-  margin: 5px;
-}
-
-.listheader {
-  font-size: 20px;
-  font-weight: lighter;
-  text-transform: uppercase;
-  color: white;
+  li.method {
+    font-size: 14px;
+    margin: 5px;
+  }
 }
 
 body, nav, .nav-link {
@@ -96,7 +77,6 @@ body, nav, .nav-link {
   transition: all 0.2s ease-out;
 }
 
-
 body {
   padding-left: @sidebar-width;
   left: 0;
@@ -105,6 +85,13 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   color: #222;
+  &.active {
+    position: relative;
+    left: @sidebar-width;
+    .nav-link {
+      left: @sidebar-width;
+    }
+  }
   @media (max-width: 770px) {
     padding-left: 0;
   }

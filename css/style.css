@@ -382,17 +382,6 @@ a:visited {
     display: block;
   }
 }
-body.active {
-  position: relative;
-  left: 150px;
-}
-body.active .nav-link {
-  left: 150px;
-}
-nav.active {
-  left: 150px;
-  width: 150px;
-}
 nav {
   margin-left: -150px;
   width: 150px;
@@ -401,13 +390,25 @@ nav {
   left: 150px;
   bottom: 0;
   z-index: 1000;
-  background: #191818;
+  background: #222;
   overflow-y: auto;
   color: whitesmoke;
+}
+nav.active {
+  left: 150px;
+  width: 150px;
+}
+@media (max-width: 770px) {
+  nav {
+    left: 0;
+  }
 }
 nav ul,
 nav li {
   list-style: none;
+}
+nav ul {
+  padding-left: 10px;
 }
 nav a,
 nav a:hover,
@@ -419,28 +420,14 @@ nav a:visited {
 nav li.object:hover {
   background-color: #4dbf9f;
 }
-@media (max-width: 770px) {
-  nav {
-    left: 0;
-  }
-}
-nav ul {
-  padding-left: 10px;
-}
-li.object {
+nav li.object {
   text-transform: uppercase;
   font-size: 12px;
   margin: 20px 0 5px 0;
 }
-li.method {
+nav li.method {
   font-size: 14px;
   margin: 5px;
-}
-.listheader {
-  font-size: 20px;
-  font-weight: lighter;
-  text-transform: uppercase;
-  color: white;
 }
 body,
 nav,
@@ -459,6 +446,13 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   color: #222;
+}
+body.active {
+  position: relative;
+  left: 150px;
+}
+body.active .nav-link {
+  left: 150px;
 }
 @media (max-width: 770px) {
   body {
