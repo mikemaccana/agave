@@ -1,16 +1,18 @@
-# Agave.JS [![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
+# Agave.JS
 
 ## Cleaner, simpler JavaScript for ES5 environments
+
+[![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
 
 Agave.js **safely** extends native JavaScript objects with helpful, intuitive methods that **make your code shorter and more readable**.
 
  - Adds useful things you'll use every day.
  - Actual methods, ie, on the objects you expect them to be on. No underscores or other punctuation.
  - Is less than 320 lines of code. Agave doesn't include things that are already in ES5, so it stays small.
- - Uses prefixing and ES5 defineProperty() to safely extend inbuilt objects.
+ - Uses [prefixing](#prefixing) and ES5 [defineProperty()](#defineProperty) to safely extend inbuilt objects.
  - Available both as a regular node module and via RequireJS as an AMD module.
 
-Agave works on current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js.
+Agave works on [current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js](#support).
 
 ### What does Agave provide?
 
@@ -263,7 +265,7 @@ Agave will make your code shorter and more readable.
 
 Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. [Andrew Dupont’s talk at JSConf 2011](http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542) provides an excellent overview on how the JS community has approached this topic over time.
 
-### Q. Will Agave methods appear when iterating over objects?
+### <a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?
 ### A. No. Methods will never appear when iterating over objects.
 
 Adding methods to inbuilt objects _was_ bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn’t provide a way for developers to add their own non-enumerable properties to inbuilt objects.
@@ -308,7 +310,7 @@ This is exactly what Agave uses.  As a result, Agave’s methods will **never** 
 
 So if you’re OK with Agave’s requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.
 
-### Q. Future ES versions or other libraries might use the same method names to do different stuff
+### <a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff
 ### A. That’s why Agave makes you prefix all method names
 
 Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why  __Agave makes you to prefix every method it provides__. Just start it with:
@@ -371,7 +373,11 @@ Install [node.js](http://nodejs.org/), and run:
 
 Inside the folder you downloaded Agave to.
 
-### What About IE8 and Firefox 3 support?
+### <a name="support"></a>What browsers does Agave support?
+
+Any ES5 compatible environment. This includes current Chrome, current Firefox, current Safari, IE9/10 and node.js.
+
+#### What about IE8 and Firefox 3 support?
 
 Sorry, but this isn’t possible. ES3 browsers like IE8 and Firefox 3 don’t support Object.defineProperty() and it cannot be emulated via shims.
 
