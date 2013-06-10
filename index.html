@@ -365,10 +365,13 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
 <h3>How Does Agave Compare to Sugar.js?</h3>
 
-<p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
- - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.
- - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
- - Agave has a more explicit method naming style that's consistent with the ES5 specification.</p>
+<p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.</p>
+<ul>
+  <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
+  <li>Sugar avoids extending Object specifically. Agave extends all prototypes using a prefix.</li>
+  <li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.</li>
+  <li>Agave has a more explicit method naming style that's consistent with the ES5 specification.</li>
+</ul>
 
 <h3>How Does Agave Compare to Underscore.js and Lodash?</h3>
 
