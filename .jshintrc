@@ -1,0 +1,7 @@
+{
+  // Various things most of my projects use
+  "predef": [
+    "define",
+    "require"
+  ]
+}

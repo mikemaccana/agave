@@ -178,20 +178,20 @@
 
     // Helper function for before() and after()
     var getTimeOrNow = function(date) {
-      return (date || new Date()).getTime()
-    }
+      return (date || new Date()).getTime();
+    };
 
     // Return Number of seconds to time delta from date (or now if not specified)
     var before = function(date) {
       var time = getTimeOrNow(date);
       return new Date(time-(+this));
-    }
+    };
 
     // Return Number of seconds to time delta after date (or now if not specified)
     var after = function(date) {
       var time = getTimeOrNow(date);
       return new Date(time+(+this));
-    }
+    };
 
     // Add a new element as a child of this element
     var createChild = function(name, attributes, text) {
