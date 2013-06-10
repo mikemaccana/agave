@@ -28,7 +28,7 @@ The following examples are based on this sample object:
       }
     }
 
-#### <a name="objectgetKeys"></a>.getKeys()
+##### <a name="objectgetKeys"></a>.getKeys()
 
 Returns an array of the object’s keys.
 
@@ -38,7 +38,7 @@ Returns:
 
     [‘foo’,’bar’]
 
-#### <a name="objectgetSize"></a>.getSize()
+##### <a name="objectgetSize"></a>.getSize()
 
 Returns the number of properties in the object.
 
@@ -48,7 +48,7 @@ Returns:
 
     2
 
-#### <a name="objectgetPath"></a>.getPath(*path*)
+##### <a name="objectgetPath"></a>.getPath(*path*)
 
 Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
 If any of the keys are missing, return *undefined*. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:
@@ -67,10 +67,10 @@ Keys, of course, could be strings, array indices, or anything else.
 
 #### <a name="array"></a>Array methods
 
-#### <a name="arrayclone"></a>.clone()
+##### <a name="arrayclone"></a>.clone()
 Returns a shallow clone of the object.
 
-#### <a name="arraycontains"></a>.contains(*item*)
+##### <a name="arraycontains"></a>.contains(*item*)
 
 returns true if the array contains the item.
 
@@ -80,18 +80,18 @@ Returns:
 
     true
 
-#### <a name="arrayfindItem"></a>.findItem(*testfunction*)
+##### <a name="arrayfindItem"></a>.findItem(*testfunction*)
 When provided with a function to test each item against, returns the first item that where testfunction returns true.
 
-#### <a name="arrayextend"></a>.extend(*newarray*)
+##### <a name="arrayextend"></a>.extend(*newarray*)
 Adds the items from *newarray* to the end of this array.
 
-#### <a name="arraytoNodeList"></a>.toNodeList()
+##### <a name="arraytoNodeList"></a>.toNodeList()
 Turns an array of Elements into a NodeList.
 
 #### <a name="string"></a>String methods
 
-#### <a name="stringcontains"></a>.contains(*substring*)
+##### <a name="stringcontains"></a>.contains(*substring*)
 returns true if a string contains the substring
 
     'elephantine'.contains('tin')
@@ -100,10 +100,10 @@ Returns:
 
     true
 
-#### <a name="stringstartsWith"></a>.startsWith(*substring*)
+##### <a name="stringstartsWith"></a>.startsWith(*substring*)
 returns true if a string starts with the substring
 
-#### <a name="stringendsWith"></a>.endsWith(*substring*)
+##### <a name="stringendsWith"></a>.endsWith(*substring*)
 returns true if a string ends with the substring
 
     'Hello world'.endsWith('world'))
@@ -112,7 +112,7 @@ Returns:
 
     true
 
-#### <a name="stringstrip"></a>.strip(*chars*)
+##### <a name="stringstrip"></a>.strip(*chars*)
 returns the string, with the specified chars removed from the beginning and end.
 
     'Hello world'.strip('Hld')
@@ -121,19 +121,19 @@ Returns:
 
     'ello wor'
 
-#### <a name="stringleftStrip"></a>.leftStrip(*chars*)
+##### <a name="stringleftStrip"></a>.leftStrip(*chars*)
 
 returns the string, with the specified chars removed from the beginning.
 
-#### <a name="stringrightStrip"></a>.rightStrip(*chars*)
+##### <a name="stringrightStrip"></a>.rightStrip(*chars*)
 
 returns the string, with the specified chars removed from the end.
 
-#### <a name="stringforEach"></a>.forEach(*iterationfunction*)
+##### <a name="stringforEach"></a>.forEach(*iterationfunction*)
 
 Runs *iterationfunction* over each character in the String. Just like ES5’s inbuilt Array.forEach().
 
-#### <a name="stringrepeat"></a>.repeat(*times*)
+##### <a name="stringrepeat"></a>.repeat(*times*)
 
 Repeat the string *times* times.
 
@@ -141,7 +141,7 @@ Repeat the string *times* times.
 
 **Note:** numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the '.' is interpreted as the decimal point in a Float.
 
-#### <a name="numberseconds"></a>.seconds, .hours(), .days(), and .weeks()
+##### <a name="numberseconds"></a>.seconds, .hours(), .days(), and .weeks()
 
 Converts a number into the amount of milliseconds for a timespan. For example:
 
@@ -153,7 +153,7 @@ Returns:
 
 Since 5 days is 432000000 milliseconds.
 
-#### <a name="numberbefore"></a>.before(), .after()
+##### <a name="numberbefore"></a>.before(), .after()
 
 Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before) or the future (using .after). You'd typically combine this with .seconds, .hours, .days, and .weeks to easily get a date a certain amount of units in the past or the future. For example:
 
@@ -196,10 +196,10 @@ We can fetch a list of all paragraphs:
 
 Agave adds a number of useful methods that you can use both server-side and client side.
 
-#### <a name="nodelistreverse"></a>.reverse()
+##### <a name="nodelistreverse"></a>.reverse()
 Returns a reversed version of the nodeList.
 
-#### <a name="nodelistforEach"></a>.forEach(*iterationfunction*)
+##### <a name="nodelistforEach"></a>.forEach(*iterationfunction*)
 Runs *iterationfunction* over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().
 
 Here’s an example of changing every paragraph in a document to say ‘Hello’ (look ma, No JQuery!).
@@ -212,7 +212,7 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
 
 Agave also provides useful methods for Elements.
 
-#### <a name="elementcreateChild"></a>.createChild(name, attributes, innerText)
+##### <a name="elementcreateChild"></a>.createChild(name, attributes, innerText)
 
 Make a new child element, with the tag name, any attributes, and inner text specified.
 
@@ -227,15 +227,15 @@ element beneath
 
      <article>
 
-#### <a name="elementmatches"></a>.matches(*selector*)
+##### <a name="elementmatches"></a>.matches(*selector*)
 
 Returns true if the element matches the selector provided.
 
-#### <a name="elementapplyStyles"></a>.applyStyles(*styles*)
+##### <a name="elementapplyStyles"></a>.applyStyles(*styles*)
 
 Apply the styles mentioned to the element.
 
-#### <a name="elementancestorNodes"></a>.ancestorNodes(*selector*)
+##### <a name="elementancestorNodes"></a>.ancestorNodes(*selector*)
 
 Returns a NodeList of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.
 
@@ -334,7 +334,7 @@ It would make things *nicer* if a future version of JS allowed us to isolate pro
 
 ### Using Agave
 
-#### <a name="node"></a>On the server (node.js)
+##### <a name="node"></a>On the server (node.js)
 
 Just run:
 
