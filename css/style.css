@@ -416,8 +416,10 @@ nav a:active,
 nav a:visited {
   color: whitesmoke;
   text-decoration: none;
+  width: 100%;
+  display: block;
 }
-nav li.object:hover {
+nav a:hover {
   background-color: #4dbf9f;
 }
 nav li.object {
@@ -425,7 +427,8 @@ nav li.object {
   font-size: 12px;
   margin: 20px 0 5px 0;
 }
-nav li.method {
+nav li.object li.method {
+  text-transform: none;
   font-size: 14px;
   margin: 5px;
 }

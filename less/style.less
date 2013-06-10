@@ -53,19 +53,21 @@ nav {
   a, a:hover, a:active, a:visited {
     color: whitesmoke;
     text-decoration: none;
+    width: 100%;
+    display: block;
   }
-  li.object:hover {
+  a:hover {
     background-color: @teal;
   }
   li.object {
     text-transform: uppercase;
     font-size: 12px;
     margin: 20px 0 5px 0;
-  }
-
-  li.method {
-    font-size: 14px;
-    margin: 5px;
+    li.method {
+      text-transform: none;
+      font-size: 14px;
+      margin: 5px;
+    }
   }
 }
 
