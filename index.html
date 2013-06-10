@@ -59,6 +59,7 @@
           <li class="method">matches</li>
           <li class="method">applyStyles</li>
           <li class="method">ancestorNodes</li>
+          <li class="method">toggleClass</li>
         </ul>
     </ul>
   </nav>
@@ -77,7 +78,7 @@
   <li>Adds useful things you'll use every day.</li>
   <li>Actual methods, ie, on the objects you expect them to be on. No underscores or other punctuation.</li>
   <li>Is less than 320 lines of code. Agave doesn't include things that are already in ES5, so it stays small.</li>
-  <li>Uses prefixing and ES5 defineProperty() to safely extend inbuilt objects.</li>
+  <li>Uses <a href="#prefixes">prefixing</a> and <a href="#defineproperty">ES5 defineProperty()</a> to safely extend inbuilt objects.</li>
   <li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
 </ul>
 
@@ -354,6 +355,10 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
 <p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
 
+<h5>.toggleClass(<em>className</em>)</h5>
+
+<p>Adds or removes the className provided from the element, depending on whether the element already has the className.</p>
+
 <h2>Why would I want to use Agave?</h2>
 
 <p>Agave will make your code shorter and more readable.</p>
@@ -378,7 +383,7 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
 <p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
 
-<h3>Q. Will Agave methods appear when iterating over objects?</h3>
+<h3 id="defineproperty">Q. Will Agave methods appear when iterating over objects?</h3>
 
 <h3>A. No. Methods will never appear when iterating over objects.</h3>
 
@@ -429,7 +434,7 @@ for (var key in myobject) { console.log(key) };
 
 <p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
 
-<h3>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
+<h3 id="prefixes">Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
 
 <h3>A. That's why we let you prefix all method names</h3>
 
