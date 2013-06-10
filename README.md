@@ -152,7 +152,7 @@ Since 5 days is 432000000 milliseconds.
 
 ##### .before(), .after()
 
-Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before() or the future (using .after()). You'd typically combine this with .seconds, .hours(), .days(), and .weeks() to  For example:
+Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before) or the future (using .after). You'd typically combine this with .seconds, .hours, .days, and .weeks to easily get a date a certain amount of units in the past or the future. For example:
 
     (2).days().before()
 
@@ -160,12 +160,12 @@ Returns a Date for 2 days ago, eg:
 
     Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
 
-Whereas:
+You can also specify a date to be before/after. For example:
 
     var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
     (3).weeks().after(joinedCompanyDate)
-    
-Returns a Date for 3 weeks after that date, eg: 
+
+Returns a Date for 3 weeks after that date, eg:
 
     Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
 
@@ -243,8 +243,10 @@ Agave will make your code shorter and more readable.
 ### How Does Agave Compare to Sugar.js?
 
 [Sugar.js](http://sugarjs.com/) is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects.
- - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those.
+
  - Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.
+ - Sugar extends String, Array etc but avoids extending Object specifically. Agave extends all prototypes using a user-specified prefix to avoid collisions.
+ - Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won’t ever have those.
  - Agave has a more explicit method naming style that’s consistent with the ES5 specification.
 
 ### How Does Agave Compare to Underscore.js and Lodash?
@@ -328,7 +330,7 @@ When running agave, the additional methods added to Object.prototype will appear
 
 You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.
 
-It would make things *nicer* if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods. 
+It would make things *nicer* if a future version of JS allowed us to isolate prototypes between modules. But it certainly won’t kill us in the meantime if we’re using prefixed, non-enumerable methods.
 
 ### Using Agave
 
