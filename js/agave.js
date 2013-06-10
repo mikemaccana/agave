@@ -216,11 +216,11 @@
     };
 
     // Toggle a class
-    var toggleClass = function(style) {
-      if ( this.classList.contains(style) ) {
-        this.classList.remove(style);
+    var toggleClass = function(className) {
+      if ( this.classList.contains(className) ) {
+        this.classList.remove(className);
       } else {
-        this.classList.add(style);
+        this.classList.add(className);
       }
       return this;
     };
