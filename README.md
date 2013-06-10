@@ -11,7 +11,7 @@ Agave.js safely extends native JavaScript objects with helpful, intuitive method
 
 ### What does Agave provide?
 
-#### Object methods
+#### <a name="object"></a>Object methods
 
 The following examples are based on this sample object:
 
@@ -62,7 +62,7 @@ will return:
 
 Keys, of course, could be strings, array indices, or anything else.
 
-#### Array methods
+#### <a name="array"></a>Array methods
 
 ##### .clone()
 Returns a shallow clone of the object.
@@ -86,7 +86,7 @@ Adds the items from *newarray* to the end of this array.
 ##### .toNodeList()
 Turns an array of Elements into a NodeList.
 
-#### String methods
+#### <a name="string"></a>String methods
 
 ##### .contains(*substring*)
 returns true if a string contains the substring
@@ -134,7 +134,7 @@ Runs *iterationfunction* over each character in the String. Just like ES5’s in
 
 Repeat the string *times* times.
 
-#### Number methods
+#### <a name="number"></a>Number methods
 
 **Note:** numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the '.' is interpreted as the decimal point in a Float.
 
@@ -169,7 +169,7 @@ Returns a Date for 3 weeks after that date, eg:
 
     Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
 
-#### NodeList methods
+#### <a name="nodelist"></a>NodeList methods
 
 NodeLists are what's returned when you use the document.querySelectorAll(), or similar methods.
 
@@ -205,7 +205,7 @@ Here’s an example of changing every paragraph in a document to say ‘Hello’
       paragraph.innerText = 'Hello.';
     })
 
-#### Element methods
+#### <a name="element"></a>Element methods
 
 Agave also provides useful methods for Elements.
 
@@ -331,7 +331,7 @@ It would make things *nicer* if a future version of JS allowed us to isolate pro
 
 ### Using Agave
 
-#### On the server (node.js)
+#### <a name="node"></a>On the server (node.js)
 
 Just run:
 
@@ -341,7 +341,7 @@ Then in your code:
 
     var agave = require('agave');
 
-#### In the browser, on the server using RequireJS, or shared between the browser and server.
+#### <a name="browser"></a>In the browser, on the server using RequireJS, or shared between the browser and server.
 
 Agave is provided as an AMD module. You’d normally load it as a dependency for your own module, either in the browser or on node.js, using [RequireJS](http://requirejs.org/):
 
