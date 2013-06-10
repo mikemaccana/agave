@@ -16,50 +16,50 @@
     <ul>
       <li class="object"><a href="#object">Object</a></li>
         <ul>
-          <li class="method">getKeys</li>
-          <li class="method">getSize</li>
-          <li class="method">getPath</li>
+          <li class="method"><a href="#objectgetKeys">getKeys</a></li>
+          <li class="method"><a href="#objectgetSize">getSize</a></li>
+          <li class="method"><a href="#objectgetPath">getPath</a></li>
         </ul>
       <li class="object"><a href="#array">Array</a></li>
         <ul>
-          <li class="method">clone</li>
-          <li class="method">contains</li>
-          <li class="method">findItem</li>
-          <li class="method">extend</li>
-          <li class="method">toNodeList</li>
+          <li class="method"><a href="#arrayclone">clone</a></li>
+          <li class="method"><a href="#arraycontains">contains</a></li>
+          <li class="method"><a href="#arrayfindItem">findItem</a></li>
+          <li class="method"><a href="#arrayextend">extend</a></li>
+          <li class="method"><a href="#arraytoNodeList">toNodeList</a></li>
         </ul>
       <li class="object"><a href="#string">String</a></li>
         <ul>
-          <li class="method">contains</li>
-          <li class="method">startsWith</li>
-          <li class="method">endsWith</li>
-          <li class="method">strip</li>
-          <li class="method">leftStrip</li>
-          <li class="method">rightStrip</li>
-          <li class="method">forEach</li>
-          <li class="method">repeat</li>
+          <li class="method"><a href="#stringcontains">contains</a></li>
+          <li class="method"><a href="#stringstartsWith">startsWith</a></li>
+          <li class="method"><a href="#stringendsWith">endsWith</a></li>
+          <li class="method"><a href="#stringstrip">strip</a></li>
+          <li class="method"><a href="#stringleftStrip">leftStrip</a></li>
+          <li class="method"><a href="#stringrightStrip">rightStrip</a></li>
+          <li class="method"><a href="#stringforEach">forEach</a></li>
+          <li class="method"><a href="#stringrepeat">repeat</a></li>
         </ul>
       <li class="object"><a href="#number">Number</a></li>
         <ul>
-          <li class="method">seconds</li>
-          <li class="method">hours</li>
-          <li class="method">days</li>
-          <li class="method">weeks</li>
-          <li class="method">before</li>
-          <li class="method">after</li>
+          <li class="method"><a href="#numberseconds">seconds</a></li>
+          <li class="method"><a href="#numberseconds">hours</a></li>
+          <li class="method"><a href="#numberseconds">days</a></li>
+          <li class="method"><a href="#numberseconds">weeks</a></li>
+          <li class="method"><a href="#numberbefore">before</a></li>
+          <li class="method"><a href="#numberbefore">after</a></li>
         </ul>
       <li class="object"><a href="#nodelist">NodeList</a></li>
         <ul>
-          <li class="method">reverse</li>
-          <li class="method">forEach</li>
+          <li class="method"><a href="#nodelistreverse">reverse</a></li>
+          <li class="method"><a href="#nodelistforEach">forEach</a></li>
         </ul>
       <li class="object"><a href="#element">Element</a></li>
         <ul>
-          <li class="method">createChild</li>
-          <li class="method">matches</li>
-          <li class="method">applyStyles</li>
-          <li class="method">ancestorNodes</li>
-          <li class="method">toggleClass</li>
+          <li class="method"><a href="#elementcreateChild">createChild</a></li>
+          <li class="method"><a href="#elementmatches">matches</a></li>
+          <li class="method"><a href="#elementapplyStyles">applyStyles</a></li>
+          <li class="method"><a href="#elementancestorNodes">ancestorNodes</a></li>
+          <li class="method"><a href="#elementtoggleClass">toggleClass</a></li>
         </ul>
     </ul>
   </nav>
@@ -69,17 +69,21 @@
     <h1><img src="./images/agave.png" alt="agave.js"/></h1>
 
 <!-- Generated from README.md -->
-<h2>Cleaner, simpler JavaScript for ES5.</h2>
 <a href="https://travis-ci.org/mikemaccana/agave"><img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" /></a>
 
-<p>Agave.js safely extends native JavaScript objects with helpful, intuitive methods that make your code shorter and more readable.</p>
+<h2>Cleaner, simpler JavaScript for ES5 environments</h2>
+
+<p>Agave.js <strong>safely</strong> extends native JavaScript objects with helpful, intuitive methods that <strong>make your code shorter and more readable</strong>.</p>
 
 <ul>
-<li>Adds things you use every day. See &#8216;What does Agave provide?&#8217; below.</li>
-<li>Built only for ES5 enviroments like Chrome, Firefox, Safari, IE9, IE10 and node.js. Agave uses ES5 specific features to safely extend inbuilt objects.</li>
-<li>Is tiny. &lt;320 lines of code. Agave doesn’t bother including things that are already included in ES5, so it stays small.</li>
-<li>Is loadable both as a regular node module and via RequireJS as an AMD module.</li>
+<li>Adds useful things you&#8217;ll use every day.</li>
+<li>Actual methods, ie, on the objects you expect them to be on. No underscores or other punctuation.</li>
+<li>Is less than 320 lines of code. Agave doesn&#8217;t include things that are already in ES5, so it stays small.</li>
+<li>Uses prefixing and ES5 defineProperty() to safely extend inbuilt objects.</li>
+<li>Available both as a regular node module and via RequireJS as an AMD module.</li>
 </ul>
+
+<p>Agave works on current versions of Chrome, Firefox, Safari, IE9, IE10 and node.js.</p>
 
 <h3>What does Agave provide?</h3>
 
@@ -98,7 +102,7 @@
 }
 </code></pre>
 
-<h5>.getKeys()</h5>
+<h4><a name="objectgetKeys"></a>.getKeys()</h4>
 
 <p>Returns an array of the object’s keys.</p>
 
@@ -110,7 +114,7 @@
 <pre><code>[‘foo’,’bar’]
 </code></pre>
 
-<h5>.getSize()</h5>
+<h4><a name="objectgetSize"></a>.getSize()</h4>
 
 <p>Returns the number of properties in the object.</p>
 
@@ -122,7 +126,7 @@
 <pre><code>2
 </code></pre>
 
-<h5>.getPath(<em>path</em>)</h5>
+<h4><a name="objectgetPath"></a>.getPath(<em>path</em>)</h4>
 
 <p>Provided with either a &#8216;/&#8217; separated path, or an array of keys, get the value of the nested keys in the object.
 If any of the keys are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:</p>
@@ -144,11 +148,11 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <h4><a name="array"></a>Array methods</h4>
 
-<h5>.clone()</h5>
+<h4><a name="arrayclone"></a>.clone()</h4>
 
 <p>Returns a shallow clone of the object.</p>
 
-<h5>.contains(<em>item</em>)</h5>
+<h4><a name="arraycontains"></a>.contains(<em>item</em>)</h4>
 
 <p>returns true if the array contains the item.</p>
 
@@ -160,21 +164,21 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 <pre><code>true
 </code></pre>
 
-<h5>.findItem(<em>testfunction</em>)</h5>
+<h4><a name="arrayfindItem"></a>.findItem(<em>testfunction</em>)</h4>
 
 <p>When provided with a function to test each item against, returns the first item that where testfunction returns true.</p>
 
-<h5>.extend(<em>newarray</em>)</h5>
+<h4><a name="arrayextend"></a>.extend(<em>newarray</em>)</h4>
 
 <p>Adds the items from <em>newarray</em> to the end of this array.</p>
 
-<h5>.toNodeList()</h5>
+<h4><a name="arraytoNodeList"></a>.toNodeList()</h4>
 
 <p>Turns an array of Elements into a NodeList.</p>
 
 <h4><a name="string"></a>String methods</h4>
 
-<h5>.contains(<em>substring</em>)</h5>
+<h4><a name="stringcontains"></a>.contains(<em>substring</em>)</h4>
 
 <p>returns true if a string contains the substring</p>
 
@@ -186,11 +190,11 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 <pre><code>true
 </code></pre>
 
-<h5>.startsWith(<em>substring</em>)</h5>
+<h4><a name="stringstartsWith"></a>.startsWith(<em>substring</em>)</h4>
 
 <p>returns true if a string starts with the substring</p>
 
-<h5>.endsWith(<em>substring</em>)</h5>
+<h4><a name="stringendsWith"></a>.endsWith(<em>substring</em>)</h4>
 
 <p>returns true if a string ends with the substring</p>
 
@@ -202,7 +206,7 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 <pre><code>true
 </code></pre>
 
-<h5>.strip(<em>chars</em>)</h5>
+<h4><a name="stringstrip"></a>.strip(<em>chars</em>)</h4>
 
 <p>returns the string, with the specified chars removed from the beginning and end.</p>
 
@@ -214,19 +218,19 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 <pre><code>'ello wor'
 </code></pre>
 
-<h5>.leftStrip(<em>chars</em>)</h5>
+<h4><a name="stringleftStrip"></a>.leftStrip(<em>chars</em>)</h4>
 
 <p>returns the string, with the specified chars removed from the beginning.</p>
 
-<h5>.rightStrip(<em>chars</em>)</h5>
+<h4><a name="stringrightStrip"></a>.rightStrip(<em>chars</em>)</h4>
 
 <p>returns the string, with the specified chars removed from the end.</p>
 
-<h5>.forEach(<em>iterationfunction</em>)</h5>
+<h4><a name="stringforEach"></a>.forEach(<em>iterationfunction</em>)</h4>
 
 <p>Runs <em>iterationfunction</em> over each character in the String. Just like ES5’s inbuilt Array.forEach().</p>
 
-<h5>.repeat(<em>times</em>)</h5>
+<h4><a name="stringrepeat"></a>.repeat(<em>times</em>)</h4>
 
 <p>Repeat the string <em>times</em> times.</p>
 
@@ -234,7 +238,7 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <p><strong>Note:</strong> numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the &#8216;.&#8217; is interpreted as the decimal point in a Float.</p>
 
-<h5>.seconds, .hours(), .days(), and .weeks()</h5>
+<h4><a name="numberseconds"></a>.seconds, .hours(), .days(), and .weeks()</h4>
 
 <p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
 
@@ -248,7 +252,7 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <p>Since 5 days is 432000000 milliseconds.</p>
 
-<h5>.before(), .after()</h5>
+<h4><a name="numberbefore"></a>.before(), .after()</h4>
 
 <p>Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before) or the future (using .after). You&#8217;d typically combine this with .seconds, .hours, .days, and .weeks to easily get a date a certain amount of units in the past or the future. For example:</p>
 
@@ -297,11 +301,11 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <p>Agave adds a number of useful methods that you can use both server-side and client side.</p>
 
-<h5>.reverse()</h5>
+<h4><a name="nodelistreverse"></a>.reverse()</h4>
 
 <p>Returns a reversed version of the nodeList.</p>
 
-<h5>.forEach(<em>iterationfunction</em>)</h5>
+<h4><a name="nodelistforEach"></a>.forEach(<em>iterationfunction</em>)</h4>
 
 <p>Runs <em>iterationfunction</em> over each node in the NodeList. Just like ES5’s inbuilt Array.forEach().</p>
 
@@ -316,7 +320,7 @@ If any of the keys are missing, return <em>undefined</em>. This is very useful f
 
 <p>Agave also provides useful methods for Elements.</p>
 
-<h5>.createChild(name, attributes, innerText)</h5>
+<h4><a name="elementcreateChild"></a>.createChild(name, attributes, innerText)</h4>
 
 <p>Make a new child element, with the tag name, any attributes, and inner text specified.</p>
 
@@ -334,15 +338,15 @@ article.createChild('p',{'id':'testpara'},'hey there');
 <pre><code> &lt;article&gt;
 </code></pre>
 
-<h5>.matches(<em>selector</em>)</h5>
+<h4><a name="elementmatches"></a>.matches(<em>selector</em>)</h4>
 
 <p>Returns true if the element matches the selector provided.</p>
 
-<h5>.applyStyles(<em>styles</em>)</h5>
+<h4><a name="elementapplyStyles"></a>.applyStyles(<em>styles</em>)</h4>
 
 <p>Apply the styles mentioned to the element.</p>
 
-<h5>.ancestorNodes(<em>selector</em>)</h5>
+<h4><a name="elementancestorNodes"></a>.ancestorNodes(<em>selector</em>)</h4>
 
 <p>Returns a NodeList of an element’s parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
 
