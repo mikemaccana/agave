@@ -394,7 +394,7 @@ nav {
   overflow-y: auto;
   color: whitesmoke;
 }
-nav.active {
+nav.menu-active {
   left: 150px;
   width: 150px;
 }
@@ -450,11 +450,11 @@ body {
   font-weight: 100;
   color: #222;
 }
-body.active {
+body.menu-active {
   position: relative;
   left: 150px;
 }
-body.active .nav-link {
+body.menu-active .nav-link {
   left: 150px;
 }
 @media (max-width: 770px) {

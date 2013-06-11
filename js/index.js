@@ -11,7 +11,7 @@ requirejs(["agave"], function(agave) {
   // Clicking ☰ button displays nav
   $('.nav-link').addEventListener('click', function (event) {
     $all('nav, body').avforEach(function(element){
-      element.avtoggleClass('active');
+      element.avtoggleClass('menu-active');
     });
     event.preventDefault();
   });
