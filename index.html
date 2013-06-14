@@ -123,7 +123,7 @@
 
     <p>Returns:</p>
 
-<pre><code>['foo','bar']
+<pre><code>['foo','baz']
 </code></pre>
 
     <h5><a name="objectgetSize"></a>.getSize()</h5>
@@ -464,7 +464,7 @@ for (var key in myobject) { console.log(key) };
 
     <p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
 
-    <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getKeys() is awfully handy.</p>
+    <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getPath() is awfully handy.</p>
 
     <p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods.</p>
 
