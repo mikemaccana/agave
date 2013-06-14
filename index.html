@@ -480,6 +480,7 @@ for (var key in myobject) { console.log(key) };
     <p>Then in your code:</p>
 
 <pre><code>var agave = require('agave');
+agave.enable('yourPrefix');
 </code></pre>
 
     <h4><a name="browser"></a>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
@@ -488,7 +489,7 @@ for (var key in myobject) { console.log(key) };
 
 <pre><code>define('yourmodulename', ['agave'], function (agave) {
   // Start Agave, optionally you can also provide a prefix of your choice.
-  agave.enable(*optionalprefix*);
+  agave.enable('yourPrefix');
 
   // Your code here...
 
