@@ -20,6 +20,7 @@
           <li class="method"><a href="#objectgetKeys">getKeys</a></li>
           <li class="method"><a href="#objectgetSize">getSize</a></li>
           <li class="method"><a href="#objectgetPath">getPath</a></li>
+          <li class="method"><a href="#objectclone">clone</a></li>
         </ul>
       </li>
       <li class="object"><a href="#array">Array</a>
@@ -41,11 +42,13 @@
           <li class="method"><a href="#stringrightStrip">rightStrip</a></li>
           <li class="method"><a href="#stringforEach">forEach</a></li>
           <li class="method"><a href="#stringrepeat">repeat</a></li>
+          <li class="method"><a href="#stringreverse">reverse</a></li>
         </ul>
       </li>
       <li class="object"><a href="#number">Number</a>
         <ul>
           <li class="method"><a href="#numberseconds">seconds</a></li>
+          <li class="method"><a href="#numberseconds">minutes</a></li>
           <li class="method"><a href="#numberseconds">hours</a></li>
           <li class="method"><a href="#numberseconds">days</a></li>
           <li class="method"><a href="#numberseconds">weeks</a></li>
@@ -158,6 +161,11 @@
 
     <p>Keys, of course, could be strings, array indices, or anything else.</p>
 
+    <h5><a name="objectclone"></a>.clone()</h5>
+
+    <p>Returns a deep clone of the object, objects so that modification to the new object will not affect the original.</p>
+
+
     <h4><a name="array"></a>Array methods</h4>
 
     <h5><a name="arrayclone"></a>.clone()</h5>
@@ -246,11 +254,15 @@
 
     <p>Repeat the string <em>times</em> times.</p>
 
+    <h5><a name="stringreverse"></a>.reverse()</h5>
+
+    <p>Returns a backwards copy of the string.</p>
+
     <h4><a name="number"></a>Number methods</h4>
 
     <p><strong>Note:</strong> numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the &#8216;.' is interpreted as the decimal point in a Float.</p>
 
-    <h5><a name="numberseconds"></a>.seconds, .hours(), .days(), and .weeks()</h5>
+    <h5><a name="numberseconds"></a>.seconds, .minutes(), .hours(), .days(), and .weeks()</h5>
 
     <p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
 
