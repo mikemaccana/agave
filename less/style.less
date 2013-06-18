@@ -2,6 +2,7 @@
 @import "fonts.less";
 @teal: #4DBF9F;
 @sidebar-width: 150px;
+@darkgrey: #222;
 
 * {
   box-sizing: border-box;
@@ -34,7 +35,7 @@ nav {
   left: @sidebar-width;
   bottom: 0;
   z-index: 1000;
-  background: #222;
+  background: @darkgrey;
   overflow-y: auto;
   color: whitesmoke;
   &.menu-active {
@@ -86,7 +87,7 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
-  color: #222;
+  color: @darkgrey;
   &.menu-active {
     position: relative;
     left: @sidebar-width;
