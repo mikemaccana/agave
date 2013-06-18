@@ -53,6 +53,8 @@ html {
   /* 1 */
 
   -webkit-text-size-adjust: 100%;
+  /* 2 */
+
   -ms-text-size-adjust: 100%;
   /* 2 */
 
@@ -389,13 +391,16 @@ nav {
   top: 0;
   left: 150px;
   bottom: 0;
-  z-index: 1000;
-  background: #222;
+  z-index: 1;
+  background: #222222;
   overflow-y: auto;
   color: whitesmoke;
 }
 nav.menu-active {
-  left: 150px;
+  -webkit-transform: translatex(0);
+  -moz-transform: translatex(0);
+  -ms-transform: translatex(0);
+  -o-transform: translatex(0);
   width: 150px;
 }
 @media (max-width: 770px) {
@@ -448,14 +453,20 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
-  color: #222;
+  color: #222222;
 }
 body.menu-active {
   position: relative;
-  left: 150px;
+  -webkit-transform: translatex(150px);
+  -moz-transform: translatex(150px);
+  -ms-transform: translatex(150px);
+  -o-transform: translatex(150px);
 }
 body.menu-active .nav-link {
-  left: 150px;
+  -webkit-transform: translatex(0);
+  -moz-transform: translatex(0);
+  -ms-transform: translatex(0);
+  -o-transform: translatex(0);
 }
 @media (max-width: 770px) {
   body {

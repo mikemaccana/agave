@@ -13,6 +13,13 @@ a, a:hover, a:active, a:visited {
   text-decoration: none;
 }
 
+.transform(@string){
+  -webkit-transform: @string;
+  -moz-transform: @string;
+  -ms-transform: @string;
+  -o-transform: @string;
+}
+
 /* ☰ button */
 .nav-link {
   display: none;
@@ -39,7 +46,7 @@ nav {
   overflow-y: auto;
   color: whitesmoke;
   &.menu-active {
-    left: @sidebar-width;
+    .transform(translateX(0));
     width: @sidebar-width;
   }
   @media (max-width: 770px) {
@@ -90,9 +97,9 @@ body {
   color: @darkgrey;
   &.menu-active {
     position: relative;
-    left: @sidebar-width;
+    .transform(translateX(@sidebar-width));
     .nav-link {
-      left: @sidebar-width;
+      .transform(translateX(0));
     }
   }
   @media (max-width: 770px) {
