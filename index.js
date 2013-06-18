@@ -16,7 +16,7 @@
   }
 }(this, function () {
 
-  // Extend objects with Agave methods, using
+  // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
     var global = this;
 
