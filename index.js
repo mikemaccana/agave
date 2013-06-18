@@ -274,10 +274,8 @@
       },
       'Object':{
         'getKeys':getKeys,
-        'findItem':findItem,
         'getSize':getSize,
         'getPath':getPath,
-        'contains':contains,
         'clone':clone
       },
       'String':{
