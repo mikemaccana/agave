@@ -53,6 +53,8 @@ html {
   /* 1 */
 
   -webkit-text-size-adjust: 100%;
+  /* 2 */
+
   -ms-text-size-adjust: 100%;
   /* 2 */
 
@@ -360,20 +362,18 @@ table {
 * {
   box-sizing: border-box;
 }
-a,
-a:hover,
-a:active,
-a:visited {
-  color: #4dbf9f;
-  text-decoration: none;
-}
 /* ☰ button */
 .nav-link {
   display: none;
   top: 0;
   left: 150px;
   background: rgba(0, 0, 0, 0.7);
-  padding: 1em;
+  padding: 15px;
+  line-height: 25px;
+  font-size: 25px;
+  color: whiteSmoke;
+  text-align: center;
+  text-decoration: none;
 }
 @media (max-width: 770px) {
   .nav-link {
@@ -414,6 +414,7 @@ nav a,
 nav a:hover,
 nav a:active,
 nav a:visited {
+  padding-left: 5px;
   color: whitesmoke;
   text-decoration: none;
   width: 100%;
@@ -465,6 +466,13 @@ body.menu-active .nav-link {
 .content {
   padding: 20px;
   max-width: 700px;
+}
+.content a,
+.content a:hover,
+.content a:active,
+.content a:visited {
+  color: #4dbf9f;
+  text-decoration: none;
 }
 h1 img {
   display: block;
