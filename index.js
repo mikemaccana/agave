@@ -121,9 +121,9 @@
     };
 
     // Extend an array with another array.
-    // Cleverness alert: since .apply() accepts an array of args, we use the new_array as all the args to push()
-    var extend = function(new_array) {
-      Array.prototype.push.apply(this, new_array);
+    // Cleverness alert: since .apply() accepts an array of args, we use the newArray as all the args to push()
+    var extend = function(newArray) {
+      Array.prototype.push.apply(this, newArray);
       return this;
     };
 
@@ -148,7 +148,10 @@
       return newObj;
     };
 
-    var arrayClone = function(){return this.slice();};
+
+    var arrayClone = function(){
+      return this.slice();
+    };
 
     // Array toNodeList converts arrays to NodeLists
     var toNodeList = function(){
