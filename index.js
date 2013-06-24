@@ -89,6 +89,14 @@
       return result;
     };
 
+    // object.extent(object) adds the keys/values from the newObject provided
+    var objectExtend = function(newObject) {
+      for ( var key in newObject ) {
+        this[key] = newObject[key]
+      }
+      return this;
+    }
+
     // array.findItem(testFunction) returns the first item that matches the testFunction
     var findItem = function(testFunction){
       var lastIndex;
@@ -121,7 +129,7 @@
 
     // Extend an array with another array.
     // Cleverness alert: since .apply() accepts an array of args, we use the newArray as all the args to push()
-    var extend = function(newArray) {
+    var arrayExtend = function(newArray) {
       Array.prototype.push.apply(this, newArray);
       return this;
     };
@@ -275,7 +283,7 @@
     var newMethods = {
       'Array':{
         'findItem':findItem,
-        'extend':extend,
+        'extend':arrayExtend,
         'contains':contains,
         'clone':arrayClone,
         'toNodeList':toNodeList
@@ -285,7 +293,8 @@
         'getSize':getSize,
         'getPath':getPath,
         'clone':clone,
-        'forEach':objectForEach
+        'forEach':objectForEach,
+        'extend':objectExtend,
       },
       'String':{
         'endsWith':endsWith,

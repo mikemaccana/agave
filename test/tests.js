@@ -182,6 +182,39 @@ describe('Object.forEach', function(){
   });
 });
 
+describe('Object.extend', function(){
+  var results = mockObject.avclone().avextend({
+    'gnar':{
+      shub:'zoo'
+    },
+    'gert':{
+      yaz:'frub'
+    }
+  });
+
+  it('creates extends the object with the new properties', function(){
+    assert.deepEqual(results, {
+      "foo":"bar",
+      "baz":{
+        "bam":"boo",
+        "zar":{
+          "zog":"victory"}
+        },
+        "null":{
+          "yarr":{
+            "parrot":"ahoy"
+          }
+        },
+      "gnar":{
+        "shub":"zoo"
+      },
+      "gert":{
+        "yaz":"frub"
+      }
+    });
+  });
+});
+
 describe('Number.days', function(){
   it('correctly converts a number to days in seconds', function(){
     assert.equal((5).avdays(), 432000000);
