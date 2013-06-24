@@ -147,6 +147,12 @@
       return newObj;
     };
 
+    // Iterate over an objects keys
+    // Unlike a regular for ( var key in object )
+    // an additional scope is created, which avoids last-item looping probs
+    var objectForEach = function(callback){
+      Object.keys(this).forEach(callback)
+    }
 
     var arrayClone = function(){
       return this.slice();
@@ -278,7 +284,8 @@
         'getKeys':getKeys,
         'getSize':getSize,
         'getPath':getPath,
-        'clone':clone
+        'clone':clone,
+        'forEach':objectForEach
       },
       'String':{
         'endsWith':endsWith,

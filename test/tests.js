@@ -172,6 +172,16 @@ describe('Object.clone', function(){
   });
 });
 
+describe('Object.forEach', function(){
+  var results = [];
+  mockObject.avforEach(function(key){
+    results.push(key)
+  })
+  it('iterates properly', function(){
+    assert.deepEqual(results, ["foo","baz","null"]);
+  });
+});
+
 describe('Number.days', function(){
   it('correctly converts a number to days in seconds', function(){
     assert.equal((5).avdays(), 432000000);
