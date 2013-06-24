@@ -151,7 +151,7 @@
 
     <h5><a name="objectgetPath"></a>.getPath(<em>path</em>)</h5>
 
-    <p>Provided with either a &#8216;/' separated path, or an array of keys, get the value of the nested keys in the object.
+    <p>Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
     If any of the keys are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:</p>
 
 <pre><code>mockObject.getPath('/baz/zar/zog')
@@ -171,7 +171,7 @@
 
     <h5><a name="objectclone"></a>.clone()</h5>
 
-    <p>Returns a deep clone of the object, objects so that modification to the new object will not affect the original.</p>
+    <p>Returns a deep clone of the object, so that modifications to the new object will not affect the original.</p>
 
     <h5><a name="objectforEach"></a>.forEach(<em>function</em>)</h5>
 
@@ -334,7 +334,7 @@ window.addEventListener("resize", updateLayout.throttle(500));
 
     <h4><a name="number"></a>Number methods</h4>
 
-    <p><strong>Note:</strong> numbers in JavaScript have to be wrapped in brackets to use methods on them, otherwise the &#8216;.' is interpreted as the decimal point in a Float.</p>
+    <p><strong>Note:</strong> wrap numbers in brackets to use methods on them, otherwise the '.' is interpreted as a decimal point.</p>
 
     <h5><a name="numberseconds"></a>.seconds, .minutes(), .hours(), .days(), and .weeks()</h5>
 
@@ -497,7 +497,7 @@ article.createChild('p',{'id':'testpara'},'hey there');
 <pre><code>for (var key in myobject) { console.log(key) };
 </code></pre>
 
-    <p>You can see the problem: &#8216;old_style_method' shows up as one of myobject's keys. This will break things and is indeed bad.</p>
+    <p>You can see the problem: 'oldStyleMethod' shows up as one of myobject's keys. This will break things and is indeed bad.</p>
 
     <p>But wait a sec: Objects already have some methods out of the box. Like toString():</p>
 
