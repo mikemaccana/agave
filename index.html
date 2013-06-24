@@ -22,6 +22,8 @@
           <li class="method"><a href="#objectgetSize">getSize</a></li>
           <li class="method"><a href="#objectgetPath">getPath</a></li>
           <li class="method"><a href="#objectclone">clone</a></li>
+          <li class="method"><a href="#objectextend">extend</a></li>
+          <li class="method"><a href="#objectforEach">forEach</a></li>
         </ul>
       </li>
       <li class="object"><a href="#array">Array</a>
@@ -166,6 +168,46 @@
 
     <p>Returns a deep clone of the object, objects so that modification to the new object will not affect the original.</p>
 
+    <h5><a name="objectforEach"></a>.forEach(<em>function</em>)</h5>
+
+    <p>Iterates over the objects keys, using the function provided.</p>
+
+    <h5><a name="objectextend"></a>.extend(<em>newProperties</em>)</h5>
+
+    <p>Applies the properties from newProperties object to the existing object.</p>
+
+<pre><code>mockObject.avextend({
+    'gnar':{
+      shub:'zoo'
+    },
+    'gert':{
+      yaz:'frub'
+    }
+  });
+</code></pre>
+
+    <p>will return:</p>
+
+<pre><code>{
+      "foo":"bar",
+      "baz":{
+        "bam":"boo",
+        "zar":{
+          "zog":"victory"}
+        },
+        "null":{
+          "yarr":{
+            "parrot":"ahoy"
+          }
+        },
+      "gnar":{
+        "shub":"zoo"
+      },
+      "gert":{
+        "yaz":"frub"
+      }
+    }
+</code></pre>
 
     <h4><a name="array"></a>Array methods</h4>
 
