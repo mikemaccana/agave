@@ -35,6 +35,11 @@
           <li class="method"><a href="#arraytoNodeList">toNodeList</a></li>
         </ul>
       </li>
+      <li class="object"><a href="#function">Function</a>
+        <ul>
+          <li class="method"><a href="#functionthrottle">throttle</a></li>
+        </ul>
+      </li>
       <li class="object"><a href="#string">String</a>
         <ul>
           <li class="method"><a href="#stringcontains">contains</a></li>
@@ -238,6 +243,34 @@
     <h5><a name="arraytoNodeList"></a>.toNodeList()</h5>
 
     <p>Turns an array of Elements into a NodeList.</p>
+
+
+
+
+
+    <h4><a name="function"></a>Function methods</h4>
+
+    <h5><a name="functionthrottle"></a>.throttle(<em>wait</em>)</h5>
+
+    <p>Run a function after it hasn't been invoked for 'wait' ms. Commonly used to stop repeated calls to a function overlapping each other (sometimes called 'bouncing'). </p>
+
+    <p>For example, window.resize() events normally fire repeatedly as a user resizes a window, causing functions that are waiting for the 'resize' event to run at the same time, which can cause problems. </p>
+
+<pre><code>var updateLayout = function(event) {
+      console.log('Updating layout!')
+    };
+
+    window.addEventListener("resize", updateLayout.throttle(500));
+</code></pre>
+
+    <p>Will wait until the user has stopped dragging the window for 500ms before printing:</p>
+
+<pre><code>Updating layout!
+</code></pre>
+
+    <p>on the console</p>.
+
+
 
     <h4><a name="string"></a>String methods</h4>
 
