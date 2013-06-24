@@ -89,16 +89,15 @@
       return result;
     };
 
-    // array.findItem(test_function) returns the first item that matches the test_function
-    var findItem = function(test_function){
-      var arr = this;
-      var last_index;
-      var found = arr.some(function(item, index) {
-        last_index = index;
-        return test_function(item);
+    // array.findItem(testFunction) returns the first item that matches the testFunction
+    var findItem = function(testFunction){
+      var lastIndex;
+      var found = this.some(function(item, index) {
+        lastIndex = index;
+        return testFunction(item);
       });
       if ( found ) {
-        return arr[last_index];
+        return this[lastIndex];
       } else {
         return null;
       }
