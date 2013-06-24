@@ -257,10 +257,10 @@
     <p>For example, window.resize() events normally fire repeatedly as a user resizes a window, causing functions that are waiting for the 'resize' event to run at the same time, which can cause problems. </p>
 
 <pre><code>var updateLayout = function(event) {
-      console.log('Updating layout!')
-    };
+  console.log('Updating layout!')
+};
 
-    window.addEventListener("resize", updateLayout.throttle(500));
+window.addEventListener("resize", updateLayout.throttle(500));
 </code></pre>
 
     <p>Will wait until the user has stopped dragging the window for 500ms before printing:</p>
