@@ -111,6 +111,28 @@
       }
     };
 
+    // Run after it hasn't been invoked for 'wait' ms.
+    // Useful to stop repeated calls to a function overlapping each other (sometimes called 'bouncing')
+    var throttle = function(wait, immediate) {
+      var timeoutID;
+      var originalFunction = this;
+      return function() {
+        var context = this;
+        var delayedFunction = function() {
+          timeoutID = null;
+          if ( ! immediate ) {
+            originalFunction.apply(context, arguments);
+          }
+        };
+        var callNow = immediate && ! timeoutID;
+        clearTimeout(timeoutID);
+        timeoutID = setTimeout(delayedFunction, wait);
+        if (callNow) {
+          originalFunction.apply(context, arguments);
+        }
+      };
+    }
+
     // string.endsWith(suffix) returns true if string ends with the suffix
     var endsWith = function(suffix) {
       return this.indexOf(suffix, this.length - suffix.length) !== -1;
@@ -280,6 +302,8 @@
       }
     };
 
+    // There's not always a 1:1 match of functions to method names. Eg, some objects share methods,
+    // others re-use inbuilt methods from other objects.
     var newMethods = {
       'Array':{
         'findItem':findItem,
@@ -306,6 +330,9 @@
         'strip':strip,
         'contains':contains,
         'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
+      },
+      'Function':{
+        throttle:throttle,
       },
       'Number':{
         'seconds':seconds,

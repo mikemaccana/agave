@@ -215,6 +215,28 @@ describe('Object.extend', function(){
   });
 });
 
+describe('Function.throttle', function(){
+  var valueShouldOnlyBeOne = 0; // Since the function should only run once
+  var timesFunctionHasRan = 0;
+  var maxTimesToRun = 3;
+  it('stops function calls overlapping', function(done){
+    var intervalID = setInterval(function(){
+      // thottledFunction would normally run three times in this loop, 50ms apart, but .avthrottle() means it
+      // will only be run once after 70ms of inactivity
+      var thottledFunction = function(){
+        valueShouldOnlyBeOne++;
+      }.avthrottle(70)
+      thottledFunction();
+      timesFunctionHasRan++;
+      if ( timesFunctionHasRan === maxTimesToRun ) {
+        clearInterval(intervalID)
+        assert.equal(valueShouldOnlyBeOne, 1);
+        done();
+      }
+    }, 50)
+  });
+});
+
 describe('Number.days', function(){
   it('correctly converts a number to days in seconds', function(){
     assert.equal((5).avdays(), 432000000);
