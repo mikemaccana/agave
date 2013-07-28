@@ -10,7 +10,7 @@ requirejs(["ie9classlist", "agave"], function(unused, agave) {
 
   // Clicking ☰ button displays nav
   $('.nav-link').addEventListener('click', function (event) {
-    $all('nav, body').avforEach(function(element){
+    $all('nav, body, .nav-link, .content').avforEach(function(element){
       element.avtoggleClass('menu-active');
     });
     event.preventDefault();
