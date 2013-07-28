@@ -3,7 +3,7 @@ requirejs.config({
   baseUrl: 'js'
 });
 
-requirejs(["agave"], function(agave) {
+requirejs(["ie9classlist", "agave"], function(unused, agave) {
   agave.enable('av');
   var $ = function(selector) { return document.querySelector(selector) };
   var $all = function(selector) { return document.querySelectorAll(selector) };
