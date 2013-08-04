@@ -461,7 +461,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   color: #222222;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 @media (max-width: 770px) {
   body {
