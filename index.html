@@ -17,6 +17,17 @@
 
   <nav>
     <ul>
+      <li class="object"><a href="#why">Why use Agave</a>
+        <ul>
+          <li class="method"><a href="#sugarjs">SugarJS</a></li>
+          <li class="method"><a href="#underscore">Underscore</a></li>
+          <li class="method"><a href="#concerns">Concerns</a></li>
+          <li class="method"><a href="#usage">Usage</a></li>
+          <li class="method"><a href="#support">Browser support</a></li>
+          <li class="method"><a href="#license">License</a></li>
+          <li class="method"><a href="#author">Author</a></li>
+        </ul>
+      </li>
       <li class="object"><a href="#object">Object</a>
         <ul>
           <li class="method"><a href="#objectgetKeys">getKeys</a></li>
@@ -449,7 +460,7 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
 <p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
 
-    <h2>Why would I want to use Agave?</h2>
+    <h2><a name="why"></a>Why would I want to use Agave?</h2>
 
     <p>Agave will make your code shorter and more readable.</p>
 
@@ -464,7 +475,7 @@ article.createChild('p',{'id':'testpara'},'hey there');
     <li>Agave has a more explicit method naming style that's consistent with the ES5 specification.</li>
     </ul>
 
-    <h3><a name="underscorejs"></a>How Does Agave Compare to Underscore.js and Lodash?</h3>
+    <h3><a name="underscore"></a>How Does Agave Compare to Underscore.js and Lodash?</h3>
 
     <ul>
       <li>Agave.js provides additional methods to complement those provided by ES5, rather than functions attached to punctuation.</li>
@@ -473,13 +484,15 @@ article.createChild('p',{'id':'testpara'},'hey there');
       <li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much different to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
     </ul>
 
-    <h3><a name="addingMethodsToPrototypes"></a>I read that adding methods to prototypes is bad</h3>
+    <h3><a name="concerns"></a>Concerns</h3>
+
+    <h4><a name="addingMethodsToPrototypes"></a>I read that adding methods to prototypes is bad</h4>
 
     <p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
 
-    <h3><a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?</h3>
+    <h4><a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?</h4>
 
-    <h3>A. No. Methods will never appear when iterating over objects.</h3>
+    <h4>A. No. Methods will never appear when iterating over objects.</h4>
 
     <p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
 
@@ -528,24 +541,24 @@ for (var key in myobject) { console.log(key) };
 
     <p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
 
-    <h3><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h3>
+    <h4><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h4>
 
-    <h3>A. That's why Agave makes you prefix all method names</h3>
+    <h4>A. That's why Agave uses prefixes</h4>
 
     <p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave makes you to prefix every method it provides</strong>. Just start it with:</p>
 
 <pre><code>agave.enable('av');
 </code></pre>
 
-    <p>or the prefix of your choice to have all the methods prefixed with whatever string you like.</p>
+    <p>or <strong>any prefix of your choice</strong> to have all the methods prefixed with whatever string you like.</p>
 
     <p>Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.</p>
 
     <p>The prefix can be as short or as long as you like. In my own experience I've found two letters has been enough to avoid conflicts in the last year I've been using Agave, prior to its public release. If you're think this might not be enough to satisfy the need for uniqueness, use a longer prefix. If you're feeling adventurous (and you strongly control the libraries used in your projects) you can use no prefix at all.</p>
 
-    <h3>Q. There are new methods on my window object!</h3>
+    <h4>Q. There are new methods on my window object!</h4>
 
-    <h3>A. Yes, window is an object. This is how JS works.</h3>
+    <h4>A. Yes, window is an object. This is how JS works.</h4>
 
     <p>Everything's an object in JS, so eveerything has has object methods. We mentioned object.toString() earlier - there's a window.toSting() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
 
@@ -555,7 +568,7 @@ for (var key in myobject) { console.log(key) };
 
     <p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods.</p>
 
-    <h3>Using Agave</h3>
+    <h3><a name="usage">Using Agave</h3>
 
     <h5><a name="node"></a>On the server (node.js)</h5>
 
@@ -607,11 +620,11 @@ mocha
 
     <p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
 
-    <h3>License</h3>
+    <h3><a name="license"></a>License</h3>
 
     <p><a href="https://github.com/mikemaccana/agave/blob/master/LICENSE.md">MIT license</a>.</p>
 
-    <h3>Author</h3>
+    <h3><a name="author"></a>Author</h3>
 
     <p>Mike MacCana (mike.maccana@gmail.com)</p>
 
