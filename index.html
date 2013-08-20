@@ -470,12 +470,11 @@ article.createChild('p',{'id':'testpara'},'hey there');
 
     <ul>
     <li>Agave has been affected by <strong>none</strong> of the conflicts that have affected SugarJS. Not affected by the String.prototype.namespace() conflict or the Array.prototype.find() conflict or any other conflict.</li>
-    <li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES5 browser (ie, Agave doesn't worth with IE8).</li>
+    <li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES5 browser (ie, Agave doesn't work with IE8).</li>
     <li>Since Agave uses non-enumerable methods, regular 'for' loops work with Agave. You don't have to use hasOwnProperty() all the time.</li>
     <li>SugarJS avoids extending Object. Agave has prefixing and non-enumerable methods, Agave provides extra methods on Object - and again, has been unaffected by any conflicts with other libraries or ES itself.</li>
     <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
     <li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.</li>
-    <li>Agave has a more explicit method naming style that's consistent with the ES5 specification.</li>
     </ul>
 
     <h3><a name="underscore"></a>How Does Agave Compare to Underscore.js and Lodash?</h3>
