@@ -296,7 +296,8 @@
         if ( ! objectToExtend.prototype.hasOwnProperty(methodName) ) {
           Object.defineProperty( objectToExtend.prototype, methodName, {
             value: method,
-            enumerable: false
+            enumerable: false,
+            writable: true
           });
         }
       }
