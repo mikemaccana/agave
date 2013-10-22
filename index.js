@@ -16,8 +16,12 @@
   }
 }(this, function () {
 
+  var enabled = {};
+
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
+    if ( enabled[prefix] ) return;
+
     var global = this;
 
     var SECONDS = 1000;
@@ -363,6 +367,8 @@
         addMethod(global, objectName, prefix, methodName, newMethods[objectName][methodName]);
       }
     }
+
+    enabled[prefix] = true;
   }.bind();
 
   // Just return a value to define the module export.
