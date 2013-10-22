@@ -28,6 +28,7 @@
           <li class="method"><a href="#author">Author</a></li>
         </ul>
       </li>
+      <li class="object"><a href="#kind">kind</a></li>
       <li class="object"><a href="#object">Object</a>
         <ul>
           <li class="method"><a href="#objectgetKeys">getKeys</a></li>
@@ -107,7 +108,7 @@
     <ul>
       <li>Adds useful things you'll use every day.</li>
       <li>Real methods on the objects you expect them to be on. No underscores or other punctuation.</li>
-      <li>Is less than 320 lines of code. Agave doesn't include things that are already in ES5, so it stays small.</li>
+      <li>Is only around 400 lines of code. Agave doesn't include things that are already in ES5, so it stays small.</li>
       <li>Uses <a href="#prefixing">prefixing</a> and ES5 <a href="#defineProperty">defineProperty()</a> to safely extend inbuilt objects.</li>
       <li>Available both as a regular node module and via RequireJS as an AMD module.</li>
     </ul>
@@ -121,6 +122,74 @@
     </div>
 
     <h3>What does Agave provide?</h3>
+
+    <p>Remember, all methods are available under the prefix you enabled agave with (if any).</p>
+
+    <h4><a name="kind"></a>kind</h4>
+
+    <p>Tells you the 'kind' of an object, <strong>the same way you'd expect it</strong>. Specifically it returns the most related object type in the inheritance tree or, if for types like 'null' and 'undefined' where no object is applicable, the primitive name:</p>
+
+    <ul>
+      <li>So: <code>kind(NaN)</code> is <code>'NaN'</code></li>
+      <li><code>kind([1, 2, 3])</code> is <code>'Array'</code></li>
+      <li>Numbers, NaN, Strings, Booleans, Arrays, Objects, Dates, Functions, undefined, or null are detected correctly regardless of how they were created.</li>
+    </ul>
+
+    <p>kind is of course, prefixed like everything else in agave.</p>
+
+    <h5>Numbers</h5>
+
+    <pre><code>kind(37) === 'Number'
+kind(3.14) === 'Number'
+kind(Math.LN2) === 'Number'
+kind(Infinity) === 'Number'
+kind(Number(1)) === 'Number'</code></pre>
+
+    <h5>NaN</h5>
+
+    <pre><code>kind(NaN) === 'NaN'</code></pre>
+
+    <h5>Strings</h5>
+
+    <pre><code>kind('') === 'String'
+kind('bla') === 'String'
+kind(String("abc")) === 'String'
+kind(new String("abc")) === 'String'</code></pre>
+
+
+    <h5>Booleans</h5>
+
+    <pre><code>kind(true) === 'Boolean'
+kind(false) === 'Boolean'
+kind(new Boolean(true)) === 'Boolean'</code></pre>
+
+    <h5>Arrays</h5>
+
+    <pre><code>kind([1, 2, 4]) === 'Array'
+kind(new Array(1, 2, 3)) === 'Array'</code></pre>
+
+    <h5>Objects</h5>
+
+    <pre><code>kind({a:1}) === 'Object'
+kind(new Object()) === 'Object'</code></pre>
+
+    <h5>Dates</h5>
+
+    <pre><code>kind(new Date()) === 'Date'</code></pre>
+
+    <h5>Functions</h5>
+
+    <pre><code>kind(function(){}) === 'Function'
+kind(new Function("console.log(arguments)")) === 'Function'
+kind(Math.sin) === 'Function'</code></pre>
+
+    <h5>undefined</h5>
+
+    <pre><code>kind(undefined) === 'undefined'</code></pre>
+
+    <h5>null</h5>
+
+    <pre><code>kind(null) === 'null'</code></pre>
 
     <h4><a name="object"></a>Object methods</h4>
 
