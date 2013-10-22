@@ -15,6 +15,7 @@
     root.returnExports = factory();
   }
 }(this, function () {
+  "use strict";
 
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
@@ -287,8 +288,8 @@
 
     var kind = function(item) {
       var getPrototype = function(item) {
-        return Object.prototype.toString.call(item).slice(8, -1)
-      }
+        return Object.prototype.toString.call(item).slice(8, -1);
+      };
       var kind, Undefined;
       if (item === null ) {
         kind = 'null';
