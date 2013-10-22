@@ -46,8 +46,7 @@ var mockHTML = ' \
       <p>Pork belly beard pop-up kale chips.</p> \
     </article> \
   </body> \
-</html> \
-';
+</html>';
 
 setupDOM(mockHTML);
 
@@ -164,9 +163,9 @@ describe('Object.getPath', function(){
 });
 
 describe('Object.clone', function(){
-  var copyObject = mockObject.avclone()
+  var copyObject = mockObject.avclone();
   it('clones objects so that modification to the new object will not affect the original', function(){
-    copyObject.baz.bam = 'newvalue'
+    copyObject.baz.bam = 'newvalue';
     assert.equal(copyObject.avgetPath(['baz','bam']), 'newvalue');
     assert.equal(mockObject.avgetPath(['baz','bam']), 'boo');
   });
@@ -176,9 +175,9 @@ describe('Object.forEach', function(){
   var keyResults = [];
   var valueResults = [];
   mockObject.avforEach(function(key, value){
-    keyResults.push(key)
-    valueResults.push(value)
-  })
+    keyResults.push(key);
+    valueResults.push(value);
+  });
   it('iterates over keys properly', function(){
     assert.deepEqual(keyResults, ["foo","baz","null"]);
   });
@@ -240,15 +239,15 @@ describe('Function.throttle', function(){
       // will only be run once after 70ms of inactivity
       var thottledFunction = function(){
         valueShouldOnlyBeOne++;
-      }.avthrottle(70)
+      }.avthrottle(70);
       thottledFunction();
       timesFunctionHasRan++;
       if ( timesFunctionHasRan === maxTimesToRun ) {
-        clearInterval(intervalID)
+        clearInterval(intervalID);
         assert.equal(valueShouldOnlyBeOne, 1);
         done();
       }
-    }, 50)
+    }, 50);
   });
 });
 
@@ -260,13 +259,13 @@ describe('Number.days', function(){
 
 describe('Number.weeks.before and .after', function(){
   it('correctly converts a number to a period in weeks before a set date', function(){
-    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)')
-    var timezoneOffset = someDate.getTimezoneOffset()
+    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
+    var timezoneOffset = someDate.getTimezoneOffset();
     assert.equal((3).avweeks().avbefore(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, May 16, 2013');
   });
   it('correctly converts a number to a period in weeks after a set date', function(){
-    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)')
-    var timezoneOffset = someDate.getTimezoneOffset()
+    var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
+    var timezoneOffset = someDate.getTimezoneOffset();
     assert.equal((3).avweeks().avafter(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, June 27, 2013');
   });
 });
@@ -295,7 +294,7 @@ describe('Element.createChild', function(){
 describe('Element.applyStyles', function(){
   it('styles elements', function(){
     var heading = document.querySelector('heading');
-    heading.avapplyStyles({'font-size':'18em'})
+    heading.avapplyStyles({'font-size':'18em'});
     assert.equal(heading.style['font-size'], '18em');
   });
 });

@@ -92,10 +92,10 @@
     // object.extent(object) adds the keys/values from the newObject provided
     var objectExtend = function(newObject) {
       for ( var key in newObject ) {
-        this[key] = newObject[key]
+        this[key] = newObject[key];
       }
       return this;
-    }
+    };
 
     // array.findItem(testFunction) returns the first item that matches the testFunction
     var findItem = function(testFunction){
@@ -131,7 +131,7 @@
           originalFunction.apply(context, arguments);
         }
       };
-    }
+    };
 
     // string.endsWith(suffix) returns true if string ends with the suffix
     var endsWith = function(suffix) {
@@ -182,9 +182,9 @@
     // an additional scope is created, which avoids last-item looping probs
     var objectForEach = function(callback){
       for ( var key in this ) {
-        callback(key, this[key])
+        callback(key, this[key]);
       }
-    }
+    };
 
     var arrayClone = function(){
       return this.slice();
