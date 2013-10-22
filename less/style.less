@@ -104,7 +104,11 @@ body {
   overflow-x: hidden;
   @media (max-width: 770px) {
     padding-left: 0;
+    a.github {
+      display: none;
+    }
   }
+
 }
 
 .content {
@@ -112,7 +116,7 @@ body {
     @media (max-width: 770px) {
       .transform(translateX(@sidebar-width));
     }
-  } 
+  }
   padding: 20px;
   max-width: 700px;
 }

@@ -467,6 +467,9 @@ body {
   body {
     padding-left: 0;
   }
+  body a.github {
+    display: none;
+  }
 }
 .content {
   padding: 20px;
