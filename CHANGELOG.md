@@ -5,6 +5,7 @@ Features:
   - Adds a prefixed global 'kind', which provides intuitive primitive/instance type checking (@mikemaccana, @notsorella)‎
   - Iteration function in object.forEach() now given value as second argument (@alexgraul)‎
   - Allow new properties to be overwritable if users want (@rich-harris)
+  - 'grunt watch' support in gh-pages, for rebuilding css whenever less changes
 
 Bugfixes:
 
