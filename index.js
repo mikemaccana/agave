@@ -15,8 +15,6 @@
     root.returnExports = factory();
   }
 }(this, function () {
-  "use strict";
-
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
     var global = this;
