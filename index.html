@@ -127,15 +127,10 @@
 
     <h4><a name="kind"></a>kind</h4>
 
-    <p>Tells you the 'kind' of an object, <strong>the same way you'd expect it</strong>. Specifically it returns the most related object type in the inheritance tree or, if for types like 'null' and 'undefined' where no object is applicable, the primitive name:</p>
+    <p>Tells you the 'kind' of an object, <strong>the same way you'd expect it</strong>. Specifically it returns the closest prototype in the inheritance tree or, if for always-primitive types like 'null' and 'undefined'
+      the primitive name.</p>
 
-    <ul>
-      <li>So: <code>kind(NaN)</code> is <code>'NaN'</code></li>
-      <li><code>kind([1, 2, 3])</code> is <code>'Array'</code></li>
-      <li>Numbers, NaN, Strings, Booleans, Arrays, Objects, Dates, Functions, undefined, or null are detected correctly regardless of how they were created.</li>
-    </ul>
-
-    <p>kind is of course, prefixed like everything else in agave.</p>
+    <p>So you can access it easily, kind() is a global (of course, it's prefixed like everything else in Agave).</p>
 
     <h5>Numbers</h5>
 
