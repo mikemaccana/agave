@@ -359,7 +359,7 @@
         'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
       },
       'Function':{
-        throttle:throttle,
+        'throttle':throttle,
       },
       'Number':{
         'seconds':seconds,
@@ -391,7 +391,7 @@
     // Add a function to the global
     var addGlobal = function( global, globalName, prefix, globalFunction) {
       globalName = prefix ? prefix+globalName: globalName;
-      // Don't add if the global  already exists
+      // Don't add if the global already exists
       if ( ! global.hasOwnProperty(globalName) ) {
         global[globalName] = globalFunction;
       }
