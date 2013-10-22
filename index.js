@@ -6,7 +6,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
     // like Node.
-    module.exports = factory();
+    module.exports = factory(global);
   } else if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(factory);
@@ -14,10 +14,13 @@
     // Browser globals (root is window)
     root.returnExports = factory();
   }
-}(this, function () {
+}(this, function(global) {
+  "use strict";
+
+  var global = global || this; // 'this' would be 'window' in browser enviroments
+
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
-    var global = this;
 
     var SECONDS = 1000;
     var MINUTES = 60 * SECONDS;
@@ -307,7 +310,7 @@
     };
 
     // Polyfill if Element.prototype.matches doesn't exist.
-    var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
+    var prefixedMatchesMethod = ( ! global.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
     // Add method as a non-enumerable property on obj with the name methodName
     var addMethod = function( global, objectName, prefix, methodName, method) {
