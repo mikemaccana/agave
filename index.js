@@ -285,6 +285,28 @@
       return ancestors.toNodeList();
     };
 
+    var kind = function(item) {
+      var getPrototype = function(item) {
+        return Object.prototype.toString.call(item).slice(8, -1)
+      }
+      var kind, Undefined;
+      if (item === null ) {
+        kind = 'null';
+      } else {
+        if ( item === Undefined ) {
+          kind = 'undefined';
+        } else {
+          var prototype = getPrototype(item);
+          if ( ( prototype === 'Number' ) && isNaN(item) ) {
+            kind = 'NaN';
+          } else {
+            kind = prototype;
+          }
+        }
+      }
+      return kind;
+    };
+
     // Polyfill if Element.prototype.matches doesn't exist.
     var prefixedMatchesMethod = ( !this.Element || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector);
 
@@ -363,6 +385,16 @@
         addMethod(global, objectName, prefix, methodName, newMethods[objectName][methodName]);
       }
     }
+
+    // Add a function to the global
+    var addGlobal = function( global, globalName, prefix, globalFunction) {
+      globalName = prefix ? prefix+globalName: globalName;
+      // Don't add if the global  already exists
+      if ( ! global.hasOwnProperty(globalName) ) {
+        global[globalName] = globalFunction;
+      }
+    };
+    addGlobal(global, 'kind', prefix, kind);
   }.bind();
 
   // Just return a value to define the module export.

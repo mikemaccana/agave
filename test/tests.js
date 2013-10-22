@@ -298,3 +298,50 @@ describe('Element.applyStyles', function(){
     assert.equal(heading.style['font-size'], '18em');
   });
 });
+
+describe('kind', function(){
+  it('shows number-like things as numbers', function(){
+    assert(avkind(37) === 'Number');
+    assert(avkind(3.14) === 'Number');
+    assert(avkind(Math.LN2) === 'Number');
+    assert(avkind(Infinity) === 'Number');
+    assert(avkind(Number(1)) === 'Number');
+    assert(avkind(new Number(1)) === 'Number');
+  });
+  it('shows NaN as NaN', function(){
+    assert(avkind(NaN) === 'NaN');
+  });
+  it('Shows strings as strings', function(){
+    assert(avkind('') === 'String');
+    assert(avkind('bla') === 'String');
+    assert(avkind(String("abc")) === 'String');
+    assert(avkind(new String("abc")) === 'String');
+  });
+  it('shows strings accurately', function(){
+    assert(avkind(true) === 'Boolean');
+    assert(avkind(false) === 'Boolean');
+    assert(avkind(new Boolean(true)) === 'Boolean');
+  });
+  it('shows arrays accurately', function(){
+    assert(avkind([1, 2, 4]) === 'Array');
+    assert(avkind(new Array(1, 2, 3)) === 'Array');
+  });
+  it('shows objects accurately', function(){
+    assert(avkind({a:1}) === 'Object');
+    assert(avkind(new Object()) === 'Object');
+  });
+  it('shows dates accurately', function(){
+    assert(avkind(new Date()) === 'Date');
+  });
+  it('loves Functions too', function(){
+    assert(avkind(function(){}) === 'Function');
+    assert(avkind(new Function("console.log(arguments)")) === 'Function');
+    assert(avkind(Math.sin) === 'Function');
+  });
+  it('shows undefined accurately', function(){
+    assert(avkind(undefined) === 'undefined');
+  });
+  it('shows null accurately', function(){
+    assert(avkind(null) === 'null');
+  });
+});
