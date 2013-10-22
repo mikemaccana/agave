@@ -173,12 +173,27 @@ describe('Object.clone', function(){
 });
 
 describe('Object.forEach', function(){
-  var results = [];
-  mockObject.avforEach(function(key){
-    results.push(key)
+  var keyResults = [];
+  var valueResults = [];
+  mockObject.avforEach(function(key, value){
+    keyResults.push(key)
+    valueResults.push(value)
   })
-  it('iterates properly', function(){
-    assert.deepEqual(results, ["foo","baz","null"]);
+  it('iterates over keys properly', function(){
+    assert.deepEqual(keyResults, ["foo","baz","null"]);
+  });
+  it('iterates over values properly', function(){
+    assert.deepEqual(valueResults, [
+      "bar",
+      {"bam":"boo",
+        "zar":{
+          "zog":"victory"
+        }
+      },
+      {"yarr":
+        {"parrot":"ahoy"}
+      }
+    ]);
   });
 });
 

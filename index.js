@@ -181,7 +181,9 @@
     // Unlike a regular for ( var key in object )
     // an additional scope is created, which avoids last-item looping probs
     var objectForEach = function(callback){
-      Object.keys(this).forEach(callback)
+      for ( var key in this ) {
+        callback(key, this[key])
+      }
     }
 
     var arrayClone = function(){
