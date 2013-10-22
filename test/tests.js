@@ -1,4 +1,10 @@
 /*jshint multistr:true */
+/*jshint -W010 */
+/*jshint -W053 */
+/*jshint -W054 */
+// 10 allows us to test Object
+// 53 allows us to test Number, String etc constructors.
+// 54 allows us to test Function constructors.
 // Tests. Mocha/assert style. See
 // http://visionmedia.github.com/mocha/
 // http://nodejs.org/docs/latest/api/assert.html
