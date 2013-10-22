@@ -12,3 +12,5 @@ Bugfixes:
   - Doc typos (#1, @nubs) (#2, @evanhahn)
 
 ## 0.2.0 (2013-06-14)
+
+ - Initial release
