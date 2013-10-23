@@ -1,7 +1,7 @@
 // Agave.JS
 // I'm a UMD module (works in RequireJS and CommonJS-like environments)
 // See https://github.com/umdjs
-(function (root, factory) {
+(function (global, factory) {
   if (typeof exports === 'object') {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
@@ -11,8 +11,8 @@
     // AMD. Register as an anonymous module.
     define(factory);
   } else {
-    // Browser globals (root is window)
-    root.returnExports = factory();
+    // Browser globals (global is window)
+    global.returnExports = factory();
   }
 }(this, function(global) {
   "use strict";
