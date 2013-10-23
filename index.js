@@ -15,12 +15,14 @@
     global.returnExports = factory();
   }
 }(this, function(global) {
-  "use strict";
-
-  var global = global || this; // 'this' would be 'window' in browser enviroments
 
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
+    // 'this' would be 'window' in browser enviroments.
+    // Must come before strict mode, otherwise requirejs breaks.
+    var global = this;
+
+    "use strict";
 
     var SECONDS = 1000;
     var MINUTES = 60 * SECONDS;
