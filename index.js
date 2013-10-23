@@ -15,13 +15,11 @@
     global.returnExports = factory();
   }
 }(this, function(global) {
-  "use strict";
-
-  var global = global || this; // 'this' would be 'window' in browser enviroments
 
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
-
+    var global = this; // 'this' would be 'window' in browser enviroments
+    "use strict";
     var SECONDS = 1000;
     var MINUTES = 60 * SECONDS;
     var HOURS = 60 * MINUTES;
