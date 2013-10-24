@@ -16,13 +16,20 @@
   }
 }(this, function(global) {
 
+  var enabledPrefixes = {}; // Only allow agave to be enabled once per prefix
+
   // Extend objects with Agave methods, using the prefix provided.
   var enable = function(prefix){
     // 'this' would be 'window' in browser enviroments.
     // Must come before strict mode, otherwise requirejs breaks.
+
     var global = this;
 
     "use strict";
+
+    if ( enabledPrefixes[prefix] ) {
+      return;
+    }
 
     var SECONDS = 1000;
     var MINUTES = 60 * SECONDS;
@@ -399,6 +406,8 @@
       }
     };
     addGlobal(global, 'kind', prefix, kind);
+
+    enabledPrefixes[prefix] = true;
   }.bind();
 
   // Just return a value to define the module export.
