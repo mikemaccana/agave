@@ -559,8 +559,10 @@ button.download {
   right: 0;
   z-index: 99999;
 }
-.github media (max-width: 770px) {
-  display: none;
+@media (max-width: 770px) {
+  .github {
+    display: none;
+  }
 }
 .github a {
   display: block;
