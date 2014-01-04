@@ -153,6 +153,20 @@ describe('Array.findItem', function(){
   });
 });
 
+describe('Array.remove', function () {
+  it('correctly removes the given member', function (){
+    var arr = [1,2,3,4,5];
+    arr.avremove(3);
+    assert.deepEqual(arr, [1,2,4,5]);
+  });
+  if('returns true if the given member was in the array', function () {
+    assert.equal([1,2,3,4,5].remove(3), true);
+  });
+  if('returns false if the given member was not in the array', function () {
+    assert.equal([1,2,3,4,5].remove(6), false);
+  });
+});
+
 describe('Object.getPath', function(){
   it('returns undefined when a value is missing', function(){
     assert.equal(mockObject.avgetPath(['foo','pineapple']), undefined);
@@ -273,6 +287,41 @@ describe('Number.weeks.before and .after', function(){
     var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
     var timezoneOffset = someDate.getTimezoneOffset();
     assert.equal((3).avweeks().avafter(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, June 27, 2013');
+  });
+});
+
+describe('Number.round', function () {
+  var num = 4.2;
+  it('correctly rounds a number', function () {
+    assert.equal(num.avround(),4);
+  });
+});
+
+describe('Number.ceil', function () {
+  var num = 4.2;
+  it('correctly finds a number\'s ceiling', function () {
+    assert.equal(num.avceil(),5);
+  });
+});
+
+describe('Number.floor', function () {
+  var num = 4.2;
+  it('correctly finds a number\'s floor', function () {
+    assert.equal(num.avfloor(),4);
+  });
+});
+
+describe('Number.abs', function () {
+  var num = -4.2;
+  it('correctly finds the absolute value of a number', function () {
+    assert.equal(num.avabs(),4.2);
+  });
+});
+
+describe('Number.pow', function () {
+  var num = 5;
+  it('correctly raises a number to the given power', function () {
+    assert.equal(num.avpow(3), 125);
   });
 });
 
