@@ -210,6 +210,16 @@
       return fragment.childNodes;
     };
 
+    // Array remove removes an item from an array, if it exists
+    var arrayRemove = function (member){
+      var index = this.indexOf(member);
+      if (index !== -1 ) {
+        this.splice(index, 1);
+        return true;
+      }
+      return false;
+    };
+
     // Convert Number to (function name). +ensures type returned is still Number
     var seconds = function() {
       return +this * SECONDS;
@@ -242,6 +252,27 @@
     var after = function(date) {
       var time = getTimeOrNow(date);
       return new Date(time+(+this));
+    };
+
+    // Round Number
+    var round = function () {
+      return Math.round(this);
+    };
+
+    var ceil = function () {
+      return Math.ceil(this);
+    };
+
+    var floor = function () {
+      return Math.floor(this);
+    };
+
+    var abs = function () {
+      return Math.abs(this);
+    };
+
+    var pow = function (exp) {
+      return Math.pow(this, exp);
     };
 
     // Add a new element as a child of this element
@@ -346,7 +377,8 @@
         'extend':arrayExtend,
         'contains':contains,
         'clone':arrayClone,
-        'toNodeList':toNodeList
+        'toNodeList':toNodeList,
+        'remove':arrayRemove
       },
       'Object':{
         'getKeys':getKeys,
@@ -377,7 +409,12 @@
         'days':days,
         'weeks':weeks,
         'before':before,
-        'after':after
+        'after':after,
+        'round':round,
+        'ceil':ceil,
+        'floor':floor,
+        'abs':abs,
+        'pow':pow
       },
       'Element':{
         'createChild':createChild,
