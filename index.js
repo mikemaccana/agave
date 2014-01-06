@@ -78,7 +78,7 @@
     // object.getPath - get the value of the nested keys provided in the object.
     // If any are missing, return undefined. Used for checking JSON results.
     var getPath = function(pathItems) {
-      var obj = this;
+      var currentObject = this;
       var delim = '/';
       var result;
       var stillChecking = true;
@@ -88,12 +88,12 @@
       }
       pathItems.forEach( function(pathItem) {
         if ( stillChecking ) {
-          if ( ( obj === null ) || ( ! obj.hasOwnProperty(pathItem) ) ) {
+          if ( ( currentObject === null ) || ( ! currentObject.hasOwnProperty(pathItem) ) ) {
             result = undefined;
             stillChecking = false;
           } else {
-            result = obj[pathItem];
-            obj = obj[pathItem];
+            result = currentObject[pathItem];
+            currentObject = currentObject[pathItem];
           }
         }
       });
