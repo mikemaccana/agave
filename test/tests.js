@@ -401,3 +401,10 @@ describe('kind', function(){
     assert(avkind(null) === 'null');
   });
 });
+
+describe('Functions work with no prefix at all', function(){
+  agave.enable();
+  it('strips from the right accurately', function(){
+    assert.equal('Hello world'.rightStrip('ldr'), 'Hello wo');
+  });
+});

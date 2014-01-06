@@ -27,6 +27,8 @@
 
     "use strict";
 
+    prefix = prefix || '';
+
     if ( enabledPrefixes[prefix] ) {
       return;
     }
