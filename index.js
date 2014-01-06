@@ -81,20 +81,20 @@
       var obj = this;
       var delim = '/';
       var result;
-      var still_checking = true;
+      var stillChecking = true;
       // Handle Unix style paths
       if ( typeof(pathItems) === 'string' ) {
         pathItems = pathItems[prefix+'strip'](delim).split(delim);
       }
       pathItems.forEach( function(pathItem) {
-        if ( still_checking ) {
-          if ( ! obj.hasOwnProperty(pathItem) ) {
+        if ( stillChecking ) {
+          if ( ( obj === null ) || ( ! obj.hasOwnProperty(pathItem) ) ) {
             result = undefined;
-            still_checking = false;
+            stillChecking = false;
           } else {
             result = obj[pathItem];
+            obj = obj[pathItem];
           }
-          obj = obj[pathItem];
         }
       });
       return result;
