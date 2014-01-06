@@ -7,5 +7,5 @@ Please make sure your pull request:
 * Is only related related to the specific issue  - no extra code please.
 * Has a commit message should with both the issue # and describe specifically what's being fixed/changed.
 * Adds unit tests to /test/tests.js
-* Updates the docs in gh-pages
 * Has been jshinted.
+* Updates the docs in gh-pages (as a separate pull request)
