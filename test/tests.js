@@ -1,3 +1,7 @@
+// Tests. Mocha/assert style. See
+// http://visionmedia.github.com/mocha/
+// http://nodejs.org/docs/latest/api/assert.html
+
 /*jshint multistr:true */
 /*jshint -W010 */
 /*jshint -W053 */
@@ -5,9 +9,6 @@
 // 10 allows us to test Object
 // 53 allows us to test Number, String etc constructors.
 // 54 allows us to test Function constructors.
-// Tests. Mocha/assert style. See
-// http://visionmedia.github.com/mocha/
-// http://nodejs.org/docs/latest/api/assert.html
 
 var assert = require('assert');
 var jsdom = require('jsdom');
