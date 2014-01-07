@@ -46,6 +46,7 @@
           <li class="method"><a href="#arrayfindItem">findItem</a></li>
           <li class="method"><a href="#arrayextend">extend</a></li>
           <li class="method"><a href="#arraytoNodeList">toNodeList</a></li>
+          <li class="method"><a href="#arrayremove">remove</a></li>
         </ul>
       </li>
       <li class="object"><a href="#function">Function</a>
@@ -75,6 +76,11 @@
           <li class="method"><a href="#numberseconds">weeks</a></li>
           <li class="method"><a href="#numberbefore">before</a></li>
           <li class="method"><a href="#numberbefore">after</a></li>
+          <li class="method"><a href="#numbermath">round</a></li>
+          <li class="method"><a href="#numbermath">ceil</a></li>
+          <li class="method"><a href="#numbermath">floor</a></li>
+          <li class="method"><a href="#numbermath">abs</a></li>
+          <li class="method"><a href="#numberpow">pow</a></li>
         </ul>
       </li>
       <li class="object"><a href="#nodelist">NodeList</a>
@@ -321,7 +327,9 @@ kind(Math.sin) === 'Function'</code></pre>
 
     <p>Turns an array of Elements into a NodeList.</p>
 
+    <h5><a name="arrayremove"></a>.remove(<em>member</em>)</h5>
 
+    <p>Removes <em>member</em> from the array, returning true if the member was found, false otherwise.</p>
 
 
 
@@ -448,6 +456,27 @@ window.addEventListener("resize", updateLayout.throttle(500));
     <p>Returns a Date for 3 weeks after that date, eg:</p>
 
 <pre><code>Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
+</code></pre>
+
+    <h5><a name="numbermath"></a>.round(), .ceil(), .floor(), .abs()</h5>
+
+    <p>Returns the value corresponding to Math.round(<em>number</em>) etc.</p>
+
+<pre><code>number = 4.2;
+number.round(); // 4
+number.ceil();  // 5
+number.floor(); // 4
+
+number = -4.2;
+number.abs();        // 4.2
+number.abs().ceil(); // 5
+</code></pre>
+
+    <h5><a name="numberpow"></a>.pow(<em>exponent</em>)</h5>
+
+    <p>Returns the number multiplied by itself <em>exponent</em> times.</p>
+
+<pre><code>(5).pow(3); // 125
 </code></pre>
 
     <h4><a name="nodelist"></a>NodeList methods</h4>
