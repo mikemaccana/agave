@@ -1,8 +1,4 @@
-/*
-  This is an EXAMPLE gulpfile.js
-  You'll want to change it to match your project.
-  Find plugins at https://npmjs.org/browse/keyword/gulpplugin
-*/
+// Run 'gulp' to do the important stuff
 var gulp = require('gulp');
 var uglify = require('gulp-less');
 var prefixer = require('gulp-autoprefixer');
@@ -18,8 +14,6 @@ gulp.task('less', function () {
     .pipe(prefixer('last 2 versions', 'ie 9'))
     .pipe(gulp.dest('./css'));
 });
-
-
 
 // The default task (called when you run `gulp`)
 gulp.task('default', function() {
