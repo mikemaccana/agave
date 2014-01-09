@@ -13,14 +13,6 @@ a, a:hover, a:active, a:visited {
   text-decoration: none;
 }
 
-.transform(@string){
-  -webkit-transform: @string;
-  -moz-transform: @string;
-  -ms-transform: @string;
-  -o-transform: @string;
-  transform: @string;
-}
-
 /* ☰ button */
 .nav-link {
   z-index: 1;
@@ -51,7 +43,7 @@ nav {
   overflow-y: auto;
   color: whitesmoke;
   &.menu-active {
-    .transform(translateX(0));
+    transform: translateX(0);
     width: @sidebar-width;
     left: @sidebar-width;
   }
@@ -86,10 +78,6 @@ nav {
 }
 
 body, nav, .nav-link, .content {
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
 
@@ -105,13 +93,12 @@ body {
   @media (max-width: 770px) {
     padding-left: 0;
   }
-
 }
 
 .content {
   &.menu-active {
     @media (max-width: 770px) {
-      .transform(translateX(@sidebar-width));
+      transform: translateX(@sidebar-width);
     }
   }
   padding: 20px;
@@ -235,28 +222,10 @@ button.download {
 
     text-align: center;
 
-    -moz-transform-origin: 0 0 ;
-    -moz-transform:rotate(45deg);
-    -moz-box-shadow: 1px 1px 5px 1px #666;
-
-    -webkit-transform-origin: 0 0 ;
-    -webkit-transform:rotate(45deg);
-    -webkit-box-shadow: 1px 1px 5px 1px #666;
-
-    -ms-transform-origin: 0 0 ;
-    -ms-transform:rotate(45deg);
-    -ms-box-shadow: 1px 1px 5px 1px #666;
-
     transform-origin: 0 0 ;
-    transform:rotate(45deg);
+    transform: rotate(45deg);
     box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
 
     background-image: linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-    background-image: -o-linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-    background-image: -moz-linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-    background-image: -webkit-linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-    background-image: -ms-linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.03, #534E41), color-stop(0.05, #9E9B96), color-stop(0.07, #64625A), color-stop(0.93, #5C5A55), color-stop(0.95, #9E9B96), color-stop(0.97, #534E41) );;
   }
 }

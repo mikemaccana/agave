@@ -5,7 +5,7 @@
 */
 var gulp = require('gulp');
 var uglify = require('gulp-less');
-
+var prefixer = require('gulp-autoprefixer');
 var less = require('gulp-less');
 var path = require('path');
 
@@ -15,6 +15,7 @@ gulp.task('less', function () {
     .pipe(less({
       paths: ['less']
     }))
+    .pipe(prefixer('last 2 versions', 'ie 9'))
     .pipe(gulp.dest('./css'));
 });
 
