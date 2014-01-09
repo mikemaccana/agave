@@ -1,8 +1,4 @@
-/*
-  This is an EXAMPLE gulpfile.js
-  You'll want to change it to match your project.
-  Find plugins at https://npmjs.org/browse/keyword/gulpplugin
-*/
+// Run 'gulp' to do the important stuff
 var gulp = require('gulp');
 var uglify = require('gulp-less');
 var prefixer = require('gulp-autoprefixer');
