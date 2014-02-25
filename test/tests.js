@@ -250,6 +250,40 @@ describe('Object.extend', function(){
   });
 });
 
+describe('Object.compare', function(){
+  it('accurately identifies similar objects', function(){
+    var heading = document.querySelector('heading');
+    var identicalObject = {
+      foo: 'bar',
+      baz: {
+        bam:'boo',
+        zar:{
+          zog:'victory'
+        }
+      },
+      null:{
+        'yarr':{
+          'parrot':'ahoy'
+        }
+      }
+    };
+    assert(mockObject.avcompare(identicalObject));
+  });
+  it('accurately identifies different objects', function(){
+    var heading = document.querySelector('heading');
+    var differentObject = {
+      foo: 'bar',
+      baz: {
+        bam:'boo',
+        zar:{
+          zog:'victory'
+        }
+      }
+    };
+    assert.equal(mockObject.avcompare(differentObject), false);
+  });
+});
+
 describe('Function.throttle', function(){
   var valueShouldOnlyBeOne = 0; // Since the function should only run once
   var timesFunctionHasRan = 0;

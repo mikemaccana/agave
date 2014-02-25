@@ -177,6 +177,23 @@
       return half + half;
     };
 
+    // string.toHash() return a hashed value of a string
+    // From http://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery
+    var toHash = function(){
+      var hash = 0,
+        length = this.length,
+        char;
+      if ( ! length ) {
+        return hash;
+      }
+      for (var index = 0; index < length; index++) {
+        char = this.charCodeAt(index);
+        hash = ((hash<<5)-hash)+char;
+        hash |= 0; // Convert to 32bit integer
+      }
+      return hash;
+    };
+
     // Clone an object recursively
     var clone = function() {
       var newObj = (this instanceof Array) ? [] : {};
@@ -188,6 +205,14 @@
         }
       }
       return newObj;
+    };
+
+    // compare an object with another object
+    var compare = function(otherObject){
+      var hashObject = function(object){
+        return JSON.stringify(object)[prefix+'toHash']();
+      };
+      return ( hashObject(this) === hashObject(otherObject) );
     };
 
     // Iterate over an objects keys
@@ -389,6 +414,7 @@
         'clone':clone,
         'forEach':objectForEach,
         'extend':objectExtend,
+        'compare':compare
       },
       'String':{
         'endsWith':endsWith,
@@ -399,6 +425,7 @@
         'rightStrip':rightStrip,
         'strip':strip,
         'contains':contains,
+        'toHash':toHash,
         'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
       },
       'Function':{
