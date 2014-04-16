@@ -381,6 +381,18 @@ describe('Element.createChild', function(){
   });
 });
 
+describe('Element.getParentIndex', function(){
+  var article = document.createElement('article');
+  ['first', 'second', 'third'].forEach(function(item){
+    var p = document.createElement("p");
+    article.appendChild(p);
+  })
+  it('creates children with the specified attributes', function(){
+    var thirdChild = article.querySelectorAll('p')[2];
+    assert(thirdChild.avgetParentIndex() === 2);
+  });
+});
+
 describe('Element.applyStyles', function(){
   it('styles elements', function(){
     var heading = document.querySelector('heading');

@@ -354,6 +354,11 @@
       return ancestors.toNodeList();
     };
 
+    // Return index of node under its parents. Eg, if you're the fourth child, return 3.
+    var getParentIndex = function() {
+      return Array.prototype.indexOf.call(this.parentNode.children, this);
+    }
+
     var kind = function(item) {
       var getPrototype = function(item) {
         return Object.prototype.toString.call(item).slice(8, -1);
@@ -450,7 +455,8 @@
         'ancestorNodes':ancestorNodes,
         'matches':prefixedMatchesMethod,
         'applyStyles':applyStyles,
-        'toggleClass':toggleClass
+        'toggleClass':toggleClass,
+        'getParentIndex':getParentIndex
       },
       'NodeList':{
         'forEach':Array.prototype.forEach,
