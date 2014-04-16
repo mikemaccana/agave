@@ -96,6 +96,7 @@
           <li class="method"><a href="#elementapplyStyles">applyStyles</a></li>
           <li class="method"><a href="#elementancestorNodes">ancestorNodes</a></li>
           <li class="method"><a href="#elementtoggleClass">toggleClass</a></li>
+          <li class="method"><a href="#elementgetParentIndex">getParentIndex</a></li>
         </ul>
       </li>
     </ul>
@@ -553,6 +554,14 @@ article.createChild('p',{'id':'testpara'},'hey there');
     <h5><a name="elementancestorNodes"></a>.ancestorNodes(<em>selector</em>)</h5>
 
 <p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
+
+    <h5><a name="elementtoggleClass"></a>.toggleClass(<em>className</em>)</h5>
+
+    <p>Toggles a class.</p>
+
+    <h5><a name="elementgetParentIndex"></a>.getParentIndex()</h5>
+
+    <p>Return index of the element under its parents. Eg, if the element is the fourth child, return 3.</p>
 
     <h2><a name="why"></a>Why would I want to use Agave?</h2>
 
