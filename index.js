@@ -159,7 +159,7 @@
     // array.contains(item) returns true if an array contains an item
     // string.contains(substring) returns true if a string contains a substring
     var contains = function(item){
-      return ( this.indexOf(item) !== -1);
+      return ( this.indexOf(item) >= 0 );
     };
 
     // Extend an array with another array.
