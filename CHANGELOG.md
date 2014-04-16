@@ -1,3 +1,14 @@
+## 0.4.2 (2014-04-16)
+
+Features:
+
+ - Add element.getParentIndex(), object.compare() & tests (@mikemaccana)
+ - Add number maths methods (@rich-harris)
+ - Only allow agave to be enabled once per prefix (@rich-harris)
+ - jshint now passes on tests (@mikemaccana)
+ - Fix bug where getPath would run hasOwnProperty() on null
+ - Remove unnecessary grunt dependency from master branch (only needed for gh-pages)
+
 ## 0.4.0 (2013-10-22)
 
 Features:
