@@ -324,7 +324,7 @@
       return this;
     };
 
-    // Toggle a class
+    // Toggle a class (considering replacing this with IE9 only element.classList.toggle)
     var toggleClass = function(className) {
       if ( this.classList.contains(className) ) {
         this.classList.remove(className);
