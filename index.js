@@ -343,15 +343,15 @@
       while ( parent && parent.nodeType && parent.nodeType === 1 ) {
         if ( selector ) {
           if ( parent.matches(selector) ) {
-            ancestors.append(parent);
+            ancestors.push(parent);
           }
         } else {
-          ancestors.append(parent);
+          ancestors.push(parent);
         }
         parent = parent.parentNode;
       }
       // Return a NodeList to be consistent with childNodes
-      return ancestors.toNodeList();
+      return ancestors[prefix+'toNodeList']();
     };
 
     // Return index of node under its parents. Eg, if you're the fourth child, return 3.
