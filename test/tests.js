@@ -306,6 +306,19 @@ describe('Function.throttle', function(){
   });
 });
 
+describe('Function.repeat', function(){
+  var count = 0
+  it('repeats', function(done){
+    var increment = function(){
+      count += 1
+      if ( count === 3 ) {
+        done();
+      }
+    }
+    increment.repeat([], 50, true)
+  });
+});
+
 describe('Number.days', function(){
   it('correctly converts a number to days in seconds', function(){
     assert.equal((5).avdays(), 432000000);

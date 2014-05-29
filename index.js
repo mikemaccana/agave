@@ -146,6 +146,16 @@
       };
     };
 
+    // Run repeatedly
+    var functionRepeat = function(args, interval, leadingEdge){
+      if ( leadingEdge ) {
+        this.apply(null, args);
+      }
+      return setInterval(function(){
+        this.apply(null, args);
+      }.bind(this), interval)
+    }
+
     // string.endsWith(suffix) returns true if string ends with the suffix
     var endsWith = function(suffix) {
       return this.indexOf(suffix, this.length - suffix.length) !== -1;
@@ -435,6 +445,7 @@
       },
       'Function':{
         'throttle':throttle,
+        'repeat':functionRepeat
       },
       'Number':{
         'seconds':seconds,
