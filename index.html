@@ -244,7 +244,7 @@ kind(Math.sin) === 'Function'</code></pre>
     <h5><a name="objectgetPath"></a>.getPath(<em>path</em>)</h5>
 
     <p>Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
-    If any of the keys are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful is buried deep inside an object. Eg, the following code:</p>
+    If any of the keys along the way are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful may be buried deep inside an object, but you don't want to error out if the path doesn't exist. Eg, the following code:</p>
 
 <pre><code>mockObject.getPath('/baz/zar/zog')
 </code></pre>
@@ -257,7 +257,14 @@ kind(Math.sin) === 'Function'</code></pre>
     <p>will return:</p>
 
 <pre><code>'something useful'
-</code></pre>
+
+    <p>However, checking for a path that doesn't exist:</p>
+
+<pre><code>mockObject.getPath(['baz','gur','yak'])</code></pre>
+
+      <p>will simply return:</p>
+
+<pre><code>undefined</code></pre>
 
     <p>Keys, of course, could be strings, array indices, or anything else.</p>
 
