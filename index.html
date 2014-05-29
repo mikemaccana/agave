@@ -52,6 +52,7 @@
       <li class="object"><a href="#function">Function</a>
         <ul>
           <li class="method"><a href="#functionthrottle">throttle</a></li>
+          <li class="method"><a href="#functionrepeat">repeat</a></li>
         </ul>
       </li>
       <li class="object"><a href="#string">String</a>
@@ -362,6 +363,20 @@ window.addEventListener("resize", updateLayout.throttle(500));
 </code></pre>
 
     <p>on the console.</p>
+
+
+    <h5><a name="functionrepeat"></a>.repeat(<em>arguments</em>, <em>interval</em>, <em>leadingEdge</em>)</h5>
+
+    <p>Run the function repeatedly at the interval (in ms). If leadingEdge is true, run the function immediately too.</p>
+
+    <pre><code>var doThing = function(first, second){
+  console.log('first', first, 'second', second)
+};
+
+var interval = doThing.repeat(['red', 'pandas'], 1000, true)
+    </code></pre>
+
+    <p>Will run the doThing() immediately, then every second afterwards.</p>
 
     <h4><a name="string"></a>String methods</h4>
 
