@@ -318,6 +318,18 @@ suite('Function.repeat', function(){
     }
     increment.repeat([], 50, true)
   });
+  test('repeats with arguments omitted', function(done){
+    var count = 0
+    this.timeout(11 * 1000);
+    var increment = function(){
+      console.log('RUNNING!')
+      count += 1
+      if ( count === 3 ) {
+        done();
+      }
+    }
+    increment.repeat(50, true)
+  });
 });
 
 

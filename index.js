@@ -147,7 +147,17 @@
     };
 
     // Run repeatedly
-    var functionRepeat = function(args, interval, leadingEdge){
+    var functionRepeat = function(first, second, third){
+      var args, interval, leadingEdge;
+      if ( arguments.length === 2 ) {
+        args = [];
+        interval = first;
+        leadingEdge = second;
+      } else {
+        args = first;
+        interval = second;
+        leadingEdge = third;
+      }
       if ( leadingEdge ) {
         this.apply(null, args);
       }
