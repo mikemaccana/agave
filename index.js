@@ -25,8 +25,6 @@
 
     var global = this;
 
-    "use strict";
-
     prefix = prefix || '';
 
     if ( enabledPrefixes[prefix] ) {
