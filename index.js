@@ -163,8 +163,8 @@
       }
       return setInterval(function(){
         this.apply(null, args);
-      }.bind(this), interval)
-    }
+      }.bind(this), interval);
+    };
 
     // string.endsWith(suffix) returns true if string ends with the suffix
     var endsWith = function(suffix) {
@@ -268,12 +268,12 @@
     };
 
     var arrayFirst= function(){
-      return this[0]
-    }
+      return this[0];
+    };
 
     var arrayLast = function(){
-      return this[this.length - 1]
-    }
+      return this[this.length - 1];
+    };
 
     // Convert Number to (function name). +ensures type returned is still Number
     var seconds = function() {
@@ -367,7 +367,7 @@
       var ancestors = [];
       var parent = this.parentNode;
       if ( includeSelf && this.matches(selector) ) {
-        return this
+        return this;
       } else {
         // While parents are 'element' type nodes
         // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
@@ -389,7 +389,7 @@
     // Return index of node under its parents. Eg, if you're the fourth child, return 3.
     var getParentIndex = function() {
       return Array.prototype.indexOf.call(this.parentNode.children, this);
-    }
+    };
 
     var kind = function(item) {
       var getPrototype = function(item) {
