@@ -267,6 +267,14 @@
       return false;
     };
 
+    var arrayFirst= function(){
+      return this[0]
+    }
+
+    var arrayLast = function(){
+      return this[this.length - 1]
+    }
+
     // Convert Number to (function name). +ensures type returned is still Number
     var seconds = function() {
       return +this * SECONDS;
@@ -430,7 +438,9 @@
         'contains':contains,
         'clone':arrayClone,
         'toNodeList':toNodeList,
-        'remove':arrayRemove
+        'remove':arrayRemove,
+        'first':arrayFirst,
+        'last':arrayLast
       },
       'Object':{
         'getKeys':getKeys,
