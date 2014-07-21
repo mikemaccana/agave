@@ -363,23 +363,27 @@
     };
 
     // Return nodeList of an elements parent elements from closest to farthest
-    var ancestorNodes = function(selector) {
+    var ancestorNodes = function(selector, includeSelf) {
       var ancestors = [];
       var parent = this.parentNode;
-      // While parents are 'element' type nodes
-      // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
-      while ( parent && parent.nodeType && parent.nodeType === 1 ) {
-        if ( selector ) {
-          if ( parent.matches(selector) ) {
+      if ( includeSelf && this.matches(selector) ) {
+        return this
+      } else {
+        // While parents are 'element' type nodes
+        // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
+        while ( parent && parent.nodeType && parent.nodeType === 1 ) {
+          if ( selector ) {
+            if ( parent.matches(selector) ) {
+              ancestors.push(parent);
+            }
+          } else {
             ancestors.push(parent);
           }
-        } else {
-          ancestors.push(parent);
+          parent = parent.parentNode;
         }
-        parent = parent.parentNode;
+        // Return a NodeList to be consistent with childNodes
+        return ancestors[prefix+'toNodeList']();
       }
-      // Return a NodeList to be consistent with childNodes
-      return ancestors[prefix+'toNodeList']();
     };
 
     // Return index of node under its parents. Eg, if you're the fourth child, return 3.
