@@ -265,12 +265,20 @@
       return false;
     };
 
-    var arrayFirst= function(){
-      return this[0];
+    var arrayFirst= function(count){
+      if ( ! count ) {
+        return this[0];
+      } else {
+        return this.slice(Math.max(arr.length - count, 1))
+      }
     };
 
-    var arrayLast = function(){
-      return this[this.length - 1];
+    var arrayLast = function(count){
+      if ( ! count ) {
+        return this[this.length - 1];
+      } else {
+        return this.slice(Math.max(this.length - count, 1))
+      }
     };
 
     // Convert Number to (function name). +ensures type returned is still Number
