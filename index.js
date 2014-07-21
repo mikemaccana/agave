@@ -258,7 +258,7 @@
     };
 
     // Array remove removes an item from an array, if it exists
-    var arrayRemove = function (member){
+    var arrayRemove = function(member){
       var index = this.indexOf(member);
       if (index !== -1 ) {
         this.splice(index, 1);
