@@ -363,14 +363,14 @@
     var ancestorNodes = function(selector, includeSelf) {
       var ancestors = [];
       var parent = this.parentNode;
-      if ( includeSelf && this.matches(selector) ) {
-        ancestors.push(parent);
+      if ( includeSelf && this[prefix+'matches'](selector) ) {
+        ancestors.push(this);
       }
       // While parents are 'element' type nodes
       // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
       while ( parent && parent.nodeType && parent.nodeType === 1 ) {
         if ( selector ) {
-          if ( parent.matches(selector) ) {
+          if ( parent[prefix+'matches'](selector) ) {
             ancestors.push(parent);
           }
         } else {
