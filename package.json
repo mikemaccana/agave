@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "0.4.2",
+  "version": "0.4.6",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Safely extends JS with helpful, intuitive methods.",
   "scripts": {

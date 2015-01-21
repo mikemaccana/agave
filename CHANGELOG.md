@@ -1,3 +1,10 @@
+## 0.4.4 (2014-05-29)
+
+Features:
+
+ - Function.repeat() & tests (@mikemaccana)
+ - Enhance getPath() docs (@mikemaccana)
+
 ## 0.4.2 (2014-04-16)
 
 Features:

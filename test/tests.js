@@ -59,103 +59,103 @@ setupDOM(mockHTML);
 
 agave.enable('av');
 
-describe('Array.contains', function(){
-  it('fetches the item accurately', function(){
+suite('Array.contains', function(){
+  test('fetches the item accurately', function(){
     assert(['one','two','three'].avcontains('two') );
   });
-  it('handles missing items accurately', function(){
+  test('handles missing items accurately', function(){
     assert( ! ['one','two','three'].avcontains('notthere') );
   });
 });
 
-describe('Array.extend', function(){
-  it('extends the array accurately', function(){
+suite('Array.extend', function(){
+  test('extends the array accurately', function(){
     assert.deepEqual([1,2,3].avextend([4,5]), [1,2,3,4,5] );
   });
 });
 
-describe('String.contains', function(){
-  it('checks for the substring accurately', function(){
+suite('String.contains', function(){
+  test('checks for the substring accurately', function(){
     assert('elephantine'.avcontains('tin') );
   });
-  it('handles missing substrings accurately', function(){
+  test('handles missing substrings accurately', function(){
     assert( ! 'elephantine'.avcontains('zam') );
   });
 });
 
-describe('String.endsWith', function(){
-  it('works if the string actually ends with the suffix', function(){
+suite('String.endsWith', function(){
+  test('works if the string actually ends with the suffix', function(){
     assert('Hello world'.avendsWith('world'));
   });
-  it('handles trying to check if something ends in something larger than itself', function(){
+  test('handles trying to check if something ends in something larger than itself', function(){
     assert.equal('world'.avendsWith('Hello world'), false);
   });
 });
 
-describe('String.startsWith', function(){
-  it('works if the string actually starts with the prefix', function(){
+suite('String.startsWith', function(){
+  test('works if the string actually starts with the prefix', function(){
     assert('Hello world'.avstartsWith('Hello'));
   });
 });
 
-describe('String.repeat', function(){
-  it('repeats strings accurately', function(){
+suite('String.repeat', function(){
+  test('repeats strings accurately', function(){
     assert.equal('Hello world'.avrepeat(3), 'Hello worldHello worldHello world');
   });
 });
 
-describe('String.reverse', function(){
-  it('reverses strings accurately', function(){
+suite('String.reverse', function(){
+  test('reverses strings accurately', function(){
     assert.equal('Hello world'.avreverse(), 'dlrow olleH');
   });
 });
 
-describe('String.leftStrip', function(){
-  it('strips from the left accurately', function(){
+suite('String.leftStrip', function(){
+  test('strips from the left accurately', function(){
     assert.equal('Hello world'.avleftStrip('Hle'), 'o world');
   });
 });
 
-describe('String.rightStrip', function(){
-  it('strips from the right accurately', function(){
+suite('String.rightStrip', function(){
+  test('strips from the right accurately', function(){
     assert.equal('Hello world'.avrightStrip('ldr'), 'Hello wo');
   });
 });
 
-describe('String.rightStrip', function(){
-  it('strips from the left accurately with a single character', function(){
+suite('String.rightStrip', function(){
+  test('strips from the left accurately with a single character', function(){
     assert.equal('a'.avleftStrip('a'), '');
   });
 });
 
-describe('String.strip', function(){
-  it('strips from the both sides accurately', function(){
+suite('String.strip', function(){
+  test('strips from the both sides accurately', function(){
     assert.equal('Hello world'.avstrip('Hld'), 'ello wor');
   });
 });
 
-describe('Object.getKeys', function(){
-  it('fetches keys accurately', function(){
+suite('Object.getKeys', function(){
+  test('fetches keys accurately', function(){
     assert.deepEqual(mockObject.avgetKeys(), ["foo","baz","null"] );
   });
 });
 
-describe('Object.getSize', function(){
-  it('counts keys accurately', function(){
+suite('Object.getSize', function(){
+  test('counts keys accurately', function(){
     assert.equal(mockObject.avgetSize(), 3);
   });
 });
 
-describe('Array.findItem', function(){
-  it('correctly finds items that match the function', function(){
+suite('Array.findItem', function(){
+  test('correctly finds items that match the function', function(){
     assert.equal(['one','two','three'].avfindItem(function(item){
       return (item === 'three');
     }), 'three');
   });
 });
 
-describe('Array.remove', function () {
-  it('correctly removes the given member', function (){
+suite('Array.remove', function () {
+  test('correctly removes the given member', function (){
     var arr = [1,2,3,4,5];
     arr.avremove(3);
     assert.deepEqual(arr, [1,2,4,5]);
@@ -168,41 +168,41 @@ describe('Array.remove', function () {
   });
 });
 
-describe('Object.getPath', function(){
-  it('returns undefined when a value is missing', function(){
+suite('Object.getPath', function(){
+  test('returns undefined when a value is missing', function(){
     assert.equal(mockObject.avgetPath(['foo','pineapple']), undefined);
   });
-  it('returns the value when the provided keys exist', function(){
+  test('returns the value when the provided keys exist', function(){
     assert.equal(mockObject.avgetPath(['baz','zar','zog']), 'victory');
   });
-  it('returns the value when the provided keys exist, even if null is on the path', function(){
+  test('returns the value when the provided keys exist, even if null is on the path', function(){
     assert.equal(mockObject.avgetPath([null,'yarr','parrot']), 'ahoy');
   });
-  it('works using Unix-style paths', function(){
+  test('works using Unix-style paths', function(){
     assert.equal(mockObject.avgetPath('/baz/zar/zog'), 'victory');
   });
 });
 
-describe('Object.clone', function(){
+suite('Object.clone', function(){
   var copyObject = mockObject.avclone();
-  it('clones objects so that modification to the new object will not affect the original', function(){
+  test('clones objects so that modification to the new object will not affect the original', function(){
     copyObject.baz.bam = 'newvalue';
     assert.equal(copyObject.avgetPath(['baz','bam']), 'newvalue');
     assert.equal(mockObject.avgetPath(['baz','bam']), 'boo');
   });
 });
 
-describe('Object.forEach', function(){
+suite('Object.forEach', function(){
   var keyResults = [];
   var valueResults = [];
   mockObject.avforEach(function(key, value){
     keyResults.push(key);
     valueResults.push(value);
   });
-  it('iterates over keys properly', function(){
+  test('iterates over keys properly', function(){
     assert.deepEqual(keyResults, ["foo","baz","null"]);
   });
-  it('iterates over values properly', function(){
+  test('iterates over values properly', function(){
     assert.deepEqual(valueResults, [
       "bar",
       {"bam":"boo",
@@ -217,7 +217,7 @@ describe('Object.forEach', function(){
   });
 });
 
-describe('Object.extend', function(){
+suite('Object.extend', function(){
   var results = mockObject.avclone().avextend({
     'gnar':{
       shub:'zoo'
@@ -227,7 +227,7 @@ describe('Object.extend', function(){
     }
   });
 
-  it('creates extends the object with the new properties', function(){
+  test('creates extends the object with the new properties', function(){
     assert.deepEqual(results, {
       "foo":"bar",
       "baz":{
@@ -250,8 +250,8 @@ describe('Object.extend', function(){
   });
 });
 
-describe('Object.compare', function(){
-  it('accurately identifies similar objects', function(){
+suite('Object.compare', function(){
+  test('accurately identifies similar objects', function(){
     var heading = document.querySelector('heading');
     var identicalObject = {
       foo: 'bar',
@@ -269,7 +269,7 @@ describe('Object.compare', function(){
     };
     assert(mockObject.avcompare(identicalObject));
   });
-  it('accurately identifies different objects', function(){
+  test('accurately identifies different objects', function(){
     var heading = document.querySelector('heading');
     var differentObject = {
       foo: 'bar',
@@ -284,11 +284,11 @@ describe('Object.compare', function(){
   });
 });
 
-describe('Function.throttle', function(){
+suite('Function.throttle', function(){
   var valueShouldOnlyBeOne = 0; // Since the function should only run once
   var timesFunctionHasRan = 0;
   var maxTimesToRun = 3;
-  it('stops function calls overlapping', function(done){
+  test('stops function calls overlapping', function(done){
     var intervalID = setInterval(function(){
       // thottledFunction would normally run three times in this loop, 50ms apart, but .avthrottle() means it
       // will only be run once after 70ms of inactivity
@@ -306,61 +306,89 @@ describe('Function.throttle', function(){
   });
 });
 
-describe('Number.days', function(){
-  it('correctly converts a number to days in seconds', function(){
+suite('Function.repeat', function(){
+
+  test('repeats', function(done){
+    var count = 0
+    var increment = function(){
+      count += 1
+      if ( count === 3 ) {
+        done();
+      }
+    }
+    increment.repeat([], 50, true)
+  });
+  test('repeats with arguments omitted', function(done){
+    var count = 0
+    this.timeout(11 * 1000);
+    var increment = function(){
+      console.log('RUNNING!')
+      count += 1
+      if ( count === 3 ) {
+        done();
+      }
+    }
+    increment.repeat(50, true)
+  });
+});
+
+
+
+suite('Number.days', function(){
+  test('correctly converts a number to days in seconds', function(){
     assert.equal((5).avdays(), 432000000);
   });
 });
 
-describe('Number.weeks.before and .after', function(){
-  it('correctly converts a number to a period in weeks before a set date', function(){
+suite('Number.weeks.before and .after', function(){
+  test('correctly converts a number to a period in weeks before a set date', function(){
     var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
     var timezoneOffset = someDate.getTimezoneOffset();
     assert.equal((3).avweeks().avbefore(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, May 16, 2013');
   });
-  it('correctly converts a number to a period in weeks after a set date', function(){
+  test('correctly converts a number to a period in weeks after a set date', function(){
     var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
     var timezoneOffset = someDate.getTimezoneOffset();
     assert.equal((3).avweeks().avafter(someDate).toLocaleDateString("en-GB", {timeZone:'UTC'}), 'Thursday, June 27, 2013');
   });
 });
 
-describe('Number.round', function () {
+suite('Number.round', function () {
   var num = 4.2;
-  it('correctly rounds a number', function () {
+  test('correctly rounds a number', function () {
     assert.equal(num.avround(),4);
   });
 });
 
-describe('Number.ceil', function () {
+suite('Number.ceil', function () {
   var num = 4.2;
-  it('correctly finds a number\'s ceiling', function () {
+  test('correctly finds a number\'s ceiling', function () {
     assert.equal(num.avceil(),5);
   });
 });
 
-describe('Number.floor', function () {
+suite('Number.floor', function () {
   var num = 4.2;
-  it('correctly finds a number\'s floor', function () {
+  test('correctly finds a number\'s floor', function () {
     assert.equal(num.avfloor(),4);
   });
 });
 
-describe('Number.abs', function () {
+suite('Number.abs', function () {
   var num = -4.2;
-  it('correctly finds the absolute value of a number', function () {
+  test('correctly finds the absolute value of a number', function () {
     assert.equal(num.avabs(),4.2);
   });
 });
 
-describe('Number.pow', function () {
+suite('Number.pow', function () {
   var num = 5;
-  it('correctly raises a number to the given power', function () {
+  test('correctly raises a number to the given power', function () {
     assert.equal(num.avpow(3), 125);
   });
 });
 
-describe('Agave really doesn\'t affect for loops', function(){
+suite('Agave really doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {
       assert( ! ['avgetKeys','avgetSize','avgetPath'].avcontains(key) );
@@ -368,41 +396,41 @@ describe('Agave really doesn\'t affect for loops', function(){
   });
 });
 
-describe('Element.createChild', function(){
+suite('Element.createChild', function(){
   var sillyText = 'ethical messenger bag';
   var article = document.querySelector('article');
   article.avcreateChild('p',{'id':'testpara'},sillyText);
-  it('creates children with the specified attributes', function(){
+  test('creates children with the specified attributes', function(){
     var paraCount = document.querySelector('#testpara');
     assert(paraCount);
   });
-  it('creates children with the specified text', function(){
+  test('creates children with the specified text', function(){
     assert(document.querySelector('#testpara').textContent === sillyText );
   });
 });
 
-describe('Element.getParentIndex', function(){
+suite('Element.getParentIndex', function(){
   var article = document.createElement('article');
   ['first', 'second', 'third'].forEach(function(item){
     var p = document.createElement("p");
     article.appendChild(p);
   })
-  it('creates children with the specified attributes', function(){
+  test('creates children with the specified attributes', function(){
     var thirdChild = article.querySelectorAll('p')[2];
     assert(thirdChild.avgetParentIndex() === 2);
   });
 });
 
-describe('Element.applyStyles', function(){
-  it('styles elements', function(){
+suite('Element.applyStyles', function(){
+  test('styles elements', function(){
     var heading = document.querySelector('heading');
     heading.avapplyStyles({'font-size':'18em'});
     assert.equal(heading.style['font-size'], '18em');
   });
 });
 
-describe('kind', function(){
-  it('shows number-like things as numbers', function(){
+suite('kind', function(){
+  test('shows number-like things as numbers', function(){
     assert(avkind(37) === 'Number');
     assert(avkind(3.14) === 'Number');
     assert(avkind(Math.LN2) === 'Number');
@@ -410,47 +438,47 @@ describe('kind', function(){
     assert(avkind(Number(1)) === 'Number');
     assert(avkind(new Number(1)) === 'Number');
   });
-  it('shows NaN as NaN', function(){
+  test('shows NaN as NaN', function(){
     assert(avkind(NaN) === 'NaN');
   });
-  it('Shows strings as strings', function(){
+  test('Shows strings as strings', function(){
     assert(avkind('') === 'String');
     assert(avkind('bla') === 'String');
     assert(avkind(String("abc")) === 'String');
     assert(avkind(new String("abc")) === 'String');
   });
-  it('shows strings accurately', function(){
+  test('shows strings accurately', function(){
     assert(avkind(true) === 'Boolean');
     assert(avkind(false) === 'Boolean');
     assert(avkind(new Boolean(true)) === 'Boolean');
   });
-  it('shows arrays accurately', function(){
+  test('shows arrays accurately', function(){
     assert(avkind([1, 2, 4]) === 'Array');
     assert(avkind(new Array(1, 2, 3)) === 'Array');
   });
-  it('shows objects accurately', function(){
+  test('shows objects accurately', function(){
     assert(avkind({a:1}) === 'Object');
     assert(avkind(new Object()) === 'Object');
   });
-  it('shows dates accurately', function(){
+  test('shows dates accurately', function(){
     assert(avkind(new Date()) === 'Date');
   });
-  it('loves Functions too', function(){
+  test('loves Functions too', function(){
     assert(avkind(function(){}) === 'Function');
     assert(avkind(new Function("console.log(arguments)")) === 'Function');
     assert(avkind(Math.sin) === 'Function');
   });
-  it('shows undefined accurately', function(){
+  test('shows undefined accurately', function(){
     assert(avkind(undefined) === 'undefined');
   });
-  it('shows null accurately', function(){
+  test('shows null accurately', function(){
     assert(avkind(null) === 'null');
   });
 });
 
-describe('Functions work with no prefix at all', function(){
+suite('Functions work with no prefix at all', function(){
   agave.enable();
-  it('strips from the right accurately', function(){
+  test('strips from the right accurately', function(){
     assert.equal('Hello world'.rightStrip('ldr'), 'Hello wo');
   });
 });

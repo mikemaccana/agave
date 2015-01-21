@@ -25,8 +25,6 @@
 
     var global = this;
 
-    "use strict";
-
     prefix = prefix || '';
 
     if ( enabledPrefixes[prefix] ) {
@@ -146,6 +144,26 @@
       };
     };
 
+    // Run repeatedly
+    var functionRepeat = function(first, second, third){
+      var args, interval, leadingEdge;
+      if ( arguments.length === 2 ) {
+        args = [];
+        interval = first;
+        leadingEdge = second;
+      } else {
+        args = first;
+        interval = second;
+        leadingEdge = third;
+      }
+      if ( leadingEdge ) {
+        this.apply(null, args);
+      }
+      return setInterval(function(){
+        this.apply(null, args);
+      }.bind(this), interval);
+    };
+
     // string.endsWith(suffix) returns true if string ends with the suffix
     var endsWith = function(suffix) {
       return this.indexOf(suffix, this.length - suffix.length) !== -1;
@@ -228,23 +246,30 @@
       return this.slice();
     };
 
-    // Array toNodeList converts arrays to NodeLists
-    var toNodeList = function(){
-      var fragment = document.createDocumentFragment();
-      this.forEach(function(item){
-        fragment.appendChild(item);
-      });
-      return fragment.childNodes;
-    };
-
     // Array remove removes an item from an array, if it exists
-    var arrayRemove = function (member){
+    var arrayRemove = function(member){
       var index = this.indexOf(member);
       if (index !== -1 ) {
         this.splice(index, 1);
         return true;
       }
       return false;
+    };
+
+    var arrayFirst= function(count){
+      if ( ! count ) {
+        return this[0];
+      } else {
+        return this.slice(Math.max(arr.length - count, 1))
+      }
+    };
+
+    var arrayLast = function(count){
+      if ( ! count ) {
+        return this[this.length - 1];
+      } else {
+        return this.slice(Math.max(this.length - count, 1))
+      }
     };
 
     // Convert Number to (function name). +ensures type returned is still Number
@@ -335,14 +360,17 @@
     };
 
     // Return nodeList of an elements parent elements from closest to farthest
-    var ancestorNodes = function(selector) {
+    var ancestorNodes = function(selector, includeSelf) {
       var ancestors = [];
       var parent = this.parentNode;
+      if ( includeSelf && this[prefix+'matches'](selector) ) {
+        ancestors.push(this);
+      }
       // While parents are 'element' type nodes
       // See https://developer.mozilla.org/en-US/docs/DOM/Node.nodeType
       while ( parent && parent.nodeType && parent.nodeType === 1 ) {
         if ( selector ) {
-          if ( parent.matches(selector) ) {
+          if ( parent[prefix+'matches'](selector) ) {
             ancestors.push(parent);
           }
         } else {
@@ -350,14 +378,13 @@
         }
         parent = parent.parentNode;
       }
-      // Return a NodeList to be consistent with childNodes
-      return ancestors[prefix+'toNodeList']();
+      return ancestors;
     };
 
     // Return index of node under its parents. Eg, if you're the fourth child, return 3.
     var getParentIndex = function() {
       return Array.prototype.indexOf.call(this.parentNode.children, this);
-    }
+    };
 
     var kind = function(item) {
       var getPrototype = function(item) {
@@ -409,8 +436,9 @@
         'extend':arrayExtend,
         'contains':contains,
         'clone':arrayClone,
-        'toNodeList':toNodeList,
-        'remove':arrayRemove
+        'remove':arrayRemove,
+        'first':arrayFirst,
+        'last':arrayLast
       },
       'Object':{
         'getKeys':getKeys,
@@ -435,6 +463,7 @@
       },
       'Function':{
         'throttle':throttle,
+        'repeat':functionRepeat
       },
       'Number':{
         'seconds':seconds,
