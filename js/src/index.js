@@ -8,7 +8,7 @@ var $all = function(selector) { return document.querySelectorAll(selector) };
 
 // Clicking ☰ button displays nav
 $('.nav-link').addEventListener('click', function (event) {
-  $all('nav, body, .nav-link, .content').avforEach(function(element){
+  $all('nav, body, .nav-link, .content').avforEach(function(index, element){
     element.classList.toggle('menu-active');
   });
   event.preventDefault();
