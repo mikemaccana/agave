@@ -1,6 +1,6 @@
-![Agave JS](http://agavejs.org/images/agave.png)
+![Agave JS](//agavejs.org/images/agave.png)
 
-## Cleaner, simpler JavaScript for ES6 environments
+## Cleaner, simpler JavaScript for ES6
 
 [![Build Status](https://secure.travis-ci.org/mikemaccana/agave.png?branch=master)](https://travis-ci.org/mikemaccana/agave)
 
