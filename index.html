@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>Agave.JS</title>
+  <title>agave.js</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="icon" type="image/png" href="images/favicon.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -57,14 +57,10 @@
       </li>
       <li class="object"><a href="#string">String</a>
         <ul>
-          <li class="method"><a href="#stringcontains">contains</a></li>
-          <li class="method"><a href="#stringstartsWith">startsWith</a></li>
-          <li class="method"><a href="#stringendsWith">endsWith</a></li>
           <li class="method"><a href="#stringstrip">strip</a></li>
           <li class="method"><a href="#stringleftStrip">leftStrip</a></li>
           <li class="method"><a href="#stringrightStrip">rightStrip</a></li>
           <li class="method"><a href="#stringforEach">forEach</a></li>
-          <li class="method"><a href="#stringrepeat">repeat</a></li>
           <li class="method"><a href="#stringreverse">reverse</a></li>
         </ul>
       </li>
@@ -84,22 +80,6 @@
           <li class="method"><a href="#numberpow">pow</a></li>
         </ul>
       </li>
-      <li class="object"><a href="#nodelist">NodeList</a>
-        <ul>
-          <li class="method"><a href="#nodelistreverse">reverse</a></li>
-          <li class="method"><a href="#nodelistforEach">forEach</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#element">Element</a>
-        <ul>
-          <li class="method"><a href="#elementcreateChild">createChild</a></li>
-          <li class="method"><a href="#elementmatches">matches</a></li>
-          <li class="method"><a href="#elementapplyStyles">applyStyles</a></li>
-          <li class="method"><a href="#elementancestorNodes">ancestorNodes</a></li>
-          <li class="method"><a href="#elementtoggleClass">toggleClass</a></li>
-          <li class="method"><a href="#elementgetParentIndex">getParentIndex</a></li>
-        </ul>
-      </li>
     </ul>
   </nav>
 
@@ -109,7 +89,7 @@
 
     <h1><img src="./images/agave.png" alt="agave.js"/></h1>
 
-    <h2>Cleaner, simpler JavaScript for ES5 environments</h2>
+    <h2>Cleaner, simpler JavaScript for <strong>ES6</strong></h2>
 
     <p>
       <a href="https://travis-ci.org/mikemaccana/agave">
@@ -122,8 +102,8 @@
     <ul>
       <li>Adds useful things you'll use every day.</li>
       <li>Real methods on the objects you expect them to be on. No underscores or other punctuation.</li>
-      <li>Is only around 400 lines of code. Agave doesn't include things that are already in ES5, so it stays small.</li>
-      <li>Uses <a href="#prefixing">prefixing</a> and ES5 <a href="#defineProperty">defineProperty()</a> to safely extend inbuilt objects.</li>
+      <li>Is only around 400 lines of code. Agave doesn't include things that are already in ES6 or ES5, so it stays small.</li>
+      <li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to <a href="#defineProperty">safely extend inbuilt objects</a>.</li>
       <li>Available both as a regular node module and via RequireJS as an AMD module.</li>
     </ul>
 
@@ -384,34 +364,6 @@ var interval = doThing.repeat(['red', 'pandas'], 1000, true)
 
     <h4><a name="string"></a>String methods</h4>
 
-    <h5><a name="stringcontains"></a>.contains(<em>substring</em>)</h5>
-
-    <p>returns true if a string contains the substring</p>
-
-<pre><code>'elephantine'.contains('tin')
-</code></pre>
-
-    <p>Returns:</p>
-
-<pre><code>true
-</code></pre>
-
-    <h5><a name="stringstartsWith"></a>.startsWith(<em>substring</em>)</h5>
-
-    <p>returns true if a string starts with the substring</p>
-
-    <h5><a name="stringendsWith"></a>.endsWith(<em>substring</em>)</h5>
-
-    <p>returns true if a string ends with the substring</p>
-
-<pre><code>'Hello world'.endsWith('world'))
-</code></pre>
-
-    <p>Returns:</p>
-
-<pre><code>true
-</code></pre>
-
     <h5><a name="stringstrip"></a>.strip(<em>characters</em>)</h5>
 
     <p>returns the string, with the specified characters removed from the beginning and end.</p>
@@ -435,10 +387,6 @@ var interval = doThing.repeat(['red', 'pandas'], 1000, true)
     <h5><a name="stringforEach"></a>.forEach(<em>iterationFunction</em>)</h5>
 
     <p>Runs <em>iterationFunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
-
-    <h5><a name="stringrepeat"></a>.repeat(<em>times</em>)</h5>
-
-    <p>Repeat the string <em>times</em> times.</p>
 
     <h5><a name="stringreverse"></a>.reverse()</h5>
 
@@ -505,89 +453,6 @@ number.abs().ceil(); // 5
 
 <pre><code>(5).pow(3); // 125
 </code></pre>
-
-    <h4><a name="nodelist"></a>NodeList methods</h4>
-
-    <p>NodeLists are what's returned when you use the document.querySelectorAll(), or similar methods.</p>
-
-    <p>For example, given the following document:</p>
-
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;article&gt;
-      &lt;heading&gt;Sample document&lt;/heading&gt;
-      &lt;author&gt;&lt;/author&gt;
-      &lt;p&gt;Carles portland banh mi lomo twee.&lt;/p&gt;
-      &lt;p&gt;Narwhal bicycle rights keffiyeh beard.&lt;/p&gt;
-      &lt;p&gt;Pork belly beard pop-up kale chips.&lt;/p&gt;
-    &lt;/article&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-    <p>We can fetch a list of all paragraphs:</p>
-
-<pre><code>var paragraphs = document.getElementsByTagName('p');
-</code></pre>
-
-    <p>Agave adds a number of useful methods that you can use both server-side and client side.</p>
-
-    <h5><a name="nodelistreverse"></a>.reverse()</h5>
-
-    <p>Returns a reversed version of the nodeList.</p>
-
-    <h5><a name="nodelistforEach"></a>.forEach(<em>iterationFunction</em>)</h5>
-
-    <p>Runs <em>iterationFunction</em> over each node in the NodeList. Just like ES5's inbuilt Array.forEach().</p>
-
-    <p>Here's an example of changing every paragraph in a document to say 'Hello' (look ma, No JQuery!).</p>
-
-<pre><code>paragraphs.forEach(function(paragraph){
-  paragraph.innerText = 'Hello.';
-})
-</code></pre>
-
-    <h4><a name="element"></a>Element methods</h4>
-
-    <p>Agave also provides useful methods for Elements.</p>
-
-    <h5><a name="elementcreateChild"></a>.createChild(name, attributes, innerText)</h5>
-
-    <p>Make a new child element, with the tag name, any attributes, and inner text specified.</p>
-
-<pre><code>var article = document.querySelector('article');
-article.createChild('p',{'id':'testpara'},'hey there');
-</code></pre>
-
-    <p>Would create a new</p>
-
-<pre><code>&lt;p id=&quot;testpara&quot;&gt;hey there&lt;/p&gt;
-</code></pre>
-
-    <p>element beneath</p>
-
-<pre><code> &lt;article&gt;
-</code></pre>
-
-    <h5><a name="elementmatches"></a>.matches(<em>selector</em>)</h5>
-
-    <p>Returns true if the element matches the selector provided.</p>
-
-    <h5><a name="elementapplyStyles"></a>.applyStyles(<em>styles</em>)</h5>
-
-    <p>Apply the styles mentioned to the element.</p>
-
-    <h5><a name="elementancestorNodes"></a>.ancestorNodes(<em>selector</em>)</h5>
-
-<p>Returns a NodeList of an element's parents, from closest to farthest ancestor. If selector is provided, only the parents which match the selector will be returned.</p>
-
-    <h5><a name="elementtoggleClass"></a>.toggleClass(<em>className</em>)</h5>
-
-    <p>Toggles a class.</p>
-
-    <h5><a name="elementgetParentIndex"></a>.getParentIndex()</h5>
-
-    <p>Return index of the element under its parents. Eg, if the element is the fourth child, return 3.</p>
 
     <h2><a name="why"></a>Why would I want to use Agave?</h2>
 
@@ -760,5 +625,5 @@ mocha
     <p>Mike MacCana (mike.maccana@gmail.com)</p>
 
   </div>
-  <script data-main="js/index" src="js/require.js"></script>
+  <script src="js/dist/index.js"></script>
 </body>

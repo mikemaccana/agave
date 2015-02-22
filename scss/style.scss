@@ -1,15 +1,15 @@
-@import "normalize.less";
-@import "fonts.less";
-@teal: #4DBF9F;
-@sidebar-width: 150px;
-@darkgrey: #222;
+@import "normalize.scss";
+@import "fonts.scss";
+$teal: #4DBF9F;
+$sidebar-width: 150px;
+$darkgrey: #222;
 
 * {
   box-sizing: border-box;
 }
 
 a, a:hover, a:active, a:visited {
-  color: @teal;
+  color: $teal;
   text-decoration: none;
 }
 
@@ -18,7 +18,7 @@ a, a:hover, a:active, a:visited {
   z-index: 1;
   display: none;
   top: 0;
-  left: @sidebar-width;
+  left: $sidebar-width;
   background: rgba(0,0,0,0.7);
   padding: 1em;
   @media (max-width: 770px) {
@@ -26,26 +26,26 @@ a, a:hover, a:active, a:visited {
     left: 0;
     display: block;
     &.menu-active {
-      left: @sidebar-width;
+      left: $sidebar-width;
     }
   }
 }
 
 nav {
-  margin-left: -@sidebar-width;
-  width: @sidebar-width;
+  margin-left: -$sidebar-width;
+  width: $sidebar-width;
   position: fixed;
   top: 0;
-  left: @sidebar-width;
+  left: $sidebar-width;
   bottom: 0;
   z-index: 1;
-  background: @darkgrey;
+  background: $darkgrey;
   overflow-y: auto;
   color: whitesmoke;
   &.menu-active {
     transform: translateX(0);
-    width: @sidebar-width;
-    left: @sidebar-width;
+    width: $sidebar-width;
+    left: $sidebar-width;
   }
   @media (max-width: 770px) {
     left: 0;
@@ -63,7 +63,7 @@ nav {
     display: block;
   }
   a:hover {
-    background-color: @teal;
+    background-color: $teal;
   }
   li.object {
     text-transform: uppercase;
@@ -82,13 +82,13 @@ body, nav, .nav-link, .content {
 }
 
 body {
-  padding-left: @sidebar-width;
+  padding-left: $sidebar-width;
   left: 0;
   background-image:url("../images/lil_fiber.png");
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
-  color: @darkgrey;
+  color: $darkgrey;
   overflow-x: hidden;
   @media (max-width: 770px) {
     padding-left: 0;
@@ -98,7 +98,7 @@ body {
 .content {
   &.menu-active {
     @media (max-width: 770px) {
-      transform: translateX(@sidebar-width);
+      transform: translateX($sidebar-width);
     }
   }
   padding: 20px;
@@ -116,7 +116,7 @@ h2 {
   text-align: center;
   font-weight: 100;
   font-size: 21pt;
-  color: @teal;
+  color: $teal;
 }
 
 
@@ -141,7 +141,7 @@ h5 {
 }
 
 pre {
-  border-left: 4px solid @teal;
+  border-left: 4px solid $teal;
   padding-left: 5px;
 }
 
@@ -183,7 +183,7 @@ button.download {
   font-size: 20px;
   padding: 15px;
   border: 0;
-  background-color: @teal;
+  background-color: $teal;
   text-align: center;
   color: white;
 }
