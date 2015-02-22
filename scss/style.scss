@@ -22,12 +22,12 @@ a, a:hover, a:active, a:visited {
   background: rgba(0,0,0,0.7);
   padding: 1em;
   @media (max-width: 770px) {
-    position: fixed;
-    left: 0;
-    display: block;
-    &.menu-active {
-      left: $sidebar-width;
-    }
+  position: fixed;
+  left: 0;
+  display: block;
+  &.menu-active {
+    left: $sidebar-width;
+  }
   }
 }
 
@@ -43,37 +43,37 @@ nav {
   overflow-y: auto;
   color: whitesmoke;
   &.menu-active {
-    transform: translateX(0);
-    width: $sidebar-width;
-    left: $sidebar-width;
+  transform: translateX(0);
+  width: $sidebar-width;
+  left: $sidebar-width;
   }
   @media (max-width: 770px) {
-    left: 0;
+  left: 0;
   }
   ul, li {
-    list-style: none;
+  list-style: none;
   }
   ul {
-    padding-left: 10px;
+  padding-left: 10px;
   }
   a, a:hover, a:active, a:visited {
-    color: whitesmoke;
-    text-decoration: none;
-    width: 100%;
-    display: block;
+  color: whitesmoke;
+  text-decoration: none;
+  width: 100%;
+  display: block;
   }
   a:hover {
-    background-color: $teal;
+  background-color: $teal;
   }
   li.object {
-    text-transform: uppercase;
-    font-size: 12px;
-    margin: 20px 0 5px 0;
-    li.method {
-      text-transform: none;
-      font-size: 14px;
-      margin: 5px;
-    }
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 20px 0 5px 0;
+  li.method {
+    text-transform: none;
+    font-size: 14px;
+    margin: 5px;
+  }
   }
 }
 
@@ -84,22 +84,22 @@ body, nav, .nav-link, .content {
 body {
   padding-left: $sidebar-width;
   left: 0;
-  background-image:url("../images/lil_fiber.png");
+  background-color: whitesmoke;
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   color: $darkgrey;
   overflow-x: hidden;
   @media (max-width: 770px) {
-    padding-left: 0;
+  padding-left: 0;
   }
 }
 
 .content {
   &.menu-active {
-    @media (max-width: 770px) {
-      transform: translateX($sidebar-width);
-    }
+  @media (max-width: 770px) {
+    transform: translateX($sidebar-width);
+  }
   }
   padding: 20px;
   max-width: 700px;
@@ -160,7 +160,6 @@ p {
 
 #downloads {
   text-align: center;
-  max-width: 160px;
   margin: 0px auto;
 }
 
@@ -168,24 +167,30 @@ p {
   font-size: 10px;
 }
 
-button.download:active {
-  border: 1px solid #5B992B;
-  border-bottom: 1px solid #538C27;
-}
-
-button.download:hover {
-  background-color: #4DC5A3;
-  cursor: pointer;
-}
-
 button.download {
+  font-weight: lighter;
+  font-size: 212pt;
+  padding: 15px;
+  width: 300px;
   font-weight: lighter;
   font-size: 20px;
   padding: 15px;
   border: 0;
-  background-color: $teal;
+  color: $teal;
   text-align: center;
-  color: white;
+  background-color: white;
+  border: 2px solid #4dbf9f;
+  text-transform: uppercase;
+  border-radius: 4px;
+  &:hover {
+    background-color: #4DC5A3;
+    color: white;
+    cursor: pointer;
+  }
+  &:active {
+    border: 1px solid #5B992B;
+    border-bottom: 1px solid #538C27;
+  }
 }
 
 .github {
@@ -199,33 +204,33 @@ button.download {
   right: 0;
   z-index: 99999;
   @media (max-width: 770px) {
-    display: none;
+  display: none;
   }
   a {
-    display: block;
-    width: 190px;
-    font-size: 14px;
-    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT",
-      "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
-      Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
-    background-color: #333;
-    color: #FFF;
-    word-spacing: 2px;
-    text-decoration: none;
+  display: block;
+  width: 190px;
+  font-size: 14px;
+  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT",
+    "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
+    Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+  background-color: #333;
+  color: #FFF;
+  word-spacing: 2px;
+  text-decoration: none;
 
-    padding: 7px 35px;
-    position: relative;
+  padding: 7px 35px;
+  position: relative;
 
-    // So edges of ribbon don't show
-    left: 48px;
-    top: -23px;
+  // So edges of ribbon don't show
+  left: 48px;
+  top: -23px;
 
-    text-align: center;
+  text-align: center;
 
-    transform-origin: 0 0 ;
-    transform: rotate(45deg);
-    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+  transform-origin: 0 0 ;
+  transform: rotate(45deg);
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
 
-    background-image: linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
+  background-image: linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
   }
 }

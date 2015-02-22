@@ -97,17 +97,14 @@
       </a>
     </p>
 
-    <p>Agave.js <strong>safely</strong> extends native JavaScript objects with helpful, intuitive methods that <strong>make your code shorter and more readable</strong>.</p>
+    <p>Agave.js safely extends native JavaScript objects with <strong>useful things you'll use every day</strong>.</p>
 
     <ul>
-      <li>Adds useful things you'll use every day.</li>
       <li><strong>Real methods</strong> on the objects you expect them to be on, just like regular JavaScript.</li>
       <li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to safely extend inbuilt objects.</li>
       <li>Is around 400 lines of code. Agave <strong>doesn't include things that are already in ES6</strong>, so it stays small.</li>
-      <li>CommonJS, ready for both node and browserify.</li>
+      <li>Works on <a href="#support">current versions of Chrome, Firefox, Safari, IE9-11 and node</a>.</li>
     </ul>
-
-    <p>Agave works on <a href="#support">current versions of Chrome, Firefox, Safari, IE9-11 and node</a>.</p>
 
     <div id="downloads">
       <a href="https://www.npmjs.com/package/agave">
@@ -121,7 +118,7 @@
 
     <h4><a name="kind"></a>kind</h4>
 
-    <p>Tells you the 'kind' of an object, <strong>the same way you'd expect it</strong>. Specifically it returns the closest prototype in the inheritance tree or, for always-primitive types like 'null' and 'undefined', the primitive name.</p>
+    <p>Tells you the closest prototype in the inheritance tree or, for always-primitive types like 'null' and 'undefined', the primitive name. Think of it like a <strong>typeof() that does what you expect</strong>.</p>
 
     <p>So you can access it easily, kind() is a global (of course, it's prefixed like everything else in Agave).</p>
 

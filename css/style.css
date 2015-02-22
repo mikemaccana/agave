@@ -383,7 +383,7 @@ body, nav, .nav-link, .content {
 body {
   padding-left: 150px;
   left: 0;
-  background-image: url("../images/lil_fiber.png");
+  background-color: whitesmoke;
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
@@ -447,28 +447,33 @@ p {
 
 #downloads {
   text-align: center;
-  max-width: 160px;
   margin: 0px auto; }
 
 #downloads a {
   font-size: 10px; }
 
-button.download:active {
-  border: 1px solid #5B992B;
-  border-bottom: 1px solid #538C27; }
-
-button.download:hover {
-  background-color: #4DC5A3;
-  cursor: pointer; }
-
 button.download {
+  font-weight: lighter;
+  font-size: 212pt;
+  padding: 15px;
+  width: 300px;
   font-weight: lighter;
   font-size: 20px;
   padding: 15px;
   border: 0;
-  background-color: #4DBF9F;
+  color: #4DBF9F;
   text-align: center;
-  color: white; }
+  background-color: white;
+  border: 2px solid #4dbf9f;
+  text-transform: uppercase;
+  border-radius: 4px; }
+  button.download:hover {
+    background-color: #4DC5A3;
+    color: white;
+    cursor: pointer; }
+  button.download:active {
+    border: 1px solid #5B992B;
+    border-bottom: 1px solid #538C27; }
 
 .github {
   height: 160px;
@@ -488,8 +493,8 @@ button.download {
     width: 190px;
     font-size: 14px;
     font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT",
-      "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
-      Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+    "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
+    Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
     background-color: #333;
     color: #FFF;
     word-spacing: 2px;
