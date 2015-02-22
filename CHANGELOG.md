@@ -1,3 +1,11 @@
+## 0.6 (2015-02-22)
+
+Features:
+
+ - Use ES6, remove any function already in ES6 (@mikemaccana)
+ - Remove requirejs support, just use CommonJS (@mikemaccana)
+ - Remove DOM functions, these will soon appear in a separate library
+
 ## 0.4.4 (2014-05-29)
 
 Features:
