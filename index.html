@@ -101,17 +101,17 @@
 
     <ul>
       <li>Adds useful things you'll use every day.</li>
-      <li>Real methods on the objects you expect them to be on. No underscores or other punctuation.</li>
-      <li>Is only around 400 lines of code. Agave doesn't include things that are already in ES6 or ES5, so it stays small.</li>
-      <li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to <a href="#defineProperty">safely extend inbuilt objects</a>.</li>
-      <li>Available both as a regular node module and via RequireJS as an AMD module.</li>
+      <li><strong>Real methods</strong> on the objects you expect them to be on, just like regular JavaScript.</li>
+      <li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to safely extend inbuilt objects.</li>
+      <li>Is around 400 lines of code. Agave <strong>doesn't include things that are already in ES6</strong>, so it stays small.</li>
+      <li>CommonJS, ready for both node and browserify.</li>
     </ul>
 
     <p>Agave works on <a href="#support">current versions of Chrome, Firefox, Safari, IE9-11 and node</a>.</p>
 
     <div id="downloads">
-      <a href="https://github.com/mikemaccana/agave/raw/master/index.js" download="agave.js">
-        <button class="download">Download</button>
+      <a href="https://www.npmjs.com/package/agave">
+        <button class="download">npm install agave</button>
       </a>
     </div>
 
@@ -581,7 +581,7 @@ agave.enable('yourPrefix');
 
     <h4><a name="browser"></a>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
 
-    <p>Agave is provided as an AMD module. You'd normally load it as a dependency for your own module, either in the browser or on node.js, using <a href="http://requirejs.org/">RequireJS</a>:</p>
+    <p>Agave is provided as a CommonJS module. You can install it for either the the browser (using browserify) or node using <a href="http://requirejs.org/">npm</a>:</p>
 
 <pre><code>define('yourmodulename', ['agave'], function (agave) {
   // Start Agave, optionally you can also provide a prefix of your choice.
