@@ -1,3 +1,7 @@
+## 0.6.1 (2015-02-22)
+
+ - Replace array.contains with array.includes like ES7
+ 
 ## 0.6 (2015-02-22)
 
 Features:
