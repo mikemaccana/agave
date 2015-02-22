@@ -566,7 +566,7 @@ for (var key in myobject) { console.log(key) };
 
     <h3><a name="usage">Using Agave</h3>
 
-    <h5><a name="node"></a>On the server (node.js)</h5>
+    <h5><a name="node"></a>In the browser, on the server, or both:</h5>
 
     <p>Just run:</p>
 
@@ -576,20 +576,8 @@ for (var key in myobject) { console.log(key) };
     <p>Then in your code:</p>
 
 <pre><code>var agave = require('agave');
+// Start Agave, providing a prefix of your choice.
 agave.enable('yourPrefix');
-</code></pre>
-
-    <h4><a name="browser"></a>In the browser, on the server using RequireJS, or shared between the browser and server.</h4>
-
-    <p>Agave is provided as a CommonJS module. You can install it for either the the browser (using browserify) or node using <a href="http://requirejs.org/">npm</a>:</p>
-
-<pre><code>define('yourmodulename', ['agave'], function (agave) {
-  // Start Agave, optionally you can also provide a prefix of your choice.
-  agave.enable('yourPrefix');
-
-  // Your code here...
-
-})
 </code></pre>
 
     <p>All the methods above are now available.</p>
