@@ -2,7 +2,7 @@
   "name": "agave",
   "version": "0.6.0",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
-  "description": "Safely extends JS with helpful, intuitive methods.",
+  "description": "Cleaner, simpler JavaScript for ES6",
   "scripts": {
     "test": "mocha"
   },
@@ -22,7 +22,6 @@
     "es6-shim": "^0.25.3"
   },
   "devDependencies": {
-    "jsdom": "==0.10.5",
     "mocha": "==1.18.2"
   },
   "license": "MIT",
