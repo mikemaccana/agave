@@ -11,7 +11,6 @@
 // 54 allows us to test Function constructors.
 
 var assert = require('assert');
-var jsdom = require('jsdom');
 var agave = require('../index.js');
 
 var mockObject = {
@@ -29,34 +28,6 @@ var mockObject = {
   }
 };
 
-// Set up a global.document with a DOM in the same way a browser has
-var setupDOM = function(documentText) {
-  var document = jsdom.jsdom(documentText, null, {
-    features: {
-      QuerySelector: true
-    }
-  });
-  var window = document.createWindow();
-  ['Element','NodeList','document'].forEach(function(obj){
-    global[obj] = window[obj];
-  });
-};
-
-var mockHTML = ' \
-<html> \
-  <body> \
-    <article> \
-      <heading>Sample document</heading> \
-      <author></author> \
-      <p>Carles portland banh mi lomo twee.</p> \
-      <p>Narwhal bicycle rights keffiyeh beard.</p> \
-      <p>Pork belly beard pop-up kale chips.</p> \
-    </article> \
-  </body> \
-</html>';
-
-setupDOM(mockHTML);
-
 agave.enable('av');
 
 suite('Array.contains', function(){
@@ -71,36 +42,6 @@ suite('Array.contains', function(){
 suite('Array.extend', function(){
   test('extends the array accurately', function(){
     assert.deepEqual([1,2,3].avextend([4,5]), [1,2,3,4,5] );
-  });
-});
-
-suite('String.contains', function(){
-  test('checks for the substring accurately', function(){
-    assert('elephantine'.avcontains('tin') );
-  });
-  test('handles missing substrings accurately', function(){
-    assert( ! 'elephantine'.avcontains('zam') );
-  });
-});
-
-suite('String.endsWith', function(){
-  test('works if the string actually ends with the suffix', function(){
-    assert('Hello world'.avendsWith('world'));
-  });
-  test('handles trying to check if something ends in something larger than itself', function(){
-    assert.equal('world'.avendsWith('Hello world'), false);
-  });
-});
-
-suite('String.startsWith', function(){
-  test('works if the string actually starts with the prefix', function(){
-    assert('Hello world'.avstartsWith('Hello'));
-  });
-});
-
-suite('String.repeat', function(){
-  test('repeats strings accurately', function(){
-    assert.equal('Hello world'.avrepeat(3), 'Hello worldHello worldHello world');
   });
 });
 
@@ -252,7 +193,6 @@ suite('Object.extend', function(){
 
 suite('Object.compare', function(){
   test('accurately identifies similar objects', function(){
-    var heading = document.querySelector('heading');
     var identicalObject = {
       foo: 'bar',
       baz: {
@@ -270,7 +210,6 @@ suite('Object.compare', function(){
     assert(mockObject.avcompare(identicalObject));
   });
   test('accurately identifies different objects', function(){
-    var heading = document.querySelector('heading');
     var differentObject = {
       foo: 'bar',
       baz: {
@@ -322,7 +261,6 @@ suite('Function.repeat', function(){
     var count = 0
     this.timeout(11 * 1000);
     var increment = function(){
-      console.log('RUNNING!')
       count += 1
       if ( count === 3 ) {
         done();
@@ -388,44 +326,11 @@ suite('Number.pow', function () {
   });
 });
 
-suite('Agave really doesn\'t affect for loops', function(){
+suite('Agave doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {
       assert( ! ['avgetKeys','avgetSize','avgetPath'].avcontains(key) );
     }
-  });
-});
-
-suite('Element.createChild', function(){
-  var sillyText = 'ethical messenger bag';
-  var article = document.querySelector('article');
-  article.avcreateChild('p',{'id':'testpara'},sillyText);
-  test('creates children with the specified attributes', function(){
-    var paraCount = document.querySelector('#testpara');
-    assert(paraCount);
-  });
-  test('creates children with the specified text', function(){
-    assert(document.querySelector('#testpara').textContent === sillyText );
-  });
-});
-
-suite('Element.getParentIndex', function(){
-  var article = document.createElement('article');
-  ['first', 'second', 'third'].forEach(function(item){
-    var p = document.createElement("p");
-    article.appendChild(p);
-  })
-  test('creates children with the specified attributes', function(){
-    var thirdChild = article.querySelectorAll('p')[2];
-    assert(thirdChild.avgetParentIndex() === 2);
-  });
-});
-
-suite('Element.applyStyles', function(){
-  test('styles elements', function(){
-    var heading = document.querySelector('heading');
-    heading.avapplyStyles({'font-size':'18em'});
-    assert.equal(heading.style['font-size'], '18em');
   });
 });
 

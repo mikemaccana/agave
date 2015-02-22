@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "0.4.6",
+  "version": "0.6.0",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Safely extends JS with helpful, intuitive methods.",
   "scripts": {
@@ -18,10 +18,11 @@
     "sugar",
     "lodash"
   ],
-  "dependencies" : {},
+  "dependencies": {
+    "es6-shim": "^0.25.3"
+  },
   "devDependencies": {
     "jsdom": "==0.10.5",
-    "requirejs": "==2.1.11",
     "mocha": "==1.18.2"
   },
   "license": "MIT",
@@ -29,4 +30,3 @@
     "node": ">=0.10"
   }
 }
-
