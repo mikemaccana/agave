@@ -30,12 +30,12 @@ var mockObject = {
 
 agave.enable('av');
 
-suite('Array.contains', function(){
+suite('Array.includes', function(){
   test('fetches the item accurately', function(){
-    assert(['one','two','three'].avcontains('two') );
+    assert(['one','two','three'].avincludes('two') );
   });
   test('handles missing items accurately', function(){
-    assert( ! ['one','two','three'].avcontains('notthere') );
+    assert( ! ['one','two','three'].avincludes('notthere') );
   });
 });
 
@@ -329,7 +329,7 @@ suite('Number.pow', function () {
 suite('Agave doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {
-      assert( ! ['avgetKeys','avgetSize','avgetPath'].avcontains(key) );
+      assert( ! ['avgetKeys','avgetSize','avgetPath'].avincludes(key) );
     }
   });
 });

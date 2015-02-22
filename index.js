@@ -145,11 +145,6 @@ var enable = function(prefix){
     }.bind(this), interval);
   };
 
-  // array.contains(item) returns true if an array contains an item
-  var contains = function(item){
-    return ( this.indexOf(item) >= 0 );
-  };
-
   // Extend an array with another array.
   // Cleverness alert: since .apply() accepts an array of args, we use the newArray as all the args to push()
   var arrayExtend = function(newArray) {
@@ -337,7 +332,7 @@ var enable = function(prefix){
     'Array':{
       'findItem':findItem,
       'extend':arrayExtend,
-      'contains':contains,
+      'includes': String.prototype.includes,
       'clone':arrayClone,
       'remove':arrayRemove,
       'first':arrayFirst,
