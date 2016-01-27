@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Cleaner, simpler JavaScript for ES6",
   "scripts": {
@@ -19,7 +19,7 @@
     "lodash"
   ],
   "dependencies": {
-    "es6-shim": "^0.25.3"
+    "es6-shim": "^0.34.2"
   },
   "devDependencies": {
     "mocha": "==1.18.2"
