@@ -12,11 +12,19 @@ var enable = function(prefix){
     return;
   }
 
-  var SECONDS = 1000;
-  var MINUTES = 60 * SECONDS;
-  var HOURS = 60 * MINUTES;
-  var DAYS = 24 * HOURS;
-  var WEEKS = 7 * DAYS;
+  const MILLISECONDS_IN_SECOND = 1000,
+  	SECONDS_IN_MINUTE = 60,
+  	MINUTES_IN_HOUR = 60,
+  	HOURS_IN_DAY = 24,
+  	DAYS_IN_WEEK = 7;
+
+  const SUNDAY = 0,
+  	MONDAY = 1,
+  	TUESDAY = 2,
+  	WEDNESDAY = 3,
+  	THURSDAY = 4,
+  	FRIDAY = 5,
+  	SATURDAY = 6;
 
   // object.getKeys() returns an array of keys
   var getKeys = function(){
@@ -229,23 +237,6 @@ var enable = function(prefix){
     }
   };
 
-  // Convert Number to (function name). +ensures type returned is still Number
-  var seconds = function() {
-    return +this * SECONDS;
-  };
-  var minutes = function() {
-    return +this * MINUTES;
-  };
-  var hours = function() {
-    return +this * HOURS;
-  };
-  var days = function() {
-    return +this * DAYS;
-  };
-  var weeks = function() {
-    return +this * WEEKS;
-  };
-
   // Helper function for before() and after()
   var getTimeOrNow = function(date) {
     return (date || new Date()).getTime();
@@ -284,6 +275,40 @@ var enable = function(prefix){
     return Math.pow(this, exp);
   };
 
+  var toSeconds = function() {
+  	return this * MILLISECONDS_IN_SECOND;
+  }
+
+  var toMinutes = function() {
+  	return this.seconds * SECONDS_IN_MINUTE;
+  }
+
+  var toHours = function() {
+  	return this.minutes * MINUTES_IN_HOUR;
+  }
+
+  var toDays = function() {
+  	return this.hours * HOURS_IN_DAY;
+  }
+
+  var toWeeks = function() {
+  	return this.days * DAYS_IN_WEEK;
+  }
+
+  var isOnWeekend = function(){
+		return this.getDay() === SUNDAY || this.getDay() === SATURDAY
+	}
+
+  var withoutTime = function(){
+		var copy = new Date(this)
+		copy.setHours(0, 0, 0, 0, 0)
+		return copy;
+	}
+
+  var dateClone = function(){
+		return new Date(this.getTime())
+	}
+
   var kind = function(item) {
     var getPrototype = function(item) {
       return Object.prototype.toString.call(item).slice(8, -1);
@@ -319,7 +344,6 @@ var enable = function(prefix){
       if ( ! objectToExtend.prototype.hasOwnProperty(methodName) ) {
         Object.defineProperty( objectToExtend.prototype, methodName, {
           value: method,
-          enumerable: false,
           writable: true
         });
       }
@@ -360,11 +384,6 @@ var enable = function(prefix){
       'repeat':functionRepeat
     },
     'Number':{
-      'seconds':seconds,
-      'minutes':minutes,
-      'hours':hours,
-      'days':days,
-      'weeks':weeks,
       'before':before,
       'after':after,
       'round':round,
@@ -372,11 +391,59 @@ var enable = function(prefix){
       'floor':floor,
       'abs':abs,
       'pow':pow
+    },
+    'Date':{
+      'isOnWeekend': isOnWeekend,
+      'withoutTime': withoutTime,
+      'clone': dateClone
     }
   };
+
   for ( var objectName in newMethods ) {
     for ( var methodName in newMethods[objectName] ) {
       addMethod(global, objectName, prefix, methodName, newMethods[objectName][methodName]);
+    }
+  }
+
+  // Add sttribute as a non-enumerable property on obj with the name methodName
+  var addNewAttribute = function( global, objectName, prefix, methodName, method) {
+    var objectToExtend = global[objectName];
+    methodName = prefix ? prefix+methodName: methodName;
+    // Check - NodeLists and Elements don't always exist on all JS implementations
+    if ( objectToExtend ) {
+      // Don't add if the method already exists
+      if ( ! objectToExtend.prototype.hasOwnProperty(methodName) ) {
+        Object.defineProperty( objectToExtend.prototype, methodName, {
+          get: method
+        });
+      }
+    }
+  };
+
+  var addTimeExtension = function(name, getterFunction){
+  	Object.defineProperty(Number.prototype, name, {
+  		get: getterFunction
+  	})
+  }
+
+  var newAttributes = {
+    'Number':{
+      'second':toSeconds,
+      'seconds':toSeconds,
+      'minute':toMinutes,
+      'minutes':toMinutes,
+      'hour':toHours,
+      'hours':toHours,
+      'day':toDays,
+      'days':toDays,
+      'week':toWeeks,
+      'weeks':toWeeks,
+    }
+  }
+
+  for ( var objectToGetNewAttribute in newAttributes ) {
+    for ( var attributeName in newAttributes[objectToGetNewAttribute] ) {
+      addNewAttribute(global, objectToGetNewAttribute, prefix, attributeName, newAttributes[objectToGetNewAttribute][attributeName]);
     }
   }
 
@@ -393,6 +460,4 @@ var enable = function(prefix){
   enabledPrefixes[prefix] = true;
 }.bind();
 
-module.exports = {
-  enable: enable
-}
+module.exports = enable;

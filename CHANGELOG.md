@@ -1,7 +1,15 @@
+## 2.0.0 (2016-08-03)
+
+ - agave now uses [semver](http://semver.org/). Since this is the first major breaking change we're releasing to 2.0.0
+ - `agave.enable()` is now just `agave()` - ie the module exports a single function
+ - number..seconds, number..minutes, number..hours etc are now attributes, rather than functions.
+ - Add date.isOnWeekend(), date.withoutTime(), and date.clone()
+ - agave itself is now written in ES6
+
 ## 0.6.1 (2015-02-22)
 
  - Replace array.contains with array.includes like ES7
- 
+
 ## 0.6 (2015-02-22)
 
 Features:

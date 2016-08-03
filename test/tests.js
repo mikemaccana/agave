@@ -28,7 +28,7 @@ var mockObject = {
   }
 };
 
-agave.enable('av');
+agave('av');
 
 suite('Array.includes', function(){
   test('fetches the item accurately', function(){
@@ -274,7 +274,7 @@ suite('Function.repeat', function(){
 
 suite('Number.days', function(){
   test('correctly converts a number to days in seconds', function(){
-    assert.equal((5).avdays(), 432000000);
+    assert.equal((5).avdays, 432000000);
   });
 });
 
@@ -283,14 +283,38 @@ suite('Number.weeks.before and .after', function(){
     var someDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
     var timezoneOffset = someDate.getTimezoneOffset();
     var targetDate = new Date('Thu May 16 2013 22:44:05 GMT+0100 (UTC)')
-    assert.equal((3).avweeks().avbefore(someDate).getDate(), targetDate.getDate());
+    assert.equal((3).avweeks.avbefore(someDate).getDate(), targetDate.getDate());
   });
   test('correctly converts a number to a period in weeks after a set date', function(){
     var someDate = new Date('Thu Jun 27 2013 22:44:05 GMT+0100 (UTC)');
     var timezoneOffset = someDate.getTimezoneOffset();
     var targetDate = new Date('Thu Jun 06 2013 22:44:05 GMT+0100 (UTC)');
-    assert.equal((3).avweeks().avbefore(someDate).getDate(), targetDate.getDate());
+    assert.equal((3).avweeks.avbefore(someDate).getDate(), targetDate.getDate());
   });
+});
+
+suite('Date functions', function(){
+	test('isOnWeekend works', function(){
+		var dayOnWeekend = new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)');
+		assert(dayOnWeekend.isOnWeekend())
+	});
+
+	test('isOnWeekend does not give false positives', function(){
+		var dayOnWeek = new Date('Wed Aug 03 2016 18:55:19 GMT+0100 (BST)')
+		assert.equal(dayOnWeek.isOnWeekend(), false)
+	});
+
+	test('withoutTime returns a time at midnight', function(){
+		var someDay = new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)')
+		assert.deepEqual(someDay.withoutTime(), new Date('Sun Jul 31 2016 00:00:00 GMT+0100 (BST)'))
+	});
+
+	test('date clone makes new dates which are not affected by changes in original', function(){
+		var someDay = new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)')
+		var someDayCopy = someDay.clone();
+		someDay.setFullYear(2006)
+		assert.deepEqual(someDayCopy, new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)'))
+	});
 });
 
 suite('Number.round', function () {
@@ -384,8 +408,11 @@ suite('kind', function(){
 });
 
 suite('Functions work with no prefix at all', function(){
-  agave.enable();
+  agave();
   test('strips from the right accurately', function(){
     assert.equal('Hello world'.rightStrip('ldr'), 'Hello wo');
   });
 });
+
+
+

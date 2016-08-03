@@ -3,3 +3,4 @@
 Agave.js **safely** extends native JavaScript objects with helpful, intuitive methods that **make your code shorter and more readable**.
 
 For full documentation, [visit agavejs.org](http://agavejs.org)
+
