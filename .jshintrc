@@ -1,7 +1,9 @@
 {
-  // Various things most of my projects use
   "predef": [
-    "define",
-    "require"
-  ]
+    // Node comes with console, so does every modern browser
+    "console"
+  ],
+  "asi" : true, // Tolerate Automatic Semicolon Insertion (no semicolons).
+  "esnext": true,
+  "-W047": true // Ignore "A trailing decimal point can be confused with a dot" on Number methods
 }
