@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Cleaner, simpler JavaScript for ES6 and ES7",
   "scripts": {
