@@ -317,41 +317,6 @@ suite('Date functions', function(){
 	});
 });
 
-suite('Number.round', function () {
-  var num = 4.2;
-  test('correctly rounds a number', function () {
-    assert.equal(num.avround(),4);
-  });
-});
-
-suite('Number.ceil', function () {
-  var num = 4.2;
-  test('correctly finds a number\'s ceiling', function () {
-    assert.equal(num.avceil(),5);
-  });
-});
-
-suite('Number.floor', function () {
-  var num = 4.2;
-  test('correctly finds a number\'s floor', function () {
-    assert.equal(num.avfloor(),4);
-  });
-});
-
-suite('Number.abs', function () {
-  var num = -4.2;
-  test('correctly finds the absolute value of a number', function () {
-    assert.equal(num.avabs(),4.2);
-  });
-});
-
-suite('Number.pow', function () {
-  var num = 5;
-  test('correctly raises a number to the given power', function () {
-    assert.equal(num.avpow(3), 125);
-  });
-});
-
 suite('Agave doesn\'t affect for loops', function(){
   it ('doesn\'t. really', function(){
     for ( var key in mockObject ) {

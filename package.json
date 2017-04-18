@@ -2,7 +2,7 @@
   "name": "agave",
   "version": "2.0.1",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
-  "description": "Cleaner, simpler JavaScript for ES6",
+  "description": "Cleaner, simpler JavaScript for ES6 and ES7",
   "scripts": {
     "test": "mocha"
   },
@@ -19,8 +19,6 @@
     "lodash"
   ],
   "dependencies": {
-    "es6-shim": "^0.34.2",
-    "mocha": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "==3.0.0"
@@ -30,14 +28,16 @@
     "node": ">=4.0"
   },
   "browserify": {
-  	"transform": [
-  		"brfs",
-  		[
-  			"babelify",
-  			{
-  				"presets": ["es2015"]
-  			}
-  		]
-  	]
+    "transform": [
+      "brfs",
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   }
 }

@@ -1,3 +1,9 @@
+## 2.2.0 (2017-04-18)
+
+ - es6-shim removed - now expects ES6. Current browsers or node version 6 and up.
+ - `number..months` and `number..years` added.
+ - Remove number methods where either Math.method an ES6 operator like `**` exists. Use those instead.
+
 ## 2.0.0 (2016-08-03)
 
  - agave now uses [semver](http://semver.org/). Since this is the first major breaking change we're releasing to 2.0.0

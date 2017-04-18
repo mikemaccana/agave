@@ -1,5 +1,3 @@
-require('es6-shim');
-
 var enabledPrefixes = {}; // Only allow agave to be enabled once per prefix
 
 // Extend objects with Agave methods, using the prefix provided.
@@ -13,18 +11,20 @@ var enable = function(prefix){
   }
 
   const MILLISECONDS_IN_SECOND = 1000,
-  	SECONDS_IN_MINUTE = 60,
-  	MINUTES_IN_HOUR = 60,
-  	HOURS_IN_DAY = 24,
-  	DAYS_IN_WEEK = 7;
+    SECONDS_IN_MINUTE = 60,
+    MINUTES_IN_HOUR = 60,
+    HOURS_IN_DAY = 24,
+    DAYS_IN_WEEK = 7,
+    DAYS_IN_MONTH = 30,
+    DAYS_IN_YEAR = 365;
 
   const SUNDAY = 0,
-  	MONDAY = 1,
-  	TUESDAY = 2,
-  	WEDNESDAY = 3,
-  	THURSDAY = 4,
-  	FRIDAY = 5,
-  	SATURDAY = 6;
+    MONDAY = 1,
+    TUESDAY = 2,
+    WEDNESDAY = 3,
+    THURSDAY = 4,
+    FRIDAY = 5,
+    SATURDAY = 6;
 
   // object.getKeys() returns an array of keys
   var getKeys = function(){
@@ -254,60 +254,47 @@ var enable = function(prefix){
     return new Date(time+(+this));
   };
 
-  // Round Number
-  var round = function () {
-    return Math.round(this);
-  };
-
-  var ceil = function () {
-    return Math.ceil(this);
-  };
-
-  var floor = function () {
-    return Math.floor(this);
-  };
-
-  var abs = function () {
-    return Math.abs(this);
-  };
-
-  var pow = function (exp) {
-    return Math.pow(this, exp);
-  };
-
   var toSeconds = function() {
-  	return this * MILLISECONDS_IN_SECOND;
+    return this * MILLISECONDS_IN_SECOND;
   }
 
   var toMinutes = function() {
-  	return this.seconds * SECONDS_IN_MINUTE;
+    return this.seconds * SECONDS_IN_MINUTE;
   }
 
   var toHours = function() {
-  	return this.minutes * MINUTES_IN_HOUR;
+    return this.minutes * MINUTES_IN_HOUR;
   }
 
   var toDays = function() {
-  	return this.hours * HOURS_IN_DAY;
+    return this.hours * HOURS_IN_DAY;
   }
 
   var toWeeks = function() {
-  	return this.days * DAYS_IN_WEEK;
+    return this.days * DAYS_IN_WEEK;
+  }
+
+  var toMonths = function() {
+    return this.days * DAYS_IN_MONTH;
+  }
+
+  var toYears = function() {
+    return this.days * DAYS_IN_YEAR;
   }
 
   var isOnWeekend = function(){
-		return this.getDay() === SUNDAY || this.getDay() === SATURDAY
-	}
+    return this.getDay() === SUNDAY || this.getDay() === SATURDAY
+  }
 
   var withoutTime = function(){
-		var copy = new Date(this)
-		copy.setHours(0, 0, 0, 0, 0)
-		return copy;
-	}
+    var copy = new Date(this)
+    copy.setHours(0, 0, 0, 0, 0)
+    return copy;
+  }
 
   var dateClone = function(){
-		return new Date(this.getTime())
-	}
+    return new Date(this.getTime())
+  }
 
   var kind = function(item) {
     var getPrototype = function(item) {
@@ -385,12 +372,7 @@ var enable = function(prefix){
     },
     'Number':{
       'before':before,
-      'after':after,
-      'round':round,
-      'ceil':ceil,
-      'floor':floor,
-      'abs':abs,
-      'pow':pow
+      'after':after
     },
     'Date':{
       'isOnWeekend': isOnWeekend,
@@ -421,9 +403,9 @@ var enable = function(prefix){
   };
 
   var addTimeExtension = function(name, getterFunction){
-  	Object.defineProperty(Number.prototype, name, {
-  		get: getterFunction
-  	})
+    Object.defineProperty(Number.prototype, name, {
+      get: getterFunction
+    })
   }
 
   var newAttributes = {
@@ -438,6 +420,10 @@ var enable = function(prefix){
       'days':toDays,
       'week':toWeeks,
       'weeks':toWeeks,
+      'month':toMonths,
+      'months':toMonths,
+      'year':toYears,
+      'years':toYears
     }
   }
 
