@@ -1,6 +1,6 @@
 {
   "name": "agave",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Cleaner, simpler JavaScript for ES6 and ES7",
   "scripts": {
@@ -25,19 +25,6 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=4.0"
-  },
-  "browserify": {
-    "transform": [
-      "brfs",
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ]
-        }
-      ]
-    ]
+    "node": ">=6.0"
   }
 }
