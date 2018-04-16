@@ -294,6 +294,12 @@ var enable = function(prefix){
 		return this.getDay() === SUNDAY || this.getDay() === SATURDAY
 	}
 
+	var daysUntil = function(fakeNowDate){
+		var now = new Date() || fakeNowDate;
+		var difference = this.getTime() - now.getTime();
+		return Math.round(Math.abs(difference/1..day));
+	}
+	
 	var withoutTime = function(){
 		var copy = new Date(this)
 		copy.setHours(0, 0, 0, 0, 0)
@@ -386,7 +392,9 @@ var enable = function(prefix){
 		'Date':{
 			'isOnWeekend': isOnWeekend,
 			'withoutTime': withoutTime,
-			'clone': dateClone
+			'clone': dateClone,
+			'daysUntil': daysUntil,
+			'daysAgo': daysUntil
 		}
 	};
 
