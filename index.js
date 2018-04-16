@@ -355,45 +355,45 @@ var enable = function(prefix){
 	// others re-use inbuilt methods from other objects.
 	var newMethods = {
 		'Array':{
-			'findItem':findItem,
+			findItem,
 			'extend':arrayExtend,
 			'includes': String.prototype.includes,
 			'clone':arrayClone,
 			'remove':arrayRemove,
 			'first':arrayFirst,
 			'last':arrayLast,
-			'forEachAsync': forEachAsync
+			forEachAsync
 		},
 		'Object':{
-			'getKeys':getKeys,
-			'getSize':getSize,
-			'getPath':getPath,
-			'clone':clone,
-			'forEach':objectForEach,
-			'extend':objectExtend,
-			'compare':compare
+			getKeys,
+			getSize,
+			getPath,
+			clone,
+			'forEach': objectForEach,
+			'extend': objectExtend,
+			compare
 		},
 		'String':{
-			'reverse':reverse,
-			'leftStrip':leftStrip,
-			'rightStrip':rightStrip,
-			'strip':strip,
-			'toHash':toHash,
+			reverse,
+			leftStrip,
+			rightStrip,
+			strip,
+			toHash,
 			'forEach':Array.prototype.forEach // Strings and NodeLists don't have .forEach() standard but the one from Array works fine
 		},
 		'Function':{
-			'throttle':throttle,
-			'repeat':functionRepeat
+			throttle,
+			'repeat': functionRepeat
 		},
 		'Number':{
-			'before':before,
-			'after':after
+			before,
+			after
 		},
 		'Date':{
-			'isOnWeekend': isOnWeekend,
-			'withoutTime': withoutTime,
+			isOnWeekend,
+			withoutTime,
 			'clone': dateClone,
-			'daysUntil': daysUntil,
+			daysUntil,
 			'daysAgo': daysUntil
 		}
 	};

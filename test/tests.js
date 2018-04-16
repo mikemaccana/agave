@@ -323,8 +323,8 @@ suite('Date functions', function(){
 	});
 });
 
-suite('Agave doesn\'t affect for loops', function(){
-	it ('doesn\'t. really', function(){
+suite(`Agave doesn't affect for loops`, function(){
+	it (`doesn't. really`, function(){
 		for ( var key in mockObject ) {
 			assert( ! ['avgetKeys','avgetSize','avgetPath'].avincludes(key) );
 		}
