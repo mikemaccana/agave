@@ -10,8 +10,8 @@
 // 53 allows us to test Number, String etc constructors.
 // 54 allows us to test Function constructors.
 
-var assert = require('assert');
-var agave = require('../index.js');
+const assert = require('assert'),
+	agave = require('../index.js');
 
 var mockObject = {
 	foo: 'bar',
