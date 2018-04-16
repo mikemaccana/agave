@@ -147,6 +147,8 @@ pre {
 
 code {
   font: 14px/18px 'InconsolataMedium', Arial, sans-serif;
+  // Lets us idnent code content
+  white-space: pre-line;
 }
 
 li {

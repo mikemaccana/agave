@@ -1,614 +1,695 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>agave.js</title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="icon" type="image/png" href="images/favicon.png"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta charset="utf-8">
-</head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>agave.js</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta charset="utf-8">
+		</head>
 
 <body>
 
-  <a href="#menu" class="nav-link">
-    <img src="./images/navicon-png2x.png" width="20" alt="Menu toggle">
-  </a>
-
-  <nav>
-    <ul>
-      <li class="object"><a href="#why">Why use Agave</a>
-        <ul>
-          <li class="method"><a href="#sugarjs">SugarJS</a></li>
-          <li class="method"><a href="#underscore">Underscore</a></li>
-          <li class="method"><a href="#concerns">Concerns</a></li>
-          <li class="method"><a href="#usage">Usage</a></li>
-          <li class="method"><a href="#support">Browser support</a></li>
-          <li class="method"><a href="#license">License</a></li>
-          <li class="method"><a href="#author">Author</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#kind">kind</a></li>
-      <li class="object"><a href="#object">Object</a>
-        <ul>
-          <li class="method"><a href="#objectgetKeys">getKeys</a></li>
-          <li class="method"><a href="#objectgetSize">getSize</a></li>
-          <li class="method"><a href="#objectgetPath">getPath</a></li>
-          <li class="method"><a href="#objectclone">clone</a></li>
-          <li class="method"><a href="#objectextend">extend</a></li>
-          <li class="method"><a href="#objectforEach">forEach</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#array">Array</a>
-        <ul>
-          <li class="method"><a href="#arrayclone">clone</a></li>
-          <li class="method"><a href="#arrayincludes">includes</a></li>
-          <li class="method"><a href="#arrayfindItem">findItem</a></li>
-          <li class="method"><a href="#arrayextend">extend</a></li>
-          <li class="method"><a href="#arraytoNodeList">toNodeList</a></li>
-          <li class="method"><a href="#arrayremove">remove</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#function">Function</a>
-        <ul>
-          <li class="method"><a href="#functionthrottle">throttle</a></li>
-          <li class="method"><a href="#functionrepeat">repeat</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#string">String</a>
-        <ul>
-          <li class="method"><a href="#stringstrip">strip</a></li>
-          <li class="method"><a href="#stringleftStrip">leftStrip</a></li>
-          <li class="method"><a href="#stringrightStrip">rightStrip</a></li>
-          <li class="method"><a href="#stringforEach">forEach</a></li>
-          <li class="method"><a href="#stringreverse">reverse</a></li>
-        </ul>
-      </li>
-      <li class="object"><a href="#number">Number</a>
-        <ul>
-          <li class="method"><a href="#numberseconds">seconds</a></li>
-          <li class="method"><a href="#numberseconds">minutes</a></li>
-          <li class="method"><a href="#numberseconds">hours</a></li>
-          <li class="method"><a href="#numberseconds">days</a></li>
-          <li class="method"><a href="#numberseconds">weeks</a></li>
-          <li class="method"><a href="#numberbefore">before</a></li>
-          <li class="method"><a href="#numberbefore">after</a></li>
-          <li class="method"><a href="#numbermath">round</a></li>
-          <li class="method"><a href="#numbermath">ceil</a></li>
-          <li class="method"><a href="#numbermath">floor</a></li>
-          <li class="method"><a href="#numbermath">abs</a></li>
-          <li class="method"><a href="#numberpow">pow</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="content">
-
-    <div class="github"><a href="https://github.com/mikemaccana/agave">Fork me on GitHub</a></div>
-
-    <h1><img src="./images/agave.png" alt="agave.js"/></h1>
-
-    <h2>Cleaner, simpler JavaScript for <strong>ES6</strong></h2>
-
-    <p>
-      <a href="https://travis-ci.org/mikemaccana/agave">
-        <img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" />
-      </a>
-    </p>
-
-    <p>Agave.js safely extends native JavaScript objects with <strong>useful things you'll use every day</strong>.</p>
-
-    <ul>
-      <li><strong>Real methods</strong> on the objects you expect them to be on, just like regular JavaScript.</li>
-      <li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to safely extend inbuilt objects.</li>
-      <li><strong>Doesn't include things that are already in ES6</strong>, so it stays small (around 400 lines of code).</li>
-      <li>Works on <a href="#support">current versions of Chrome, Firefox, Safari, IE9-11 and node</a>.</li>
-    </ul>
-
-    <div id="downloads">
-      <a href="https://www.npmjs.com/package/agave">
-        <button class="download">npm install agave</button>
-      </a>
-    </div>
-
-    <h3>What does Agave provide?</h3>
+	<a href="#menu" class="nav-link">
+		<img src="./images/navicon-png2x.png" width="20" alt="Menu toggle">
+	</a>
+
+	<nav>
+		<ul>
+			<li class="object"><a href="#why">Why use Agave</a>
+				<ul>
+					<li class="method"><a href="#underscore">Underscore and Lodash</a></li>
+					<li class="method"><a href="#sugarjs">SugarJS</a></li>
+					<li class="method"><a href="#concerns">Concerns</a></li>
+					<li class="method"><a href="#usage">Usage</a></li>
+					<li class="method"><a href="#support">Browser support</a></li>
+					<li class="method"><a href="#license">License</a></li>
+					<li class="method"><a href="#author">Author</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#kind">kind</a></li>
+
+			<li class="object"><a href="#array">Array</a>
+				<ul>
+					<li class="method"><a href="#arrayextend">extend</a></li>
+					<li class="method"><a href="#arrayclone">clone</a></li>
+					<li class="method"><a href="#arrayremove">remove</a></li>
+					<li class="method"><a href="#arrayfirst">first</a></li>
+					<li class="method"><a href="#arraylast">last</a></li>
+					<li class="method"><a href="#arrayForEachAsync">forEachAsync</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#object">Object</a>
+				<ul>
+					<li class="method"><a href="#objectgetKeys">getKeys</a></li>
+					<li class="method"><a href="#objectgetSize">getSize</a></li>
+					<li class="method"><a href="#objectgetPath">getPath</a></li>
+					<li class="method"><a href="#objectclone">clone</a></li>
+					<li class="method"><a href="#objectextend">extend</a></li>
+					<li class="method"><a href="#objectforEach">forEach</a></li>
+					<li class="method"><a href="#objectCompare">compare</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#string">String</a>
+				<ul>
+					<li class="method"><a href="#stringreverse">reverse</a></li>
+					<li class="method"><a href="#stringleftStrip">leftStrip</a></li>
+					<li class="method"><a href="#stringrightStrip">rightStrip</a></li>
+					<li class="method"><a href="#stringstrip">strip</a></li>
+					<li class="method"><a href="#stringToHash">toHash</a></li>
+					<li class="method"><a href="#stringforEach">forEach</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#function">Function</a>
+				<ul>
+					<li class="method"><a href="#functionthrottle">throttle</a></li>
+					<li class="method"><a href="#functionrepeat">repeat</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#number">Number</a>
+				<ul>
+					<li class="method"><a href="#numberseconds">seconds</a></li>
+					<li class="method"><a href="#numberseconds">minutes</a></li>
+					<li class="method"><a href="#numberseconds">hours</a></li>
+					<li class="method"><a href="#numberseconds">days</a></li>
+					<li class="method"><a href="#numberseconds">weeks</a></li>
+					<li class="method"><a href="#numberbefore">before</a></li>
+					<li class="method"><a href="#numberbefore">after</a></li>
+					<li class="method"><a href="#numbermath">round</a></li>
+					<li class="method"><a href="#numbermath">ceil</a></li>
+					<li class="method"><a href="#numbermath">floor</a></li>
+					<li class="method"><a href="#numbermath">abs</a></li>
+					<li class="method"><a href="#numberpow">pow</a></li>
+				</ul>
+			</li>
+
+			<li class="object"><a href="#date">Date</a>
+				<ul>
+					<li class="method"><a href="#dateIsOnWeekend">isOnWeekend</a></li>
+					<li class="method"><a href="#dateWithoutTime">withoutTime</a></li>
+					<li class="method"><a href="#dateClone">clone</a></li>
+					<li class="method"><a href="#dateDaysAgo">daysUntil</a></li>
+					<li class="method"><a href="#dateDaysAgo">daysAgo</a></li>
+				</ul>
+			</li>
+
+		</ul>
+	</nav>
+
+	<div class="content">
+
+		<div class="github"><a href="https://github.com/mikemaccana/agave">Fork me on GitHub</a></div>
+
+		<h1><img src="./images/agave.png" alt="agave.js"/></h1>
+
+		<h2>Cleaner, simpler JavaScript for <strong>ES8</strong></h2>
+
+		<p>
+			<a href="https://travis-ci.org/mikemaccana/agave">
+				<img src="https://secure.travis-ci.org/mikemaccana/agave.png?branch=master" alt="Build Status" />
+			</a>
+		</p>
 
-    <p>Remember, all methods are available under the prefix you enabled agave with (if any).</p>
+		<p>Agave.js safely extends native JavaScript objects with <strong>useful things you'll use every day</strong>.</p>
 
-    <h4><a name="kind"></a>kind</h4>
+		<ul>
+			<li><strong>Real methods</strong> on the objects you expect them to be on, just like regular JavaScript.</li>
+			<li>Uses a <strong><a href="#prefixing">prefix of your choosing</a></strong> to safely extend inbuilt objects.</li>
+			<li><strong>Doesn't include things that are already in ES8</strong>, so it stays small (around 400 lines of code).</li>
+			<li>Works on <a href="#support">current versions of Chrome, Firefox, Safari, Edge and node</a>.</li>
+		</ul>
 
-    <p>Tells you the closest prototype in the inheritance tree or, for always-primitive types like 'null' and 'undefined', the primitive name. Think of it like a <strong>typeof() that does what you expect</strong>.</p>
+		<div id="downloads">
+			<a href="https://www.npmjs.com/package/agave">
+				<button class="download">yarn install agave</button>
+			</a>
+		</div>
 
-    <p>So you can access it easily, kind() is a global (of course, it's prefixed like everything else in Agave).</p>
+		<h3>What does Agave provide?</h3>
 
-    <h5>Numbers</h5>
+		<p>Remember, all methods are available under the prefix you enabled agave with (if any).</p>
 
-    <pre><code>kind(37) === 'Number'
-kind(3.14) === 'Number'
-kind(Math.LN2) === 'Number'
-kind(Infinity) === 'Number'
-kind(Number(1)) === 'Number'</code></pre>
+		<section>
+			<h4><a name="kind"></a>kind</h4>
 
-    <h5>NaN</h5>
+			<p>Tells you the closest prototype in the inheritance tree or, for always-primitive types like 'null' and 'undefined', the primitive name. Think of it like a <strong>typeof() that does what you expect</strong>.</p>
 
-    <pre><code>kind(NaN) === 'NaN'</code></pre>
+			<p>So you can access it easily, kind() is a global (of course, it's prefixed like everything else in Agave).</p>
+			
+			<h5>Numbers</h5>
 
-    <h5>Strings</h5>
+			<pre><code>
+				kind(37) === 'Number'
+				kind(3.14) === 'Number'
+				kind(Math.LN2) === 'Number'
+				kind(Infinity) === 'Number'
+				kind(Number(1)) === 'Number'
+			</code></pre>
 
-    <pre><code>kind('') === 'String'
-kind('bla') === 'String'
-kind(String("abc")) === 'String'
-kind(new String("abc")) === 'String'</code></pre>
+			<h5>NaN</h5>
 
+			<pre><code>kind(NaN) === 'NaN'</code></pre>
 
-    <h5>Booleans</h5>
+			<h5>Strings</h5>
 
-    <pre><code>kind(true) === 'Boolean'
-kind(false) === 'Boolean'
-kind(new Boolean(true)) === 'Boolean'</code></pre>
+			<pre><code>
+				kind('') === 'String'
+				kind('bla') === 'String'
+				kind(String("abc")) === 'String'
+				kind(new String("abc")) === 'String'
+			</code></pre>
 
-    <h5>Arrays</h5>
+			<h5>Booleans</h5>
 
-    <pre><code>kind([1, 2, 4]) === 'Array'
-kind(new Array(1, 2, 3)) === 'Array'</code></pre>
+			<pre><code>
+				kind(true) === 'Boolean'
+				kind(false) === 'Boolean'
+				kind(new Boolean(true)) === 'Boolean'
+			</code></pre>
 
-    <h5>Objects</h5>
+			<h5>Arrays</h5>
 
-    <pre><code>kind({a:1}) === 'Object'
-kind(new Object()) === 'Object'</code></pre>
+			<pre><code>
+				kind([1, 2, 4]) === 'Array'
+				kind(new Array(1, 2, 3)) === 'Array'
+			</code></pre>
 
-    <h5>Dates</h5>
+			<h5>Objects</h5>
 
-    <pre><code>kind(new Date()) === 'Date'</code></pre>
+			<pre><code>
+				kind({a:1}) === 'Object'
+				kind(new Object()) === 'Object'
+			</code></pre>
 
-    <h5>Functions</h5>
+			<h5>Dates</h5>
 
-    <pre><code>kind(function(){}) === 'Function'
-kind(new Function("console.log(arguments)")) === 'Function'
-kind(Math.sin) === 'Function'</code></pre>
+			<pre><code>kind(new Date()) === 'Date'</code></pre>
 
-    <h5>undefined</h5>
+			<h5>Functions</h5>
 
-    <pre><code>kind(undefined) === 'undefined'</code></pre>
+			<pre><code>kind(function(){}) === 'Function'
+	kind(new Function("console.log(arguments)")) === 'Function'
+	kind(Math.sin) === 'Function'</code></pre>
 
-    <h5>null</h5>
+			<h5>undefined</h5>
 
-    <pre><code>kind(null) === 'null'</code></pre>
+			<pre><code>kind(undefined) === 'undefined'</code></pre>
 
-    <h4><a name="object"></a>Object methods</h4>
+			<h5>null</h5>
 
-    <p>The following examples are based on this sample object:</p>
+			<pre><code>kind(null) === 'null'</code></pre>
 
-<pre><code>var mockObject = {
-  foo: 'bar',
-  baz: {
-    bam:'boo',
-    zar:{
-      zog:'something useful'
-    }
-  }
-}
-</code></pre>
+		</section>
 
-    <h5><a name="objectgetKeys"></a>.getKeys()</h5>
+		<section>
 
-    <p>Returns an array of the object's keys.</p>
+			<h4><a name="object"></a>Object methods</h4>
 
-<pre><code>mockObject.getKeys()
-</code></pre>
+			<p>The following examples are based on this sample object:</p>
 
-    <p>Returns:</p>
+			<pre><code>
+				var mockObject = {
+					foo: 'bar',
+					baz: {
+						bam:'boo',
+						zar:{
+							zog:'something useful'
+						}
+					}
+				}
+			</code></pre>
 
-<pre><code>['foo','baz']
-</code></pre>
+			<h5><a name="objectgetKeys"></a>.getKeys()</h5>
 
-    <h5><a name="objectgetSize"></a>.getSize()</h5>
+			<p>Returns an array of the object's keys.</p>
 
-    <p>Returns the number of properties in the object.</p>
+			<pre><code>mockObject.getKeys()
+			</code></pre>
 
-<pre><code>mockObject.getSize()
-</code></pre>
+			<p>Returns:</p>
 
-    <p>Returns:</p>
+			<pre><code>['foo','baz']
+			</code></pre>
 
-<pre><code>2
-</code></pre>
+			<h5><a name="objectgetSize"></a>.getSize()</h5>
 
-    <h5><a name="objectgetPath"></a>.getPath(<em>path</em>)</h5>
+			<p>Returns the number of properties in the object.</p>
 
-    <p>Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object.
-    If any of the keys along the way are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful may be buried deep inside an object, but you don't want to error out if the path doesn't exist. Eg, the following code:</p>
+			<pre><code>mockObject.getSize()
+			</code></pre>
 
-<pre><code>mockObject.getPath('/baz/zar/zog')
-</code></pre>
+			<p>Returns:</p>
 
-    <p>or, alternatively:</p>
+			<pre><code>2
+			</code></pre>
 
-<pre><code>mockObject.getPath(['baz','zar','zog'])
-</code></pre>
+			<h5><a name="objectgetPath"></a>.getPath(<em>path</em>)</h5>
 
-    <p>will return:</p>
+			<p>Provided with either a '/' separated path, or an array of keys, get the value of the nested keys in the object. If any of the keys along the way are missing, return <em>undefined</em>. This is very useful for useful for checking JSON API responses where something useful may be buried deep inside an object, but you don't want to error out if the path doesn't exist. Eg, the following code:</p>
 
-<pre><code>'something useful'</code></pre>
+			<pre><code>mockObject.getPath('/baz/zar/zog')
+			</code></pre>
 
-    <p>However, checking for a path that doesn't exist:</p>
+			<p>or, alternatively:</p>
 
-<pre><code>mockObject.getPath(['baz','gur','yak'])</code></pre>
+			<pre><code>mockObject.getPath(['baz','zar','zog'])
+			</code></pre>
 
-      <p>will simply return:</p>
+			<p>will return:</p>
 
-<pre><code>undefined</code></pre>
+			<pre><code>'something useful'</code></pre>
 
-    <p>Keys, of course, could be strings, array indices, or anything else.</p>
+			<p>However, checking for a path that doesn't exist:</p>
 
-    <h5><a name="objectclone"></a>.clone()</h5>
+			<pre><code>mockObject.getPath(['baz','gur','yak'])</code></pre>
 
-    <p>Returns a deep clone of the object, so that modifications to the new object will not affect the original.</p>
+			<p>will simply return:</p>
 
-    <h5><a name="objectforEach"></a>.forEach(<em>function</em>)</h5>
+			<pre><code>undefined</code></pre>
 
-    <p>Iterates over the object's keys and values, using the function provided.</p>
+			<p>Keys, of course, could be strings, array indices, or anything else.</p>
 
-    <h5><a name="objectextend"></a>.extend(<em>newProperties</em>)</h5>
+			<h5><a name="objectclone"></a>.clone()</h5>
 
-    <p>Applies the properties from newProperties object to the existing object.</p>
+			<p>Returns a deep clone of the object, so that modifications to the new object will not affect the original.</p>
 
-<pre><code>mockObject.avextend({
-  'gnar':{
-    shub:'zoo'
-  },
-  'gert':{
-    yaz:'frub'
-  }
-});
-</code></pre>
+			<h5><a name="objectforEach"></a>.forEach(<em>function</em>)</h5>
 
-    <p>will return:</p>
+			<p>Iterates over the object's keys and values, using the function provided.</p>
 
-<pre><code>{
-  "foo":"bar",
-  "baz":{
-    "bam":"boo",
-    "zar":{
-      "zog":"victory"}
-    },
-    "null":{
-      "yarr":{
-        "parrot":"ahoy"
-      }
-    },
-  "gnar":{
-    "shub":"zoo"
-  },
-  "gert":{
-    "yaz":"frub"
-  }
-}
-</code></pre>
+			<h5><a name="objectextend"></a>.extend(<em>newProperties</em>)</h5>
 
-    <h4><a name="array"></a>Array methods</h4>
+			<p>Applies the properties from newProperties object to the existing object.</p>
 
-    <h5><a name="arrayclone"></a>.clone()</h5>
+			<pre><code>
+				mockObject.avextend({
+					'gnar':{
+						shub:'zoo'
+					},
+					'gert':{
+						yaz:'frub'
+					}
+				});
+			</code></pre>
 
-    <p>Returns a shallow clone of the object.</p>
+			<p>will return:</p>
 
-    <h5><a name="arrayincludes"></a>.includes(<em>item</em>)</h5>
+			<pre><code>
+				{
+					"foo":"bar",
+					"baz":{
+					"bam":"boo",
+					"zar":{
+						"zog":"victory"}
+					},
+					"null":{
+						"yarr":{
+						"parrot":"ahoy"
+						}
+					},
+					"gnar":{
+					"shub":"zoo"
+					},
+					"gert":{
+					"yaz":"frub"
+					}
+				}
+			</code></pre>
 
-    <p>returns true if the array contains the item.</p>
+		</section>
 
-<pre><code>['one','two','three'].includes('two')
-</code></pre>
+		<section>
+			<h4><a name="array"></a>Array methods</h4>
 
-    <p>Returns:</p>
+			<h5><a name="arrayextend"></a>.extend(<em>newarray</em>)</h5>
+			<p>Adds the items from <em>newarray</em> to the end of this array.</p>
 
-<pre><code>true
-</code></pre>
+			<h5><a name="arrayclone"></a>.clone()</h5>
+			<p>Returns a shallow clone of the object.</p>
 
-    <h5><a name="arrayfindItem"></a>.findItem(<em>testfunction</em>)</h5>
+			<h5><a name="arrayremove"></a>.remove(<em>member</em>)</h5>
+			<p>Removes <em>member</em> from the array, returning true if the member was found, false otherwise.</p>
 
-    <p>When provided with a function to test each item against, returns the first item that where testfunction returns true.</p>
+			<h5><a name="arrayFirst"></a>.first()</h5>
+			<p>Returns the first item of the array.</p>
 
-    <h5><a name="arrayextend"></a>.extend(<em>newarray</em>)</h5>
+			<h5><a name="arrayLast"></a>.last()</h5>
+			<p>Returns the last item of the array.</p>
 
-    <p>Adds the items from <em>newarray</em> to the end of this array.</p>
+			<h5><a name="arrayLast"></a>.forEachAsync()</h5>
+			<p>An async version of `forEach()`.</p>
 
-    <h5><a name="arraytoNodeList"></a>.toNodeList()</h5>
+			<pre><code>
+				await productNames.forEachAsync(function(productName){
+					console.log(`Making product '${productName}'`)
+					stripe.products.create({
+						name: productName,
+						type: 'service',				
+						statement_descriptor: productName 
+					});
+				})	
+			</code></pre>
 
-    <p>Turns an array of Elements into a NodeList.</p>
+			<h4><a name="function"></a>Function methods</h4>
 
-    <h5><a name="arrayremove"></a>.remove(<em>member</em>)</h5>
+			<h5><a name="functionthrottle"></a>.throttle(<em>wait</em>)</h5>
 
-    <p>Removes <em>member</em> from the array, returning true if the member was found, false otherwise.</p>
+			<p>Run a function after it hasn't been invoked for 'wait' ms. Commonly used to stop repeated calls to a function overlapping each other (sometimes called 'bouncing'). </p>
 
+			<p>For example, window.resize() events normally fire repeatedly as a user resizes a window, causing functions that are waiting for the 'resize' event to run at the same time, which can cause problems. </p>
 
+			<pre><code>
+				var updateLayout = function(event) {
+					console.log('Updating layout!')
+				};
 
-    <h4><a name="function"></a>Function methods</h4>
+				window.addEventListener("resize", updateLayout.throttle(500));
+			</code></pre>
 
-    <h5><a name="functionthrottle"></a>.throttle(<em>wait</em>)</h5>
+			<p>Will wait until the user has stopped dragging the window for 500ms before printing:</p>
 
-    <p>Run a function after it hasn't been invoked for 'wait' ms. Commonly used to stop repeated calls to a function overlapping each other (sometimes called 'bouncing'). </p>
+			<pre><code>Updating layout!
+			</code></pre>
 
-    <p>For example, window.resize() events normally fire repeatedly as a user resizes a window, causing functions that are waiting for the 'resize' event to run at the same time, which can cause problems. </p>
+			<p>on the console.</p>
 
-<pre><code>var updateLayout = function(event) {
-  console.log('Updating layout!')
-};
+			<h5><a name="functionrepeat"></a>.repeat(<em>arguments</em>, <em>interval</em>, <em>leadingEdge</em>)</h5>
 
-window.addEventListener("resize", updateLayout.throttle(500));
-</code></pre>
+			<p>Run the function repeatedly at the interval (in ms). If leadingEdge is true, run the function immediately too.</p>
 
-    <p>Will wait until the user has stopped dragging the window for 500ms before printing:</p>
+			<pre><code>
+				var doThing = function(first, second){
+					console.log('first', first, 'second', second)
+				};
 
-<pre><code>Updating layout!
-</code></pre>
+				var interval = doThing.repeat(['red', 'pandas'], 1000, true)
+			</code></pre>
 
-    <p>on the console.</p>
+			<p>Will run doThing() immediately, then every second afterwards.</p>
+		</section>
 
+		<section>
+			<h4><a name="string"></a>String methods</h4>
 
-    <h5><a name="functionrepeat"></a>.repeat(<em>arguments</em>, <em>interval</em>, <em>leadingEdge</em>)</h5>
+			<h5><a name="stringstrip"></a>.strip(<em>characters</em>)</h5>
 
-    <p>Run the function repeatedly at the interval (in ms). If leadingEdge is true, run the function immediately too.</p>
+			<p>returns the string, with the specified characters removed from the beginning and end.</p>
 
-    <pre><code>var doThing = function(first, second){
-  console.log('first', first, 'second', second)
-};
+			<pre><code>'Hello world'.strip('Hld')
+			</code></pre>
 
-var interval = doThing.repeat(['red', 'pandas'], 1000, true)
-    </code></pre>
+			<p>Returns:</p>
 
-    <p>Will run doThing() immediately, then every second afterwards.</p>
+			<pre><code>'ello wor'
+			</code></pre>
 
-    <h4><a name="string"></a>String methods</h4>
+			<h5><a name="stringleftStrip"></a>.leftStrip(<em>characters</em>)</h5>
 
-    <h5><a name="stringstrip"></a>.strip(<em>characters</em>)</h5>
+			<p>returns the string, with the specified characters removed from the beginning.</p>
 
-    <p>returns the string, with the specified characters removed from the beginning and end.</p>
+			<h5><a name="stringrightStrip"></a>.rightStrip(<em>characters</em>)</h5>
 
-<pre><code>'Hello world'.strip('Hld')
-</code></pre>
+			<p>returns the string, with the specified characters removed from the end.</p>
 
-    <p>Returns:</p>
+			<h5><a name="stringforEach"></a>.forEach(<em>iterationFunction</em>)</h5>
 
-<pre><code>'ello wor'
-</code></pre>
+			<p>Runs <em>iterationFunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
 
-    <h5><a name="stringleftStrip"></a>.leftStrip(<em>characters</em>)</h5>
+			<h5><a name="stringreverse"></a>.reverse()</h5>
 
-    <p>returns the string, with the specified characters removed from the beginning.</p>
+			<p>Returns a backwards copy of the string.</p>
+		</section>
 
-    <h5><a name="stringrightStrip"></a>.rightStrip(<em>characters</em>)</h5>
+		<section>
+			<h4><a name="number"></a>Number properties and methods</h4>
 
-    <p>returns the string, with the specified characters removed from the end.</p>
+			<p><strong>Note:</strong> use brackets or two dots to use properties and methods on Numbers. See below for examples!</p>
 
-    <h5><a name="stringforEach"></a>.forEach(<em>iterationFunction</em>)</h5>
+			<h5><a name="numberseconds"></a>.seconds, .minutes(), .hours(), .days(), and .weeks()</h5>
 
-    <p>Runs <em>iterationFunction</em> over each character in the String. Just like ES5's inbuilt Array.forEach().</p>
+			<p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
 
-    <h5><a name="stringreverse"></a>.reverse()</h5>
+			<pre><code>(5).days
+			</code></pre> or
 
-    <p>Returns a backwards copy of the string.</p>
+			<pre><code>5..days
+			</code></pre>
 
-    <h4><a name="number"></a>Number methods</h4>
+			<p>Returns:</p>
 
-    <p><strong>Note:</strong> wrap numbers in brackets to use methods on them, otherwise the '.' is interpreted as a decimal point.</p>
+			<pre><code>432000000
+			</code></pre>
 
-    <h5><a name="numberseconds"></a>.seconds, .minutes(), .hours(), .days(), and .weeks()</h5>
+			<p>Since 5 days is 432000000 milliseconds.</p>
 
-    <p>Converts a number into the amount of milliseconds for a timespan. For example:</p>
+			<h5><a name="numberbefore"></a>.before(), .after()</h5>
 
-<pre><code>(5).days()
-</code></pre>
+			<p>Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before) or the future (using .after). You'd typically combine this with .seconds, .hours, .days, and .weeks to easily get a date a certain amount of units in the past or the future. For example:</p>
 
-    <p>Returns:</p>
+			<pre><code>2..days().before()
+			</code></pre>
 
-<pre><code>432000000
-</code></pre>
+			<p>Returns a Date for 2 days ago, eg:</p>
 
-    <p>Since 5 days is 432000000 milliseconds.</p>
+			<pre><code>Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
+			</code></pre>
 
-    <h5><a name="numberbefore"></a>.before(), .after()</h5>
+			<p>You can also specify a date to be before/after. For example:</p>
 
-    <p>Turns a number (assumed to be an amount of milliseconds) into the Date in the past (using .before) or the future (using .after). You'd typically combine this with .seconds, .hours, .days, and .weeks to easily get a date a certain amount of units in the past or the future. For example:</p>
+			<pre><code>var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
+	(3).weeks().after(joinedCompanyDate)
+			</code></pre>
 
-<pre><code>(2).days().before()
-</code></pre>
+			<p>Returns a Date for 3 weeks after that date, eg:</p>
 
-    <p>Returns a Date for 2 days ago, eg:</p>
+			<pre><code>Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
+			</code></pre>
 
-<pre><code>Tue Jun 04 2013 22:16:50 GMT+0100 (BST)
-</code></pre>
+			<h5><a name="numbermath"></a>.round(), .ceil(), .floor(), .abs()</h5>
 
-    <p>You can also specify a date to be before/after. For example:</p>
+			<p>Returns the value corresponding to Math.round(<em>number</em>) etc.</p>
 
-<pre><code>var joinedCompanyDate = new Date('Tue Jun 04 2013 1:00:00 GMT+0100 (BST)')
-(3).weeks().after(joinedCompanyDate)
-</code></pre>
+			<pre><code>
+				4.2..round(); // 4
+				4.2..ceil(); // 5
+				4.2..floor(); // 4
 
-    <p>Returns a Date for 3 weeks after that date, eg:</p>
+				-4.2..abs(); // 4.2
+				-4.2..abs().ceil(); // 5
+			</code></pre>
 
-<pre><code>Thu Jun 27 2013 22:44:05 GMT+0100 (BST)
-</code></pre>
+			<h5><a name="numberpow"></a>.pow(<em>exponent</em>)</h5>
 
-    <h5><a name="numbermath"></a>.round(), .ceil(), .floor(), .abs()</h5>
+			<p>Returns the number multiplied by itself <em>exponent</em> times.</p>
 
-    <p>Returns the value corresponding to Math.round(<em>number</em>) etc.</p>
+			<pre><code>5..pow(3); // 125
+			</code></pre>
+		</section>
 
-<pre><code>number = 4.2;
-number.round(); // 4
-number.ceil();  // 5
-number.floor(); // 4
+		<section>
+			<h4><a name="date"></a>Date methods</h4>
 
-number = -4.2;
-number.abs();        // 4.2
-number.abs().ceil(); // 5
-</code></pre>
+			<h5><a name="dateIsOnWeekend">.isOnWeekend()</a></h5>
+			<p>Returns `true` or `false` depending if the day is a Saturday or Sunday</p>
 
-    <h5><a name="numberpow"></a>.pow(<em>exponent</em>)</h5>
+			<h5><a name="dateDaysAgo"></a>.daysAgo() or .daysUntil()</h5>
+			<p>Returns the amount of days left, or until, the date</p>
+			<pre><code>
+				var future = new Date('2022-03-12')
+				future.daysUntil()
+			</code></pre>
+			<p>Return the days until March 12, 2022.</p>
 
-    <p>Returns the number multiplied by itself <em>exponent</em> times.</p>
+			<h5><a name="dateDaysUntil">.daysUntil()</a></h5>
+			<p>Returns the amount of days left, or until, the date</p>
+			<pre><code>
+				var future = new Date('2022-03-12')
+				future.daysUntil()
+			</code></pre>
+			<p>Return the days until March 12, 2022.</p>
 
-<pre><code>(5).pow(3); // 125
-</code></pre>
 
-    <h2><a name="why"></a>Why would I want to use Agave?</h2>
+			<h5><a name="dateWithoutTime">.withoutTime()</a></h5>
+			<p>Returns the date with the time stripped off - so the time is midnight on that day</p>
+			<pre><code>
+				var now = new Date()
+				today = now.withoutTime()
+			</code></pre>
+			
+			<h5><a name="dateClone">.clone()</a></h5>
+			<p>Returns a full copy of the date, so that modification to the original will not affect the clone</p>
 
-    <p>Agave will make your code shorter and more readable.</p>
+		</section>
 
-    <h3><a name="sugarjs"></a>How Does Agave Compare to Sugar.js?</h3>
+		<h2><a name="why"></a>Why would I want to use Agave?</h2>
 
-    <p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects. Here are the the differences: </p>
+		<p>Agave will make your code shorter and more readable.</p>
 
-    <ul>
-    <li>Agave has been affected by <strong>none</strong> of the conflicts that have affected SugarJS. Not affected by the String.prototype.namespace() conflict or the Array.prototype.find() conflict or any other conflict.</li>
-    <li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES5 browser (ie, Agave doesn't work with IE8).</li>
-    <li>Since Agave uses non-enumerable methods, regular 'for' loops work with Agave. You don't have to use hasOwnProperty() all the time.</li>
-    <li>SugarJS avoids extending Object. Agave has prefixing and non-enumerable methods, Agave provides extra methods on Object - and again, has been unaffected by any conflicts with other libraries or ES itself.</li>
-    <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
-    <li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.</li>
-    </ul>
+		<h3><a name="underscore"></a>How Does Agave Compare to Underscore.js and Lodash?</h3>
 
-    <h3><a name="underscore"></a>How Does Agave Compare to Underscore.js and Lodash?</h3>
+		<ul>
+			<li>Agave.js provides methods on the objects you expect them, rather than functions attached to punctuation. As a result it feels like JavaScript.</li>
+			<li>Agave does not duplicate things already in ES8.</li>
+			<li>Agave is designed for things you'll use every day.</li>
+			<li>Agave doesn't require a separate string library.</li>
+			<li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3-&gt;ES8 shims.</li>
+			<li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much difference to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
+		</ul>
 
-    <ul>
-      <li>Agave.js provides methods to complement those provided by ES5, rather than functions attached to punctuation.</li>
-      <li>Agave doesn't require a separate string library.</li>
-      <li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3-&gt;ES5 shims.</li>
-      <li>Agave is probably not as fast as lodash - it deliberately chooses simple, more obvious code over faster but more obscure options. This shouldn't make much difference to most people, but if it does, you can easily patch Agave to use any preferred techniques.</li>
-    </ul>
+		<h3><a name="sugarjs"></a>How Does Agave Compare to Sugar.js?</h3>
 
-    <h3><a name="concerns"></a>Concerns</h3>
+		<p><a href="http://sugarjs.com/">Sugar.js</a> is an excellent project and was the inspiration for Agave. Like Sugar, Agave provides useful additional methods on native objects. Here are the the differences: </p>
 
-    <h4><a name="addingMethodsToPrototypes"></a>I read that adding methods to prototypes is bad</h4>
+		<ul>
+			<li>Agave has been affected by <strong>none</strong> of the conflicts that have affected SugarJS. Not affected by the String.prototype.namespace() conflict or the Array.prototype.find() conflict or any other conflict.</li>
+			<li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES5 browser (ie, Agave doesn't work with IE8).</li>
+			<li>Since Agave uses non-enumerable methods, regular 'for' loops work with Agave. You don't have to use hasOwnProperty() all the time.</li>
+			<li>SugarJS avoids extending Object. Agave has prefixing and non-enumerable methods, Agave provides extra methods on Object - and again, has been unaffected by any conflicts with other libraries or ES itself.</li>
+			<li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
+			<li>Agave focuses only on things JS programmers do every day, and is much smaller than Sugar.js. Sugar.js has String.prototype.humanize() and String.prototype.hankaku(). Agave won't ever have those.</li>
+		</ul>
 
-    <p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf 2011</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
+		<h3><a name="concerns"></a>Concerns</h3>
 
-    <h4><a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?</h4>
+		<h4><a name="addingMethodsToPrototypes"></a>I read that adding methods to prototypes is bad</h4>
 
-    <h4>A. No. Methods will never appear when iterating over objects.</h4>
+		<p>Agave addresses a number of concerns people have raised over the years since Prototype.JS first began extending built ins. <a href="http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542">Andrew Dupont's talk at JSConf</a> provides an excellent overview on how the JS community has approached this topic over time.</p>
 
-    <p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
+		<h4><a name="defineProperty"></a>Q. Will Agave methods appear when iterating over objects?</h4>
 
-    <p>Let's see the problem: open your browser console right now and add a method, the traditional way:</p>
+		<h4>A. No. Methods will never appear when iterating over objects.</h4>
 
-<pre><code>Object.prototype.oldStyleMethod = function oldStyleMethod (){}
-</code></pre>
+		<p>Adding methods to inbuilt objects <em>was</em> bad, back on ES3 browsers like IE8 and Firefox 3 and older. ES3 didn't provide a way for developers to add their own non-enumerable properties to inbuilt objects.</p>
 
-    <p>And make an object:</p>
+		<p>Let's see the problem: open your browser console right now and add a method, the traditional way:</p>
 
-<pre><code>var myobject = {};
-</code></pre>
+		<pre><code>Object.prototype.oldStyleMethod = function oldStyleMethod (){}
+		</code></pre>
 
-    <p>Watch what happens when we iterate over the object:</p>
+		<p>And make an object:</p>
 
-<pre><code>for (var key in myobject) { console.log(key) };
-</code></pre>
+		<pre><code>var myobject = {};
+		</code></pre>
 
-    <p>You can see the problem: 'oldStyleMethod' shows up as one of myobject's keys. This will break things and is indeed bad.</p>
+		<p>Watch what happens when we iterate over the object:</p>
 
-    <p>But wait a sec: Objects already have some methods out of the box. Like toString():</p>
+		<pre><code>for (var key in myobject) { console.log(key) };
+		</code></pre>
 
-<pre><code>console.log(Object.prototype.toString)
+		<p>You can see the problem: 'oldStyleMethod' shows up as one of myobject's keys. This will break things and is indeed bad.</p>
+
+		<p>But wait a sec: Objects already have some methods out of the box. Like toString():</p>
+
+		<pre><code>console.log(Object.prototype.toString)
 function toString() { [native code] }
 
 console.log(Object.prototype.oldStyleMethod)
 function oldStyleMethod(){}
-</code></pre>
+		</code></pre>
 
-    <p>Why are only our add-on methods showing up as keys? Why don't the native, inbuilt methods appear in our 'for' loop?</p>
+		<p>Why are only our add-on methods showing up as keys? Why don't the native, inbuilt methods appear in our 'for' loop?</p>
 
-    <p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
+		<p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
 
-    <p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9-11, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
+		<p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9-11, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
 
-    <p>So open a new tab. Let's try again, ES5-style:</p>
+		<p>So open a new tab. Let's try again, ES5-style:</p>
 
-<pre><code>Object.defineProperty( Object.prototype, &quot;newStyleMethod&quot;, {value: function newStyleMethod(){}, enumerable: false});
+		<pre><code>Object.defineProperty( Object.prototype, &quot;newStyleMethod&quot;, {value: function newStyleMethod(){}, enumerable: false});
 
 for (var key in myobject) { console.log(key) };
-</code></pre>
+		</code></pre>
 
-    <p>Hrm, it seems newStyleMethod(), just like toString(), doesn't interfere with our loops.</p>
+		<p>Hrm, it seems newStyleMethod(), just like toString(), doesn't interfere with our loops.</p>
 
-    <p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
+		<p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
 
-    <p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
+		<p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
 
-    <h4><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h4>
+		<h4><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h4>
 
-    <h4>A. That's why Agave uses prefixes</h4>
+		<h4>A. That's why Agave uses prefixes</h4>
 
-    <p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave makes you to prefix every method it provides</strong>. Just start it with:</p>
+		<p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave makes you to prefix every method it provides</strong>. Just start it with:</p>
 
-<pre><code>agave.enable('av');
-</code></pre>
+		<pre><code>agave.enable('av');
+		</code></pre>
 
-    <p>or <strong>any prefix of your choice</strong> to have all the methods prefixed with whatever string you like.</p>
+		<p>or <strong>any prefix of your choice</strong> to have all the methods prefixed with whatever string you like.</p>
 
-    <p>Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.</p>
+		<p>Using a prefix is the preferred mechanism for publicly distributed libraries that use Agave.</p>
 
-    <p>The prefix can be as short or as long as you like. In my own experience I've found two letters has been enough to avoid conflicts in the last year I've been using Agave, prior to its public release. If you're think this might not be enough to satisfy the need for uniqueness, use a longer prefix. If you're feeling adventurous (and you strongly control the libraries used in your projects) you can use no prefix at all.</p>
+		<p>The prefix can be as short or as long as you like. In my own experience I've found two letters has been enough to avoid conflicts in the last year I've been using Agave, prior to its public release. If you're think this might not be enough to satisfy the need for uniqueness, use a longer prefix. If you're feeling adventurous (and you strongly control the libraries used in your projects) you can use no prefix at all.</p>
 
-    <h4>Q. There are new methods on my window object!</h4>
+		<h4>Q. There are new methods on my window object!</h4>
 
-    <h4>A. Yes, window is an object. This is how JS works.</h4>
+		<h4>A. Yes, window is an object. This is how JS works.</h4>
 
-    <p>Everything's an object in JS, so everything has has object methods. We mentioned object.toString() earlier - there's a window.toString() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
+		<p>Everything's an object in JS, so everything has has object methods. We mentioned object.toString() earlier - there's a window.toString() in your browser, and a global.toString() in Node that JS provides because window and global are objects.</p>
 
-    <p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
+		<p>When running agave, the additional methods added to Object.prototype will appear on window and global just like the inbuilt ones. You might find this odd, but it's expected behavior.</p>
 
-    <p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getPath() is awfully handy.</p>
+		<p>You may find this useful - for example, if you wanted to find out whether some deeply nested set of keys exists underneath window, then .getPath() is awfully handy.</p>
 
-    <p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods.</p>
+		<p>It would make things <em>nicer</em> if a future version of JS allowed us to isolate prototypes between modules. But it certainly won't kill us in the meantime if we're using prefixed, non-enumerable methods.</p>
 
-    <h3><a name="usage">Using Agave</h3>
+		<h3><a name="usage">Using Agave</h3>
 
-    <h5><a name="node"></a>In the browser, on the server, or both:</h5>
+		<h5><a name="node"></a>In the browser, on the server, or both:</h5>
 
-    <p>Just run:</p>
+		<p>Just run:</p>
 
-<pre><code>npm install agave
-</code></pre>
+		<pre><code>
+			yarn install agave
+		</code></pre>
 
-    <p>Then in your code:</p>
+		<p>Then in your code:</p>
 
-<pre><code>var agave = require('agave');
-// Start Agave, providing a prefix of your choice.
-agave.enable('yourPrefix');
-</code></pre>
+		<pre><code>
+			var agave = require('agave');
+			// Start Agave, providing a prefix of your choice.
+			agave('yourPrefix');
+		</code></pre>
 
-    <p>All the methods above are now available.</p>
+		<p>All the methods here are now available.</p>
 
-    <h3>I've got stuff to add!</h3>
+		<h3>I've got stuff to add!</h3>
 
-    <p>Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.</p>
+		<p>Awesome. Fork the repo, add your code, add your tests to tests.js and send me a pull request.</p>
 
-    <h3>Tests</h3>
+		<h3>Tests</h3>
 
-    <p>Install <a href="http://nodejs.org/">node.js</a>, and run:</p>
+		<p>Install <a href="http://nodejs.org/">node.js</a>, and run:</p>
 
-<pre><code>npm install
-mocha
-</code></pre>
+		<pre><code>yarn test</code></pre>
 
-    <p>Inside the folder you downloaded Agave to.</p>
+		<p>Inside the folder you downloaded Agave to.</p>
 
-    <h3><a name="support"></a>What browsers does Agave support?</h3>
+		<h3><a name="support"></a>What browsers does Agave support?</h3>
 
-    <p>Any ES5 compatible environment. This includes current Chrome, current Firefox, current Safari, IE9-11 and node.js.</p>
+		<p>Any ES5 compatible environment. This includes current Chrome, current Firefox, current Safari, Edge and node.js LTS.</p>
 
-    <h4>What about IE8 and Firefox 3 support?</h4>
+		<p>If you still support IE, you can also add support for IE9-11 by using an ES8 polyfill or transpilation.</p>
 
-    <p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
+		<h4>What about IE8 and Firefox 3 support?</h4>
 
-    <h3><a name="license"></a>License</h3>
+		<p>Sorry, but this isn't possible. ES3 browsers like IE8 and Firefox 3 don't support Object.defineProperty() and it cannot be emulated via shims.</p>
 
-    <p><a href="https://github.com/mikemaccana/agave/blob/master/LICENSE.md">MIT license</a>.</p>
+		<h3><a name="license"></a>License</h3>
 
-    <h3><a name="author"></a>Author</h3>
+		<p><a href="https://github.com/mikemaccana/agave/blob/master/LICENSE.md">MIT license</a>.</p>
 
-    <p>Mike MacCana (mike.maccana@gmail.com)</p>
+		<h3><a name="author"></a>Author</h3>
 
-  </div>
-  <script src="js/dist/index.js"></script>
+		<p>Mike MacCana (mike.maccana@gmail.com)</p>
+
+	</div>
+	<script src="js/dist/index.js"></script>
 </body>

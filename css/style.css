@@ -466,7 +466,8 @@ pre {
   padding-left: 5px; }
 
 code {
-  font: 14px/18px 'InconsolataMedium', Arial, sans-serif; }
+  font: 14px/18px 'InconsolataMedium', Arial, sans-serif;
+  white-space: pre-line; }
 
 li {
   margin: 20px 0; }
