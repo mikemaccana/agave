@@ -6,13 +6,25 @@
 /*
  * Corrects `block` display not defined in IE 8/9.
  */
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
   display: block; }
 
 /*
  * Corrects `inline-block` display not defined in IE 8/9.
  */
-audio, canvas, video {
+audio,
+canvas,
+video {
   display: inline-block; }
 
 /*
@@ -63,7 +75,8 @@ a:focus {
 /*
  * Improves readability when focused and also mouse hovered in all browsers.
  */
-a:active, a:hover {
+a:active,
+a:hover {
   outline: 0; }
 
 /* ==========================================================================
@@ -85,7 +98,8 @@ abbr[title] {
 /*
  * Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
-b, strong {
+b,
+strong {
   font-weight: bold; }
 
 /*
@@ -104,7 +118,10 @@ mark {
 /*
  * Corrects font family set oddly in Safari 5 and Chrome.
  */
-code, kbd, pre, samp {
+code,
+kbd,
+pre,
+samp {
   font-family: monospace, serif;
   font-size: 1em; }
 
@@ -131,7 +148,8 @@ small {
 /*
  * Prevents `sub` and `sup` affecting `line-height` in all browsers.
  */
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -193,7 +211,10 @@ legend {
  * 2. Corrects font size not being inherited in all browsers.
  * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
  */
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   /* 1 */
   font-size: 100%;
@@ -205,7 +226,8 @@ button, input, select, textarea {
  * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-button, input {
+button,
+input {
   line-height: normal; }
 
 /*
@@ -215,7 +237,10 @@ button, input {
  * 3. Improves usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -224,15 +249,18 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 /*
  * Re-set default cursor for disabled elements.
  */
-button[disabled], input[disabled] {
+button[disabled],
+input[disabled] {
   cursor: default; }
 
 /*
  * 1. Addresses box sizing set to `content-box` in IE 8/9.
  * 2. Removes excess padding in IE 8/9.
  */
-input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box;
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */ }
@@ -245,6 +273,7 @@ input[type="checkbox"], input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -252,13 +281,15 @@ input[type="search"] {
  * Removes inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
 /*
  * Removes inner padding and border in Firefox 4+.
  */
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner,
+input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
@@ -284,8 +315,8 @@ table {
 
 @font-face {
   font-family: 'InconsolataMedium';
-  src: url('../fonts/Inconsolata-webfont.eot');
-  src: url('../fonts/Inconsolata-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Inconsolata-webfont.woff') format('woff'), url('../fonts/Inconsolata-webfont.ttf') format('truetype'), url('../fonts/Inconsolata-webfont.svg#InconsolataMedium') format('svg');
+  src: url("../fonts/Inconsolata-webfont.eot");
+  src: url("../fonts/Inconsolata-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Inconsolata-webfont.woff") format("woff"), url("../fonts/Inconsolata-webfont.ttf") format("truetype"), url("../fonts/Inconsolata-webfont.svg#InconsolataMedium") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -293,28 +324,29 @@ table {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
-  src: local("Open Sans Bold"), local("OpenSans-Bold"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzJ1r3JsPcQLi8jytr04NNhU.woff) format('woff'); }
+  src: local("Open Sans Bold"), local("OpenSans-Bold"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzJ1r3JsPcQLi8jytr04NNhU.woff) format("woff"); }
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local("Open Sans Light"), local("OpenSans-Light"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff) format('woff'); }
+  src: local("Open Sans Light"), local("OpenSans-Light"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff) format("woff"); }
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 800;
-  src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff) format('woff'); }
+  src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff) format("woff"); }
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local("Open Sans"), local("OpenSans"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/K88pR3goAWT7BTt32Z01mz8E0i7KZn-EPnyo3HZu7kw.woff) format('woff'); }
+  src: local("Open Sans"), local("OpenSans"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/K88pR3goAWT7BTt32Z01mz8E0i7KZn-EPnyo3HZu7kw.woff) format("woff"); }
 
 * {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 a, a:hover, a:active, a:visited {
   color: #4DBF9F;
@@ -349,7 +381,6 @@ nav {
   color: whitesmoke; }
   nav.menu-active {
     -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
             transform: translateX(0);
     width: 150px;
     left: 150px; }
@@ -378,7 +409,7 @@ nav {
 
 body, nav, .nav-link, .content {
   -webkit-transition: all 0.2s ease-out;
-          transition: all 0.2s ease-out; }
+  transition: all 0.2s ease-out; }
 
 body {
   padding-left: 150px;
@@ -400,7 +431,6 @@ body {
   @media (max-width: 770px) {
     .content.menu-active {
       -webkit-transform: translateX(150px);
-          -ms-transform: translateX(150px);
               transform: translateX(150px); } }
 
 h1 img {
@@ -492,9 +522,7 @@ button.download {
     display: block;
     width: 190px;
     font-size: 14px;
-    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT",
-    "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
-    Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
     background-color: #333;
     color: #FFF;
     word-spacing: 2px;
@@ -505,11 +533,10 @@ button.download {
     top: -23px;
     text-align: center;
     -webkit-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
             transform-origin: 0 0;
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
             transform: rotate(45deg);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    background-image: -webkit-linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%);
-    background-image: linear-gradient(bottom, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%); }
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(3%, #534E41), color-stop(5%, #9E9B96), color-stop(7%, #64625A), color-stop(93%, #5C5A55), color-stop(95%, #9E9B96), color-stop(97%, #534E41));
+    background-image: linear-gradient(to top, #534E41 3%, #9E9B96 5%, #64625A 7%, #5C5A55 93%, #9E9B96 95%, #534E41 97%); }
