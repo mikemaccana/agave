@@ -4,7 +4,7 @@
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "description": "Cleaner, simpler JavaScript for ES8",
   "scripts": {
-    "test": "mocha -g skip"
+    "test": "mocha -i -g skip"
   },
   "repository": {
     "type": "git",
