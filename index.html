@@ -549,7 +549,7 @@
 
 		<ul>
 			<li>Agave has been affected by <strong>none</strong> of the conflicts that have affected SugarJS. Not affected by the String.prototype.namespace() conflict or the Array.prototype.find() conflict or any other conflict.</li>
-			<li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES5 browser (ie, Agave doesn't work with IE8).</li>
+			<li>Agave extends all prototypes using a user-specified prefix to avoid collisions. This is one reason why Agave requires an ES8 (or ES5 with polyfills) browser (ie, Agave doesn't work with IE8).</li>
 			<li>Since Agave uses non-enumerable methods, regular 'for' loops work with Agave. You don't have to use hasOwnProperty() all the time.</li>
 			<li>SugarJS avoids extending Object. Agave has prefixing and non-enumerable methods, Agave provides extra methods on Object - and again, has been unaffected by any conflicts with other libraries or ES itself.</li>
 			<li>Agave does not attempt to support IE8 and other ES3 browsers, resulting in a much smaller code base that is free of ES3 shims.</li>
@@ -598,7 +598,7 @@ function oldStyleMethod(){}
 
 		<p>The answer is that inbuilt methods in JavaScript have always been non-enumerable. But <strong>in ES3, you never had the ability to make your own non-enumerable methods</strong>.</p>
 
-		<p>ES5 - the current version of JavaScript created in 2009 that Chrome, Firefox, and IE9-11, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
+		<p>ES5 - the version of JavaScript created in 2009 that Chrome, Firefox, and IE9-11, as well as node.js use - specifically allows for the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty">addition of new non-enumerable properties via Object.defineProperty()</a>.</p>
 
 		<p>So open a new tab. Let's try again, ES5-style:</p>
 
@@ -611,7 +611,7 @@ for (var key in myobject) { console.log(key) };
 
 		<p>This is exactly what Agave uses. As a result, Agave's methods will <strong>never</strong> show up in for loops.</p>
 
-		<p>So if you're OK with Agave's requirements - ie, you support only ES5 environments like current generation browsers and node - you can use Agave.</p>
+		<p>So if you're OK with Agave's requirements - ie, you support current generation browsers and node - you can use Agave.</p>
 
 		<h4><a name="prefixing"></a>Q. Future ES versions or other libraries might use the same method names to do different stuff</h4>
 
@@ -674,7 +674,7 @@ for (var key in myobject) { console.log(key) };
 
 		<h3><a name="support"></a>What browsers does Agave support?</h3>
 
-		<p>Any ES5 compatible environment. This includes current Chrome, current Firefox, current Safari, Edge and node.js LTS.</p>
+		<p>Any ES8  compatible environment. This includes Chrome, Firefox, Safari, Edge and node.js LTS.</p>
 
 		<p>If you still support IE, you can also add support for IE9-11 by using an ES8 polyfill or transpilation.</p>
 
