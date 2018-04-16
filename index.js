@@ -94,21 +94,8 @@ var enable = function(prefix){
 		for ( var key in newObject ) {
 			this[key] = newObject[key];
 		}
-		return this;
-	};
 
-	// array.findItem(testFunction) returns the first item that matches the testFunction
-	var findItem = function(testFunction){
-		var lastIndex;
-		var found = this.some(function(item, index) {
-			lastIndex = index;
-			return testFunction(item);
-		});
-		if ( found ) {
-			return this[lastIndex];
-		} else {
-			return null;
-		}
+		return this;
 	};
 
 	// Run after it hasn't been invoked for 'wait' ms.
@@ -355,9 +342,7 @@ var enable = function(prefix){
 	// others re-use inbuilt methods from other objects.
 	var newMethods = {
 		'Array':{
-			findItem,
 			'extend':arrayExtend,
-			'includes': String.prototype.includes,
 			'clone':arrayClone,
 			'remove':arrayRemove,
 			'first':arrayFirst,

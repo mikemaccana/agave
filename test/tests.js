@@ -30,15 +30,6 @@ var mockObject = {
 
 agave('av');
 
-suite('Array.includes', function(){
-	test('fetches the item accurately', function(){
-		assert(['one','two','three'].avincludes('two') );
-	});
-	test('handles missing items accurately', function(){
-		assert( ! ['one','two','three'].avincludes('notthere') );
-	});
-});
-
 suite('Array.extend', function(){
 	test('extends the array accurately', function(){
 		assert.deepEqual([1,2,3].avextend([4,5]), [1,2,3,4,5] );
@@ -84,14 +75,6 @@ suite('Object.getKeys', function(){
 suite('Object.getSize', function(){
 	test('counts keys accurately', function(){
 		assert.equal(mockObject.avgetSize(), 3);
-	});
-});
-
-suite('Array.findItem', function(){
-	test('correctly finds items that match the function', function(){
-		assert.equal(['one','two','three'].avfindItem(function(item){
-			return (item === 'three');
-		}), 'three');
 	});
 });
 
@@ -326,7 +309,7 @@ suite('Date functions', function(){
 suite(`Agave doesn't affect for loops`, function(){
 	it (`doesn't. really`, function(){
 		for ( var key in mockObject ) {
-			assert( ! ['avgetKeys','avgetSize','avgetPath'].avincludes(key) );
+			assert( ! ['avgetKeys','avgetSize','avgetPath'].includes(key) );
 		}
 	});
 });
