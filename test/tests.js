@@ -304,7 +304,7 @@ suite('Date functions', function(){
 		assert.equal(dayOnWeek.isOnWeekend(), false)
 	});
 
-	test('withoutTime returns a time at midnight', function(){
+	test('withoutTime returns a time at midnight (skip on Travis due to Travis odd timezone handling)', function(){
 		var someDay = new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)')
 		assert.deepEqual(someDay.withoutTime(), new Date('Sun Jul 31 2016 00:00:00 GMT+0100 (BST)'))
 	});
