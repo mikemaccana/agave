@@ -315,6 +315,12 @@ suite('Date functions', function(){
 		someDay.setFullYear(2006)
 		assert.deepEqual(someDayCopy, new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)'))
 	});
+
+	test(`date daysAgo() works`, function(){
+		var someDay = new Date('Sun Jul 31 2016 18:55:19 GMT+0100 (BST)')
+		var fakeNowDate = new Date('2018-04-16')
+		assert.deepEqual(someDay.daysAgo(), 624)
+	});
 });
 
 suite('Agave doesn\'t affect for loops', function(){
