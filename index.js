@@ -160,6 +160,14 @@ var enable = function(prefix){
 		return this;
 	};
 
+	// See https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
+	var forEachAsync = async function (iteratorFunction) {
+		for (let item of this) { 
+			await iteratorFunction(item) 
+		}
+	}
+
+
 	// string.toHash() return a hashed value of a string
 	// From http://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery
 	var toHash = function(){
@@ -347,7 +355,8 @@ var enable = function(prefix){
 			'clone':arrayClone,
 			'remove':arrayRemove,
 			'first':arrayFirst,
-			'last':arrayLast
+			'last':arrayLast,
+			'forEachAsync': forEachAsync
 		},
 		'Object':{
 			'getKeys':getKeys,
