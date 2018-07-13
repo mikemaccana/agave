@@ -130,11 +130,15 @@
 			<a href="https://www.npmjs.com/package/agave">
 				<button class="download">yarn install agave</button>
 			</a>
+
+			<pre><code>var agave = require('agave')('somePrefix');</code></pre>
 		</div>
+
+
 
 		<h3>What does Agave provide?</h3>
 
-		<p>Remember, all methods are available under the prefix you enabled agave with (if any).</p>
+		<p>Remember, all methods are available under the prefix you started agave with (if any).</p>
 
 		<section>
 			<h4><a name="kind"></a>kind</h4>
@@ -619,7 +623,7 @@ for (var key in myobject) { console.log(key) };
 
 		<p>Another concern may be naming or implementation conflicts - ie, another library or perhaps a new version of ES includes some code that uses the same method name to do something differently. This is why <strong>Agave makes you to prefix every method it provides</strong>. Just start it with:</p>
 
-		<pre><code>agave.enable('av');
+		<pre><code>var agave = require('agave')('av');
 		</code></pre>
 
 		<p>or <strong>any prefix of your choice</strong> to have all the methods prefixed with whatever string you like.</p>
